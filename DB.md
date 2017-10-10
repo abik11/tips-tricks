@@ -774,9 +774,20 @@ FROM Employee
 ### Coalesce 
 **Coalesce** can be used to set some default value that will be returned in results instead of **null**. It is easy to use and very handy and useful! Here in the following example everytime when there will be **null** in *Work* column, the value *Unemployeed* will be returned.
 ```sql
-SELECT  [Name], 
-		COALESCE([Work], 'Unemployeed')
+SELECT [Name], COALESCE([Work], 'Unemployeed')
 FROM Employee
+```
+Inside **Coalesce** some statements can be used, see the following example:
+```sql
+SELECT
+	COALESCE(CASE du.NewName
+		WHEN '' THEN NULL
+		WHEN '-' THEN NULL
+		ELSE du.NeweName 
+		END, d.Name) AS Name
+FROM Department d
+LEFT OUTER JOIN [DeptUpdate] du 
+ON d.CostCenter = du.CostCenter AND d.Name = du.Name
 ```
 
 ### Rollup 
