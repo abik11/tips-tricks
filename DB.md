@@ -852,6 +852,33 @@ WHEN MATCHED THEN
 WHEN NOT MATCHED THEN
 	INSERT (Name, Number) VALUES (S.Name, S.Number);
 ```
+Merge can be combined with **CTE** becoming really powerfull combo. Here is an example:
+```sql
+WITH DepartmentUpdate AS (
+	SELECT
+		d.Name,
+		COALESCE(CASE du.ChangeName
+			WHEN '' THEN NULL
+			WHEN '-' THEN NULL
+			ELSE du.ChangeName 
+			END, d.Name) AS [NewName],
+		du.CostCenter,
+		CASE du.[Delete]
+			WHEN 'delete' THEN 20171010
+			ELSE NULL
+			END AS GCRecord
+	FROM Department d
+	LEFT OUTER JOIN [DeptUpdate$] du 
+	ON d.CostCenter = du.CostCenter AND d.Name = du.Name
+)
+MERGE Department AS T
+USING DepartmentUpdate AS S
+ON T.Name = S.Name AND T.CostCenter = S.CostCenter
+WHEN MATCHED THEN
+	UPDATE SET 
+		T.Name = S.[NewName],
+		T.GCRecord = S.GCRecord;
+```
 
 ### Date-time functions
 Handling dates is very often used and crucial skill while programming in SQL. Thankfully there are few extremely useful and easy to use functions that makes programmers lifes easier. 
