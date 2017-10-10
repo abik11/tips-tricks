@@ -782,11 +782,20 @@ FROM Employee
 ### Rollup 
 **Rollup** is an another way to group date. It groups the result by specified hierarchy. In the following example *MovementHistoryReport* will be grouped first by *Week* and then each group will be internally grouped also by *Location*.
 ```sql
-SELECT  COALESCE([Week], 'TOTAL'), 
-		[Location], 
-        COUNT(*) AS WrongCount
-FROM MovementHistoryReport
-GROUP BY ROLLUP([Week], [Location])
+SELECT [Name], COALESCE([Work], 'Unemployeed')
+FROM Employee
+```
+Inside **Coalesce** some statements can be used, see the following example:
+```sql
+SELECT
+	COALESCE(CASE du.NewName
+		WHEN '' THEN NULL
+		WHEN '-' THEN NULL
+		ELSE du.NeweName 
+		END, d.Name) AS Name
+FROM Department d
+LEFT OUTER JOIN DeptUpdate du 
+ON d.[CostCenter] = du.[CostCenter] AND d.[Name] = du.[Name]
 ```
 
 ### CTE
