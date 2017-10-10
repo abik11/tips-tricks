@@ -1145,7 +1145,7 @@ Get-SqlAgentJob
 ```
 
 ### Get databases 3 different ways
-***There is more than one way to do it*** (TIMTOWTDI) with SMO. Almost everything you can make on at least 3 ways:
+***There is more than one way to do it*** ([TIMTOWTDI](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it)) with SMO. Almost everything you can make on at least 3 ways:
 * Using SMO object model (1) 
 * Using SMO PSProider (2)
 * Using cmdlets provided by SMO - since SQL Server 2016 (3)
