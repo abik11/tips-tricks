@@ -996,8 +996,9 @@ SELECT @@rowcount
 There are some built-in tools in SQL Server that you can use to examine and improve query efficiency.
 1. Profiler - it analyzes queries for a selected database<br />
 ->Tools ->SQL Server Profiler<br />
-->General Tab: **Use the template = Tuning**<br /> 
-->Events Selection = ColumnFilter ->DatabaseName ->Like = DBName (for examle: Promise_db)
+->General Tab ->**Use the template = Tuning**<br /> 
+->Events Selection ->ColumnFilter ->DatabaseName ->Like = DBName (for examle: Promise_db)<br />
+Such configuration of Profiler will allow you to focus on some specified database. Also when you will run the profiler it is useful to filter the results by application name (it can be specified in connection string in your application) or by user name that executed the query. Also you can see duration to easily track slow queries.
 2. Tuning Advisor - it suggests where to add an index or statistics<br />
 ->Tools ->Database Engine Tuning Advisor 
 
