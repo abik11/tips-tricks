@@ -1560,6 +1560,7 @@ explain query plan select * from employee;
 [SQL Server Central - Stairway](http://www.sqlservercentral.com/stairway/) <br />
 [Many free e-books about DB programming](https://www.syncfusion.com/resources/techportal/ebooks) <br/>
 [Connection strings](https://www.connectionstrings.com/) <br />
+[Advanced free-books](https://www.red-gate.com/simple-talk/books/sql-books/) <br />
 
 ##### XPO
 [XPO Documentation](https://documentation.devexpress.com/CoreLibraries/1998/DevExpress-ORM-Tool) <br />
