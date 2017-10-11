@@ -1002,7 +1002,8 @@ Such configuration of Profiler will allow you to focus on some specified databas
 2. Tuning Advisor - it suggests where to add an index or statistics<br />
 ->Tools ->Database Engine Tuning Advisor 
 3. Query Execution Plan
-To turn it on you must click on the icon in the toolbar (it should be somewhere near to the **Execute** button). When you will turn it on, after query will be executed you will see next to **Results** tab a new tab called **Execution plan**. Remember that execution plan must be read from right to left.
+To turn it on you must click on the **Include Actual Execution Plan** icon in the toolbar (it should be somewhere near to the **Execute** button). When you will turn it on, after query will be executed you will see next to **Results** tab a new tab called **Execution plan**. Remember that execution plan must be read from right to left.<br />
+In case of very long queries that you don't want to wait to finish you may also click on **Display Estimated Execution Plan**. It will show you only estimated plan, not actual, but often the estimated plan is very accurate and it is better than waiting hours for some query to finish (because you will see the actual plan only after the query is finished).
 
 ### The least efficient queries 
 Here are presented two very useful queries to track the least efficient queries and then optimize them. The first query returns 5 queries with the highest execution time:
