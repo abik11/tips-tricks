@@ -1001,6 +1001,8 @@ There are some built-in tools in SQL Server that you can use to examine and impr
 Such configuration of Profiler will allow you to focus on some specified database. Also when you will run the profiler it is useful to filter the results by application name (it can be specified in connection string in your application) or by user name that executed the query. Also you can see duration to easily track slow queries.
 2. Tuning Advisor - it suggests where to add an index or statistics<br />
 ->Tools ->Database Engine Tuning Advisor 
+3. Query Execution Plan
+To turn it on you must click on the icon in the toolbar (it should be somewhere near to the **Execute** button). When you will turn it on, after query will be executed you will see next to **Results** tab a new tab called **Execution plan**. Remember that execution plan must be read from right to left.
 
 ### The least efficient queries 
 Here are presented two very useful queries to track the least efficient queries and then optimize them. The first query returns 5 queries with the highest execution time:
