@@ -3,7 +3,6 @@ Most useful (but basic) tips and tricks that will make DB programming much easie
 * XPO
 * Entity Framework
 * Code First in EF
-* NHibernate ***(in progress)***
 * Linq
 * ADO .Net
 * T-SQL
@@ -385,8 +384,6 @@ protected override void Seed(ExampleContext context)
    });
 }
 ```
-
-## NHibernate
 
 ## Linq
 
@@ -1033,6 +1030,7 @@ CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st
 WHERE last_execution_time > DATEADD(MINUTE, -10, GETDATE()) AND last_elapsed_time > 1000000
 ORDER BY last_elapsed_time DESC 
 ```
+Both queries extensively use **DMV**s (Dynamic Management Views), especially **sys.dm_exec_query_stats**.
 
 ### Examining execution plan buffer
 Execution plan buffer is an important factor for query execution. If a query can use an execution plan that is already in the buffer it is much more efficent than creating new execution plan for each query or for every execution.<br />
