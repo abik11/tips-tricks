@@ -385,6 +385,14 @@ protected override void Seed(ExampleContext context)
 }
 ```
 
+### Concurency check
+Use such configuration:
+```csharp
+[TimeStamp]
+public byte[] RowVersion { get; set; }
+```
+for automatic concurency check.
+
 ## Linq
 
 ### Linq statements and functions
