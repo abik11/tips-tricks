@@ -298,20 +298,25 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder)
 ```
 
 ### Data Annotations
-Data Annotations serve to set a bit more details about how to map your class properties into database columns. For example you can define which properties cannot be null with **Required** attribute or what is the maximum size of string (or other type) with **MaxLength** attribute.
+Data Annotations serve to set a bit more details about how to map your class properties into database columns. For example you can define which properties cannot be null with **Required** attribute or what is the maximum size of string (or other type) with **MaxLength** attribute. We can also ignore some properties and not map them at all with **NotMapped** attribute. Table name and schema can also be defined as wella as columns type and order. See the example:
 ```csharp
-[Required]
-[MaxLength(256)]
-public string Name { get; set; }
-```
-We can also ignore some properties and not map them at all:
-```csharp
-[NotMapped]
-public string FullMessage
+[Table("LogMaster", SchemaName="admin")]
+public class Log
 {
-	get
+	[Required]
+	[MaxLength(256)]
+	public string Message { get; set; }
+	
+	[Column("LogDate", Order=1, TypeName="smalldate")]
+	public DateTime Date { get; set; }
+	
+	[NotMapped]
+	public string FullMessage
 	{
-    	return $"{Machine?.Name}:{Date.ToShortDateString()} {Message}";
+		get
+		{
+    			return $"{Machine?.Name}:{Date.ToShortDateString()} {Message}";
+		}
 	}
 }
 ```
