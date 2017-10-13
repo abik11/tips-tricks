@@ -274,10 +274,10 @@ public class Log
 
 public class Machine
 {
-   public int Id { get; set; }
-   public string Name { get; set; }
-   public MachineType? Type { get; set; }
-   public virtual ICollection<Log> Logs { get; set; }
+	public int Id { get; set; }
+  	public string Name { get; set; }
+  	public MachineType? Type { get; set; }
+  	public virtual ICollection<Log> Logs { get; set; }
 }
 
 public class ExampleContext : DbContext
@@ -298,7 +298,7 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder)
 ```
 
 ### Data Annotations
-Data Annotations serve to set a bit more details about how to map your class properties into database columns. For example you can define which properties cannot be null with **Required** attribute or what is the maximum size of string (or other type) with **MaxLength** attribute. We can also ignore some properties and not map them at all with **NotMapped** attribute. Table name and schema can also be defined as wella as columns type and order. See the example:
+Data Annotations serve to set a bit more details about how to map your class properties into database columns. For example you can define which properties cannot be null with **Required** attribute or what is the maximum size of string (or other type) with **MaxLength** attribute. We can also ignore some properties and not map them at all with **NotMapped** attribute, but if a property has only a getter or only a setter it won't be mapped anyway, even without the attribute. Table name and schema can also be defined as wella as columns type and order. See the example:
 ```csharp
 [Table("LogMaster", SchemaName="admin")]
 public class Log
@@ -310,7 +310,8 @@ public class Log
 	[Column("LogDate", Order=1, TypeName="smalldate")]
 	public DateTime Date { get; set; }
 	
-	[NotMapped]
+	//[NotMapped] - we don't need this attribute 
+	//because this property has only getter so it won't be mapped anyway
 	public string FullMessage
 	{
 		get
