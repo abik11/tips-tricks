@@ -509,6 +509,21 @@ List<WorkInstructionSummaryForSection> sectionSummaries =
 ```
 The important thing is to check some properties if they are not null. Especially those which are used for left outer join and grouping. That's extremely important if we want to avoid **Null Reference Exception** and a lot of stress. So keep that in mind - check if something *is not null*.
 
+### Use delegate to define where clauses
+Using delegates of type **Func<T, bool>** is a smooth way to change the **where** clause in the runtime depending on some variable. See an example:
+```csharp
+IEnumerable<Student> GetStudents(bool goodStudentsOnly = true)
+{
+	Func<Student, bool> isGoodStudent;
+	if(goodStudetnsOnly)
+		isGoodStudent = s => s.Grade > 4;
+	else 
+		isGoodStudent = s => true;
+	
+	return _uow.Query<Students>().Where(isGoodStudent);
+}
+```
+
 ### Create Linq to SQL domain project
 ->Right click on project (Class Library) ->Add New Item ->Data ->**Linq to SQL Classes**<br />
 ->Server Explorer ->Right click on Data Conections ->Add Connection<br /> 
