@@ -333,6 +333,23 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder)
       .HasColumnType("smalldatetime");
 }
 ```
+A nice thing you can achieve with **Fluent API** is to split your model class into two separate tables! Here is how to do this:
+```csharp
+protected override void OnModelCreating(DbModelBuilder modelBuilder)
+{
+   modelBuilder.Entity<Machine>()
+      .Map(m =>
+      {
+         m.Properties(p => new { p.MachineId, p.MachineName});
+         m.ToTable("Machine");
+      })
+     .Map(m => {
+         m.Properties(p => new { p.MachineId, p.Type, p.SerialNumber, p.ProductionDate });
+         m.ToTable("MachineDetail");
+      });
+}
+```
+Be careful, to later match the rows from two separate tables you should attach *MachineId* for both of them.
 
 ### Migrations
 Migrations allow the database to be update according to the change made in model class code, without having to delete and recreate the tables (what of course means loosing data) or altering the structure by hand (which means loosing a lot of time).<br />
