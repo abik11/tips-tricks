@@ -1636,4 +1636,5 @@ explain query plan select * from employee;
 
 ##### Markdown
 [Markdown cheetysheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) <br />
-[Markdown editor](https://jbt.github.io/markdown-editor/)
+[Markdown editor](https://jbt.github.io/markdown-editor/) <br />
+[Syntax highlighting](https://highlightjs.org/static/demo/) <br />
