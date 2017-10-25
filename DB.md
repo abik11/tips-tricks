@@ -1485,6 +1485,9 @@ This tool is actually just a little wizard that generates SSIS package in the ba
 You may encounter some errors while trying to import data from excel files in Import and Export Data tool. If the error you encounter is `MICROSOFT.ACE.OLEDB.12.0 is not registered`, then you have to download and install this: [AccessDatabaseEngine.exe](http://www.microsoft.com/download/en/confirmation.aspx?id=23734)<br />
 Moreover, if you use any encryption software, excel file will be not readable for the import tool.
 
+### Convert numbers stored as text to text
+It may sometimes crush your Excel import when the data in some column is inconsistent. Some cells are saved as numbers or dates, others are saved as string. You can go to: ->Data ->Text to Columns, and it should help.
+
 ### Deploy packages from command line
 Use ISDeploymentWizard tool to deploy SSIS packages from command line, here is an example:
 ```batch
