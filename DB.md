@@ -1593,7 +1593,12 @@ int id = 4245323;
 XElement person = xdoc.Descendants().First(x => x.Attribute("id").Value == id.ToString());
 XAttribute personId = person.Attributes().First();
 ```
-XML to Linq allows you to use methods as **Descendants** or **Attributes** for every element. They return, accordingly, the complete list of descendants of the given element or its attribute list. You can use typical Linq methods with such list, like **FirstOrDefault**, **OrderBy**, etc.
+Linq to XML allows you to use methods as **Descendants** or **Attributes** for every element. They return, accordingly, the complete list of descendants of the given element or its attribute list. You can use typical Linq methods with such list, like **FirstOrDefault**, **OrderBy**, etc.<br />
+You can also set attribute value like this:
+```csharp
+person.SetAttribute("id", 23234234);
+```
+There are many other very useful methods in Linq to XML, like **SetValue** and so on!
 * Add new element and delete existing element
 ```csharp
 XElement newPerson = 
