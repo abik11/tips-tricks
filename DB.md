@@ -1617,6 +1617,36 @@ xdoc.Descendants("person").Where(x => x.Element("lastName").Value == "Henry").Re
 ```
 To create new elements you can create new instance of **XElement** class. Its constructor requires the name of the element that is going to be created and its content. As content, the list of other nested **XElement** instances may be given or **Attribute** class instance or simply some literal value (string, integer etc.). 
 
+### XmlDocument class
+It is another way to read and manipulate XML in C#. It reads an XML document into memory. A nice thing about it, is that it alows to execute XPath queries against XML document.
+* Read 
+```csharp
+XmlDocument doc = new XmlDocument();
+doc.Load("file.xml");
+string id = doc.DocumentElement.ChildNodes[0].Attributes["id"].Value;
+```
+* XPath
+```csharp
+XmlNodeList phoneNumberNodes = doc.SelectNodes("//person[@id!='34252']/phoneNumber");
+XmlNode streetNode = doc.SelectSingleNode("//person[last()]/address/street");
+string streetName = streetNode.InnerText;
+```
+* Add
+```csharp
+XmlNode person = doc.CreateElement("person");
+
+XmlAttribute id = doc.CreateAttribute("id");
+id.Value = 234235;
+person.Attributes.Append(id);
+
+XmlNode lastName = doc.CreateElement("lastName");
+lastName.InnerText = "Kozak";
+person.AppendChild(lastName);
+
+doc.DocumentElement.AppendChild(person);
+doc.Save("file.xml");
+```
+
 ## Useful links
 
 ##### Database programming - general stuff
