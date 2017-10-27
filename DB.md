@@ -12,6 +12,7 @@ Most useful (but basic) tips and tricks that will make DB programming much easie
 * Tools for SQL Server
 * SSIS
 * SQLite
+* XML
 * Useful links
 
 ## XPO
@@ -563,46 +564,6 @@ Example usage in the code:
 ```csharp
 TestDBDataContext dc = new TestDBDataContext ();
 List<SomeStoredProcedureResult> results = dc.SomeStroredProcedure();
-```
-
-### Linq to XML 
-* Example XML
-```csharp
-string testXML = @"
-<departaments>
-   <departament code="a01">Account</departament>
-   <departament code="s55">Sales</departament>
-   <departament code="mk34">Marketing</departament>
-</departaments>
-";
-```
-* Read - There two ways to retrive XML data. You can load XML document as a string and parse it or you can load some XML file.
-```csharp
-XDocument xdoc = new XDocument();
-xdoc = XDocument.Parse(testXML);
-xdoc = XDocument.Load("file.xml");
-```
-* Get attribute value
-```csharp
-XElement s55 = xdoc.Descendants().First(x => x.Attribute("code").Value == "s55");
-XAttribute code = s55.Attributes().First();
-```
-* Add new element and delete existing element
-```csharp
-xdoc.Element("departaments").Add(new XElement("departament", "IT"));  
-xdoc.Descendants().Where(x => x.Value == "Marketing").Remove();
-```
-* Print
-```csharp
-foreach(XElement item in xdoc.Element("departaments").Descendants())
-   Console.WriteLine(item.Value);
-```
-* Generate elements
-```csharp
-XElement employees = new XElement("employees", 
-    from e in employees
-    select new XElement("employee", e.Name, new Attribute("age", e.Age))
-    );
 ```
 
 ## ADO .Net
@@ -1599,6 +1560,57 @@ insert into tab1 values(null, 'Albert'); --null value should be put for autoincr
 explain query plan select * from employee; 
 --it works for MySQL also and shows query execution plan
 ```
+## XML
+
+### Linq to XML 
+* Example XML<br />
+This document will be used for the following C# examples: 
+```xml
+<people>
+	<person id="4245323">
+		<lastName>Jones</lastName>
+		<firstName>Henry</lastName>
+		<address>
+			<city lang="en">Cracow</city>
+			<street>Żeromskiego</street>
+			<houseNumber>43</houseNumber>
+			<appartmentNumber>10</appartmentNumber>
+			<postalCode>31-400</postalCode>
+		</address>
+		<phoneNumber>555-111-444</phoneNumber>	
+	</person>
+</people>
+```
+* Read<br />
+There two ways to retrive XML data. You can load XML document as a string and parse it or you can load some XML file like in the example below:
+```csharp
+XDocument xdoc = new XDocument();
+xdoc = XDocument.Load("file.xml");
+```
+* Get attribute value
+```csharp
+int id = 4245323;
+XElement person = xdoc.Descendants().First(x => x.Attribute("id").Value == id.ToString());
+XAttribute personId = person.Attributes().First();
+```
+XML to Linq allows you to use methods as **Descendants** or **Attributes** for every element. They return, accordingly, the complete list of descendants of the given element or its attribute list. You can use typical Linq methods with such list, like **FirstOrDefault**, **OrderBy**, etc.
+* Add new element and delete existing element
+```csharp
+XElement newPerson = 
+	new XElement("person", 
+		new Attribute("id", 134523),
+		new XElement("firstName", "Lucy"),
+		new XElement("lastName", "Richards"),
+		new XElement("address", 
+			new XElement("city", "Smallville"),
+			new XElement("street", "Smallville"),
+			new XElement("houseNumber", "14")
+		)
+	);	
+xdoc.Element("people").Add(newPerson);  
+xdoc.Descendants("person").Where(x => x.Element("lastName").Value == "Henry").Remove();
+```
+To create new elements you can create new instance of **XElement** class. Its constructor requires the name of the element that is going to be created and its content. As content, the list of other nested **XElement** instances may be given or **Attribute** class instance or simply some literal value (string, integer etc.). 
 
 ## Useful links
 
