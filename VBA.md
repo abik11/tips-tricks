@@ -2,6 +2,11 @@
 
 Here I present some of my very little experiance with VBA, tips and tricks that helped me to achieve some tasks without becoming crazy.
 
+* Visual Basic for Applications
+* Excel
+* Word
+* Powershell
+
 ## Visual Basic for Applications
 
 ### Enable macros
@@ -273,4 +278,51 @@ resultData = IE.Document.querySelector("#result_box span").innerHTML
     
 IE.Quit
 MsgBox resultData, vbOKOnl, "Hello!"
+```
+## Powershell
+Although this document is intended to talk about VBA, it is possible, and sometimes desireable, to work with Excel or Word in other programming languages through COM objects. Few examples will be presented here to show to make it in Powershell, a great tool for scripting and automation. If you want to learn more about Powershell in particular, look [here](https://github.com/abik11/tips-tricks/blob/master/Powershell.md).<br />
+Here you can see some very basic example of how to open the file, get the data of the given cell and how to close Excel after the data is retriven:
+```powershell
+$excel = New-Object -ComObject Excel.Application
+$file = (get-item finance.xlsx).FullName
+$wb1 = $excel.Workbooks.Open($file)
+$ws1 = $wb1.Sheets | select -first 1
+$cell = $ws1.Range("D4").Text
+ps -ProcessName 'excel' | kill
+```
+
+### Save Excel file as CSV
+If you would like to export excel file to CSV, for example if some piece of software that you use cannot read excel files but it can read CSVs, you can use the **SaveAs** function.
+```powershell
+$miss = [Type]::Missing
+$wb1.SaveAs("D:\test.csv", 6, $miss,  $miss, $false, $false, 1, 2, $false, $miss, $miss, $true) 
+```
+Second parameter of the function specifies the file format (**XlFileFormat**), here is the list of some of the available values:
+* 6 - CSV
+* 22 - CSV Mac, 23 - CSV Windows, 24 - CSV Dos
+* 19 - Mac text, 20 - Windows text, 21 - Dos text
+* 42 - Unicode text
+* 44 - HTML
+* 39 - Excel 2007
+* 50 - Excel 2012
+The last parameter keeps the language settings the same as you use in Excel (**$true**) or in VBA (**$false**).
+
+### Create new workbook and set cell value
+To create new excel file you have to call the **Workbooks.Add** functions. And if you want to set cell value, you have to access and set cell's **Value2** property. Here you can see how to do both things:
+```powershell
+$excel.Workbooks.Add()
+$wb1 = $excel.Workbooks | select -first 1
+$ws1 = $wb1.Sheets | select -first 1
+$cell1 = $ws1.Range('A1')
+$cell1.Value2 = '1'
+```
+
+### Access cells in another way
+Instead of accessing cells by the **Range** function, you can also access them through **Item** function, which works almost like an array.
+```powershell
+$sheet = $excel.Worksheets.Item(1)
+$sheet.Cells.item(1,1) = 'Text data'
+$sheet.Cells.item(1,1).Font.Bold = $True
+$sheet.Cells.item(1,1).Font.ColorIndex = 34 	#white
+$sheet.Cells.item(1,1).Interior.ColorIndex = 48	#gray
 ```
