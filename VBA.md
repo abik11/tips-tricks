@@ -6,6 +6,7 @@ Here I present some of my very little experiance with VBA, tips and tricks that 
 * Excel
 * Word
 * Powershell
+* C#
 
 ## Visual Basic for Applications
 
@@ -327,3 +328,9 @@ $sheet.Cells.item(1,1).Font.Bold = $True
 $sheet.Cells.item(1,1).Font.ColorIndex = 34 	#white
 $sheet.Cells.item(1,1).Interior.ColorIndex = 48	#gray
 ```
+
+## C#
+It is of course also possible to control Excel through COM object from C#. 
+
+## Useful links
+[VBA Reference](https://msdn.microsoft.com/en-us/VBA/Excel-VBA/articles/object-model-excel-vba-reference)
