@@ -304,7 +304,7 @@ Second parameter of the function specifies the file format (**XlFileFormat**), h
 * 42 - Unicode text
 * 44 - HTML
 * 39 - Excel 2007
-* 50 - Excel 2012
+* 50 - Excel 2012<br />
 The last parameter keeps the language settings the same as you use in Excel (**$true**) or in VBA (**$false**).
 
 ### Create new workbook and set cell value
