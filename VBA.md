@@ -434,8 +434,14 @@ Marshal.FinalReleaseComObject(app);
 ```
 
 ### Merge cells
+To merge cells use **Merge** method of **Excel.Range** class:
 ```csharp
 worksheet.get_Range("b2", "d5").Merge(false);
+```
+Later, to get the whole range of merged cells, you can get the value of **MergeArea** property:
+```csharp
+if((bool)range.MergeCells)
+    range = range.MergeArea;
 ```
 
 ### Change row height
@@ -447,6 +453,21 @@ range.RowHeight = new_int;
 ### Add new row
 ```csharp
 ((Excel.Range)worksheet.Rows[row]).Insert();
+```
+
+### Copy and past rows
+```csharp
+Excel.Range destinationRow = worksheet.get_Range("D3").EntireRow;
+Excel.Range sourceRow = worksheet.get_Range("B2").EntireRow;
+sourceRow.Copy(destinationRow);
+```
+
+### Get dropdown list elements
+```csharp
+string[] dropdownElements;
+Excel.Validation dropdown = ((Excel.Range)_worksheet.Cells[row, column]).Validation;
+if(dropdown.InCellDropdown)
+    dropdownElements = dropdown.Formula1.Split(';');
 ```
 
 ### Changing colors
@@ -466,7 +487,7 @@ Border:
 
 ### Comparing colors
 ```csharp
-if(range.Font.Color != ColorTranslator.ToOle(Color.Black){ ... }
+if(range.Font.Color != ColorTranslator.ToOle(Color.Black){ /*...*/ }
 ```
 
 ### Change text formatting
@@ -480,6 +501,62 @@ chars.Font.Color = Color.Red;
 ### Align text to left
 ```csharp
 worksheet.get_Range("A2").Cells.HoriontalAlignment = XlHAlign.Left;
+```
+
+### Check if a string is correct cell address
+```csharp
+string cellAddress = "PW525";
+Regex cellRegex = new Regex(@"^([A-Z]{1,3}[1-9]{1}[0-9]*)$");
+Match cellMatch = cellRegex.Match(cellAddress.Trim());
+if(cellMatch.Success){ /*...*/ }
+```
+
+### Convert column number to letter
+```csharp
+protected string GetExcelColumnName(int columnNumber)
+{
+   int dividend = columnNumber;
+   string columnName = String.Empty;
+   int modulo;
+   int letters = 'Z' - 'A' + 1;
+   
+   while (dividend > 0)
+   {
+      modulo = (dividend - 1) % letters;
+       columnName = Convert.ToChar('A' + modulo).ToString() + columnName;
+       dividend = (int)((dividend - modulo) / letters);
+    }
+
+    return columnName;
+}
+```
+
+### Put excel in SQL Server
+```sql
+insert into ExcelFiles (CreationDate, ExcelBinary)
+select GETDATE(), * from openrowset(bulk N'D:\file.xlsx', SINGLE_BLOB) as rs
+```
+
+### DevExpress Spreadsheet control
+There is a nice control in DevExpress which tries to look and work like Excel, here you can see how to load and save excel files:
+```csharp
+spreadsheetControl.LoadDocument(filePath);
+spreadsheetControl.SaveDocument(filePath);
+```
+To access the currently selected cell value and its address, use the following pieces of code:
+```csharp
+spreadsheetControl.SelectedCell.Value; 
+spreadsheetControl.SelectedCell.Worksheet.ToString(); 
+//this gives results like: Range(F10), Worksheet(sheet1)
+```
+And to read and write cell value you can make it like this:
+```csharp
+IWorkbook workbook = spreadsheetControl.Document;
+Range range = workbook.Range["F16"];
+Cell cell = range[0,0];
+cell.SetValue("some new cell value");
+string value = cell.Value;
+string address = cell.GetReferenceA1();
 ```
 
 ## Useful links
