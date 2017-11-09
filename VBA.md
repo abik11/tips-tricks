@@ -330,7 +330,38 @@ $sheet.Cells.item(1,1).Interior.ColorIndex = 48	#gray
 ```
 
 ## C#
-It is of course also possible to control Excel through COM object from C#. 
+It is of course also possible to control Excel through COM object from C#. To be able to do that you hace to add a reference to **Microsoft Excel 14.0 Object Library** in your project and add the following using statement in your C# file:
+```csharp
+using Excel = Microsoft.Office.Interop.Excel;
+```
+Here you can see how to create Excel COM object and how to open an excel file with **Open** method of **Excel.Workbook** class:
+```csharp
+Excel.Application excelApp = new Excel.Application();
+excelApp.Visible = false;
+Excel.Workbooks workbooks = excelApp.Workbooks;
+Excel.Workbook workbook = workbooks.Open(file_path);
+Excel.Worksheet sheet = (Excel.Worksheet)workbook.Sheets[1];
+```
+Here you can see an example how to read the whole **A** column from excel file and how to write the data to the column. An important thing to note is that for writing you have to use **Value2** property: 
+```powershell
+int lastRow = sheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell).Row;
+
+#read
+System.Array lines = (System.Array)sheet.get_Range("A1", "A" + lastRow).Cells.Value;
+#write
+sheet.get_Range("A1", "A" + lastRow).Cells.Value2 = new_values_array;			
+```
+**UsedRange** is a nice property of **Excel.Worksheet** class. It contains the range of all used cells, it is of a type **Excel.Range**. Each range has a property **Cells** which you can use as a whole (as shown in the examples before), or you can access specified cells as if you were using an array, see here:
+```powershell
+Excel.Range range = worksheet.UsedRange;
+string str = (string)(range.Cells[row_id, col_id] as Excel.Range).Value2;
+```
+To save a file use the following piece of code:
+```powershell
+workbook.SaveAs(file_path);
+workbook.Close();
+excelApp.Quit();
+```
 
 ## Useful links
 [VBA Reference](https://msdn.microsoft.com/en-us/VBA/Excel-VBA/articles/object-model-excel-vba-reference)
