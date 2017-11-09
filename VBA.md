@@ -343,7 +343,7 @@ Excel.Workbook workbook = workbooks.Open(file_path);
 Excel.Worksheet sheet = (Excel.Worksheet)workbook.Sheets[1];
 ```
 Here you can see an example how to read the whole **A** column from excel file and how to write the data to the column. An important thing to note is that for writing you have to use **Value2** property: 
-```powershell
+```csharp
 int lastRow = sheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell).Row;
 
 #read
@@ -352,15 +352,134 @@ System.Array lines = (System.Array)sheet.get_Range("A1", "A" + lastRow).Cells.Va
 sheet.get_Range("A1", "A" + lastRow).Cells.Value2 = new_values_array;			
 ```
 **UsedRange** is a nice property of **Excel.Worksheet** class. It contains the range of all used cells, it is of a type **Excel.Range**. Each range has a property **Cells** which you can use as a whole (as shown in the examples before), or you can access specified cells as if you were using an array, see here:
-```powershell
+```csharp
 Excel.Range range = worksheet.UsedRange;
 string str = (string)(range.Cells[row_id, col_id] as Excel.Range).Value2;
 ```
 To save a file use the following piece of code:
-```powershell
+```csharp
 workbook.SaveAs(file_path);
 workbook.Close();
 excelApp.Quit();
+```
+
+### Add picture
+The simplest way to put an image in a given cell is something like this:
+```csharp
+Image picture = Image.FromFile(picturePath);
+Clipboard.SetDataObject(picture, true);
+Excel.Range cellImg = (Excel.Range)worksheet.Cells[row, col];
+worksheet.Paste(cellImg, picture);
+```
+Better way, a bit more complicated is this:
+```csharp
+Excel.Range range = (Excel.Range)worksheet.Cells[row_id, col_id];
+float top_img = (float)range.Top + 10;
+float left_img = (float)range.Left + 10;
+
+Image pic = Image.FromFile(picturePath);
+float width_img = (float)pic.Width;
+float height_img = (float)pic.Height;
+
+worksheet.Shapes.AddPicture(picturePath, 
+	Microsoft.Office.Core.MsoTriState.msoFalse,
+	Microsoft.Office.Core.MsoTriState.msoCTrue, left, top, width, height);
+```
+And to save a file with pictures, use the following code:
+```csharp
+object misValue = System.Reflection.Missing.Value;
+workbook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, 
+	misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+```
+
+### How to get an image from given cell
+This is quite a simple task because of the list of all shapes that are put in the worksheet. All you have to do is just iterate through this list and get the picture that its top left corner is put in a cell of given column and row.
+```csharp
+int row = 25; int column = 5;
+Image img =  null;
+foreach(Excel.Shape picture in worksheet.Shapes)
+{
+    if(picture.TopLeftCell.Row == row && picture.TopLeftCell.Column == column)
+    {
+        picture.CopyPicture //copy to clipboard
+            (Excel.XlPictureAppearance.xlScreen, Excel.XlCopyPictureFormat.xlBitmap);
+
+        if(Clipboard.ContainsImage())
+        {
+            img = Clipboard.GetImage();
+            break;
+        }
+    }
+}
+```
+
+### How to clean Excel COM objects
+Disposing and closing Excel COM objects is not that easy. Never use 2 dots with COM objects! You always have to keep the reference to any COM object variable property or anything, otherwise Garbage Collector may not be able to dispose those objects. This is how you **should** work with COM objects:
+```csharp
+Excel.Workbooks workbooks = excelApp.Workbooks;
+Excel.Workbook workbook = workbooks.Open(file_path);
+```
+And this is how you **should NOT**:
+```csharp
+Excel.Workbook workbook = excelApp.Workbooks.Open(file_path);
+```
+This approach NOT always resolves the problem, so it is useful to close and marshal evertyhing:
+```csharp
+GC.Collect();
+GC.WaitForPendingFinalizers();
+workbooks.Close();
+Marshal.FinalReleaseComObject(workbooks);
+app.Quit();
+Marshal.FinalReleaseComObject(app);
+```
+
+### Merge cells
+```csharp
+worksheet.get_Range("b2", "d5").Merge(false);
+```
+
+### Change row height
+```csharp
+Excel.Range range = (Excel.Range)worksheet.Cells[10, 5];
+range.RowHeight = new_int;
+```
+
+### Add new row
+```csharp
+((Excel.Range)worksheet.Rows[row]).Insert();
+```
+
+### Changing colors
+Font:
+```csharp
+((Excel.Range)worksheet.Cells[x,y]).Font.Color = ColorTranslator.ToOle(Color.Black);
+```
+Background:
+```csharp
+((Excel.Range)worksheet.Cells[x,y]).Interior.Color = ColorTranslator.ToOle(Color.Black);
+```
+Border:
+```csharp
+((Excel.Range)worksheet.Cells[x,y]).Borders[Excel.XlBordersIndex.xlEdgeTop].Color =  
+    ColorTranslator.ToOle(Color.Red);
+```
+
+### Comparing colors
+```csharp
+if(range.Font.Color != ColorTranslator.ToOle(Color.Black){ ... }
+```
+
+### Change text formatting
+This is a nice example where only first ten characters of given cell will have changed formatting (red text color). Of course the whole cell text could be changed without any problem.
+```csharp
+Excel.Range range = (Excel.Range)worksheet.Cells[x, y];
+Excel.Characters chars = range.get_Characters(0, 10); //(from, to)
+chars.Font.Color = Color.Red;
+```
+
+### Align text to left
+```csharp
+worksheet.get_Range("A2").Cells.HoriontalAlignment = XlHAlign.Left;
 ```
 
 ## Useful links
