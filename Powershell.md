@@ -613,7 +613,7 @@ net user user.name /domain
 
 ### Currently logged in users
 ```powershell
-query user /server:$SERVER
+query user /server:$pc_ip
 ```
 
 ### Network name and address
