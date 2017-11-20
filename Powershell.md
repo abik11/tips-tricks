@@ -581,6 +581,31 @@ It is a simple search in Event Log. All we have to do is to find all the logs wi
 get-eventlog -logName system -source "USER32" | ? { $_.EventId -eq 1074 }| ft -wrap
 ```
 
+### Manage user groups
+To list all the groups in domain you can use the following command:
+```powershell
+net group /domain
+```
+And if you are interested in some particular group and want to list all the users you can just put its name as an argument:
+```powershell
+net group "_Comapny Department" /domain 
+```
+**net** command is quite powerfull and also allows you to display all users, add or delete groups, check server time and so on.
+```powershell
+net user /domain
+net user john.smith /domain
+net time /domain
+```
+Here you can see how to add some user to **administrators** local group:
+```powershell
+net localgroup administrators john.smith /add
+```
+And how to add and delete a user from domain group:
+```powershell
+net group "_Company Department" john.smith /domain /add
+net group "_Company Department" john.smith /domain /delete
+```
+
 ### What groups user *driectly* belogns to?
 ```powershell
 net user user.name /domain
