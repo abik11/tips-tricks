@@ -900,6 +900,13 @@ SELECT EOMONTH('1995-05-25 00:00:00.000') --returns the last day of the month of
 SELECT DATEADD(YEAR, 10, GETDATE())
 ```
 
+### Find rows from last 20 minutes
+A nice use case for **DATEDIFF** function is to find all the rows from last 20 minutes by some date. Here is an example:
+```sql
+SELECT ScanDate, Code FROM Material
+WHERE DATEDIFF(MINUTE, ScanDate, GETDATE()) < 20
+```
+
 ### Complex order by
 It is possible to switch the column that you want to use for **order by** using **case** statements, so that some data will be ordered by different column than other. Nice trick!
 ```sql
