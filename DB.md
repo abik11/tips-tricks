@@ -1067,10 +1067,14 @@ EXEC sp_executesql
 Now SQL Server will use just one execution plan even if you will change the parameter value.<br > 
 With the following query you can explore execution plan buffer:
 ```sql
-SELECT qt.TEXT AS SQL_Query, usecounts, size_in_bytes, cacheobjtype, objtype
+SELECT qt.TEXT AS SQL_Query, usecounts, size_in_bytes, cacheobjtype, objtype, p.plan_handle
 FROM sys.dm_exec_cached_plans p 
 CROSS APPLY sys.dm_exec_sql_text(p.plan_handle) qt
 WHERE qt.TEXT not like '%dm_exec%
+```
+A very useful thing about this query is that you can get the execution plan handle and you can use it to clear the query's execution plan from cache while not clearing all the rest cached plans. You can make it like this:
+```sql
+dbcc FREEPROCCACHE(0x0600050037E01805B8A00757000000000000000000000000);
 ```
 
 ## SMO
