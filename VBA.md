@@ -117,6 +117,9 @@ Unload Me
 
 ## Excel 
 
+### Create your own functions
+It is possible to define and use your own functions. To make it you must add new VBA module: ->[Visual Basic/Project] ->Right click on project ->Insert ->User Module. Now all functions that you will define here will be accessible from Insert Function window: ->Formula ->Insert Function ->User Defined Function. That's it!
+
 ### Working with sheet
 You can access any sheet with **Worksheet** array. Every worksheet has two dimensional **Cells** array. Also for the currently active sheet you can directly use **Cells** array, omitting **Worksheet** array, you can see this in the following example: 
 ```vba
