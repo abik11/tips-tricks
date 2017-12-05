@@ -1070,7 +1070,7 @@ With the following query you can explore execution plan buffer:
 SELECT qt.TEXT AS SQL_Query, usecounts, size_in_bytes, cacheobjtype, objtype, p.plan_handle
 FROM sys.dm_exec_cached_plans p 
 CROSS APPLY sys.dm_exec_sql_text(p.plan_handle) qt
-WHERE qt.TEXT not like '%dm_exec%
+WHERE qt.TEXT not like '%dm_exec%'
 ```
 A very useful thing about this query is that you can get the execution plan handle and you can use it to clear the query's execution plan from cache while not clearing all the rest cached plans. You can make it like this:
 ```sql
