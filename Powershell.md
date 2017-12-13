@@ -497,6 +497,23 @@ $value = @{ $true = 1; $false = -1 }[$v1 -eq $v2]
 ```
 This is a really nice trick, worth a word of two of explanation. All the magic here is that we define a hash array with two elements with keys **$true** and **$false** and some values. So if we want to access the element with key **$true** we recieve one value and when we want to access the element with key **$false** we recieve another one. Moreover, we calculate the key dynamically - here by comparing the equality of two variables. So if they are equal we recieve the first element of the hash array and if not, the second element. Really cool!
 
+### Disable printing to the console
+There are few weird things in Powershell and one of them is that it is trying to print out to the console every operation that it computes, but there is a very easy way to disable this, you just have to pipe the result of the computation to **Out-Null** cmdlet.
+```powershell
+$i++ | out-null
+```
+
+### Random
+Being able to use some random values is quite common. Powershell has a very nice **Get-Random** cmdlet which is quite universal. Here is an example of how to get a random integer from defined range, the returned integer will serve as an index for an array:
+```powershell
+$index = Get-Random -Min 0 -Max $players.Count
+$currentPlayer = $players[$index]
+```
+But to get randomly an element of the array we can make it even easier:
+```powershell
+$currentPlayer = Get-Random $players
+```
+
 ## Getting information
 With Powershell you have access to huge amounts of different sources of information. With WMI, Event Log, different XML configuration files, COM Shell Object and others you can get some data about the system, network, files. Here you can see few interesting pieces of code. 
 
