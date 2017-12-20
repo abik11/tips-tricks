@@ -2,11 +2,26 @@
 
 Here I present some of my very little experiance with VBA, tips and tricks that helped me to achieve some tasks without becoming crazy.
 
+* Tricks you can do without without VBA
 * Visual Basic for Applications
 * Excel
 * Word
 * Powershell
 * C#
+
+## Tricks you can do without VBA
+
+### Select all despite the first row
+1. Select the first cell of second row
+2. Push CTRL + SHIFT + Arrow Down
+3. Push CTRL + SHIFT + Arrow Right
+This may be quite useful while testing and developing macros
+
+### Get text length from given column and filter it
+1. Add new column: ->Right click on column index ->Insert
+2. Type new formula in the first cell of the new column: *=len(A2)* (*dł* in Polish Excel)
+3. Double click in the right bottom corner of this cell with the formula. This will apply the formula for all the column.
+4. Mark the column with text length and go to: ->Data ->Filter. Now you can select only those rows with the text length that you want!
 
 ## Visual Basic for Applications
 
@@ -18,12 +33,6 @@ To start developing macros you have to follow the steps:
 
 ### Debugging
 Add some breakpoints and type in **Immediate Window** commands like: `?variableName` or `Debug.Print "Value: " & variableName`. It will print out the value of given variable.
-
-### Select all despite the first row
-1. Select the first cell of second row
-2. Push CTRL + SHIFT + Arrow Down
-3. Push CTRL + SHIFT + Arrow Right
-This may be quite useful while testing and developing macros
 
 ### Syntax
 Here is an example how to define procedures (called subroutines in Visual Basic):
