@@ -319,8 +319,15 @@ Add-Type -AssemblyName System.Windows.Forms
 ```
 Here you can see how it was done in the older versions of Powershell, just in case if you will ever need it:
 ```powershell
-[reflection.assembly]::loadWithPartialName("System.Windows.Forms")
-[windows.forms.messageBox]::show("Test")
+[Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[Windows.Forms.MessageBox]::Show("Test")
+```
+
+### List all the types provided by the assembly
+If you are not sure about the types provided by some assembly that you already loaded, you can easily list the types it provides, here is a piece of code that allows you to do that:
+```powershell
+$asm = [System.AppDomain]::CurrentDomain.GetAssemblies() | ? { $_.FullName -like "*Windows.Forms*" }
+$asm.GetTypes() | select Name
 ```
 
 ### Import module
