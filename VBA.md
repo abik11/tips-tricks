@@ -573,3 +573,4 @@ string address = cell.GetReferenceA1();
 
 ## Useful links
 [VBA Reference](https://msdn.microsoft.com/en-us/VBA/Excel-VBA/articles/object-model-excel-vba-reference)
+[Polish VBA course](http://pszyperski.republika.pl/Excel%202007/index.htm)
