@@ -1422,11 +1422,11 @@ To bulk import or export data from SQL Server you can use **BCP** tool. It has f
 
 Here is an example of exporting results of some SQL query:
 ```batch
-bcp "select * from Corpo.dbo.Employee" queryout D:\test.csv -S sepmsrv79 -T -c -t ';'
+bcp "select * from Corpo.dbo.Employee" queryout D:\test.csv -S sepmsrv79 -T -c -t";"
 ```
 Here is an example of importing CSV file to Employee table:
 ```batch
-bcp DB.dbo.Employee in .\data.csv -S sepmsrv79 -T -w -t; -k
+bcp DB.dbo.Employee in .\data.csv -S sepmsrv79 -T -w -t";" -k
 ```
 BCP has some useful options, here is a small list:
 * **-S** server address or name
