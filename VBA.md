@@ -293,7 +293,7 @@ IE.Quit
 MsgBox resultData, vbOKOnl, "Hello!"
 ```
 ## Powershell
-Although this document is intended to talk about VBA, it is possible, and sometimes desireable, to work with Excel or Word in other programming languages through COM objects. Few examples will be presented here to show to make it in Powershell, a great tool for scripting and automation. If you want to learn more about Powershell in particular, look [here](https://github.com/abik11/tips-tricks/blob/master/Powershell.md).<br />
+Although this document is intended to talk about VBA, it is possible, and sometimes desireable, to work with Excel or Word in other programming languages through COM objects. Few examples will be presented here to show how to make it in Powershell, a great tool for scripting and automation. If you want to learn more about Powershell in particular, look [here](https://github.com/abik11/tips-tricks/blob/master/Powershell.md).<br />
 Here you can see some very basic example of how to open the file, get the data of the given cell and how to close Excel after the data is retriven:
 ```powershell
 $excel = New-Object -ComObject Excel.Application
