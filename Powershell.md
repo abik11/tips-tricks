@@ -495,6 +495,10 @@ Regular expressions are important component of every programming language. To us
 'ABc...xyz' -cmatch '^[A-Za-z]*\.{3}[a-z]*$' #True
 'ABc...xyz' -creplace '\.{3}', '_'	#ABc_xyz
 ```
+A great thing to know is that you can use regular expressions with **-split**! By doing this you can split a given text by all whitespaces for example:
+```powershell
+$array = $textData -split "\s+" 
+```
 
 ### Inline if
 ```powershell
