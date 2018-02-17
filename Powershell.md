@@ -490,7 +490,7 @@ ps | ? { $_.ProcessName -eq "vncviewer" } | select -first 1	# method 2
 The problem with the first method is that if the result is null, you will get an error since you are trying to get the first element of an array that doesn't exist. The second method will simply return nothing, much less error prone solution.
 
 ### Regular expressions
-Regular expressions are important component of every programming language. To use them you just have to use the **-cmatch** or **-creplace** switches of **String** type (very similar to **-split** and **-join**).
+Regular expressions are important component of every programming language. To use them you just have to use the **-cmatch**, **-creplace** or **-match**, **-replace** switches of **String** type (it works very similarily to **-split** and **-join**). Important thing to note is that the first two switches (with **c** at the beginning) are case-sensitive.
 ```powershell
 'ABc...xyz' -cmatch '^[A-Za-z]*\.{3}[a-z]*$' #True
 'ABc...xyz' -creplace '\.{3}', '_'	#ABc_xyz
