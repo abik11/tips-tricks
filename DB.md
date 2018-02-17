@@ -921,6 +921,13 @@ ORDER BY Sex,
 ```
 Remember that all of the columns you put in **case** statement to order by must be of the same type, otherwise you will have to cast them.
 
+### Create table if not exists
+In many SQL scripts it may be useful to create a table only if it doesn't exist yet. To make it you just have to use the **if not exists** expression that will check the result of a little query trying to find a table with the given name. If the result set will be empty the **create table** command will be executed: 
+```sql
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ImportantData' AND xtype='U')
+CREATE TABLE [Corpo].[dbo].[ImportantData]([Text] [varchar](256) NULL);
+```
+
 ## SQL Server
 Microsoft SQL Server is complex Database Management System (DBMS), shiped by Microsoft, implementing T-SQL.
 
