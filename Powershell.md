@@ -1034,16 +1034,24 @@ New-Fixture -Name Add-User
 ```
 2. Add module manifest - especially important is the **NestedModules** parameter - it contains the list of exported functions. Here you can see how to create module manifest
 ```powershell
-New-ModuleManifest -Path UserManagement.psd1 -NestedModules @("./Add-User.ps1") `
-    -Author 'Albert Kozak' -ModuleVersion '1.1' -DotNetFrameworkVersion = '3.5' `
-    -PowerShellVersion '5.0' -RequiredModules @(@{ModuleName='UIAutomation'}) `
-    -RequiredAssemblies 'System.Web' -ScriptToProcess @(''.\init.ps1)
+New-ModuleManifest -Path UserManagement.psd1 -NestedModules @('.\Add-User.psm1') `
+    -Author 'Albert Kozak' -ModuleVersion '1.0.0.0' ` 
+    -DotNetFrameworkVersion = '3.5' -PowerShellVersion '5.0' `
+    -ScriptToProcess @('.\init.ps1')
 ```
 3. Run tests and import the module if they will succeed
 ```powershell
 Invoke-Pester
 Import-Module UserManagement
 ```
+
+### Exporting variables
+A module in Powershell can export not only functions, but also variables. It is a good idea to create some *Variables.psm1* file and put exported variables there. This file has to be added on the list of nested modules. Here you can see how to export a variable:
+```powershell
+$constValue = 'XJ31'
+Export-ModuleMemeber -variable constValue
+```
+An important thing to note is that the name of variabe put in the **Export-ModuleMember** has no **$** (dolar) sign at the beginning! Be careful with that. 
 
 ### Mocking
 Sometimes while testing you need to provide some temporary value or make functions to return some predefined values. Pester has built-in **mock** command so you can start using it right now:
