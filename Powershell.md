@@ -597,6 +597,12 @@ Get-wmiobject win32_processor | select  loadPercentage | fl
 Get-HotFix
 ```
 
+### List of Appx Packages
+In Windows 10 there is something as Appx Package. As default some stuff is installed like Zune, Spotify and others. You can list it, filter and easily delete, see here:
+```powershell
+Get-AppxPackage *spotify* | remove-AppxPackage
+```
+
 ### Operating system information in BIOS
 ```powershell
 Get-WmiObject Win32_OperatingSystem | select *
