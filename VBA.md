@@ -141,6 +141,14 @@ Randomize
 number = Int(Rnd * 100)
 ```
 
+### Get type
+If you want to know the type of variable use the **TypeName** function like here:
+```vba
+Dim Text1 As String
+Set Text1 = "Test"
+TypeName(Text1)
+```
+
 ### Intruction with 
 Here is an example of how to get the value of some drop down control using the **with** instruction:
 ```vba
