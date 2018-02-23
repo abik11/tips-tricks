@@ -32,7 +32,7 @@ To start developing macros you have to follow the steps:
 3. Add new window: ->[Visual Basic/Project] Forms ->Right click on Insert ->User Form
 
 ### Debugging
-Add some breakpoints and type in **Immediate Window** commands like: `?variableName` or `Debug.Print "Value: " & variableName`. It will print out the value of given variable.
+Add some breakpoints and type in **Immediate Window** commands like: `?variableName` or `Debug.Print "Value: " & variableName`. It will print out the value of given variable. Also there is a very useful shortcut: **SHIFT** + **F8** for stepping to the next line.
 
 ### Syntax
 Here is an example how to define procedures (called subroutines in Visual Basic):
