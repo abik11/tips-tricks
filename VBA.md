@@ -156,6 +156,15 @@ Dim data As Variant
 data = Range(Cells(1, 1), Cells(10000, 15)) '[1;1] -> [10000;15]
 ```
 
+### Working with ranges
+There are some useful methods that you can use while working with ranges. You can select a range with **Select**, activate a cell, clear its content and formating or content only with **Activate**, **Clear** and **ClearContents** respectively.
+```vba
+Range("A2:D4").Select
+Range("A1").Activate
+Range("A1").Clear
+Range("A1").ClearContents
+```
+
 ### Worksheet and workbook events
 1. Go to: ->Developer ->Visual Basic ->Project Explorer ->**Microsoft Excel Objects**
 2. Double click on *Sheet1* (or any other) or *ThisWorkbook*
