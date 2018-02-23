@@ -124,6 +124,17 @@ Split("a-b-c-", "-")
 Unload Me
 ```
 
+### Error handling
+```vba
+Dim s As String, n as Integer
+s = InputBox("Type a number:", "Loading", 0)
+On Error Go To Handler
+  n = CInt(s)
+  MsgBox("Given number is: " + Str(n))
+End Sub
+Handler: MsgBox("This is not a number!")
+```
+
 ## Excel 
 
 ### Create your own functions
