@@ -141,6 +141,14 @@ Randomize
 number = Int(Rnd * 100)
 ```
 
+### Intruction with 
+Here is an example of how to get the value of some drop down control using the **with** instruction:
+```vba
+With ActiveSheet.Shapes("Drop Down 1").ControlFormat
+  TextValue = .List(.Value)
+End With
+```
+
 ## Excel 
 
 ### Create your own functions
@@ -255,6 +263,13 @@ End Sub
 If there are some filters activate in worksheet and you would like to see the whole data, try to use the **ShowAllData** method:
 ```vba
 ActiveSheet.ShowAllData
+```
+
+### Loop through all controls and shapes in sheet
+```vba
+For Each s In ActiveSheet.Shapes
+    n = s.Name
+Next
 ```
 
 ## Word
