@@ -135,6 +135,12 @@ End Sub
 Handler: MsgBox("This is not a number!")
 ```
 
+### Random
+```vba
+Randomize
+number = Int(Rnd * 100)
+```
+
 ## Excel 
 
 ### Create your own functions
