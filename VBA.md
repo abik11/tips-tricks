@@ -146,7 +146,11 @@ If you want to know the type of variable use the **TypeName** function like here
 ```vba
 Dim Text1 As String
 Set Text1 = "Test"
-TypeName(Text1)
+typeName = TypeName(Text1)
+```
+Also you there is **VarType** function that returns an enum value:
+```vba
+typeCode = VarType(Text1)
 ```
 
 ### Intruction with 
