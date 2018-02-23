@@ -268,7 +268,7 @@ ActiveSheet.ShowAllData
 ### Loop through all controls and shapes in sheet
 ```vba
 For Each s In ActiveSheet.Shapes
-    n = s.Name
+  'do something
 Next
 ```
 
@@ -396,6 +396,11 @@ $sheet.Cells.item(1,1) = 'Text data'
 $sheet.Cells.item(1,1).Font.Bold = $True
 $sheet.Cells.item(1,1).Font.ColorIndex = 34 	#white
 $sheet.Cells.item(1,1).Interior.ColorIndex = 48	#gray
+```
+
+### List all the shapes in excel file
+```powershell
+$workbook.ActiveSheet.Shapes | select Name
 ```
 
 ## C#
