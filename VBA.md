@@ -170,6 +170,16 @@ Range("A1").Activate
 Range("A1").Clear
 Range("A1").ClearContents
 ```
+We can do much more than that with ranges, for exmaple, we can copy the whole range:
+```vba
+R = Range("A10:C15")
+R.Copy Destination:=Range("P25")
+```
+A very useful thing is also to find a value in given range:
+```vba
+findResult = Range("A1:D10").Find("PLN", LookAt:=xlWhole)
+```
+The **xlWhole** value will make this function to match whole words, we change it **xlPart** and it will try to match also parts of the words.
 
 ### Worksheet and workbook events
 1. Go to: ->Developer ->Visual Basic ->Project Explorer ->**Microsoft Excel Objects**
@@ -239,6 +249,12 @@ Sub ExecuteSQLCmd(cmd As String, accessFilePath As String)
     End If
     Set cnn = Nothing
 End Sub
+```
+
+### Show all data
+If there are some filters activate in worksheet and you would like to see the whole data, try to use the **ShowAllData** method:
+```vba
+ActiveSheet.ShowAllData
 ```
 
 ## Word
