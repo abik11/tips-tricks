@@ -180,6 +180,56 @@ number = Int(Rnd * 100)
 Unload Me
 ```
 
+### Combo box
+Combo box is one of the most useful controls that can be used in your VBA macro! Here is a nice example how to fill a given Combo box with data on workbook open event:
+```vba
+Private Sub Workbook_Open()
+
+Sheets(2).ComboBox1.Clear
+
+With CreateObject("Scripting.Dictionary")
+  .CompareMode = 0
+  For Each cell In Sheets(1).Range("A2:A200").Cells
+    If Not .exists(cell.Value) And cell.Value <> "" Then
+      .Add cell.Value, Nothing
+      Sheets(2).ComboBox1.AddItem (cell.Value)
+    End If
+  Next
+End With
+
+End Sub
+```
+And to get the value of combo box you just have you access its **Value** property. Look on the example:
+```vba
+Private Sub ComboBox1_Change()
+    SelectedValue = ActiveSheet.ComboBox1.Value
+End Sub
+```
+Be careful, the code aboce is valid for ActiveX combo box, for Form combo box it won't work. In this case you have to use a bit different codes:
+```vba
+Private Sub Workbook_Open()
+
+Sheets(2).Shapes("Drop Down 1").ControlFormat.List = ""
+
+With CreateObject("Scripting.Dictionary")
+  .CompareMode = 0
+  For Each cell In Sheets(1).Range("A2:A200").Cells
+    If Not .exists(cell.Value) And cell.Value <> "" Then
+      .Add cell.Value, Nothing
+      Sheets(2).Shapes("Drop Down 1").ControlFormat.AddItem (cell.Value)
+    End If
+  Next
+End With
+
+End Sub
+```
+And this to get combo box value:
+```vba
+With ActiveSheet.Shapes("Drop Down 1").ControlFormat
+  SelectedValue = .List(.Value)
+End With
+```
+
 ## Excel 
 
 ### Create your own functions
