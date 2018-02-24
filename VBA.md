@@ -91,7 +91,7 @@ Public Shared Function Abc() As User `VBA
 public static User Abc(); //C#
 ```
 
-### Arrays 
+### Array
 Here is a basic example how to handle arrays with **for each** loop:
 ```vba
 Dim fruits As Array
@@ -120,9 +120,42 @@ Join(a2, "-")
 Split("a-b-c-", "-")
 ```
 
-### Close window
+### Dictionary
+Another great structure you can use is **Dictionary**. A dictionary is a list of pairs, a key with an associated value, where key must be unique in whole dictionary. Here you can see how to create a dictionary:
 ```vba
-Unload Me
+Dim dict As Object
+Set dict = CreateObject("Scripting.Dictionary")
+```
+You can add a new dictionary item (a pair) with **Add** method which has two parameters - a key and a value. You can also check if some key was already added to the dictionary with **Exists** method. Using those two methods it is quite easy to write a code that will generate an array with unique values from given range:
+```vba
+For Each cell In Sheets(1).Range("A2:F16").Cells
+  If Not dict.exists(cell.Value) And cell.Value <> "" Then
+    dict.Add cell.Value, Nothing
+  End If
+Next
+
+distinctArray = dict.keys
+```
+To remove an element from a dictionary you have to use **Remove** method or **RemoveAll** to remove all elements.
+
+### Intruction with 
+Here is an example of how to get the value of some drop down control using the **with** instruction:
+```vba
+With ActiveSheet.Shapes("Drop Down 1").ControlFormat
+  TextValue = .List(.Value)
+End With
+```
+
+### Get type
+If you want to know the type of variable use the **TypeName** function like here:
+```vba
+Dim Text1 As String
+Set Text1 = "Test"
+typeName = TypeName(Text1)
+```
+Also you there is **VarType** function that returns an enum value:
+```vba
+typeCode = VarType(Text1)
 ```
 
 ### Error handling
@@ -142,24 +175,9 @@ Randomize
 number = Int(Rnd * 100)
 ```
 
-### Get type
-If you want to know the type of variable use the **TypeName** function like here:
+### Close window
 ```vba
-Dim Text1 As String
-Set Text1 = "Test"
-typeName = TypeName(Text1)
-```
-Also you there is **VarType** function that returns an enum value:
-```vba
-typeCode = VarType(Text1)
-```
-
-### Intruction with 
-Here is an example of how to get the value of some drop down control using the **with** instruction:
-```vba
-With ActiveSheet.Shapes("Drop Down 1").ControlFormat
-  TextValue = .List(.Value)
-End With
+Unload Me
 ```
 
 ## Excel 
