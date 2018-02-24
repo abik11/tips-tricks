@@ -2,7 +2,7 @@
 
 Here I present some of my very little experiance with VBA, tips and tricks that helped me to achieve some tasks without becoming crazy.
 
-* Tricks you can do without without VBA
+* Tricks you can do without VBA
 * Visual Basic for Applications
 * Excel
 * Word
@@ -33,6 +33,7 @@ To start developing macros you have to follow the steps:
 
 ### Debugging
 Add some breakpoints and type in **Immediate Window** commands like: `?variableName` or `Debug.Print "Value: " & variableName`. It will print out the value of given variable. Also there is a very useful shortcut: **SHIFT** + **F8** for stepping to the next line.
+You can also use the `Debug.Print` instruction inside of your code which will print the value of given variable in the **Immediate Window**, a very useful debugging trick.
 
 ### Syntax
 Here is an example how to define procedures (called subroutines in Visual Basic):
@@ -416,7 +417,7 @@ $workbook.ActiveSheet.Shapes | select Name
 ```
 
 ## C#
-It is of course also possible to control Excel through COM object from C#. To be able to do that you hace to add a reference to **Microsoft Excel 14.0 Object Library** in your project and add the following using statement in your C# file:
+It is of course also possible to control Excel through COM object from C#. To be able to do that you have to add a reference to **Microsoft Excel 14.0 Object Library** in your project and add the following using statement in your C# file:
 ```csharp
 using Excel = Microsoft.Office.Interop.Excel;
 ```
