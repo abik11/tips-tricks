@@ -297,6 +297,28 @@ Add-Type -Path `
 & '.\UltraVNC Viewer.lnk'
 ```
 
+### Count file checksum
+It is a nice example of how something can be done in Powershell way using cmdlet and .Net or C# way using .Net Framework classes. Firstly, lets see how easy it is with **Get-FileHash** cmdlet:
+```powershell
+Get-FileHash .\myapplication.exe
+```
+C# way is a bit more complex (but not complicated), still it is nice to see an example to keep in mind that Powershell can use .Net classes with *extreme* ease:
+```powershell
+[System.IO.FileStream] $fileStream = [System.IO.File]::OpenRead("myapplication.exe")
+$sha = New-Object -TypeName System.Security.Cryptography.SHA256Managed
+$checksum = $sha.ComputeHash($fileStream)
+[System.BitConverter]::ToString($checksum) -creplace "-", ""
+```
+The result of running both codes should be the same if you will run it against the same file of course. Also be careful because the current path in Powershell is not the same as the current path in .Net. To see the current path in .Net you can use one of the two following lines:
+```powershell
+[Environment]::CurrentDirectory
+[System.IO.Directory]::GetCurrentDirectory()
+```
+And to change the current directory in .Net use this:
+```powershell
+[System.IO.Directory]::SetCurrentDirectory("D:\data\scripts")
+```
+
 ## Databases
 Powershell is great tool to work with databases. It may easily serve as a glue tool between different kind of systems, importing some data from one to another or enabling integration. You can use ADO .NET in Powershell, SMO (SQL Server Management Objects) or some third party libraries. If you are interested in this topic, read more [here](https://github.com/abik11/tips-tricks/blob/master/DB.md).
 
@@ -798,7 +820,7 @@ Those commands have very simple scheme:
 Get/Set-SCPFile 	-RemoteFile 	-LocalFile 
 Get/Set-SCPFolder	-RemoteFolder	-LocalFolder 
 ```
-And it is good to knwo that Posh-SSH uses the path from `[Environment]::CurrentDirectory` in its operations.
+And it is good to know that Posh-SSH uses the path from `[Environment]::CurrentDirectory` in its operations.
 
 ## Application scripting
 Powershel is a great tool for application scripting and automatization. You can work with COM objects, that are provided by many applications, you can control some applications through their command lines parameters, and do other thigns! Look here:
