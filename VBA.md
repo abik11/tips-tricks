@@ -718,4 +718,5 @@ string address = cell.GetReferenceA1();
 [VBA Reference](https://msdn.microsoft.com/en-us/VBA/Excel-VBA/articles/object-model-excel-vba-reference)<br />
 [Polish VBA course](http://pszyperski.republika.pl/Excel%202007/index.htm)<br />
 [Spanish VBA course](https://excelyvba.com/curso-de-vba/)<br />
-[VBA Tutorials](https://excelmacromastery.com/)
+[VBA Tutorials](https://excelmacromastery.com/)<br />
+[Copy macro to Personal.xlsb](https://support.office.com/en-us/article/copy-your-macros-to-a-personal-macro-workbook-aa439b90-f836-4381-97f0-6e4c3f5ee566)
