@@ -276,6 +276,13 @@ The **xlWhole** value will make this function to match whole words, we change it
 3. In the Code View in top left listbox choose **Worksheet** (deault is **General**)
 4. In top right listbox choose event that you want to handle
 
+### Add key shortcuts for macro
+Here is an example of a little macro that will try to execute the *ShowMessage* function every time **CTRL + b** will be pressed:
+```vba
+Application.OnKey "^b", "ShowMessage"
+```
+For special buttons like **F1** you should a bit different notation: `{F1}` or `{TAB}` and so on. For letters and numbers they are as default combined with **CTRL**, but special button can serve as a shortcut separately or toegether with **CTRL**, for example `{F1}` works just for **F1** and `^{F1}` works for **CTRL + F1**. It is a good idea to but shortcut definition in workbook **Open** event handler code.
+
 ### ADODB.Connection - User-Defined Type Not Defined
 If you such error, you probably forget to add reference to ADO: <br />
 ->Tools ->References ->Microsoft ActiveX Data Objects 6.1 Library
