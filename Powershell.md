@@ -907,7 +907,7 @@ In Windows 7 there is a built-in speech synthesizer which can be controlled by C
 (new-object -com sapi.spvoice).speak("Hello baby! How are you?")
 ```
 
-### Work with windows
+### Work with Windows
 One of the most useful COM objects for automatization is **Shell.Application**. It provides a lot of functionality for example asociated with Windows Explorer. A nice use case of this COM object can be seen in other tip - *Length of MP3 file*. Here you can see some simple but useful methods:
 ```powershell
 $shell = new-object -COMObject Shell.Application
@@ -917,6 +917,31 @@ $shell.MinimizeAll()
 $shell.UndoMinimizeALL()
 ```
 **TileVertically** and **TileHorizontally** are quite useful, they try to adjust the size of all the open windows to make them fit the screen at once.
+
+### Work much more with Windows - WinApi
+Because of the fact that with Powershell you have access to the whole .Net library, you can also access **Windows API** with the **P/Invoke** mechanism and that gives you an unlimited power. Frankly speaking calling WinApi functions is difficult, much less intuitive than working with Powershell cmdlets and functions or even calling .Net methods. But it is doable and sometimes there is no other way to achieve some particular goal. Here you will some very simple example of how to get the system datetime with WinApi function call, let's say it is some kind of WinApi *hello world* example:
+```powershell
+$typeCode = @"
+public struct SYSTEMTIME 
+{    
+  public ushort wYear, wMonth, wDayOfWeek, wDay, wHour, wMinute, wSecond, wMilliseconds;
+}
+
+public class Win32Utils
+{
+  [System.Runtime.InteropServices.DllImport("Kernel32.dll")]
+  public static extern void GetSystemTime(ref SYSTEMTIME sysTime);
+}
+"@
+
+Add-Type -TypeDefinition $typeCode
+
+[SYSTEMTIME]$time = new-object -type SYSTEMTIME
+[Win32Utils]::GetSystemTime([ref]$time)
+$time
+```
+Few things nice to notice - WinApi functions almost always require to provide arguments as structs - this make it a bit difficult to work with them because you have to know the structure of the required struct type. There is a nice web site that may help you: [pinvoke.net](https://www.pinvoke.net/index.aspx), it is a generally great source of information about WinApi for .Net, totally recommended! Another thing good to notice, that you will often encounter while working with WinApi in Powershell is the **[ref]** keyword put before an argument in function call. It is required because WinApi functions often use the given variable as a reference and not as a value and putting this keyword there guarantees that it will work like that.<br />
+Trying to avoid such low level calls is a good idea, most of things you will need to do is already ported to .Net or even to Powershell cmdlets, but if you are really sure that something cannot be done - it is surely done with WinApi.
 
 ### Send slack messages
 If you use slack maybe you have heard about WebHooks. Thanks to WebHooks you can integrate external applications with slack. They can send messages and inform you about some actions, for example TFS can send you a message that a check-in was done. You can also create your own messages with Powershell thanks to **Invoke-WebRequest** cmdlet:
