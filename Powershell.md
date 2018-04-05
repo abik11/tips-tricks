@@ -324,6 +324,13 @@ Powershell is great tool to work with databases. It may easily serve as a glue t
 
 ## Mastering the syntax
 
+### Creating PSObjects
+**PSObject** is a very flexible structure. It allows you to dynamicaly create structures to store your data depending on your needs. You just have to specify all the properties of the structure and values in a hash array. See an example here:
+```powershell
+$filelist = ls | % `
+  { new-object psobject -property @{ code = $_.Name.Substring(0, $_.Name.IndexOf(".")); CreationTime = $_.CreationTime; }}
+```
+
 ### Add your own and .NET types
 You can define your onw classes, structs, with all the functionality that is allowed by CLR and C# and import them into Powershell. You can define constructors, methods, inheritance, anything. This is very useful!
 ```powershell
