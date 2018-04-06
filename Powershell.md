@@ -1289,6 +1289,20 @@ serialPort.DataReceived += methodDelegate;	//methodDelegate - SerialDataReceived
 ```
 For more detailed information go [here](https://msdn.microsoft.com/pl-pl/library/system.io.ports.serialport(v=vs.110).aspx) or [here](http://www.sparxeng.com/blog/software/must-use-net-system-io-ports-serialport)
 
+## Appendix C - Colors in .Net
+In general colors in .Net are represented by **Color** class form **System.Drawing** namespace. They consist of four 8 bit numbers representing transparency (alpha), red, green and blue and the whole color can be represented simply by a 32 bit integer value. Once I encountered a system that was saving colors of some objects as such 32 bit integer value, for example *-5658199*. This is some kind of grey and I was asked to change it to lighter grey. I didn't know what is this number and how to understand it, how to convert it to hex notation or ARGB. Powershell helped me a lot to understand it and to achieve my goal. I tried to put this mysterious number as an argument of **FromArgb** static method of **Color** class and it return an object of type **Color** with all the color details.
+```powershell
+Add-Type -AssemblyName System.Drawing
+$color = [System.Drawing.Color]::FromArgb(-5658199)
+$color.Name
+```
+This integer is nothing more than just color writen as ARGB in decimal notation instead of hexadecimal, the one that we are all used to when it comes to dealing with colors! You can see the hex notation accessing **Name** property of color object. Building a new color is quite easy also if you know red, green and blue elements. You just have to use **ToArgb** method to get the color representation as decimal integer:
+```powershell
+$color = [System.Drawing.Color]::FromArgb(216, 216, 216)
+$color.ToArgb()
+```
+That's all!
+
 ## Useful links
 
 #### General Powershell stuff
