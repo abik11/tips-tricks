@@ -931,7 +931,11 @@ CREATE TABLE [Corpo].[dbo].[ImportantData]([Text] [varchar](256) NULL);
 ### How to get string length with spaces
 There is a very popular function in T-SQL called **LEN**, it is often used to get the length of some string value. It has one disadvantage that it is not counting spaces, so if you want to know the total length of the raw string you have to use another function called **DATALENGTH**. It is very simple to use. Here you can see an example showing the difference between both functions:
 ```sql
-SELECT LEN(' '), DATALENGTH(' ')
+SELECT LEN(' '), DATALENGTH(' ') --returns 0 and 1
+```
+Be careful with **nvarchar** type because **DATALENGTH** actually returns the number of bytes of a given string, for **nvarchar** it will return the number of characters multiplied by two because every char is encoded as 16 bits (2 bytes). See the result of the following query as proof:
+```sql
+SELECT DATALENGTH('A'), DATALENGTH(N'A') --returns 1 and 2
 ```
 
 ## SQL Server
