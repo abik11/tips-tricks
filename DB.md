@@ -928,6 +928,12 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ImportantData' AND xtype='U'
 CREATE TABLE [Corpo].[dbo].[ImportantData]([Text] [varchar](256) NULL);
 ```
 
+### How to get string length with spaces
+There is a very popular function in T-SQL called **LEN**, it is often used to get the length of some string value. It has one disadvantage that it is not counting spaces, so if you want to know the total length of the raw string you have to use another function called **DATALENGTH**. It is very simple to use. Here you can see an example showing the difference between both functions:
+```sql
+SELECT LEN(' '), DATALENGTH(' ')
+```
+
 ## SQL Server
 Microsoft SQL Server is complex Database Management System (DBMS), shiped by Microsoft, implementing T-SQL.
 
