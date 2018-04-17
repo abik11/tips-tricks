@@ -94,16 +94,19 @@ get-PSDrive
 cd C:\
 cd HKLM:
 cd HKCU:
-cd variable: 	#Powershell variables
-cd Env: 		#System variables
+cd variable:	#Powershell variables
+cd Env:		#System variables
 ```
 
 ### System variables
 It may be very often useful to work with system variables. And it is very easy to do that in Powershell! There two ways (actually more), like always in Powershel - ***there is more than one way to do it***:
 ```powershell
-cd Env:																#method 1
-new-item -itemType env -value "C:\Android\android-sdk" ANDROID_HOME #method 1
-$env:ANDROID_HOME = "C:\Android\android-sdk" 						#method 2
+#method 1
+cd Env:	
+new-item -itemType env -value "C:\Android\android-sdk" ANDROID_HOME
+
+#method 2
+$env:ANDROID_HOME = "C:\Android\android-sdk" 
 ```
 In method one we use PSProvider and **new-item** cmdlet to add new variable. With the same method we can add files, directories, registry keys and many more, depending on your PSProviders!
 
@@ -264,7 +267,7 @@ One of the nicest thing about Powershell that is a huge part of its power is tha
 ### Head and tail
 ```powershell
 gc file.txt -totalCount 3	#first 3 rows of the file
-gc file.txt -tail 2			#last 2 rows of the file
+gc file.txt -tail 2		#last 2 rows of the file
 ```
 
 ### Export results to Excel/CSV
@@ -371,6 +374,15 @@ function Get-VNCWindow([string] $domainName, [string] $procName = "vncviewer"){
    ps | ? { $_.Name -eq $procName -and $_.MainWindowTitle -match $domainName }
 }
 get-VNCwindow -domainName "albert-komp"
+```
+
+### Delegates
+It may be often required, especially while working with .Net classes, to pass some delegate. But that's not really obvious how to make it in Powershell? That's quite easy, maybe even easier than in C#, look at the following example:
+```powershell
+[System.Action] $delegate = { write-host "Text" }
+[System.Action[string]] $delegateWithParam = { param($text) write-host $text }
+$delegate.Invoke()
+$delegateWithParam.Invoke("Text")
 ```
 
 ### Advanced functions
@@ -560,8 +572,8 @@ With Powershell you have access to huge amounts of different sources of informat
 ### Date
 ```powershell
 Get-Date
-get-date -format 'yyyy.MM' 			#2017.11
-get-date -format 'yy' -year 2005 	#05
+get-date -format 'yyyy.MM'		#2017.11
+get-date -format 'yy' -year 2005	#05
 ```
 
 ### Object structure
