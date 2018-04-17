@@ -491,43 +491,6 @@ var query =
 	};
 ```
 
-### Left outer join
-Here we want to left outer join *Processes* with *Sections*. Every *Process* is associated to some *Section* and we want make a join basing on this association. To achieve this we must combine **join** statement with **into** statement, and that's it!
-```csharp
-from section in GetSections()
-join process in GetProcesses() 
-on section.Oid equals process.Section.Oid into processToSections
-```
-
-### Linq triple combo
-Here I present quite advanced example of LINQ query with left outer join, group by and select new statements. It is really neat, here you go:
-```csharp
-List<WorkInstructionSummaryForSection> sectionSummaries =
-	(from section in GetSections()
-	join instructions in GetInstructions().Where(x => x.Employee != null
-                      && x.Employee.Status != "Terminated"
-                      && x.Employee.Process != null
-                      && x.Employee.Process.Section != null
-                      && x.Employee.Process.Section.LayoutLocation != null
-                      && x.Employee.Process.Section.LayoutLocation.SummaryLayout != null)
-     on section.Oid equals instructions.Employee.Process.Section.Oid 
-     into instructionToSections
-     from instructionWithSection in instructionToSections.Where(x => x.Employee != null
-                      && x.Employee.Process != null
-                      && x.Employee.Process.Section != null)
-     group instructionWithSection by instructionWithSection.Employee.Process.Section 
-     into grouped
-     select new WorkInstructionSummaryForSection()
-     {
-     	Line = grouped.Key.LayoutLocation.Line,
-		Section = grouped.Key,
-     	Authorized = grouped.Select(x => x.Employee).Distinct().Count(),
-		Pending = grouped.Where(x => x.Status != SWSWorkInstructionStatus.Confirmed)
-                         .Select(x => x.Employee).Distinct().Count()
-     }).ToList();
-```
-The important thing is to check some properties if they are not null. Especially those which are used for left outer join and grouping. That's extremely important if we want to avoid **Null Reference Exception** and a lot of stress. So keep that in mind - check if something *is not null*.
-
 ### Use delegate to define where clauses
 Using delegates of type **Func<T, bool>** is a smooth way to change the **where** clause in the runtime depending on some variable. See an example:
 ```csharp
