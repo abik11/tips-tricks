@@ -670,9 +670,28 @@ net group "_Company Department" john.smith /domain /delete
 ```
 
 ### What groups user *driectly* belogns to?
+To get the answer for the above question we can just simply execute the following command:
 ```powershell
 net user user.name /domain
 ```
+It is really cool but it has some disadvantage (or advantage depending on your sense of taste :D) because the result is pure text. It is possible to get the same information but as objects which is more *powershell way* of doing things. It is a bit more complicated since it requires us to use .Net classes, but is worth it! 
+```powershell
+# adding required assemblies
+Add-Type -AssemblyName System.DirectoryServices.AccountManagement
+Add-Type -AssemblyName System.DirectoryServices
+
+# preparing enum values that we will use later
+$vdomain = [System.DirectoryServices.AccountManagement.ContextType]::Domain
+$vsam = [System.DirectoryServices.AccountManagement.IdentityType]::SamAccountName
+
+# getting the job done ;)
+$identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$winPrincipal = New-Object -TypeName System.Security.Principal.WindowsPrincipal $identity
+$context = New-Object -TypeName System.DirectoryServices.AccountManagement.PrincipalContext $vdomain, "DomainName"
+$userPrincipal = [System.DirectoryServices.AccountManagement.UserPrincipal]::FindByIdentity($context, $vsam, $winPrincipal.Identity.Name)
+$userPrincipal.GetGroups() | select SamAccountName, name
+```
+This way we get all the current user groups in an object way. Moreover we have an access to a lot of other information about the current user from Active Directory, this is a really nice bunch of classes to play with!
 
 ### Currently logged in users
 ```powershell
