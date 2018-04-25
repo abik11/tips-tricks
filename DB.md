@@ -492,17 +492,43 @@ var query =
 ```
 
 ### Use delegate to define where clauses
-Using delegates of type **Func<T, bool>** is a smooth way to change the **where** clause in the runtime depending on some variable. See an example:
+Using delegates of type **Func<T, bool>** is a smooth way to change the **where** clause in the runtime depending on given condition. See an example:
 ```csharp
-IEnumerable<Student> GetStudents(bool goodStudentsOnly = true)
+IEnumerable<Student> GetBestStudents()
 {
-	Func<Student, bool> isGoodStudent;
-	if(goodStudetnsOnly)
-		isGoodStudent = s => s.Grade > 4;
-	else 
-		isGoodStudent = s => true;
-	
-	return _uow.Query<Students>().Where(isGoodStudent);
+	Func<Student, bool> isGoodStudent = s => s.Grade > 4;
+	return GetStudents(isGoodStudent).OrderByDescending(s => s.Grade).Take(10);
+}
+
+IEnumerable<Student> GetWorstStudents()
+{
+	Func<Student, bool> isBadStudent = s => s.Grade < 3;
+	return GetStudents(isBadStudent).OrderBy(s => s.Grade).Take(10);
+}
+
+IEnumerable<Student> GetStudents(Func<Student, bool> where)
+{
+	return _uow.Query<Student>().Where(where);
+}
+```
+The above example is totally correct but one thing could be done a lot better. In this form, the **Where** method inside of the *GetStudents* will return **IEnumerable** instead of **IQueryable**. In some cases it is acceptable or even desired but here it would be much better to get the **IQueryable** because there are other Linq operation performed on the result of *GetStudents* method, **OrderBy** and **Take**. **OrderBy** and **Take** will work on the whole collection of students that are good or bad which is unnecessary because we only want to get 10 students - **Take(10)**. If *GetStudents* would return **IQueryable** an SQL query would be generated and executed and it would be much faster here. 
+There is **no** override of **Where** method that takes **Func<T, bool>** and returns **IQueryable**. An parameter of type **Expression<Func<T, bool>>** must be passed instead, so in general the change to the above code is not too big and finally it should look like this:
+```csharp
+IEnumerable<Student> GetBestStudents()
+{
+	Expression<Func<Student, bool>> isGoodStudent = s => s.Grade > 4;
+	return GetStudents(isGoodStudent).OrderByDescending(s => s.Grade).Take(10);
+}
+
+IEnumerable<Student> GetWorstStudents()
+{
+	Expression<Func<Student, bool>> isBadStudent = s => s.Grade < 3;
+	return GetStudents(isBadStudent).OrderBy(s => s.Grade).Take(10);
+}
+
+IEnumerable<Student> GetStudents(Expression<Func<Student, bool>> where)
+{
+	return _uow.Query<Student>().Where(where);
 }
 ```
 
