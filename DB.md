@@ -1695,6 +1695,7 @@ doc.Save("file.xml");
 [Deployment 2](https://www.mssqltips.com/sqlservertip/2450/ssis-project-deployment-model-in-sql-server-2012-part-1-of-2/) <br />
 [Deployment 3](https://www.sqlshack.com/deploying-packages-to-sql-server-integration-services-catalog-ssisdb/) <br />
 [Tips](http://www.itprotoday.com/microsoft-sql-server/5-tips-developing-sql-server-integration-services-packages) <br />
+[ValidateExternalMetadata](http://www.itprotoday.com/microsoft-sql-server/5-tips-developing-sql-server-integration-services-packages) <br />
 
 ##### Markdown
 [Markdown cheetysheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) <br />
