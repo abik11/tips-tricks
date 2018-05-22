@@ -1482,12 +1482,6 @@ Here are two nice features that makes SSIS debugging much easier:<br />
 ->Right click on the block ->Edit Breakpoints...<br />
 ->Right click on pipeline (the line connecting two blocks) ->Enable Data Viewer
 
-### Execute package from command line
-It is very useful way to get some additional information about some weird errors in SSIS packages. Command line output contains some more information. It is especially useful when you will encounter **VS_NEEDSNEWMETADA** error. Here is how to do that:
-```batch
-DTEXEC /FILE data_import.ispac
-```
-
 ## SQLite
 SQLite is very lightweight library that allows you to manage database saved in a single file. It is quite unique approach, easily embedable, allowing to bring local DB storage for every application.
 
