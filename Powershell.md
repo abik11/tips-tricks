@@ -12,7 +12,7 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * Powershell with Linux
 * Application scripting
 * Powershell 5
-* Pester
+* Pester and modules
 * Appndix A - Linux commands
 
 ## Everyday struggles
@@ -1076,8 +1076,9 @@ $result = $web.DownloadString($apiquery) | ConvertFrom-Json
 #ConvertTo-Json
 ```
 
-## Pester
-Pester is the most popular Powershell unit test and mock framework. It is so popular that it became the part of Powershell 5 by default. It is similar to Javascript Mocha and Chai frameworks. Tests written with Pester have rather Behaviour-Driven Development style and tend to be more human-readable.
+## Pester and modules
+Pester is the most popular Powershell unit test and mock framework. It is so popular that it became the part of Powershell 5 by default. It is similar to Javascript Mocha and Chai frameworks. Tests written with Pester have rather Behaviour-Driven Development style and tend to be more human-readable.<br />
+Unit testing is a great mix with powershell modules which allows to group functions, variables into packages that can be imported by a script or into Powershell console. Modules are easily testable and encourage a better approach for writing Powershell code.
 
 ### Pester usage example
 Here is an example of a unit test. As you can see the result of some statement is piped to **Should** statement and if the result is as it should, the test is passed. Simple as that.
@@ -1143,6 +1144,14 @@ $constValue = 'XJ31'
 Export-ModuleMemeber -variable constValue
 ```
 An important thing to note is that the name of variabe put in the **Export-ModuleMember** has no **$** (dolar) sign at the beginning! Be careful with that. 
+
+### Exporting aliases
+Aliases are very useful especially while working in the console if you often use some function. Here is how to export an alias from a Powershell module:
+```powershell
+function Import-ImportantData { }
+New-Alias -Name ipdata -Value Import-ImportantData
+Export-ModuleMember -Alias * -Function *
+```
 
 ### Mocking
 Sometimes while testing you need to provide some temporary value or make functions to return some predefined values. Pester has built-in **mock** command so you can start using it right now:
