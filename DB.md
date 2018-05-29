@@ -1701,6 +1701,7 @@ doc.Save("file.xml");
 [SQL Server Agent](https://stackoverflow.com/questions/6712811/how-do-i-create-a-step-in-my-sql-server-agent-job-which-will-run-my-ssis-package/6713464#6713464) <br />
 [SQL Documentation](https://docs.microsoft.com/pl-pl/sql/#pivot=sdkstools&panel=sdkstools-all) <br />
 [Optymalizacja](http://www.sqlpedia.pl/tag/optymalizacja/) <br />
+[Execution Plan E-Book](https://www.red-gate.com/library/sql-server-execution-plans-2nd-edition)<br />
 
 ##### BCP, SQLCMD and other tools
 [BCP](https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server) <br />
