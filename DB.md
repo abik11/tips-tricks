@@ -491,6 +491,21 @@ var query =
 	};
 ```
 
+### Multiple join condintions
+It is often required to specify more than one join conditions and it is very easy to do with Linq, here is an example of the syntax:
+```csharp
+var data = 
+   from x1 in d1
+   join y1 in d2
+   on new { A = x1.Prop1, B = x1.Prop2 } equals new { A = y1.P1, B = y1.P2 }
+   select new 
+   {
+      Name = y1.Name,
+      Quantity = x1.Qty
+   }
+```
+A very important thing to remember is that the names of properties of the anonymous objects for the join conditions must have exactly the same names, otherwise an exeception will be thrown.
+
 ### Use delegate to define where clauses
 Using delegates of type **Func<T, bool>** is a smooth way to change the **where** clause in the runtime depending on given condition. See an example:
 ```csharp
@@ -959,6 +974,9 @@ Now you should be able to run queries like this:
 SELECT * FROM SRV124.FactoryDB.dbo.Machine; --SRV124 is linked server name
 ```
 
+### Login failed for a query with linked server
+If you will encounter the following error `Login failed for user 'NT AUTHORITY\ANONYMOUS LOGON'.` while executing a query that references to some linked server it is very probable that you must map your login for the current connection to some login from linked server (that has access to the database that you want to query of course). To do this follow the steps: ->Server Objects ->Linked Servers ->Right click on linked server ->Properties ->Security and add new login. In the column `Local Login` you must type the name of your current connection login and than in `Remote User` and `Remote Password` specify the user that you want to map to your login.
+
 ### Connection information
 To get information about all the connections to SQL Server you can use the following query:
 ```sql
@@ -1026,7 +1044,8 @@ And remember this, in case of joins: **Merge join** is faster than **loop join**
 ### The least efficient queries 
 Here are presented two very useful queries to track the least efficient queries and then optimize them. The first query returns 5 queries with the highest execution time:
 ```sql
-SELECT TOP 5 total_worker_time/execution_count AS [Avg CPU Time], 
+SELECT TOP 5 
+     total_worker_time/execution_count AS avg_CPU_time, 
      SUBSTRING(st.text, (qs.statement_start_offset/2)+1, 
           ((CASE qs.statement_end_offset
             WHEN -1 THEN DATALENGTH(st.text)
@@ -1036,19 +1055,24 @@ FROM sys.dm_exec_query_stats AS qs
 CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st
 ORDER BY total_worker_time/execution_count DESC;
 ```
-The following query returns all the queries from last 10 minutes that were executed in more than 1000000 miliseconds:
+The following query returns all the queries from last 5 minutes that were executed in more than 1 second with their executlion plans:
 ```sql
-SELECT 
-     SUBSTRING(st.text, (qs.statement_start_offset/2)+1, 
-     ((CASE qs.statement_end_offset
-	   WHEN -1 THEN DATALENGTH(st.text)
-	   ELSE qs.statement_end_offset
-	   END - qs.statement_start_offset)/2) + 1) AS statement_text,
-     *, last_elapsed_time /1000000 AS last_execution_time_in_s
+SELECT
+   SUBSTRING(st.text, (qs.statement_start_offset/2)+1, 
+      ((CASE qs.statement_end_offset 
+         WHEN -1 THEN DATALENGTH(st.text) 
+         ELSE qs.statement_end_offset 
+         END - qs.statement_start_offset)/2) + 1) AS statement_text,
+   qp.query_plan, 
+   CAST(last_elapsed_time AS DECIMAL(19,0))/1000000 AS last_elapsed_time_in_s, 
+   last_execution_time,
+   db_name(CONVERT(SMALLINT, dep.value)) AS db_name
 FROM sys.dm_exec_query_stats AS qs 
 CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st
-WHERE last_execution_time > DATEADD(MINUTE, -10, GETDATE()) AND last_elapsed_time > 1000000
-ORDER BY last_elapsed_time DESC 
+CROSS APPLY sys.dm_exec_query_plan(qs.plan_handle) AS qp
+CROSS APPLY sys.dm_exec_plan_attributes(qs.plan_handle) AS dep
+WHERE last_execution_time > DATEADD(MINUTE, -5, GETDATE()) AND last_elapsed_time > 1000000 AND st.dbid IS NULL AND dep.attribute = N'dbid'
+ORDER BY last_elapsed_time DESC
 ```
 Both queries extensively use **DMV**s (Dynamic Management Views), especially **sys.dm_exec_query_stats**.
 
