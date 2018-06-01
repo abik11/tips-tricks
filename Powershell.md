@@ -994,8 +994,8 @@ If the network from which you send messages is under proxy, to make this work, y
 There is a nice command line tool available for IIS managment in `C:\Windows\System32\inetsrv`. You can get the list of IIS object, actions that you can make with site (or any other) object, the list of all sites:
 ```powershell
 .\appcmd.exe 
-.\appcmd site /?
-.\appcmd list site
+.\appcmd.exe site /?
+.\appcmd.exe list site
 ```
 You can restart the given site
 ```powershell
