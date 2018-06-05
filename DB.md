@@ -1503,8 +1503,8 @@ To see how to deploy package from GUI go to *Useful links*.
 
 ### Debugging packages
 Here are two nice features that makes SSIS debugging much easier:<br />
-->Right click on the block ->Edit Breakpoints...<br />
-->Right click on pipeline (the line connecting two blocks) ->Enable Data Viewer
+->Right click on the block (in the control flow) ->Edit Breakpoints...<br />
+->Double click on pipeline (the line connecting two blocks) ->Data Viewer ->Enable Data Viewer ->Choose columns you want to see
 
 ## SQLite
 SQLite is very lightweight library that allows you to manage database saved in a single file. It is quite unique approach, easily embedable, allowing to bring local DB storage for every application.
