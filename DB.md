@@ -1506,6 +1506,17 @@ Here are two nice features that makes SSIS debugging much easier:<br />
 ->Right click on the block (in the control flow) ->Edit Breakpoints...<br />
 ->Double click on pipeline (the line connecting two blocks) ->Data Viewer ->Enable Data Viewer ->Choose columns you want to see
 
+### Access variables from Script Task
+You can easily access variables inside of a Script Task. First you have to edit properties of the task and set the list of variables that the script can read or modify. To do that use **ReadOnlyVariables** or **ReadWriteVariables**. Then when you edit script you can access the variable with the following line of code:
+```csharp
+string counter = Dts.Variables["User::Counter"].Value.ToString();
+MessageBox.Show(counter);
+```
+
+### Package Configurations
+There is a nice way of putting the configuration of a package out of it to be able to externaly change it. You have to right click on your project and select **Convert to Package Deployment Model**. Then in **Control Flow** right click in the background and choose **Package Configurations** then **Add**. In the wizard in the first window called **Select Configuration Type** you will have to speficy the source of configuration. A recommended value for **Configuration type** is **SQL Server**, this will allow to create a new database table and store the configuration there. SSIS can create a table for you. In the second window called **Select Properties to Export** you have to choose which variables and properties to put into configurations. A good idea is to choose only to import the **Value** of selected variables or propertes. <br />
+After the whole process is finished you can change the values inside the SQL Server and it will affect the execution of SSIS package.
+
 ## SQLite
 SQLite is very lightweight library that allows you to manage database saved in a single file. It is quite unique approach, easily embedable, allowing to bring local DB storage for every application.
 
