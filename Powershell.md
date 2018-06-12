@@ -774,6 +774,19 @@ Exit-PSSession
 Remove-PSSession $session
 ```
 
+### Use local variables in remote session
+Very often it is useful to use some local variables inside of the command block you want to execute remotely. To do that you have to use **-argumentList** and put all the variables that you want to use. In remote code block you can specify with **param** expression the required variables just like in the functions. But it is not necessary, you can also access the variables by **$args** table.  
+```powershell
+$userName = "R2 D2"
+$password = "I<3C3PO
+Invoke-command -session $s -argumentList $userName, $password
+   -Command {
+       param($userName, $password)
+       $user = dsquery user -name $userName
+       dsmod user $user -pwd $password -mustchpwd no -disabled no
+   }
+```
+
 ### Turn on remote command execution
 As a security issue, remote control may be turned off. To turn it on, run this set of commands:
 ```powershell
