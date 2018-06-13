@@ -977,6 +977,15 @@ SELECT * FROM SRV124.FactoryDB.dbo.Machine; --SRV124 is linked server name
 ### Login failed for a query with linked server
 If you will encounter the following error `Login failed for user 'NT AUTHORITY\ANONYMOUS LOGON'.` while executing a query that references to some linked server it is very probable that you must map your login for the current connection to some login from linked server (that has access to the database that you want to query of course). To do this follow the steps: ->Server Objects ->Linked Servers ->Right click on linked server ->Properties ->Security and add new login. In the column `Local Login` you must type the name of your current connection login and than in `Remote User` and `Remote Password` specify the user that you want to map to your login.
 
+### XML field in a query with linked server
+In general it is not allowed to execute a select that queries for a **XML** field from a table from linked server, at least up to SQL Sever 2016. But it can be done with **OPENQUERY**. You have to select the **XML** field converted as **NVARCHAR(MAX)** in an **OPENQUERY** and than converted back to **XML** type. See here for an example:
+```sql
+SELECT CONVERT(XML, DataXml) 
+FROM OPENQUERY(SERVER1, '
+	SELECT CONVERT(NVARCHAR(MAX), DataXml) as DataXml 
+	FROM Table1')
+```
+
 ### Connection information
 To get information about all the connections to SQL Server you can use the following query:
 ```sql
