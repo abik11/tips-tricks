@@ -1527,6 +1527,9 @@ MessageBox.Show(counter);
 There is a nice way of putting the configuration of a package out of it to be able to externaly change it. You have to right click on your project and select **Convert to Package Deployment Model**. Then in **Control Flow** right click in the background and choose **Package Configurations** then **Add**. In the wizard in the first window called **Select Configuration Type** you will have to speficy the source of configuration. A recommended value for **Configuration type** is **SQL Server**, this will allow to create a new database table and store the configuration there. SSIS can create a table for you. In the second window called **Select Properties to Export** you have to choose which variables and properties to put into configurations. A good idea is to choose only to import the **Value** of selected variables or propertes. <br />
 After the whole process is finished you can change the values inside the SQL Server and it will affect the execution of SSIS package.
 
+### Package version error
+If you see the error: *The version number in the package is not valid. The version number cannot be greater than current version number* that means that your package build was configured for the higher version of SQL Server than the version of SQL Server where the package is deployed. For example you have SQL Server 2012, but your package is configured for SQL Server 2016. To change this configuration: ->Right click on the SSIS project ->Properties ->Configuration Properties ->General ->**TargetServerVersion** ->Choose your version.
+
 ## SQLite
 SQLite is very lightweight library that allows you to manage database saved in a single file. It is quite unique approach, easily embedable, allowing to bring local DB storage for every application.
 
