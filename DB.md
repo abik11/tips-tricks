@@ -1777,6 +1777,12 @@ doc.Save("file.xml");
 [Deployment 3](https://www.sqlshack.com/deploying-packages-to-sql-server-integration-services-catalog-ssisdb/) <br />
 [Useful tips](http://www.itprotoday.com/microsoft-sql-server/5-tips-developing-sql-server-integration-services-packages) <br />
 
+##### Firebird
+[ISQL docs](https://www.firebirdsql.org/pdfmanual/html/isql.html) <br />
+[Firebird .Net Provider](https://www.firebirdsql.org/en/net-provider/) <br />
+[Firebird FAQ](http://www.firebirdfaq.org/) <br />
+[Firebird FAQ em português](https://www.firebase.com.br/faqindex.php) <br />
+
 ##### Markdown
 [Markdown cheetysheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) <br />
 [Markdown editor](https://jbt.github.io/markdown-editor/) <br />
