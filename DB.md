@@ -1654,6 +1654,12 @@ select locationName, dt, value from dataScans
 where dt > (select dateadd(-3 day to current_timestamp) from rdb$database);
 ```
 
+### Remote connections
+To connect to a remote database you have to specife the remote server address before the database file path, here you can see an example:
+```sql
+connect '102.101.65.125:C:\Program Files\App\export.fdb' user dbuser1 password xjfHad1;
+```
+
 ## XML
 
 ### Linq to XML 
