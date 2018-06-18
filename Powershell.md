@@ -512,6 +512,12 @@ ls | measure-object -property length -sum -average
 ls | ? {$_.length -gt 1000} | sort -property extension
 ```
 
+### Sorting hash arrays
+Hash arrays are stored in Powershell as a **HashTable** type. This structure totally doesn't care about ordering its items, it cares about beeing as fast as possible. But what if you have to get its items sorted? And you will for sure sooner or later need it. You can make it by using the **GetEnumerator** method, here is an example, it is very easy!
+```powershell
+$hash.GetEnumerator() | sort -property Value -descending
+```
+
 ### String search
 Here you see an example of searching the processes listening on port 1900. This kind of search is a bit different from most searching functions in Poweshell since they usually use some property and compare its value. **Select-String** is trying to find a matching string in the whole text, for example a result of some command. Sometimes it is useful too, especially while working with older commands like netstat. 
 ```powershell
