@@ -1800,6 +1800,7 @@ doc.Save("file.xml");
 [Deployment 2](https://www.mssqltips.com/sqlservertip/2450/ssis-project-deployment-model-in-sql-server-2012-part-1-of-2/) <br />
 [Deployment 3](https://www.sqlshack.com/deploying-packages-to-sql-server-integration-services-catalog-ssisdb/) <br />
 [Useful tips](http://www.itprotoday.com/microsoft-sql-server/5-tips-developing-sql-server-integration-services-packages) <br />
+[Lookup vs. Merge Join](https://social.technet.microsoft.com/wiki/contents/articles/32009.ssis-lookup-vs-merge-join.aspx) <br />
 
 ##### Firebird
 [ISQL docs](https://www.firebirdsql.org/pdfmanual/html/isql.html) <br />
