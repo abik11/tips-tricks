@@ -1530,6 +1530,21 @@ After the whole process is finished you can change the values inside the SQL Ser
 ### Package version error
 If you see the error: *The version number in the package is not valid. The version number cannot be greater than current version number* that means that your package build was configured for the higher version of SQL Server than the version of SQL Server where the package is deployed. For example you have SQL Server 2012, but your package is configured for SQL Server 2016. To change this configuration: ->Right click on the SSIS project ->Properties ->Configuration Properties ->General ->**TargetServerVersion** ->Choose your version.
 
+### RecordSet Destination
+There is a really nice data destination in SSIS called **RecordSet Destination**. It allows to put the data into memory and work with it inside the **Script Task**. You have to create a new variable of type **Object** because **RecordSet Destination** will store the data in the given variable. Then there are at least two ways of consuming the data.<br />
+If you don't like to write C# code, you can use **Foreach Loop Container**. Editing the container, in the **Collection** tab, set the **Enumerator** as **Foreach ADO Enumerator** and in **ADO object source variable** choose the variable where do you store your results. Then in **Variable Mappings** tab you have to create new variables for every data column that you want to use later. Inside of a container you can put a simple Script Task that will refer to those newly created variables in Variable Mappings tab.<br />
+If you like to write C# code, then there is also another way. You can directly specify the variable that stores the result as **ReadOnlyVariables** in Script Task and use it in the C# code for example like this:
+```csharp
+DataTable dataTable = new DataTable();
+OleDbDataAdapter dataAdapter = new OleDbDataAdapter();
+dataAdapter.Fill(dataTable, Dts.Variables["User::Results"].Value);
+
+foreach (DataRow row in dt.Rows)
+{
+    MessageBox.Show(row["Column1"].ToString());
+}
+```
+
 ## SQLite
 SQLite is very lightweight library that allows you to manage database saved in a single file. It is quite unique approach, easily embedable, allowing to bring local DB storage for every application.
 
