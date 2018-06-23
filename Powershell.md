@@ -231,24 +231,6 @@ dir file.txt | copy -dest "C:\Temp\"
 dir file.txt | move -dest "C:\Temp\"
 ```
 
-### Join-Path
-```powershell
-join-path -path "D:\Test" -childpath "file.txt" 
-```
-
-### Advanced file searching
-The following command will find in *D:\project* all the .cshtml files that do not contain the word *Partial* in their names:
-```powershell
-get-childitem d:\project -recurse -include *.cshtml -exclude *Partial*  
-```
-**Get-ChildItem** has many aliases worth remembering: ls, dir, gci. This **-recurse** switch toegether with **-include** and **-exclude** parameters are mind blowing!!! Searching files with this tool is unbelievable! UN-BE-LIE-VA-BLE! :D
-
-### Clear recycle bin
-Everything can be done with Powershell, literally everything... :]
-```powershell
-Clear-RecycleBin -Force
-```
-
 ### Change name of multiple files
 ```powershell
 $int = 1
@@ -264,10 +246,38 @@ One of the nicest thing about Powershell that is a huge part of its power is tha
 [System.IO.Path]::GetDirectoryName("D:\Files\note.txt") #D:\Files
 ```
 
+### Hide a file
+With **attrib** command it is possible to add or remove file attributes like read-only (**R**), archive (**A**), system (**S**) or hidden (**H**) file attributes. You have to use plus or minus signs to respectively add or remove some attribute. Here you can see an example of how to add hidden file attribute:
+```powershell
+attrib +H names.txt
+```
+To be able to list this file you have to use **-Hidden** switch. 
+```powershell
+ls -hidden
+```
+
+### Join-Path
+```powershell
+join-path -path "D:\Test" -childpath "file.txt" 
+```
+
 ### Head and tail
 ```powershell
 gc file.txt -totalCount 3	#first 3 rows of the file
 gc file.txt -tail 2		#last 2 rows of the file
+```
+
+### Advanced file searching
+The following command will find in *D:\project* all the .cshtml files that do not contain the word *Partial* in their names:
+```powershell
+get-childitem d:\project -recurse -include *.cshtml -exclude *Partial*  
+```
+**Get-ChildItem** has many aliases worth remembering: ls, dir, gci. This **-recurse** switch toegether with **-include** and **-exclude** parameters are mind blowing!!! Searching files with this tool is unbelievable! UN-BE-LIE-VA-BLE! :D
+
+### Clear recycle bin
+Everything can be done with Powershell, literally everything... :]
+```powershell
+Clear-RecycleBin -Force
 ```
 
 ### Export results to Excel/CSV
@@ -298,6 +308,20 @@ Add-Type -Path `
 ### Run a link to exe file
 ```powershell
 & '.\UltraVNC Viewer.lnk'
+```
+
+### Create a symbolic link to a file
+Before Powershell 5.0 the easiest way to create a symbolic link was to run **mklink** command through **cmd**. Here is an example of how to create a symbolic link to a file:
+```powershell
+cmd /c mklink symbolicLink.exe d:\programs\firefox.exe
+```
+and here how to create a symbolic link to a directory:
+```powershell
+cmd /c mklink symbolicLinkToPrograms d:\programs /d
+```
+Since Powershell 5.0 you can create a symbolic link using **New-Item** command for both a file or a directory:
+```powershell
+New-Item -Path symbolicLinkToPrograms -ItemType SymbolicLink -Calue d:\programs
 ```
 
 ### Count file checksum
