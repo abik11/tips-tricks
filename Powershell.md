@@ -647,6 +647,12 @@ $shellFile = $shellfolder.ParseName($file)
 $shellfolder.GetDetailsOf($shellfile, 27)
 ```
 
+### List of Appx Packages
+In Windows 10 there is something as Appx Package. As default some stuff is installed like Zune, Spotify and others. You can list it, filter and easily delete, see here:
+```powershell
+Get-AppxPackage *spotify* | remove-AppxPackage
+```
+
 ### Computer screen information
 Again, two easy ways (and problably thousands less easy ways :] ) to do that. Here you can see how to get the information about screens from WMI:
 ```
@@ -663,21 +669,29 @@ Add-Type -AssemblyName System.Windows.Forms
 Get-wmiobject win32_processor | select  loadPercentage | fl
 ```
 
-### List of installed hotfixes
-```powershell
-Get-HotFix
-```
-
-### List of Appx Packages
-In Windows 10 there is something as Appx Package. As default some stuff is installed like Zune, Spotify and others. You can list it, filter and easily delete, see here:
-```powershell
-Get-AppxPackage *spotify* | remove-AppxPackage
-```
-
 ### Operating system information in BIOS
 ```powershell
 Get-WmiObject Win32_OperatingSystem | select *
 Get-WmiObject Win32_Bios | select *
+```
+
+### WMIC
+Powershell has it own **Get-WmiObject** cmdlet to handle WMI but there is also another command called **wmic** which can do the same thing and can be also run from cmd, not only from Powershell. This command uses heavily aliases for WMI classes, so for example instead we can use the alias `DESKTOPMONITOR` instead of the class name `Win32_DesktopMonitor`, for example:
+```powershell
+wmic desktopmonitor
+```
+To get the list of available aliases with their descriptions you can execute the following command:
+```powershell
+wmic /?
+```
+If you are interested about the details of a specific alias you can use this:
+```powershell
+wmic alias desktopmonitor
+```
+
+### List of installed hotfixes
+```powershell
+Get-HotFix
 ```
 
 ### When the PC was turn off
