@@ -655,11 +655,11 @@ Get-AppxPackage *spotify* | remove-AppxPackage
 
 ### Computer screen information
 Again, two easy ways (and problably thousands less easy ways :] ) to do that. Here you can see how to get the information about screens from WMI:
-```
+```powershell
 Get-WmiObject -Class Win32_DesktopMonitor
 ```
 And here from the .NET class:
-```
+```powershell
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.Screen]::AllScreens
 ```
