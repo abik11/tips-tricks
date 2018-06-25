@@ -1682,6 +1682,9 @@ To connect to a remote database you have to specife the remote server address be
 connect '102.101.65.125:C:\Program Files\App\export.fdb' user dbuser1 password xjfHad1;
 ```
 
+### .Net Provider for Firebird
+If you want to connect to Firebird from C# or SSIS, it is a good idea to use free .Net Provider for Firebird. You can download **FirebirdSql.Data.FirebirdClient-6.0.0.msi** from [here](https://www.firebirdsql.org/en/additional-downloads/) and easily install it.
+
 ## XML
 
 ### Linq to XML 
