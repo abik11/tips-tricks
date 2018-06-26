@@ -1024,6 +1024,9 @@ EXEC xp_cmdshell 'dir *.exe'
 ### Default log catalog
 `C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\Log`
 
+### Export table data as inserts
+->Right click on database ->Tasks ->Generate Scripts ->Choose Objects (for example choose some tables) ->Set Scripting Options ->Advanced ->**Type of data to script = Schema and data**<br />
+
 ### Basic query statistics
 You can turn on few features that will give you basic query statistics after execution (they will put in *Messages* tab, next to *Results* tab).
 ```sql
