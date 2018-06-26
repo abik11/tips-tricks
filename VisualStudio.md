@@ -249,7 +249,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
 [Git Version Control in VS Code (Video)](https://code.visualstudio.com/docs/introvideos/versioncontrol)<br />
 
-### Online dev tools
+#### Online dev tools
 [Regex editor](http://regexr.com/)<br />
 [Barcode generator](http://barcode.tec-it.com/en)<br />
 [SHA256 calculator](http://www.xorbin.com/tools/sha256-hash-calculator)<br />
@@ -258,19 +258,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [.Net error translator 2](http://www.errortoenglish.com/)<br />
 [UML editor](https://www.draw.io/)<br />
  
-### Online audio-video tools
-[Cut, join, convert audio files](http://mp3cut.net/)<br />
-[Convert MP3, WAW, OGG, WMA](http://media.io/es/)<br />
-[Make MP3 files louder](http://www.mp3louder.com/)<br />
-[Cut and convert video files](http://online-video-cutter.com/)<br />
-
-### Online image tools
-[Color picker](http://www.colorpicker.com/)<br />
-[Convert PNG to ICO](http://convertico.com/)<br />
-[Convert ICO to PNG](http://icoconvert.com/icon_to_image_converter/)<br />
-[Sketch](https://sketch.io/sketchpad/)<br />
-
-### Online web-dev tools
+#### Online web-dev tools
 [LESS editor](http://less2css.org/)<br />
 [SASS editor](http://www.sassmeister.com/)<br />
 [JSON editor](http://jsoneditoronline.org/)<br />
