@@ -1,13 +1,11 @@
-# Visual Studio - Tips for beginners
-
-Visual Studio is an amazing IDE with a plenty of tools, options and configurations that may confuse many users. Moreover it is good to learn some tricks that will make your life as a developer much easier. Here you will find some tips and advices that may be useful. 
+# Tips for beginners
 
 * Visual Studio
 * TFS and other version control systems
 * VS Code
 
 ## Visual Studio
-Most of the thing you will see here is valid for Visual Studio 2017, but many tips should also work in Visua Studio 2015.
+Visual Studio is an amazing IDE with a plenty of tools, options and configurations that may confuse many users. Moreover it is good to learn some tricks that will make your life as a developer much easier. Here you will find some tips and advices that may be useful. Most of the thing you will see here is valid for Visual Studio 2017, but many tips should also work in Visua Studio 2015.
 
 ### Keyboard shortcuts
 Visual Studio has a lot of nice keyboard shortcuts that can speed up your work, instead of clickling all the time you can do many things with just two or three keys. Here are only some of the most useful shortcuts.
