@@ -1,9 +1,83 @@
 # Tips for beginners
 
-* Windows *(in progress)*
+* Windows
 * Visual Studio
 * TFS and other version control systems
 * VS Code
+
+## Windows
+
+### Windows shortcuts
+* `CTRL + ALT + Arrow` - rotate screen
+* `CTRL + SHIFT + ESC` - task manager
+* `win + X` - Quick Link Menu (Windows 10)
+* `win + I` - Settings App (Windows 10)
+* `win + D` - show desktop
+* `win + M` - minimize all
+* `win + E` - open explorer
+* `win + P` - projector pane
+* `win + R` - Run dialog box
+
+### Run commands
+* `msconfig` - autorun settings and tools
+* `compmgmt.msc` - event log, tasks, users, services and devices
+* `sysdm.cpl` - system variables, remote settings
+* `diskmgmt.msc` - disk management (resize, add new)
+* `MsInfo32.exe` - system info
+* `winver` - system version
+* `mstsc` - Remote Desktop Connection
+* `regedit` - registry editor 
+* `gpedit.msc`  - local group policy
+* `cmd`  - command line
+
+### Admin Panel in Windows 7
+Create a directory and call it like this: `SuperAdmin.{ED7BA470-8E54-465E-825C-99712043E01C} ` and it will become an Admin Panel with many nice tools.
+
+### Default virus
+To test antivirus software copy and paste this: `X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*` into text file and save it. Antivirus should immediately recognize this text file as a virus.
+
+### Check if exe file is x86 or x64
+Open the exe file as text and search for the first `PE` string appearance. If you will find ` PE  L  ` it means it is x86 executable and if you will find ` PE  d† ` it means it is x64 executable.
+
+### Clean disk from scrap
+->Right click on a disk ->Properties ->Disk Cleanup, or:<br />
+->Start ->Programs ->Accessories ->System Tools ->Disk Cleanup<br />
+You can also delete all the files inside of these directories:
+* `C:\Windows\Logs\CBS`
+* `C:\Windows\Temp`
+
+### Change hostname
+To check hostname run this command in cmd: `hostname`. To change hostname go to: ->Control Panel ->System ->Change settings (net to hostname) ->Change ->Computer name (put new name) ->OK
+
+### Manage local users
+->`CTRL + R` ->`compmgmt.msc` ->Computer Management ->Local Users and Groups
+
+##### Add new user
+->Right click empty space ->New User...
+
+##### Add user to a group
+->Right click on user ->Properties ->Member Of ->Add ->Advanced ->Find ->Choose group
+
+### Remote Desktop Connection
+
+##### Connect local disk to Remote Desktop
+->Start ->Remote Desktop Connection ->Options ->Local Resources ->More ->Choose disk ->Connect
+
+##### Clean credentials for Remote Desktop
+You can save credential for Remote Desktop Connection if you will go to ->Options ->Allow me to save credentials. This is a nice option, but if the password of the user that use for login will change you will have to edit or delete this credentials. To do this just click the **edit** or **delete** link in Remote Desktop Connection on the bottom.
+
+#### Reset password in Active Directory
+* From GUI:<br />
+->Start ->Administrative Tools ->Active Directory Users and Computers ->Select your domain ->Right click on some folder ->Find ->Right click on the found user ->Reser Password
+* From Powershell:<br />
+```powershell
+dsquery user -name *Smith*
+dsmod user "CN=John Smith,OU=IT Group,OU=Corp_Users,DC=EvilCorp,DC=Corp" `
+-pwd abcd1234 -mustchpwd yes -disabled no
+```
+
+### Wireshark filters
+To be able to quickly find what you need in Wireshark it is crucial to use filter, here is a nice example: ` (tcp.dstport == 8080 || tcp.srcport == 8080) && (http.request.method == "CONNECT" || http.response.code == 407 || http.response.code == 200)`
 
 ## Visual Studio
 Visual Studio is an amazing IDE with a plenty of tools, options and configurations that may confuse many users. Moreover it is good to learn some tricks that will make your life as a developer much easier. Here you will find some tips and advices that may be useful. Most of the thing you will see here is valid for Visual Studio 2017, but many tips should also work in Visua Studio 2015.
@@ -239,6 +313,40 @@ In HTML files you can use some built-in snippets. You have to type the snippet n
 Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste the repository URL and push `Enter`. Quite simple, isn't it?
 
 ## Useful links
+
+#### Windows processes description
+[1](https://www.neuber.com/taskmanager/process/)<br />
+[2](http://www.processlibrary.com/en/)<br /> 
+
+#### Active Directory
+[Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
+
+#### Malware scanners
+[Dr. Web CureIt! - scanner](http://ftp.drweb.com/pub/drweb/cureit/launch.exe)<br />
+[Dr. Web CureIt! - live CD](https://free.drweb-av.pl/aid_admin/)<br />
+[Zemana Anti Malware](https://www.zemana.com/antimalware)<br />
+[Zemana Anti Malware Portable](http://portable.info.pl/zemana-antimalware-portable/)<br />
+[MalwareBytes Anti Malware](http://www.bleepingcomputer.com/download/malwarebytes-anti-malware/)<br />
+[Farbar Recovery Smart Tool x86](http://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/81/)<br /> 
+[Farbar Recovery Smart Tool x64](https://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/82/)<br /> 
+[Farbar Recovery Smart Tool - how to](http://www.geekstogo.com/forum/topic/335081-frst-tutorial-how-to-use-farbar-recovery-scan-tool/)<br />
+[TDSSKiller](http://support.kaspersky.com/viruses/utility#TDSSKiller)<br /> 
+
+#### Audio-video tools
+[Convert CDA files to MP3](http://www.freerip.com/)<br />
+[Moo0 Tools - video compression](http://www.moo0.com/?top=http://www.moo0.com/software/VideoMinimizer/)
+
+#### Online audio-video tools
+[Cut, join, convert audio files](http://mp3cut.net/)<br />
+[Convert MP3, WAW, OGG, WMA](http://media.io/es/)<br />
+[Make MP3 files louder](http://www.mp3louder.com/)<br />
+[Cut and convert video files](http://online-video-cutter.com/)<br />
+
+#### Online image tools
+[Color picker](http://www.colorpicker.com/)<br />
+[Convert PNG to ICO](http://convertico.com/)<br />
+[Convert ICO to PNG](http://icoconvert.com/icon_to_image_converter/)<br />
+[Sketch](https://sketch.io/sketchpad/)<br />
 
 #### Visual Studio
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/)<br />
