@@ -1,5 +1,6 @@
 # Tips for beginners
 
+* Windows *(in progress)*
 * Visual Studio
 * TFS and other version control systems
 * VS Code
