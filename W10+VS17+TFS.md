@@ -1,6 +1,7 @@
 # Tips for beginners
 
 * Windows
+* IIS
 * Visual Studio
 * TFS and other version control systems
 * VS Code
@@ -31,7 +32,7 @@
 * `cmd`  - command line
 * `OptionalFeatures`- turn Windows features on or off
 
-### Admin Panel in Windows 7
+### Admin Panel
 Create a directory and call it like this: `SuperAdmin.{ED7BA470-8E54-465E-825C-99712043E01C} ` and it will become an Admin Panel with many nice tools.
 
 ### Default virus
@@ -122,13 +123,49 @@ dism.exe /Online /Cleanup-image /CheckHealth
 dism.exe /Online /Cleanup-image /ScanHealth
 dism.exe /Online /Cleanup-image /Restorehealth
 ```
-Windows Update service is used to repair system image file. If this service is corrupted, then you will have to download new image file manualy. You can use **Windows 10 Media Creation Tool** - remember to choose the correct version and language. After the image is downloaded you can use the following command:
+Windows Update service is used to repair system image file. If this service is corrupted, then you will have to download new image file manualy. You can use **Windows 10 Media Creation Tool** (official Microsoft tool) or **Windows ISO Downloader** (not official) - remember to choose the correct version and language. After the image is downloaded you have to unzip or mount the iso file and get **install.wim** file from **sources** directory. Then you can use the following command:
 ```
 dism.exe /Online /Cleanup-image /Restorehealth /Source:c:\download\install.wim
 ```
 When the system image file is correct you can repair your system files:
 ```
 sfc /scannow
+```
+
+## IIS
+**Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server.
+
+### Install IIS in Windows Server
+->Server Manager ->Dashboard ->Add roles and features ->Features ->.Net Framework, IIS Hostable Web Core, Windows Process Activation Service
+
+### New site in IIS 
+->Choose your server ->Right click on Sites ->Add Web Site ->Set: Site name, Application pool, Physical path, Port<br />
+->Left click on created page ->Default Document ->Add new or use defaults (for example: publish.htm)
+
+### Web application is running slow after being idle for some time
+Try the following settings as a solution for the problem.<br />
+->Application Pools ->Right click on selected App Pool ->Advanced Settings:
+* **General\Start Mode** = AlwaysRunning
+* **Process Mode\Idle Time-out** = 0
+
+### Publish Android APK
+Create a new site and put in its directory the apk file. Modify the Web.config file to look like this:
+```xml
+<?xml version="1.0" encoding="ASCII"?>
+<configuration>
+    <system.webServer>
+        <defaultDocument>
+            <files>
+                <add value="yourApp.mobile.debug.apk" />
+            </files>
+        </defaultDocument>
+        <directoryBrowse enabled="false" />
+        <staticContent>
+            <remove fileExtension=".apk" />
+            <mimeMap fileExtension=".apk" mimeType="application/vnd.android.package-archive" />
+        </staticContent>
+    </system.webServer>
+</configuration>
 ```
 
 ## Visual Studio
