@@ -88,7 +88,8 @@ You can also delete all the files inside of these directories:
 * `C:\Windows\Logs\CBS`
 * `C:\Windows\Temp`
 
-### Turn off useless stuff in Windows 10
+### Remove useless stuff in Windows 10
+There are quite many things enabled and installed by default in Windows 10 that you might want to get rid off. Also if you use your computer for a long time you can have many unnecessary application installed, you can use **IObit Uninstaller** instead of built-in program to remove programs. **Java Uninstall tool** can be very usefull too.
 
 ##### Turn of Internet Explorer and Media player
 ->`Win + X` ->Programs and Features ->Turn Windows features on or off ->Uncheck: Internet Explorer 11, Media Features\Windows Media Players
@@ -108,7 +109,7 @@ Run this in Powershell:
 ```powershell
 get-appxPackage *photo* | remove-appxPackage
 ```
-Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`
+Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`. You can also use an application called **10AppsManager**.
 
 ##### Turn off apps in the background
 ->Settings ->Privacy ->Background apps
@@ -131,6 +132,11 @@ When the system image file is correct you can repair your system files:
 ```
 sfc /scannow
 ```
+
+### Notes on the desktop
+There are plenty of applications that allow to write and save quickly some notes and keep them on the screen or desktop. It is very useful at work. Here are some propositions:
+* [Minimalist Notepad](http://win7gadgets.com/tools-utillities/minimalist_notepad.html) - Windows gadget
+* [Stickies](http://www.zhornsoftware.co.uk/stickies/) - Windows application
 
 ## IIS
 **Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server.
