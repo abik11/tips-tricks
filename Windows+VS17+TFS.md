@@ -40,13 +40,6 @@ To test antivirus software copy and paste this: `X5O!P%@AP[4\PZX54(P^)7CC)7}$EIC
 ### Check if exe file is x86 or x64
 Open the exe file as text and search for the first `PE` string appearance. If you will find ` PE  L  ` it means it is x86 executable and if you will find ` PE  d† ` it means it is x64 executable.
 
-### Clean disk from scrap
-->Right click on a disk ->Properties ->Disk Cleanup, or:<br />
-->Start ->Programs ->Accessories ->System Tools ->Disk Cleanup<br />
-You can also delete all the files inside of these directories:
-* `C:\Windows\Logs\CBS`
-* `C:\Windows\Temp`
-
 ### Change hostname
 To check hostname run this command in cmd: `hostname`. To change hostname go to: ->Control Panel ->System ->Change settings (net to hostname) ->Change ->Computer name (put new name) ->OK
 
@@ -87,8 +80,56 @@ If you want to learn more about Powershell go [here](https://github.com/abik11/t
 ### Wireshark filters
 To be able to quickly find what you need in Wireshark it is crucial to use filter, here is a nice example: ` (tcp.dstport == 8080 || tcp.srcport == 8080) && (http.request.method == "CONNECT" || http.response.code == 407 || http.response.code == 200)`
 
+### Clean disk from scrap
+->Right click on a disk ->Properties ->Disk Cleanup, or:<br />
+->Start ->Programs ->Accessories ->System Tools ->Disk Cleanup<br />
+You can also delete all the files inside of these directories:
+* `C:\Windows\Logs\CBS`
+* `C:\Windows\Temp`
+
+### Turn off useless stuff in Windows 10
+
+##### Turn of Internet Explorer and Media player
+->`Win + X` ->Programs and Features ->Turn Windows features on or off ->Uncheck: Internet Explorer 11, Media Features\Windows Media Players
+
+##### Turn off ads from start menu
+->Settings ->Personalization ->Start ->Occasionally show suggestions in Start
+
+##### Turn off search from taskbar
+->Right click on taskbar ->Search ->Hidden
+
+##### Turn off lock screen
+->regedit ->`HKEY_LOCAL_MACHINE` ->`SOFTWARE` ->`Policies` ->`Microsoft` ->Right click on `Windows` ->New ->Key ->Name: `PERSONALIZATION`<br />
+->Right click on `PERSONALIZATION` ->New ->DWORD Value (32 bit) ->`NoLockScreen = 1`
+
+##### Turn off standard applications
+Run this in Powershell:
+```powershell
+get-appxPackage *photo* | remove-appxPackage
+```
+Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`
+
+##### Turn off apps in the background
+->Settings ->Privacy ->Background apps
+
 ### Turn off text scaling in Windows 10
 ->Right click on the desktop ->Display settings ->Change the size of text, apps, and other items
+
+### Repair Windows 10 files
+Open command line and use the following commands to first check if the system image file is correct, if not, what are the problems and finally to repair the image:
+```
+dism.exe /Online /Cleanup-image /CheckHealth
+dism.exe /Online /Cleanup-image /ScanHealth
+dism.exe /Online /Cleanup-image /Restorehealth
+```
+Windows Update service is used to repair system image file. If this service is corrupted, then you will have to download new image file manualy. You can use **Windows 10 Media Creation Tool** - remember to choose the correct version and language. After the image is downloaded you can use the following command:
+```
+dism.exe /Online /Cleanup-image /Restorehealth /Source:c:\download\install.wim
+```
+When the system image file is correct you can repair your system files:
+```
+sfc /scannow
+```
 
 ## Visual Studio
 Visual Studio is an amazing IDE with a plenty of tools, options and configurations that may confuse many users. Moreover it is good to learn some tricks that will make your life as a developer much easier. Here you will find some tips and advices that may be useful. Most of the thing you will see here is valid for Visual Studio 2017, but many tips should also work in Visua Studio 2015.
