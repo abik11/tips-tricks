@@ -1395,7 +1395,7 @@ Add-Type -AssemblyName System.Drawing
 $color = [System.Drawing.Color]::FromArgb(-5658199)
 $color.Name
 ```
-This integer is nothing more than just color writen as ARGB in decimal notation instead of hexadecimal, the one that we are all used to when it comes to dealing with colors! You can see the hex notation accessing **Name** property of color object. Building a new color is quite easy also if you know red, green and blue elements. You just have to use **ToArgb** method to get the color representation as decimal integer:
+This integer is nothing more than just color written as ARGB in decimal notation instead of hexadecimal, the one that we are all used to when it comes to dealing with colors! You can see the hex notation accessing **Name** property of color object. Building a new color is quite easy also if you know red, green and blue elements. You just have to use **ToArgb** method to get the color representation as decimal integer:
 ```powershell
 $color = [System.Drawing.Color]::FromArgb(216, 216, 216)
 $color.ToArgb()
