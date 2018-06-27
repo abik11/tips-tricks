@@ -29,6 +29,7 @@
 * `regedit` - registry editor 
 * `gpedit.msc`  - local group policy
 * `cmd`  - command line
+* `OptionalFeatures`- turn Windows features on or off
 
 ### Admin Panel in Windows 7
 Create a directory and call it like this: `SuperAdmin.{ED7BA470-8E54-465E-825C-99712043E01C} ` and it will become an Admin Panel with many nice tools.
@@ -77,8 +78,17 @@ dsmod user "CN=John Smith,OU=IT Group,OU=Corp_Users,DC=EvilCorp,DC=Corp" `
 ```
 If you want to learn more about Powershell go [here](https://github.com/abik11/tips-tricks/blob/master/Powershell.md).
 
+### Personalized Management Console MMC
+->`CTRL + R` ->`mmc` ->File ->Add or Remove Snap-ins
+
+### Power efficiency diagnostics
+->`CTRL + R` ->`cmd` ->`powercfg /energy /output d:\report.html`
+
 ### Wireshark filters
 To be able to quickly find what you need in Wireshark it is crucial to use filter, here is a nice example: ` (tcp.dstport == 8080 || tcp.srcport == 8080) && (http.request.method == "CONNECT" || http.response.code == 407 || http.response.code == 200)`
+
+### Turn off text scaling in Windows 10
+->Right click on the desktop ->Display settings ->Change the size of text, apps, and other items
 
 ## Visual Studio
 Visual Studio is an amazing IDE with a plenty of tools, options and configurations that may confuse many users. Moreover it is good to learn some tricks that will make your life as a developer much easier. Here you will find some tips and advices that may be useful. Most of the thing you will see here is valid for Visual Studio 2017, but many tips should also work in Visua Studio 2015.
@@ -315,12 +325,12 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 
 ## Useful links
 
-#### Windows processes description
-[1](https://www.neuber.com/taskmanager/process/)<br />
-[2](http://www.processlibrary.com/en/)<br /> 
-
-#### Active Directory
-[Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
+#### General stuff
+[Tails - Linux live distribution for privacy](https://tails.boum.org/)<br />
+[Sysinternals - Windows tools](https://live.sysinternals.com/)<br />
+[Windows processes description 1](https://www.neuber.com/taskmanager/process/)<br />
+[Windows processes description 2](http://www.processlibrary.com/en/)<br /> 
+[Active Directory Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
 
 #### Malware scanners
 [Dr. Web CureIt! - scanner](http://ftp.drweb.com/pub/drweb/cureit/launch.exe)<br />
