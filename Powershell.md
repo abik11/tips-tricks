@@ -13,7 +13,9 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * Application scripting
 * Powershell 5
 * Pester and modules
-* Appndix A - Linux commands
+* Appendix A - Linux commands
+* Appendix B - Serial port
+* Appendix C - Colors in .Net
 
 ## Everyday struggles
 
