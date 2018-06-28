@@ -751,6 +751,12 @@ $userPrincipal.GetGroups() | select SamAccountName, name
 ```
 This way we get all the current user groups in an object way. Moreover we have an access to a lot of other information about the current user from Active Directory, this is a really nice bunch of classes to play with!
 
+### Check if current user is Administrator
+```powershell
+$winPrincipal = [Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())
+$isAdmin = $winPrincipal.IsInRole("Administrator")
+```
+
 ### Currently logged in users
 ```powershell
 query user /server:$pc_ip
