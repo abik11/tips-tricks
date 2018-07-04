@@ -5,7 +5,7 @@ Most useful (but basic) tips and tricks that will make DB programming much easie
 * [Code First in EF](#code-first-in-ef)
 * [Linq](#linq)
 * [ADO .Net](#ado-.net)
-* [T-SQL](#t---sql)
+* [T-SQL](#t-sql)
 * [SQL Server](#sql-server) 
 * [SMO](#smo)
 * [SQLCLR ***(in progress)***](#sqlclr)
