@@ -16,6 +16,7 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Appendix A - Linux commands](#appendix-a---linux-commands)
 * [Appendix B - Serial port](#appendix-b---serial-port)
 * [Appendix C - Colors in .Net](#appendix-c---colors-in-.net)
+* [Useful links](#useful-links)
 
 ## Everyday struggles
 
