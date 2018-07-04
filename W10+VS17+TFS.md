@@ -32,6 +32,9 @@
 * `cmd`  - command line
 * `OptionalFeatures`- turn Windows features on or off
 
+### Minimize all windows despite the current one
+You can click on window and hold it and try to shake it with mouse. All other open windows should be minimized and only the one that you shaked should remain open. Cooool.
+
 ### Admin Panel
 Create a directory and call it like this: `SuperAdmin.{ED7BA470-8E54-465E-825C-99712043E01C} ` and it will become an Admin Panel with many nice tools.
 
