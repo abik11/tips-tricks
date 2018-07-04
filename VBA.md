@@ -3,7 +3,7 @@
 Here I present some of my very little experiance with VBA, tips and tricks that helped me to achieve some tasks without becoming crazy.
 
 * [Tricks you can do without VBA](#tricks-you-can-do-without-vba)
-* [Visual Basic for Applications](#visual-basic-for-application)
+* [Visual Basic for Applications](#visual-basic-for-applications)
 * [Excel](#excel)
 * [Word](#word)
 * [Powershell](#powershell)
