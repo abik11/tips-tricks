@@ -3,19 +3,19 @@
 This is not a complete guide how to learn Powershell. This is just a set of some tips, some thoughts of how to do something with Powershell. It may be useful for beginners to quickly go through some difficulties.
 
 * [Everyday struggles](#everyday-struggles)
-* Processes and services
-* Files and directories
-* Databases
-* Mastering the syntax
-* Getting information
-* Remote control
-* Powershell with Linux
-* Application scripting
-* Powershell 5
-* Pester and modules
-* Appendix A - Linux commands
-* Appendix B - Serial port
-* Appendix C - Colors in .Net
+* [Processes and services](#processes-and-services)
+* [Files and directories](#files-and-directories)
+* [Databases](#databases)
+* [Mastering the syntax](#mastering-the-syntax)
+* [Getting information](#getting-information)
+* [Remote control](#remote-control)
+* [Powershell with Linux](#powershell-with-linux)
+* [Application scripting](#application-scripting)
+* [Powershell 5](#powershell-5)
+* [Pester and modules](#pester-and-modules)
+* [Appendix A - Linux commands](#appendix-a---linux-commands)
+* [Appendix B - Serial port](#appendix-b---serial-port)
+* [Appendix C - Colors in .Net](#appendix-c---colors-in-.net)
 
 ## Everyday struggles
 
