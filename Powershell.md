@@ -119,6 +119,17 @@ notepad $profile
 $host.privateData
 ```
 
+### Powershell console size
+To set the console size you can use the following code:
+```
+$windowSize = $Host.UI.RawUI.WindowSize
+$windowSize.Width = 140
+$windowSize.Height = 52
+$Host.UI.RawUI.BufferSize = $windowSize
+$Host.UI.RawUI.WindowSize = $windowSize
+```
+It is a good idea to put this kind of code in Powershell profile.
+
 ### Powershell version
 If you don't know what version of Powershell is installed on the machine, and that may be very important, you can get that information quickly in two ways:
 ```powershell
