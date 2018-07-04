@@ -5,6 +5,7 @@
 * [Visual Studio](#visual-studio)
 * [TFS and other version control systems](#tfs-and-other-version-control-systems)
 * [VS Code](#vs-code)
+* [Useful links](#useful-links)
 
 ## Windows
 
