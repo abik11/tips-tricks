@@ -125,7 +125,12 @@ To set the console size you can use the following code:
 $windowSize = $Host.UI.RawUI.WindowSize
 $windowSize.Width = 140
 $windowSize.Height = 52
-$Host.UI.RawUI.BufferSize = $windowSize
+
+$bufferSize = $Host.UI.RawUI.WindowSize
+$bufferSize.Width = 140
+$bufferSize.Height = 1024
+
+$Host.UI.RawUI.BufferSize = $bufferSize
 $Host.UI.RawUI.WindowSize = $windowSize
 ```
 It is a good idea to put this kind of code in Powershell profile.
