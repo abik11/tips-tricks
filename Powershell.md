@@ -121,7 +121,7 @@ $host.privateData
 
 ### Powershell console size
 To set the console size you can use the following code:
-```
+```powershell
 $windowSize = $Host.UI.RawUI.WindowSize
 $windowSize.Width = 140
 $windowSize.Height = 52
