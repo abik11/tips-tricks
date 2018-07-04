@@ -8,6 +8,7 @@ Here I present some of my very little experiance with VBA, tips and tricks that 
 * [Word](#word)
 * [Powershell](#powershell)
 * [C#](#c#)
+* [Useful links](#useful-links)
 
 ## Tricks you can do without VBA
 
