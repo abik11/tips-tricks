@@ -1,10 +1,10 @@
 # Tips for beginners
 
-* Windows
-* IIS
-* Visual Studio
-* TFS and other version control systems
-* VS Code
+* [Windows](#windows)
+* [IIS](#iis)
+* [Visual Studio](#visual-studio)
+* [TFS and other version control systems](#tfs-and-other-version-control-systems)
+* [VS Code](#vs-code)
 
 ## Windows
 
