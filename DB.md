@@ -1,20 +1,20 @@
 # DB Progamming - Tips for beginners
 Most useful (but basic) tips and tricks that will make DB programming much easier task. It is not a complex guide from zero to hero, just a set of advices and things that might be usefulf, life- and time-saving.
-* XPO
-* Entity Framework
-* Code First in EF
-* Linq
-* ADO .Net
-* T-SQL
-* SQL Server 
-* SMO
-* SQLCLR ***(in progress)***
-* Tools for SQL Server
-* SSIS
-* SQLite
-* Firebird
-* XML
-* Useful links
+* [XPO](#xpo)
+* [Entity Framework](#entity-framework)
+* [Code First in EF](#code-first-in-ef)
+* [Linq](#linq)
+* [ADO .Net](#ado-.net)
+* [T-SQL](#t---sql)
+* [SQL Server](#sql-server) 
+* [SMO](#smo)
+* [SQLCLR ***(in progress)***](#sqlclr)
+* [Tools for SQL Server](#tools-for-sql-server)
+* [SSIS](#ssis)
+* [SQLite](#sqlite)
+* [Firebird](#firebird)
+* [XML](#xml)
+* [Useful links](#useful-links)
 
 ## XPO
 XPO is an ORM (Object-Relational Mapper) shiped by DevExpress. It is quite efficient and easy to use. Really good ORM.
