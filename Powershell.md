@@ -760,20 +760,26 @@ $vdomain = [System.DirectoryServices.AccountManagement.ContextType]::Domain
 $vsam = [System.DirectoryServices.AccountManagement.IdentityType]::SamAccountName
 
 # getting the job done ;)
-$identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$winPrincipal = New-Object -TypeName System.Security.Principal.WindowsPrincipal $identity
+
 $context = New-Object -TypeName System.DirectoryServices.AccountManagement.PrincipalContext $vdomain, "DomainName"
-$userPrincipal = [System.DirectoryServices.AccountManagement.UserPrincipal]::FindByIdentity($context, $vsam, $winPrincipal.Identity.Name)
+$userPrincipal = [System.DirectoryServices.AccountManagement.UserPrincipal]::FindByIdentity($context, $vsam, "j.smith")
 $userPrincipal.GetGroups() | select SamAccountName, name
 ```
 This way we get all the current user groups in an object way. Moreover we have an access to a lot of other information about the current user from Active Directory, this is a really nice bunch of classes to play with!
+
+### Get current user name
+```powershell
+$identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$winPrincipal = New-Object -TypeName System.Security.Principal.WindowsPrincipal $identity
+$winPrincipal.Identity.Name
+```
 
 ### Get user extended properties
 There is a very easy way to get extended properties with **Get-ADUser** cmdlet, here is an example:
 ```powershell
 Get-ADUser j.smith -Properties EmployeeNumber
 ```
-Here *EmployeeNumber* is an extended property and to get it, you just have to put in the **Properties** list. But there is also a bit more difficult way that you can see here:
+Here *EmployeeNumber* is an extended property and to get it, you just have to put in the **Properties** list. But there is also a bit more difficult (less powershellish :)) way that you can see here:
 ```powershell
 # adding required assemblies
 Add-Type -AssemblyName System.DirectoryServices.AccountManagement
@@ -784,8 +790,8 @@ $vdomain = [System.DirectoryServices.AccountManagement.ContextType]::Domain
 $vsam = [System.DirectoryServices.AccountManagement.IdentityType]::SamAccountName
 
 # getting the job done
-$context = New-Object -TypeName System.DirectoryServices.AccountManagement.PrincipalContext $vdomain, "Samsung"
-$userPrincipal = [System.DirectoryServices.AccountManagement.UserPrincipal]::FindByIdentity($context, $vsam, "a.kozak")
+$context = New-Object -TypeName System.DirectoryServices.AccountManagement.PrincipalContext $vdomain, "DomainName"
+$userPrincipal = [System.DirectoryServices.AccountManagement.UserPrincipal]::FindByIdentity($context, $vsam, "j.smith")
 $entry = [System.DirectoryServices.DirectoryEntry]$userPrincipal.GetUnderlyingObject()
 $entry.employeeNumber #here you can access the extended property
 
