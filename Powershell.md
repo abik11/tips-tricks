@@ -795,6 +795,10 @@ $searcher.PropertiesToLoad.Add("employeeNumber")
 $results = $searcher.FindAll()
 [string]$employeeNumber = $results.Properties["employeeNumber"] #here you can access the extended property
 ```
+With **Get-ADUser** you can get extended properties for all users at once:
+```powershell
+Get-ADUser -Filter * -Properties EmployeeNumber
+```
 
 ### Check if current user is Administrator
 ```powershell
