@@ -217,6 +217,7 @@ Visual Studio has a lot of nice keyboard shortcuts that can speed up your work, 
 ##### Quick actions and search
 * Quick Search<br />`CTRL + Q`
 * Quick Action (suggests solutions for problems in code)<br />`CTRL + .`
+* Search in Solution Explorer<br />`CTRL + ;`
 
 ##### Other
 * Repair code indention (this is amazing!)<br />`CTRL + K, CTRL + D`
@@ -352,32 +353,35 @@ Such error can be caused by few things but at first, try to change platform targ
 ->Tools ->Options ->Debugging ->Enable Edit and Continue
 
 ## TFS and other version control systems
-**Team Foundation Server** is a version control system developed by Microsoft and integrated with Visual Studio. There are some other version control systems like Git or SVN which can be also easily integrated with Visual Studio through extensions.
+**Team Foundation Server** is a version control system developed by Microsoft and integrated with Visual Studio. There are many other version control systems like Git or SVN which can be also easily integrated with Visual Studio through extensions.
 
 ### Add new TFS project
-##### New team project
-->Team Explorer Window ->Manage Connections (Green plug icon) ->Connect ->Projects and My Teams ->New Team Project... -> Next/Next/Next ;)
-
-##### Map team project to disk
-->Team Explorer Window ->Source Control Explorer ->Click the project name on the list ->Not mapped ->Local folder-> Select: Recursive ->Map
-
-##### Upload files
-->File ->Open ->Project/Solution<br />
-->Solution Explorer ->Right click on solution ->**Add Solution to Source Control**<br />
-->Solution Explorer ->Right click on solution ->Check In ->Check In
-
-##### Check current changes
-->Team Explorer Window ->Pending Changes
-
-##### See file's history
-->Right click on project ->Source Control ->View History<br />
-->Right click on changeset ->Changeset details
+->Go to VSTS (web panel) of your collection ->Gear icon (in the top menu) ->Collection Settings ->New team project<br />
+->Go to Visual Studio ->Team Explorer ->Source Control Explorer ->Select your new TFS project<br />
+->File ->Project ->Choose project type ->Set solution name - the same as TFS project name ->Set location to your TFS folder (for example `D:\tfs\`) ->Right click on solution ->Add to Source Control
 
 ### Change project mappings to disk
 ->Run Visual Studio ->Team Explorer ->Source Control Explorer ->Workspace (on the top bar) ->Workspaces (from expendable list) ->Edit 
 
 ### Delete TFS project
-->Go to VSTS of your collection ->Gear icon (in the top menu) ->Collection Settings ->Three dots icon (next to the project you want to delete) ->Delete ->Type project's name
+->Go to VSTS (web panel) of your collection ->Gear icon (in the top menu) ->Collection Settings ->Three dots icon (next to the project you want to delete) ->Delete ->Type project's name
+
+### Branching
+If you need to keep more than one version of code of some project it is good to use branching. This techinque allows you to create an alternative version of your project. For example you can have one branch with stable version of your application, ready for production and another branch being currently developed and not ready for production. This is very common approach and it is easy to implement in TFS.<br />
+Before creating branches for your project it is good to put all the solution files and folders into one folder that will be easy to branch. If all your files are at the root level of TFS project it won't be so easy.<br />
+
+##### Create a branch
+Before creating a branch you must check-in all pending changes.<br />
+->Source Control Explorer ->Right click on folder that you want to branch ->**Branching and Merging** ->Branch ->Target - set your branch name ->Set: **Immediately convert source folder to branch**<br />
+A nice thing to know is that you can create a branch from any version of code that you want. You can specify it in **Branch from version** group.
+
+##### Merge
+If you will change something in a child branch and want to apply those changes in a parent branch, for example to publish a new funcionality in production, you have to merge those branches:<br />
+->Source Control Explorer ->Right click on source branch ->**Branching and Merging** ->Merge ->Select target branch (where the changes will be applied) ->Next ->Finish<br />
+If some conflicts will occur, TFS will allow you to resolve them with the Resolve Conflicts tool.
+
+##### Reparent
+Sometimes it maybe a good choice to change the relationship between branches, to convert a child into parent and reverse. To do that, first you have to change child's branch parent to **No parent** and then assign this branch as a parent for the second branch (which was a parent before). You will the reparent option here: ->Source Control Explorer ->Right click on a branch ->Branching and Merging ->Reparent. It can be very useful to see branches hierarchy, go to ->Source Control Explorer ->Right click on a branch ->Branching and Merging ->View Hierarchy.
 
 ### Authorization error after changing account password
 If you will encounter the following error code: `TF30063` that probably means that you cannot be authorized to connect TFS server. It can happen if you changed your current Windows account password. Go to:<br />
