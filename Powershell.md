@@ -767,13 +767,6 @@ $userPrincipal.GetGroups() | select SamAccountName, name
 ```
 This way we get all the current user groups in an object way. Moreover we have an access to a lot of other information about the current user from Active Directory, this is a really nice bunch of classes to play with!
 
-### Get current user name
-```powershell
-$identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$winPrincipal = New-Object -TypeName System.Security.Principal.WindowsPrincipal $identity
-$winPrincipal.Identity.Name
-```
-
 ### Get user extended properties
 There is a very easy way to get extended properties with **Get-ADUser** cmdlet, here is an example:
 ```powershell
@@ -804,6 +797,12 @@ $results = $searcher.FindAll()
 With **Get-ADUser** you can get extended properties for all users at once:
 ```powershell
 Get-ADUser -Filter * -Properties EmployeeNumber
+```
+
+### Get current user name
+```powershell
+$winPrincipal = [Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())
+$winPrincipal.Identity.Name
 ```
 
 ### Check if current user is Administrator
