@@ -8,6 +8,7 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Databases](#databases)
 * [Mastering the syntax](#mastering-the-syntax)
 * [Getting information](#getting-information)
+* [Users and groups](#users-and-groups)
 * [Remote control](#remote-control)
 * [Powershell with Linux](#powershell-with-linux)
 * [Application scripting](#application-scripting)
@@ -719,6 +720,25 @@ It is a simple search in Event Log. All we have to do is to find all the logs wi
 get-eventlog -logName system -source "USER32" | ? { $_.EventId -eq 1074 }| ft -wrap
 ```
 
+### Network name and address
+```powershell
+$env:USERDOMAIN
+[System.Net.Dns]::GetHostName()
+[System.Net.Dns]::GetHostEntry([System.Net.Dns]::GetHostName())
+```
+
+### Network interfaces
+```powershell
+$netAdapters = get-wmiObject win32_networkAdapterConfiguration `
+				-namespace 'root\CIMV2' | ? { $_.IPEnabled -eq $True }
+$netAdapters[0].DNSDomain
+$netAdapters[0].IPAddress
+$netAdapters[0].Description
+```
+
+## Users and groups
+One of the most common tasks that can be scripted are connected with users and groups managment. Powershell is a great tool for this, here you will see some commands and cmdlets that might be useful.
+
 ### Manage user groups
 To list all the groups in domain you can use the following command:
 ```powershell
@@ -760,7 +780,6 @@ $vdomain = [System.DirectoryServices.AccountManagement.ContextType]::Domain
 $vsam = [System.DirectoryServices.AccountManagement.IdentityType]::SamAccountName
 
 # getting the job done ;)
-
 $context = New-Object -TypeName System.DirectoryServices.AccountManagement.PrincipalContext $vdomain, "DomainName"
 $userPrincipal = [System.DirectoryServices.AccountManagement.UserPrincipal]::FindByIdentity($context, $vsam, "j.smith")
 $userPrincipal.GetGroups() | select SamAccountName, name
@@ -799,6 +818,14 @@ With **Get-ADUser** you can get extended properties for all users at once:
 Get-ADUser -Filter * -Properties EmployeeNumber
 ```
 
+### Set user properties
+With a **Set-ADUser** cmdlet you can set user's properties as easily as getting them, see here:
+```powershell
+Set-ADUser -Identity j.smith 
+	-Remove @{SecondaryMail="smith.j@evilcorp.com"} -Add @{EmployeeNo="4214"} -Replace @{Title="manager"} -Clear description
+```
+Those ActiveDirectory commands are really cool, aren't they?
+
 ### Get current user name
 ```powershell
 $winPrincipal = [Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())
@@ -813,23 +840,7 @@ $isAdmin = $winPrincipal.IsInRole("Administrator")
 
 ### Currently logged in users
 ```powershell
-query user /server:$pc_ip
-```
-
-### Network name and address
-```powershell
-$env:USERDOMAIN
-[System.Net.Dns]::GetHostName()
-[System.Net.Dns]::GetHostEntry([System.Net.Dns]::GetHostName())
-```
-
-### Network interfaces
-```powershell
-$netAdapters = get-wmiObject win32_networkAdapterConfiguration `
-				-namespace 'root\CIMV2' | ? { $_.IPEnabled -eq $True }
-$netAdapters[0].DNSDomain
-$netAdapters[0].IPAddress
-$netAdapters[0].Description
+query user /server:$computer_ip
 ```
 
 ## Remote control
