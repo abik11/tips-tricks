@@ -844,6 +844,7 @@ query user /server:$computer_ip
 ```
 
 ## Remote control
+Powershell has really nice remote capabilities which allows you to do your job from one machine, remotely executing scripts and commands on other machines.
 
 ### Ping
 Of course you can execute the plain old `ping` command, but Powershell brings us the new, object-oriented cmdlet Test-Connection, here is some little example, just returning **$true** if it could ping the given host:
@@ -930,7 +931,7 @@ service ssh open #open/status/stop
 ```
 And on the Powershell side you may need the passoword to remote Linux machine. It is nice to get the password using **Get-Credential** cmdlet, it is a bit safier than typing it directly in the code:
 ```powershell
-$haslo = (Get-Credential -UserName user_name -Message "Password please!")`
+$haslo = (Get-Credential -UserName user_name -Message "Password please!") `
 		.GetNetworkCredential().Password
 ```
 
@@ -949,7 +950,7 @@ Another tool, called **pscp** allows to exchange files between the Linux machine
 **-ls** switch does the job. Now to copy files from the remote machine to the local one, or otherwise, use the followings commands:
 ```powershell
 .\pscp.exe -l user1 -pw $haslo linux_pc:Desktop/file1 copy.txt	#copying FROM remote
-.\pscp.exe -l user1 -pw $haslo file.txt linux_pc 				#copying TO remote
+.\pscp.exe -l user1 -pw $haslo file.txt linux_pc 		#copying TO remote
 ```
 
 ### Install Posh-SSH from PSGallery
