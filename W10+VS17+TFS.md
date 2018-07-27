@@ -150,6 +150,24 @@ There are plenty of applications that allow to write and save quickly some notes
 * [Minimalist Notepad](http://win7gadgets.com/tools-utillities/minimalist_notepad.html) - Windows gadget
 * [Stickies](http://www.zhornsoftware.co.uk/stickies/) - Windows application
 
+### AutoHotkey - define your own key shortcuts
+There is a really nice and easy scripting language called **AutoHotkey** also known as **AHK** which allows you to easily create new key shortcus (hotkeys) and automize your work. Here is a little example:
+```ahk
+!k::
+WinGetActiveTitle, CurrentTitle
+If InStr(CurrentTitle, "Visual Studio")
+    SendInput, Hello World{!}
+return
+
+#IfWinActive ahk_class Notepad
+::wpf::Windows Presentation Foundation
+return
+```
+In the above script there is defined a hotkey of `ALT + K` (`!k`). When you will press `ALT + K`, it will get the current window title and if it will find the string `Visual Studio` in the title, it will input some text.<br />
+There is also defined a hotstring for `wpf`. Everytime you will type the `wpf` string, it will be expanded to `Windows Presentation Foundation`, but it will work only in **Notepad** because of the **#IfWinActive** directive before the hotstring.<br />
+The nice feature of AHK is that if you will copy the **AutoHotkey.exe** into the folder where you have your AHK script and you will change the name of the .exe file to be the same as the name of the AHK script, then if you will double click on the .exe file it will automatically run your script.<br />
+AHK allows you to automize a lot of things, go to the [documentation](https://autohotkey.com/docs/AutoHotkey.htm) to learn more.
+
 ## IIS
 **Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server.
 
@@ -411,6 +429,7 @@ For those familiar with Visual Studio the thing that can be annoying while using
 There are many extensions available for VS Code that can convert in a complex IDE with specialized tools for different programming languages or frameworks.
 * **Path Intellisense** - adds autocompletion for file names (extremely useful)
 * **Vetur** - syntax highlighting for Vue components
+* **AutoHotkey** - syntax highlighting for AHK files
 * **Better Line Select** - adds a new shortcut `CTRL + L` that selects the current line and puts the cursor under the selected line and `CTRL + SHIFT + L` that also selects the current line and puts the cursor above the selected line (it may not work if you will install Visual Studio Keymap)
 
 ### Manually installing extenstions
