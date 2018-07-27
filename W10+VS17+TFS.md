@@ -166,7 +166,7 @@ return
 In the above script there is defined a hotkey of `ALT + K` (`!k`). When you will press `ALT + K`, it will get the current window title and if it will find the string `Visual Studio` in the title, it will input some text.<br />
 There is also defined a hotstring for `wpf`. Everytime you will type the `wpf` string, it will be expanded to `Windows Presentation Foundation`, but it will work only in **Notepad** because of the **#IfWinActive** directive before the hotstring.<br />
 The nice feature of AHK is that if you will copy the **AutoHotkey.exe** into the folder where you have your AHK script and you will change the name of the .exe file to be the same as the name of the AHK script, then if you will double click on the .exe file it will automatically run your script.<br />
-AHK allows you to automize a lot of things, go to the [documentation](https://autohotkey.com/docs/AutoHotkey.htm) to learn more.
+You can use `#` for Windows key, `^` for CTRL, `!` for ALT, `+` for SHIFT and other keys like `Numpad0`, `Numpad1` etc. You can also join keys with `&`, for example `LCtrl & Numpad1`. AHK allows you to automize a lot of things, go to the [documentation](https://autohotkey.com/docs/AutoHotkey.htm) to learn more.
 
 ## IIS
 **Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server.
