@@ -1511,6 +1511,7 @@ A very common use case for SSIS is to keep some data table synchronized with som
 There are quite many ways to make it with SSIS. For example you have to get the source data and the target data, so you need two **Data Sources** which then have to be sorted (by **Sort**) and then put as input for a **Merge Join**. If you want to have the new data, you have to use **Left Outer Join** to join the target to the source (which should contain the new rows). Then you should put the merged data into **Conditional Split** and add a condition to check if some field is null, an ID from target data is a good candidate for such check, for example `ISNULL(Target_ID)`. Also if you want to synchronize modifications in existing data you can add another condition, for example `Target_Name != Source_Name || Target_Value != Source_Value`. Then you can directly put the new data into target (one output from Conditional Split) and using **OLE DB Command** update the modified data (second output of Conditional Split) or put it into some temporary table and then use **Execute SQL Task** update it with single SQL update command.
 
 ## Oracle DB
+The Oracle DB is very well known and commonly used RDBMS. It uses **PL/SQL** programming language. If you are familiar with **T-SQL** be careful with the semicolons at the end of the statement. :)
 
 ### Oracle for .Net
 To enable ADO .Net to work with Oracle databases you have to add Oracle.DataAccess.dll as a reference to your project. Be careful because there are x86 and x64 versions and it is important whih version to chose!<br />
@@ -1559,7 +1560,12 @@ $connection.Close()
 ```
 
 ### Get top 100 rows
-There is no such thing in Oracle DB as **TOP** in SQL Server. Instead you have to use **rownum**.
+There is no such thing in Oracle DB as **TOP** in SQL Server. Instead you have to use **rownum**, see the following example:
+```sql
+SELECT * FROM
+(SELECT * FROM ProductionData)
+WHERE rownum <= 100;
+```
 
 ## SQLite
 SQLite is very lightweight library that allows you to manage database saved in a single file. It is quite unique approach, easily embedable, allowing to bring local DB storage for every application.
