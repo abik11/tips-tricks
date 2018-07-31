@@ -145,11 +145,6 @@ It is a very good idea to keep a bootable pendrive with Windows system image, re
 * After the pendrive is ready you can turn off your PC (hold SHIFT and click Turn Off on Windows 10) and press F12 (or other key depending on your PC model) while it is rebooting to get into the **Boot Menu**. In the Boot Menu you will be able to choose the PC to boot from your bootable pendrive and this way the process of installation of the system will begin.<br />
 If you cannot get into Boot Menu, you can get into BIOS (press F2 or other key depending on your PC model) and change the precedence of bootable devices, putting your pendrive at the first place.
 
-### Notes on the desktop
-There are plenty of applications that allow to write and save quickly some notes and keep them on the screen or desktop. It is very useful at work. Here are some propositions:
-* [Minimalist Notepad](http://win7gadgets.com/tools-utillities/minimalist_notepad.html) - Windows gadget
-* [Stickies](http://www.zhornsoftware.co.uk/stickies/) - Windows application
-
 ### AutoHotkey - define your own key shortcuts
 There is a really nice and easy scripting language called **AutoHotkey** also known as **AHK** which allows you to easily create new key shortcus (hotkeys) and automize your work. Here is a little example:
 ```ahk
@@ -167,6 +162,15 @@ In the above script there is defined a hotkey of `ALT + K` (`!k`). When you will
 There is also defined a hotstring for `wpf`. Everytime you will type the `wpf` string, it will be expanded to `Windows Presentation Foundation`, but it will work only in **Notepad** because of the **#IfWinActive** directive before the hotstring.<br />
 The nice feature of AHK is that if you will copy the **AutoHotkey.exe** into the folder where you have your AHK script and you will change the name of the .exe file to be the same as the name of the AHK script, then if you will double click on the .exe file it will automatically run your script.<br />
 You can use `#` for Windows key, `^` for CTRL, `!` for ALT, `+` for SHIFT and other keys like `Numpad0`, `Numpad1` etc. You can also join keys with `&`, for example `LCtrl & Numpad1`. AHK allows you to automize a lot of things, go to the [documentation](https://autohotkey.com/docs/AutoHotkey.htm) to learn more.
+
+### Run application or script on startup
+Go to `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup` or `%appdata%\Microsoft\Windows\Start Menu\Programs\Autostart` and copy into that directory anything you want to run on startup. If you want to run some application you must create a shortcut to that application rather than copying an exe file.<br />
+Of course, the same thing can be also achieved with **Task Scheduler**.
+
+### Notes on the desktop
+There are plenty of applications that allow to write and save quickly some notes and keep them on the screen or desktop. It is very useful at work. Here are some propositions:
+* [Minimalist Notepad](http://win7gadgets.com/tools-utillities/minimalist_notepad.html) - Windows gadget
+* [Stickies](http://www.zhornsoftware.co.uk/stickies/) - Windows application
 
 ## IIS
 **Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server.
