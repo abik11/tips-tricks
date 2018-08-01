@@ -1,5 +1,5 @@
 # DB Progamming - Tips for beginners
-Most useful (but basic) tips and tricks that will make DB programming much easier task. It is not a complex guide from zero to hero, just a set of advices and things that might be usefulf, life- and time-saving.
+Most useful (but basic) tips and tricks that will make DB programming much easier task. It is not a complex guide from zero to hero, just a set of advices and things that might be usefulf, life- and time-saving. All that you will encounter here is written from the perspective of a .Net developer.
 * [XPO](#xpo)
 * [Entity Framework](#entity-framework)
 * [Code First in EF](#code-first-in-ef)
@@ -1511,7 +1511,7 @@ A very common use case for SSIS is to keep some data table synchronized with som
 There are quite many ways to make it with SSIS. For example you have to get the source data and the target data, so you need two **Data Sources** which then have to be sorted (by **Sort**) and then put as input for a **Merge Join**. If you want to have the new data, you have to use **Left Outer Join** to join the target to the source (which should contain the new rows). Then you should put the merged data into **Conditional Split** and add a condition to check if some field is null, an ID from target data is a good candidate for such check, for example `ISNULL(Target_ID)`. Also if you want to synchronize modifications in existing data you can add another condition, for example `Target_Name != Source_Name || Target_Value != Source_Value`. Then you can directly put the new data into target (one output from Conditional Split) and using **OLE DB Command** update the modified data (second output of Conditional Split) or put it into some temporary table and then use **Execute SQL Task** update it with single SQL update command.
 
 ## Oracle DB
-The Oracle DB is very well known and commonly used RDBMS. It uses **PL/SQL** programming language. If you are familiar with **T-SQL** be careful with the semicolons at the end of the statement. :)
+The Oracle DB is very well known and commonly used RDBMS. It uses **PL/SQL** programming language. If you are familiar with **T-SQL** be careful with the semicolons at the end of the statement. :) To be able to run and test queries against Oracle DB you can download **SQL Developer** from [Oracle website](https://www.oracle.com/database/technologies/appdev/sql-developer.html). If you are used to work with **SQL Server**, selecting some lines of T-SQL code and pressing **F5** to run the selected query, in SQL Developer you will have to press **CTRL + ENTER** instead. The F5 key runs the whole script. You can also download **Oracle Db XE** (Express Edition) which you can use for free - great for learning.
 
 ### Oracle for .Net
 To enable ADO .Net to work with Oracle databases you have to add Oracle.DataAccess.dll as a reference to your project. Be careful because there are x86 and x64 versions and it is important whih version to chose!<br />
