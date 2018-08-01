@@ -418,6 +418,24 @@ If you will encounter the following error code: `TF30063` that probably means th
 *(English)* ->Control Panel ->User accounts ->Credential Manager ->Windows Credentials ->Choose TFS ->Edit ->Put new password<br/>
 *(Polish)* ->Panel Sterowania ->Konta użytkowników ->Zarządzaj poświadczeniami ->Poświadczenia systemu Windows ->Wybierz TFS ->Edytuj ->Podaj nowe hasło
 
+### No workspace matching error after computer name has been changed
+TFS stores the information about your workspace which is strictly connected to your computer name. If your computer name will change, you may see an error message after trying to connect to TFS, saying that **workspace XYZ does not reside on this computer**. It will also suggest to use `tf workspaces /updateComputerName:oldComputerName`, but it may not be enough to resolve the issue.<br />
+1. The first thing you have to do is to add a new workspace: ->Team Explorer ->Solutions (at the bottom) ->Workspace ->Manage Workspaces ->Add ->Set name of the workspace to be the same as your new computer name (as default).<br />
+2. Next you can run the **tf** command:
+```powershell
+cd C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE
+#This directory may be different depending on your installation and VS and TFS version
+
+TF.exe workspaces /updateComputerName:old-comp-name /s:http://corpdev:8080/tfs
+#Remember to put the OLD name of your computer, not new one
+```
+3. Then go to `%userprofile%\AppData\Local\Microsoft\Team Foundation`. You will find there few directories called `7.0`, `6.0` and so on and each one of them has `Cache` directory inside. Delete the content of each `Cache` directory. You can make it with one Powershell command:
+```powershell
+ls "~\AppData\Local\Microsoft\Team Foundation" -recurse -filter Cache | ls | rm -recurse -force
+```
+The `~` sign stands for the user profile directory.
+4. The last step is to go to Visual Studio and **Source Control Explorer** and map your new workspace to your disk. Actually, if you don't want to map your workspace to the old directory, but create a new one, you can omit the third step.
+
 ### AnkhSVN
 **AnkhSVN** is an amazing extension for Visual Studio that integrates SVN support into Visual Studio GUI, it is very intuitive and easy to use. After you install the plugin, you have to set it as the source control for Visual Studio. Go to: ->Tools ->Options ->Source Control ->Plugin Selection ->Current source control plug-in: **AnkhSVN**.<br />
 Now if you right click on some file, project or solution you will be able to choose among few options: Update to Latest Version, Revert, Commit, Show Changes and other.<br />
