@@ -418,7 +418,7 @@ If you will encounter the following error code: `TF30063` that probably means th
 *(English)* ->Control Panel ->User accounts ->Credential Manager ->Windows Credentials ->Choose TFS ->Edit ->Put new password<br/>
 *(Polish)* ->Panel Sterowania ->Konta użytkowników ->Zarządzaj poświadczeniami ->Poświadczenia systemu Windows ->Wybierz TFS ->Edytuj ->Podaj nowe hasło
 
-### No workspace matching error after computer name has been changed
+### No workspace matching error after changing computer name
 TFS stores the information about your workspace which is strictly connected to your computer name. If your computer name will change, you may see an error message after trying to connect to TFS, saying that **workspace XYZ does not reside on this computer**. It will also suggest to use `tf workspaces /updateComputerName:oldComputerName`, but it may not be enough to resolve the issue.<br />
 1. The first thing you have to do is to add a new workspace: ->Team Explorer ->Solutions (at the bottom) ->Workspace ->Manage Workspaces ->Add ->Set name of the workspace to be the same as your new computer name (as default).<br />
 2. Next you can run the **tf** command:
@@ -429,6 +429,7 @@ cd C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE
 TF.exe workspaces /updateComputerName:old-comp-name /s:http://corpdev:8080/tfs
 #Remember to put the OLD name of your computer, not new one
 ```
+By the way, the **tf** command is capable of a lot more! Go to [useful links](#useful-links) to learn more. 
 3. Then go to `%userprofile%\AppData\Local\Microsoft\Team Foundation`. You will find there few directories called `7.0`, `6.0` and so on and each one of them has `Cache` directory inside. Delete the content of each `Cache` directory. You can make it with one Powershell command:
 ```powershell
 ls "~\AppData\Local\Microsoft\Team Foundation" -recurse -filter Cache | ls | rm -recurse -force
@@ -503,9 +504,10 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Convert ICO to PNG](http://icoconvert.com/icon_to_image_converter/)<br />
 [Sketch](https://sketch.io/sketchpad/)<br />
 
-#### Visual Studio
+#### Visual Studio and TFS
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/)<br />
 [Programming languages in Visual Studio](https://docs.microsoft.com/pl-pl/visualstudio/#pivot=languages)<br />
+[TFS from command line](https://docs.microsoft.com/pl-pl/vsts/repos/tfvc/use-team-foundation-version-control-commands?view=vsts)
 
 #### Git in VS Code
 [Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
