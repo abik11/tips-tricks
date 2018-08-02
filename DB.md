@@ -141,9 +141,6 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 }
 ```
 
-### Moniker error
-If you wil encounter **Cannot resolve the moniker** error while trying to open XPO diagram, open the diagram (.xpo.diagram file) as XML and delete the line that causes the error.
-
 ## Entity Framework
 EF is Microsoft open source ORM (Object-Relational Mapper). It has some very nice features but in general seems a bit less intuitive than XPO. Still, it is a very good ORM.
 
