@@ -164,7 +164,7 @@ The nice feature of AHK is that if you will copy the **AutoHotkey.exe** into the
 You can use `#` for Windows key, `^` for CTRL, `!` for ALT, `+` for SHIFT and other keys like `Numpad0`, `Numpad1` etc. You can also join keys with `&`, for example `LCtrl & Numpad1`. AHK allows you to automize a lot of things, go to the [documentation](https://autohotkey.com/docs/AutoHotkey.htm) to learn more.
 
 ### Run application or script on startup
-Go to `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup` or `%appdata%\Microsoft\Windows\Start Menu\Programs\Autostart` and copy into that directory anything you want to run on startup. If you want to run some application you must create a shortcut to that application rather than copying an exe file.<br />
+Go to `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup` or something similar and copy into that directory anything you want to run on startup. If you want to run some application you must create a shortcut to that application rather than copying an exe file.<br />
 Of course, the same thing can be also achieved with **Task Scheduler**.
 
 ### Notes on the desktop
