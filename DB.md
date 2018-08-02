@@ -1561,7 +1561,12 @@ $connection.Close()
 
 ### Get current date
 ```sql
-SELECT TO_CHAR(CURRENT_DATE, 'YYYYMMDD') from dual;
+SELECT TO_CHAR(CURRENT_DATE, 'YYYYMMDD') FROM dual;
+```
+
+### Add days to a date
+```sql
+SELECT CURRENT_DATE + 10 FROM dual;
 ```
 
 ### Get top 100 rows
