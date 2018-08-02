@@ -1559,6 +1559,11 @@ $rdr.Close()
 $connection.Close()
 ```
 
+### Get current date
+```sql
+SELECT TO_CHAR(CURRENT_DATE, 'YYYYMMDD') from dual;
+```
+
 ### Get top 100 rows
 There is no such thing in Oracle DB as **TOP** in SQL Server. Instead you have to use **rownum**, see the following example:
 ```sql
