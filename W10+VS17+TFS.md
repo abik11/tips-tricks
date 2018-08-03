@@ -429,15 +429,13 @@ cd C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE
 TF.exe workspaces /updateComputerName:old-comp-name /s:http://corpdev:8080/tfs
 #Remember to put the OLD name of your computer, not new one
 ```
-By the way, the **tf** command is capable of a lot more! Go to [useful links](#useful-links) to learn more. 
-
-3. Then go to `%userprofile%\AppData\Local\Microsoft\Team Foundation`. You will find there few directories called `7.0`, `6.0` and so on and each one of them has `Cache` directory inside. Delete the content of each `Cache` directory. You can make it with one Powershell command:
+3. Then go to `%userprofile%\AppData\Local\Microsoft\Team Foundation`. You will find there few directories called `7.0`, `6.0` and so on and each one of them has `Cache` directory inside. Delete the content of each `Cache` directory. You can make it with one Powershell command. The `~` sign stands for the user profile directory.
 ```powershell
 ls "~\AppData\Local\Microsoft\Team Foundation" -recurse -filter Cache | ls | rm -recurse -force
 ```
-The `~` sign stands for the user profile directory.
+4. The last step is to go to Visual Studio and **Source Control Explorer** and map your new workspace to your disk. Actually, if you don't want to map your workspace to the old directory, but create a new one, you can omit the third step.<br />
 
-4. The last step is to go to Visual Studio and **Source Control Explorer** and map your new workspace to your disk. Actually, if you don't want to map your workspace to the old directory, but create a new one, you can omit the third step.
+By the way, the **tf** command is capable of a lot more! Go to [useful links](#useful-links) to learn more. 
 
 ### AnkhSVN
 **AnkhSVN** is an amazing extension for Visual Studio that integrates SVN support into Visual Studio GUI, it is very intuitive and easy to use. After you install the plugin, you have to set it as the source control for Visual Studio. Go to: ->Tools ->Options ->Source Control ->Plugin Selection ->Current source control plug-in: **AnkhSVN**.<br />
