@@ -855,10 +855,19 @@ Set-ADUser -Identity j.smith
 ```
 Those ActiveDirectory commands are really cool, aren't they?
 
-### Get current user name
+### Get current user name and domain name
+There are several ways to get current user name, see here: 
 ```powershell
+#1 
+[System.Environment]::UserName
+
+#2 
 $winPrincipal = [Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())
 $winPrincipal.Identity.Name
+```
+Getting current domain name is also an easy task:
+```powershell
+[System.Environment]::UserDomainName
 ```
 
 ### Check if current user is Administrator
