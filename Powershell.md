@@ -410,6 +410,16 @@ $asm.GetTypes() | select Name
 Import-Module -Name ".\Libs\UIAutomation.0.8.7B3.NET35\UIAutomation.dll"
 ```
 
+### Turn off error messages
+Sometimes you may want to intentionally turn off error messages for some command or function. If you want to turn off all the errors in whole script you just have to change the value of **$ErrorActionPreference** variable:
+```powershell
+$ErrorActionPreference = 'Silentlycontinue'
+```
+But this approach is not always a good idea. It is much better to silent only those functions where you are sure that you don't care about errors, to make it use the **-errorAction** attribute:
+```powershell
+get-process VisualStudio -errorAction 'silentlyContinue'
+```
+
 ### Functions
 Basic syntax for definig functions is very easy. The important thing to know is how to return value? In Powershell the last operation return value is what will be returned by the function. You don't have to specify any type of return value or arguments, but you can optionally make it for parameters. It is a good practice to start your function name from a well known verb, like get, set, add, remove, close and so on. To get the list of verbs you can use **Get-Verb** command.
 ```poweshell
@@ -429,17 +439,19 @@ $delegateWithParam.Invoke("Text")
 ```
 
 ### Advanced functions
-You can define functions in advanced mode. The syntax of this mode is complex but still not complicated. You can define if some parameters are mandatory, validation rules, how the function accepts arguments from pipeline or define parameters set and aliases. All that stuff can be done inside of **param** instruction.
+You can define functions in advanced mode. In this mode you can define if some parameters are mandatory, validation rules, how the function accepts arguments from pipeline or define parameters set and aliases. All that stuff can be done inside of **param** instruction. Moreover you can use **Write-Verbose** cmdlet inside advanced functions. A function requires **cmdletBinding** to become advanced.
 ```powershell
-function Set-Advanced {
+function Write-Name {
+   [cmdletbinding()]
    param(
        [Parameter(mandatory=$true)]
        [string] $name 
    )
-   Write-Verbose $name
+   Write-Verbose "Function is trying to write your name:"
+   Write-Host $name
 }
 
-Set-Advanced -n "Albert" -Verbose
+Write-Name -n "Albert" -Verbose
 ```
 A nice thing to know about parameters is that you don't have to specify the full name. You have to refer the parameter with as few letters as is enough to recognize it between all the parameters of a function. For example we can access the *-name* parameter with just *-n*.
 
