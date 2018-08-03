@@ -150,6 +150,16 @@ $ErrorActionPreference = 'Stop'
 ```
 You can find this variable while exploring **variable:** PSDrive of course!
 
+### Turn off error messages
+Sometimes you may want to intentionally turn off error messages for some command or function. If you want to turn off all the errors in whole script you just have to change the value of **$ErrorActionPreference** variable:
+```powershell
+$ErrorActionPreference = 'Silentlycontinue'
+```
+But this approach is not always a good idea. It is much better to silent only those functions where you are sure that you don't care about errors, to make it use the **-errorAction** attribute:
+```powershell
+get-process VisualStudio -errorAction 'silentlyContinue'
+```
+
 ## Processes and services
 
 ### Search process
@@ -408,16 +418,6 @@ $asm.GetTypes() | select Name
 ### Import module
 ```poweshell
 Import-Module -Name ".\Libs\UIAutomation.0.8.7B3.NET35\UIAutomation.dll"
-```
-
-### Turn off error messages
-Sometimes you may want to intentionally turn off error messages for some command or function. If you want to turn off all the errors in whole script you just have to change the value of **$ErrorActionPreference** variable:
-```powershell
-$ErrorActionPreference = 'Silentlycontinue'
-```
-But this approach is not always a good idea. It is much better to silent only those functions where you are sure that you don't care about errors, to make it use the **-errorAction** attribute:
-```powershell
-get-process VisualStudio -errorAction 'silentlyContinue'
 ```
 
 ### Functions
