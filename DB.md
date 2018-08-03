@@ -857,6 +857,13 @@ SELECT EOMONTH('1995-05-25 00:00:00.000') --returns the last day of the month of
 SELECT DATEADD(YEAR, 10, GETDATE())
 ```
 
+### Convert string of yyyyMMddhhmmss format to datetime
+It is very common that a string has to be converted to datetime, but the format of `yyyyMMddhhmmss` may cause some more problems. You can use the **STUFF** function to change the format of the string, put some chars into the string and prepare it to be converted, see the example:
+```sql
+SELECT CAST(STUFF(STUFF(STUFF('20180525222200', 13, 0, ':'), 11, 0, ':'), 9, 0, ' ') AS DATETIME)
+--it will create the string: '20180525 22:22:00', and such string can be easily converted
+```
+
 ### Find rows from last 20 minutes
 A nice use case for **DATEDIFF** function is to find all the rows from last 20 minutes by some date. Here is an example:
 ```sql
