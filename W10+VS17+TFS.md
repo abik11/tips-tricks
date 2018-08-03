@@ -472,6 +472,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 
 #### General stuff
 [Tails - Linux live distribution for privacy](https://tails.boum.org/)<br />
+[Kali Linux live USB with persistence](https://medium.com/@fatahnuram/creating-kali-linux-live-usb-with-persistence-a-simple-guide-54e3eb01b6aa)<br />
 [Sysinternals - Windows tools](https://live.sysinternals.com/)<br />
 [Windows processes description 1](https://www.neuber.com/taskmanager/process/)<br />
 [Windows processes description 2](http://www.processlibrary.com/en/)<br /> 
