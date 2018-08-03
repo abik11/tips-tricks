@@ -136,6 +136,24 @@ $Host.UI.RawUI.WindowSize = $windowSize
 ```
 It is a good idea to put this kind of code in Powershell profile.
 
+### Powershell console custom colors
+Changing colors to some custom values is surprisingly not an easy task. You have to add some windows registry key, see an example:
+```powershell
+cd HKCU:\Console
+$powershellRegKeyName = "%SystemRoot%_system32_WindowsPowerShell_v1.0_powershell.exe"
+
+new-item $powershellRegKeyName
+cd $powershellRegKeyName
+
+new-itemProperty . ColorTable00 -type DWORD -value 0x00F0EDEE #this is background
+new-itemProperty . ColorTable07 -type DWORD -value 0x00464646 #this is foreground
+```
+Color values should be given as hex, go [here](https://www.webpagefx.com/web-design/color-picker/) to pick some fancy colors.<br />
+By the way, in this registry key you can also allow quick edit for the console window:
+```powershell
+new-itemProperty . QuickEdit -type DWORD -value 0x00000001
+```
+
 ### Powershell version
 If you don't know what version of Powershell is installed on the machine, and that may be very important, you can get that information quickly in two ways:
 ```powershell
