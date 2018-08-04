@@ -176,6 +176,10 @@ There are plenty of applications that allow to write and save quickly some notes
 * [Minimalist Notepad](http://win7gadgets.com/tools-utillities/minimalist_notepad.html) - Windows gadget
 * [Stickies](http://www.zhornsoftware.co.uk/stickies/) - Windows application
 
+### Create a RAM disk
+If your PC has a lot of RAM memory which is not used, you can use this memory to create an extremely fast **RAM disk**. RAM disk is a part of RAM memory which simulates a traditional drive (thanks to some kind of software). Such disk is a lot faster than both HDD and SSD drives, its speed is totally uncomparable with any kind of disk because of the RAM memory is very fast. The only drawback of RAM disk is that all its contest will be deleted with every restart of your PC. But it is possible to save RAM disk to .img file and mount it after reboot. All in all, it is an interesting solution that can speed up a lot your work.<br />
+There is a very easy to use application called **SoftPerfect RAM Disk** that allows to create and manage RAM disks. You just have to click the plus icon, select RAM disk size (2048 Mb for example), drive letter (R: for example) and NTFS as file system and that's it. You can see in Task Manager (in Performance tab) that RAM usage changed after you have created a RAM disk.
+
 ## IIS
 **Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server.
 
