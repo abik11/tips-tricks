@@ -492,6 +492,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Zemana Anti Malware](https://www.zemana.com/antimalware)<br />
 [Zemana Anti Malware Portable](http://portable.info.pl/zemana-antimalware-portable/)<br />
 [MalwareBytes Anti Malware](http://www.bleepingcomputer.com/download/malwarebytes-anti-malware/)<br />
+[HitmanPro](https://www.hitmanpro.com/en-us/downloads.aspx)<br />
 [Farbar Recovery Smart Tool x86](http://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/81/)<br /> 
 [Farbar Recovery Smart Tool x64](https://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/82/)<br /> 
 [Farbar Recovery Smart Tool - how to](http://www.geekstogo.com/forum/topic/335081-frst-tutorial-how-to-use-farbar-recovery-scan-tool/)<br />
