@@ -85,12 +85,16 @@ If you want to learn more about Powershell go [here](https://github.com/abik11/t
 ### Wireshark filters
 To be able to quickly find what you need in Wireshark it is crucial to use filter, here is a nice example: ` (tcp.dstport == 8080 || tcp.srcport == 8080) && (http.request.method == "CONNECT" || http.response.code == 407 || http.response.code == 200)`
 
+### Permamently delete a file
+There is a shortcut `SHIFT + DEL` that allows you to delete a file without putting it to Recycle Bin. But even tough you can recover files from disk. If you want to delete a file and be sure that it won't be able to recover this file you can use **BleachBit**. After installation it adds a new option in context menu - **Shred with BleachBit** which deletes a file or a directory and overwrites the disk space where it was stored.
+
 ### Clean disk from scrap
 ->Right click on a disk ->Properties ->Disk Cleanup, or:<br />
 ->Start ->Programs ->Accessories ->System Tools ->Disk Cleanup<br />
 You can also delete all the files inside of these directories:
 * `C:\Windows\Logs\CBS`
 * `C:\Windows\Temp`
+You can also use **BleachBit** to remove some unnecessary files like history files or logs.
 
 ### Remove useless stuff in Windows 10
 There are quite many things enabled and installed by default in Windows 10 that you might want to get rid off. Also if you use your computer for a long time you can have many unnecessary application installed, you can use **IObit Uninstaller** instead of built-in program to remove programs. **Java Uninstall tool** can be very usefull too.
@@ -113,7 +117,7 @@ Run this in Powershell:
 ```powershell
 get-appxPackage *photo* | remove-appxPackage
 ```
-Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`. You can also use an application called **10AppsManager**.
+Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`. You can also use **10AppsManager** or **IObit Uninstaller**.
 
 ##### Turn off apps in the background
 ->Settings ->Privacy ->Background apps
