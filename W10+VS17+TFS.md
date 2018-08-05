@@ -485,13 +485,16 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Windows processes description 1](https://www.neuber.com/taskmanager/process/)<br />
 [Windows processes description 2](http://www.processlibrary.com/en/)<br /> 
 [Active Directory Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
+[Driver Booster - keep drivers updated](https://www.iobit.com/en/driver-booster.php)<br />
 
 #### Malware scanners
-[Dr. Web CureIt! - scanner](http://ftp.drweb.com/pub/drweb/cureit/launch.exe)<br />
+[Dr. Web CureIt! - scanner](https://free.drweb.com/download+cureit+free/?lng=en)<br />
 [Dr. Web CureIt! - live CD](https://free.drweb-av.pl/aid_admin/)<br />
 [Zemana Anti Malware](https://www.zemana.com/antimalware)<br />
 [Zemana Anti Malware Portable](http://portable.info.pl/zemana-antimalware-portable/)<br />
-[MalwareBytes Anti Malware](http://www.bleepingcomputer.com/download/malwarebytes-anti-malware/)<br />
+[MalwareBytes Anti Malware](https://www.malwarebytes.com/premium/)<br />
+[AdwCleaner](https://www.bleepingcomputer.com/download/adwcleaner/)<br />
+[AdwCleaner](https://pl.malwarebytes.com/adwcleaner/)<br />
 [HitmanPro](https://www.hitmanpro.com/en-us/downloads.aspx)<br />
 [Farbar Recovery Smart Tool x86](http://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/81/)<br /> 
 [Farbar Recovery Smart Tool x64](https://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/82/)<br /> 
@@ -500,13 +503,16 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 
 #### Audio-video tools
 [Convert CDA files to MP3](http://www.freerip.com/)<br />
-[Moo0 Tools - video compression](http://www.moo0.com/?top=http://www.moo0.com/software/VideoMinimizer/)
+[Moo0 Tools - video compression](http://www.moo0.com/?top=http://www.moo0.com/software/VideoMinimizer/)<br />
+[ClipGrab - YouTube downloader and converter](https://clipgrab.org/)<br />
+[YouTube Song Downloader](https://www.abelssoft.de/en/windows/Multimedia/YouTube-Song-Downloader)<br />
 
 #### Online audio-video tools
 [Cut, join, convert audio files](http://mp3cut.net/)<br />
 [Convert MP3, WAW, OGG, WMA](http://media.io/es/)<br />
 [Make MP3 files louder](http://www.mp3louder.com/)<br />
 [Cut and convert video files](http://online-video-cutter.com/)<br />
+[Download YouTube songs](https://listentoyoutube.online/)<br />
 
 #### Online image tools
 [Color picker](http://www.colorpicker.com/)<br />
@@ -517,7 +523,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 #### Visual Studio and TFS
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/)<br />
 [Programming languages in Visual Studio](https://docs.microsoft.com/pl-pl/visualstudio/#pivot=languages)<br />
-[TFS from command line](https://docs.microsoft.com/pl-pl/vsts/repos/tfvc/use-team-foundation-version-control-commands?view=vsts)
+[TFS from command line](https://docs.microsoft.com/pl-pl/vsts/repos/tfvc/use-team-foundation-version-control-commands?view=vsts)<br />
 
 #### Git in VS Code
 [Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
