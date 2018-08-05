@@ -144,7 +144,7 @@ sfc /scannow
 ### Prepair bootable pendrive for Windows reinstallation
 It is a very good idea to keep a bootable pendrive with Windows system image, ready to reinstall the system if something goes really wrong. It is quite easy to make it on your own, follow the steps:
 * Download Windows ISO file - to make it you can use **Windows 10 Media Creation Tools** or **Windows ISO Downloader**. Be sure that you download the correct version of the ISO file (correct version, language, etc).
-* Use **Win32DiskImager** or **Rufus** to put the Windows ISO file on pendrive and to make it bootable. Be careful - after the operation, you will not be able to use the pendrive as an external storage device anymore.
+* Use **Rufus** to put the Windows ISO file on pendrive and to make it bootable. Be careful - after the operation, you will not be able to use the pendrive as an external storage device anymore. Set file system to NTFS and choose the Windows ISO file, leave other options as default.
 * **Remember!** Before any reinstallation, write down your Windows product key. To make it, the easiest way is to use **NirSoft ProduKey**.
 * After the pendrive is ready you can turn off your PC (hold SHIFT and click Turn Off on Windows 10) and press F12 (or other key depending on your PC model) while it is rebooting to get into the **Boot Menu**. In the Boot Menu you will be able to choose the PC to boot from your bootable pendrive and this way the process of installation of the system will begin.<br />
 If you cannot get into Boot Menu, you can get into BIOS (press F2 or other key depending on your PC model) and change the precedence of bootable devices, putting your pendrive at the first place.
