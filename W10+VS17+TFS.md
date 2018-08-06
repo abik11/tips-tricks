@@ -478,13 +478,14 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 
 ## Useful links
 
-#### General stuff
-[Tails - Linux live distribution for privacy](https://tails.boum.org/)<br />
-[Kali Linux live USB with persistence](https://medium.com/@fatahnuram/creating-kali-linux-live-usb-with-persistence-a-simple-guide-54e3eb01b6aa)<br />
-[Sysinternals - Windows tools](https://live.sysinternals.com/)<br />
+#### Learn more
 [Windows processes description 1](https://www.neuber.com/taskmanager/process/)<br />
 [Windows processes description 2](http://www.processlibrary.com/en/)<br /> 
 [Active Directory Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
+
+#### Tools for Windows
+[Sysinternals - Windows tools](https://live.sysinternals.com/)<br />
+[All in One - System Rescue Toolkit](https://paul.is-a-geek.org/aio-srt/)<br />
 [Driver Booster - keep drivers updated](https://www.iobit.com/en/driver-booster.php)<br />
 
 #### Malware scanners
@@ -547,3 +548,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Loader generator](http://loading.io/)<br />
 [Gradient generator](http://www.colorzilla.com/gradient-editor/)<br />
 [Google Fonts](http://localfont.com/)<br />
+
+#### Linux
+[Tails - Linux live distribution for privacy](https://tails.boum.org/)<br />
+[Kali Linux live USB with persistence](https://medium.com/@fatahnuram/creating-kali-linux-live-usb-with-persistence-a-simple-guide-54e3eb01b6aa)<br />
