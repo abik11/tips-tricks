@@ -727,4 +727,5 @@ string address = cell.GetReferenceA1();
 [Polish VBA course](http://pszyperski.republika.pl/Excel%202007/index.htm)<br />
 [Spanish VBA course](https://excelyvba.com/curso-de-vba/)<br />
 [VBA Tutorials](https://excelmacromastery.com/)<br />
-[Copy macro to Personal.xlsb](https://support.office.com/en-us/article/copy-your-macros-to-a-personal-macro-workbook-aa439b90-f836-4381-97f0-6e4c3f5ee566)
+[Copy macro to Personal.xlsb](https://support.office.com/en-us/article/copy-your-macros-to-a-personal-macro-workbook-aa439b90-f836-4381-97f0-6e4c3f5ee566)<br />
+[Develop Office extensions in C#](https://www.red-gate.com/simple-talk/dotnet/c-programming/office-development-in-visual-studio/)
