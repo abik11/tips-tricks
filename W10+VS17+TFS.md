@@ -83,7 +83,7 @@ If you want to learn more about Powershell go [here](https://github.com/abik11/t
 ->`CTRL + R` ->`mmc` ->File ->Add or Remove Snap-ins
 
 ### Power efficiency diagnostics
-->`CTRL + R` ->`cmd` ->`powercfg /energy /output d:\report.html`
+->`CTRL + R` ->`cmd` ->`powercfg /energy /output d:\report.html`<br />
 By the way, **powercfg** has few other nice options. For example you can list all the devices that can wake your pc with the following command:
 ```
 powercfg -devicequery wake_armed
