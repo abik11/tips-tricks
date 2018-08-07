@@ -42,6 +42,9 @@ Create a directory and call it like this: `SuperAdmin.{ED7BA470-8E54-465E-825C-9
 ### Default virus
 To test antivirus software copy and paste this: `X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*` into text file and save it. Antivirus should immediately recognize this text file as a virus.
 
+### Set default applications
+->Settings ->System ->Default Applications
+
 ### Check if exe file is x86 or x64
 Open the exe file as text and search for the first `PE` string appearance. If you will find ` PE  L  ` it means it is x86 executable and if you will find ` PE  d† ` it means it is x64 executable.
 
@@ -81,6 +84,10 @@ If you want to learn more about Powershell go [here](https://github.com/abik11/t
 
 ### Power efficiency diagnostics
 ->`CTRL + R` ->`cmd` ->`powercfg /energy /output d:\report.html`
+By the way, **powercfg** has few other nice options. For example you can list all the devices that can wake your pc with the following command:
+```
+powercfg -devicequery wake_armed
+```
 
 ### Wireshark filters
 To be able to quickly find what you need in Wireshark it is crucial to use filter, here is a nice example: ` (tcp.dstport == 8080 || tcp.srcport == 8080) && (http.request.method == "CONNECT" || http.response.code == 407 || http.response.code == 200)`
