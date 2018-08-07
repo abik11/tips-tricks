@@ -461,6 +461,24 @@ dataCollection.CountLong; // + GOOD
 dataCollection.Count; // - BAD
 ```
 
+### Group by multiple columns
+```csharp
+var result =
+    from pp in productionPlanData
+    group pp by new 
+    {
+        pp.ProductionLine,
+	pp.ProductionStartHour
+    }
+    into groupedPlan
+    select new GroupedPlan 
+    {
+        Line = groupedPlan.Key.ProductionLine,
+	Hour = groupedPlan.Key.ProductionStartHour,
+	PlanItems = groupedPlan.ToList()
+    };
+```
+
 ### Join
 Here we've got very simple example. There are two structures, one with recipes and other with reviews. What we want to achieve is to get as a result a list of recipes toegether with their reviews. So here is how we do that:
 ```csharp
@@ -480,14 +498,14 @@ Review[] reviews =
 };
 
 var query = 
-	from recipe in recipes
-	join review in reviews 
-	on recipe.Id equals review.RecipeId
-	select new 
-	{
-		RecipeName = recipe.Name,
-		RecipeReview = review.ReviewText
-	};
+    from recipe in recipes
+    join review in reviews 
+    on recipe.Id equals review.RecipeId
+    select new 
+    {
+        RecipeName = recipe.Name,
+        RecipeReview = review.ReviewText
+    };
 ```
 
 ### Multiple join condintions
