@@ -104,7 +104,7 @@ You can also delete all the files inside of these directories:
 You can also use **BleachBit** to remove some unnecessary files like history files or logs.
 
 ### Remove useless stuff in Windows 10
-There are quite many things enabled and installed by default in Windows 10 that you might want to get rid off. Also if you use your computer for a long time you can have many unnecessary application installed, you can use **IObit Uninstaller** instead of built-in program to remove programs. **Java Uninstall tool** can be very usefull too.
+There are quite many things enabled and installed by default in Windows 10 that you might want to get rid off. Also if you use your computer for a long time you can have many unnecessary application installed, you can use [**Revo Uninstaller**](https://www.revouninstaller.com/revo_uninstaller_free_download.html) or [**CCleaner**](https://www.ccleaner.com/ccleaner) instead of built-in program to remove programs. **Java Uninstall tool** can be very usefull too.
 
 ##### Turn of Internet Explorer and Media player
 ->`Win + X` ->Programs and Features ->Turn Windows features on or off ->Uncheck: Internet Explorer 11, Media Features\Windows Media Players
@@ -124,7 +124,7 @@ Run this in Powershell:
 ```powershell
 get-appxPackage *photo* | remove-appxPackage
 ```
-Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`. You can also use **10AppsManager** or **IObit Uninstaller**.
+Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`. You can also use **10AppsManager**.
 
 ##### Turn off apps in the background
 ->Settings ->Privacy ->Background apps
@@ -495,7 +495,6 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Sysinternals - Windows tools](https://live.sysinternals.com/)<br />
 [All in One - System Rescue Toolkit](https://paul.is-a-geek.org/aio-srt/)<br />
 [FixWin 10](https://www.thewindowsclub.com/fixwin-for-windows-10)<br />
-[Driver Booster - keep drivers updated](https://www.iobit.com/en/driver-booster.php)<br />
 
 #### Malware scanners
 [Dr. Web CureIt! - scanner](https://free.drweb.com/download+cureit+free/?lng=en)<br />
