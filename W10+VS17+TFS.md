@@ -124,7 +124,7 @@ Run this in Powershell:
 ```powershell
 get-appxPackage *photo* | remove-appxPackage
 ```
-Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`. You can also use **10AppsManager**.
+Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*, *soundrec*, *3d*, *phone*, *solit*, *bing*`. You can also use **10AppsManager** or **CCleaner**.
 
 ##### Turn off apps in the background
 ->Settings ->Privacy ->Background apps
