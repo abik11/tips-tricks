@@ -505,10 +505,17 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [AdwCleaner](https://www.bleepingcomputer.com/download/adwcleaner/)<br />
 [AdwCleaner](https://pl.malwarebytes.com/adwcleaner/)<br />
 [HitmanPro](https://www.hitmanpro.com/en-us/downloads.aspx)<br />
+-<br />
 [Farbar Recovery Smart Tool x86](http://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/81/)<br /> 
 [Farbar Recovery Smart Tool x64](https://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/82/)<br /> 
 [Farbar Recovery Smart Tool - how to](http://www.geekstogo.com/forum/topic/335081-frst-tutorial-how-to-use-farbar-recovery-scan-tool/)<br />
 [TDSSKiller](http://support.kaspersky.com/viruses/utility#TDSSKiller)<br /> 
+
+#### LSP/Winsock2
+[Changes in LSP stack](https://blog.malwarebytes.com/cybercrime/2014/10/changes-in-the-lsp-stack/)<br />
+[NirSoft WinsockServicesView](https://www.nirsoft.net/utils/winsock_service_providers.html)<br />
+[LSP-Fix (for Win XP)](http://www.cexx.org/lspfix.htm)<br />
+[Spabot.AS](https://www.pandasecurity.com/homeusers/security-info/160902/information/Spabot.AS)<br />
 
 #### Audio-video tools
 [Convert CDA files to MP3](http://www.freerip.com/)<br />
