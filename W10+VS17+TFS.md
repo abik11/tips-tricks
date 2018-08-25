@@ -492,8 +492,9 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Active Directory Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
 
 #### Tools for Windows
-[Sysinternals - Windows tools](https://live.sysinternals.com/)<br />
+[SysInternals - Windows tools](https://live.sysinternals.com/)<br />
 [All in One - System Rescue Toolkit](https://paul.is-a-geek.org/aio-srt/)<br />
+[SeaTools - Disk diagnostics](https://www.seagate.com/gb/en/support/downloads/seatools/#)<br />
 [FixWin 10](https://www.thewindowsclub.com/fixwin-for-windows-10)<br />
 
 #### Malware scanners
