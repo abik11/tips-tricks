@@ -1821,50 +1821,50 @@ doc.Save("file.xml");
 
 ## Useful links
 
-##### Database programming - general stuff
+#### Database programming - general stuff
 [SQLPedia - po polsku](http://www.sqlpedia.pl/) <br />
 [SQL Server Central - Stairway](http://www.sqlservercentral.com/stairway/) <br />
 [Many free e-books about DB programming](https://www.syncfusion.com/resources/techportal/ebooks) <br/>
 [Connection strings](https://www.connectionstrings.com/) <br />
 [Advanced free-books](https://www.red-gate.com/simple-talk/books/sql-books/) <br />
 
-##### XPO
+#### XPO
 [XPO Documentation](https://documentation.devexpress.com/CoreLibraries/1998/DevExpress-ORM-Tool) <br />
 
-##### Entity Framework
+#### Entity Framework
 [EF Tutorial](http://www.entityframeworktutorial.net/) <br />
 
-##### SQL Server
+#### SQL Server
 [SQL Server Agent](https://stackoverflow.com/questions/6712811/how-do-i-create-a-step-in-my-sql-server-agent-job-which-will-run-my-ssis-package/6713464#6713464) <br />
 [SQL Documentation](https://docs.microsoft.com/pl-pl/sql/#pivot=sdkstools&panel=sdkstools-all) <br />
 [Optymalizacja](http://www.sqlpedia.pl/tag/optymalizacja/) <br />
 [Execution Plan E-Book](https://www.red-gate.com/library/sql-server-execution-plans-2nd-edition)<br />
 
-##### BCP, SQLCMD and other tools
+#### BCP, SQLCMD and other tools
 [BCP](https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server) <br />
 [BCP](http://www.sqlpedia.pl/import-i-export-danych-do-bazy-sql-za-pomoca-bcp/) <br />
 [SQLCMD](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility) <br />
 [SQLCMD](http://www.sqlpedia.pl/tag/sqlcmd/) <br />
 [Sqlpsx](http://sqlpsx.codeplex.com/) <br />
 
-##### SMO
+#### SMO
 [SMO Reference](https://technet.microsoft.com/en-us/library/mt571730.aspx) <br />
 [Stairway to Powershell](http://www.sqlservercentral.com/stairway/91327/) <br />
 [Stairway to SMO](http://www.sqlservercentral.com/stairway/140967/) <br />
 
-##### SSIS
+#### SSIS
 [Deployment 1](http://sqlmag.com/sql-server-integration-services/ssis-deployment-sql-server-2012) <br />
 [Deployment 2](https://www.mssqltips.com/sqlservertip/2450/ssis-project-deployment-model-in-sql-server-2012-part-1-of-2/) <br />
 [Deployment 3](https://www.sqlshack.com/deploying-packages-to-sql-server-integration-services-catalog-ssisdb/) <br />
 [Useful tips](http://www.itprotoday.com/microsoft-sql-server/5-tips-developing-sql-server-integration-services-packages) <br />
 [Lookup vs. Merge Join](https://social.technet.microsoft.com/wiki/contents/articles/32009.ssis-lookup-vs-merge-join.aspx) <br />
 
-##### Firebird
+#### Firebird
 [ISQL docs](https://www.firebirdsql.org/pdfmanual/html/isql.html) <br />
 [Firebird .Net Provider](https://www.firebirdsql.org/en/net-provider/) <br />
 [Firebird FAQ](http://www.firebirdfaq.org/) <br />
 
-##### Markdown
+#### Markdown
 [Markdown cheetysheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) <br />
 [Markdown editor](https://jbt.github.io/markdown-editor/) <br />
 [Syntax highlighting](https://highlightjs.org/static/demo/) <br />
