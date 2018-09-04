@@ -519,6 +519,15 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [LSP-Fix (for Win XP)](http://www.cexx.org/lspfix.htm)<br />
 [Spabot.AS](https://www.pandasecurity.com/homeusers/security-info/160902/information/Spabot.AS)<br />
 
+#### Visual Studio, TFS, Git and VS Code
+[Visual Studio Marketplace](https://marketplace.visualstudio.com/)<br />
+[Programming languages in Visual Studio](https://docs.microsoft.com/pl-pl/visualstudio/#pivot=languages)<br />
+[TFS from command line](https://docs.microsoft.com/pl-pl/vsts/repos/tfvc/use-team-foundation-version-control-commands?view=vsts)<br />
+[Configuración de un repositorio Git en Visual Studio - Español](https://www.kabel.es/configuracion-git-visual-studio/)<br />
+[Fundamentos de Git - Español](https://git-scm.com/book/es/v1/Fundamentos-de-Git-Trabajando-con-repositorios-remotos)<br />
+[Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
+[Git Version Control in VS Code (Video)](https://code.visualstudio.com/docs/introvideos/versioncontrol)<br />
+
 #### Audio-video tools
 [Convert CDA files to MP3](http://www.freerip.com/)<br />
 [Moo0 Tools - video compression](http://www.moo0.com/?top=http://www.moo0.com/software/VideoMinimizer/)<br />
@@ -537,18 +546,6 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Convert PNG to ICO](http://convertico.com/)<br />
 [Convert ICO to PNG](http://icoconvert.com/icon_to_image_converter/)<br />
 [Sketch](https://sketch.io/sketchpad/)<br />
-
-#### Visual Studio
-[Visual Studio Marketplace](https://marketplace.visualstudio.com/)<br />
-[Programming languages in Visual Studio](https://docs.microsoft.com/pl-pl/visualstudio/#pivot=languages)<br />
-
-#### TFS
-[TFS from command line](https://docs.microsoft.com/pl-pl/vsts/repos/tfvc/use-team-foundation-version-control-commands?view=vsts)<br />
-
-#### Git
-[Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
-[Git Version Control in VS Code (Video)](https://code.visualstudio.com/docs/introvideos/versioncontrol)<br />
-[Git Fundamentals - Español](https://git-scm.com/book/es/v1/Fundamentos-de-Git-Trabajando-con-repositorios-remotos)<br />
 
 #### Online dev tools
 [Regex editor](http://regexr.com/)<br />
