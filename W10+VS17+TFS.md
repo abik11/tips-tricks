@@ -538,14 +538,17 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Convert ICO to PNG](http://icoconvert.com/icon_to_image_converter/)<br />
 [Sketch](https://sketch.io/sketchpad/)<br />
 
-#### Visual Studio and TFS
+#### Visual Studio
 [Visual Studio Marketplace](https://marketplace.visualstudio.com/)<br />
 [Programming languages in Visual Studio](https://docs.microsoft.com/pl-pl/visualstudio/#pivot=languages)<br />
+
+#### TFS
 [TFS from command line](https://docs.microsoft.com/pl-pl/vsts/repos/tfvc/use-team-foundation-version-control-commands?view=vsts)<br />
 
-#### Git in VS Code
+#### Git
 [Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
 [Git Version Control in VS Code (Video)](https://code.visualstudio.com/docs/introvideos/versioncontrol)<br />
+[Git Fundamentals - Español](https://git-scm.com/book/es/v1/Fundamentos-de-Git-Trabajando-con-repositorios-remotos)<br />
 
 #### Online dev tools
 [Regex editor](http://regexr.com/)<br />
