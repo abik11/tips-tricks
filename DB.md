@@ -1863,7 +1863,6 @@ doc.Save("file.xml");
 [ISQL docs](https://www.firebirdsql.org/pdfmanual/html/isql.html) <br />
 [Firebird .Net Provider](https://www.firebirdsql.org/en/net-provider/) <br />
 [Firebird FAQ](http://www.firebirdfaq.org/) <br />
-[Firebird FAQ em português](https://www.firebase.com.br/faqindex.php) <br />
 
 ##### Markdown
 [Markdown cheetysheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) <br />
