@@ -888,6 +888,11 @@ A nice use case for **DATEDIFF** function is to find all the rows from last 20 m
 SELECT ScanDate, Code FROM Material
 WHERE DATEDIFF(MINUTE, ScanDate, GETDATE()) < 20
 ```
+Be careful with **DATEDIFF** because it can be very slow in comparison with simple datetime comparison. The above query can be also written like this - being quite faster:
+```sql
+SELECT ScanDate, Code FROM Material
+WHERE ScanDate > DATEADD(MINUTE, -20, GETDATE())
+```
 
 ### Complex order by
 It is possible to switch the column that you want to use for **order by** using **case** statements, so that some data will be ordered by different column than other. Nice trick!
