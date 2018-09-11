@@ -725,9 +725,10 @@ Get-WmiObject Win32_Bios | select *
 ```
 
 ### WMIC
-Powershell has it own **Get-WmiObject** cmdlet to handle WMI but there is also another command called **wmic** which can do the same thing and can be also run from cmd, not only from Powershell. This command uses heavily aliases for WMI classes, so for example instead we can use the alias `DESKTOPMONITOR` instead of the class name `Win32_DesktopMonitor`, for example:
+Powershell has it own **Get-WmiObject** cmdlet to handle WMI but there is also another command called **wmic** which can do the same thing and can be also run from cmd, not only from Powershell. This command uses heavily aliases for WMI classes, so for example we can use the alias `DESKTOPMONITOR` instead of the class name `Win32_DesktopMonitor`, for example the two following lines do the same thing:
 ```powershell
 wmic desktopmonitor
+wmic path win32_desktopMonitor
 ```
 To get the list of available aliases with their descriptions you can execute the following command:
 ```powershell
@@ -736,6 +737,10 @@ wmic /?
 If you are interested about the details of a specific alias you can use this:
 ```powershell
 wmic alias desktopmonitor
+```
+You can use **wmic** to query for a specific information with **get** and **where** keywords, see an example:
+```powershell
+wmic desktopmonitor where availability=3 get name,screenHeight,screenWidth
 ```
 
 ### List of installed hotfixes
