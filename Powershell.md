@@ -724,25 +724,6 @@ Get-WmiObject Win32_OperatingSystem | select *
 Get-WmiObject Win32_Bios | select *
 ```
 
-### WMIC
-Powershell has it own **Get-WmiObject** cmdlet to handle WMI but there is also another command called **wmic** which can do the same thing and can be also run from cmd, not only from Powershell. This command uses heavily aliases for WMI classes, so for example we can use the alias `DESKTOPMONITOR` instead of the class name `Win32_DesktopMonitor`, for example the two following lines do the same thing:
-```powershell
-wmic desktopmonitor
-wmic path win32_desktopMonitor
-```
-To get the list of available aliases with their descriptions you can execute the following command:
-```powershell
-wmic /?
-```
-If you are interested about the details of a specific alias you can use this:
-```powershell
-wmic alias desktopmonitor
-```
-You can use **wmic** to query for a specific information with **get** and **where** keywords, see an example:
-```powershell
-wmic desktopmonitor where availability=3 get name,screenHeight,screenWidth
-```
-
 ### List of installed hotfixes
 ```powershell
 Get-HotFix
@@ -1355,9 +1336,9 @@ Here you will find just some very basic review of Linux commands. If you are int
 
 ### Files
 ```bash
-touch file1 				#creates new file
+touch file1 			#creates new file
 echo "hello world" > file1	#puts some conent to file1
-mkdir myDirectory			#creates directory
+mkdir myDirectory		#creates directory
 cp file1 myDirectory		#copies file1 to myDirectory
 mv myDirectory/file1 myDirectory/file2
 chmod 655 file1				
@@ -1384,12 +1365,12 @@ locate aircrack-ng
 
 ### Processes
 ```bash
-ps -aux			#show all processes
-top				#show most processor-consuming tasks
-kill 102 		#kill process with the given pid
+ps -aux		#show all processes
+top		#show most processor-consuming tasks
+kill 102 	#kill process with the given pid
 nice -n -5 top	#spawn the process with adjusted nicenness (priority)
 renice 102 -15	#increase the process priority
-ps & 			#run the task in background
+ps & 		#run the task in background
 ```
 
 ### System variables
@@ -1516,6 +1497,45 @@ $color = [System.Drawing.Color]::FromArgb(216, 216, 216)
 $color.ToArgb()
 ```
 That's all!
+
+## Wmic and netsh
+There are two extremely powerfull commands in Windows. Actually there are much more, but here I would like to say a word or two about **wmic** and **netsh**. The first one is WMI (Windows Management Instrumentation) command line tool that allows you to get almost any kind of information about software and hardware and manage the system. The second command is intended to configure and manage networks through command line. Both tools are designed for someting different but you can sometimes achieve the same goal using them. It is also good to know that they both can work in interactive (shell) mode but for scripting it is much better to use them simply as commands putting all the required parameters.
+
+### WMIC
+Powershell has it own **Get-WmiObject** cmdlet to handle WMI but **wmic** can do the same thing and can be also run from cmd, not only from Powershell. This command uses heavily aliases for WMI classes, so for example we can use the alias `DESKTOPMONITOR` instead of the class name `Win32_DesktopMonitor`, for example the two following lines do the same thing:
+```powershell
+wmic desktopmonitor
+wmic path win32_desktopMonitor
+```
+To get the list of available aliases with their descriptions you can execute the following command:
+```powershell
+wmic /?
+```
+If you are interested about the details of a specific alias you can use this:
+```powershell
+wmic alias desktopmonitor
+```
+You can use **wmic** to query for a specific information with **get** and **where** keywords, see an example:
+```powershell
+wmic desktopmonitor where availability=3 get name,screenHeight,screenWidth
+```
+Be careful, there should not be any space between the fields names in **get** clause.
+
+### Netsh
+With this command you can easily get a lot of information about networks and interfaces in your system. It allows you to manage and configure network interfaces and much more! For example with the following few commands you can see all the network interfaces, their addresses and configuration. In the last command only the configuration of the selected interface will be shown.
+```
+netsh interface ipv4 show interface
+netsh interface ipv4 show addresses
+netsh interface ipv4 show config
+netsh interface ipv4 show config 12
+```
+It is good to know how to get interface index number because it may be used to configure the specified interface. It is easier to use index than name (`name='Local connection'`) because depending on your language, tha name can contain some diacritical marks which may not be interpreted by the command line.<br />
+Here you can see how to set static IP address, net mask (`/22`), default gateway and primary and secondary DNS server:
+```
+netsh interface ipv4 set address 12 static 100.110.80.125 255.255.252.0 100.110.84.1
+netsh interface ipv4 set dns 12 static 100.110.86.62
+netsh interface ipv4 set dns 12 static 100.110.86.61 index=2
+```
 
 ## Useful links
 
