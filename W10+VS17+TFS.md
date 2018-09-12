@@ -497,6 +497,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [SeaTools - Disk diagnostics](https://www.seagate.com/gb/en/support/downloads/seatools/#)<br />
 [FixWin 10](https://www.thewindowsclub.com/fixwin-for-windows-10)<br />
 [VeraCrypt](https://www.veracrypt.fr/en/Downloads.html)<br />
+[Driver Store Explorer](https://github.com/lostindark/DriverStoreExplorer)<br />
 
 #### Malware scanners
 [Dr. Web CureIt! - scanner](https://free.drweb.com/download+cureit+free/?lng=en)<br />
