@@ -104,7 +104,7 @@ cd Env:		#System variables
 ```
 
 ### System variables
-It may be very often useful to work with system variables. And it is very easy to do that in Powershell! There two ways (actually more), like always in Powershel - ***there is more than one way to do it***:
+It may be very often useful to work with system variables. And it is very easy to do that in Powershell. Here you can see two ways how to get the value of a system variable, like always in Powershel - ***there is more than one way to do it*** (this is actually [Perl's motto](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it) but quite applicable for Powershell too):
 ```powershell
 #method 1
 cd Env:	
