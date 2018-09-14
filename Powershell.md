@@ -628,6 +628,7 @@ A great thing to know is that you can use regular expressions with **-split**! B
 ```powershell
 $array = $textData -split "\s+" 
 ```
+[Go here](https://kevinmarquette.github.io/2017-07-31-Powershell-regex-regular-expression/) to read much more about regular expressions.
 
 ### Inline if
 ```powershell
