@@ -161,6 +161,14 @@ If you don't know what version of Powershell is installed on the machine, and th
 $host.version
 $PSVersionTable
 ```
+
+### Is current Powershell process 64-bit?
+This may be sometimes a very important question, if you want to use some external tools in your scripts, you could use specific version, depending on Powershell process version. Here are two ways how to check it:
+```powershell
+[Environment]::Is64bitProcess	#Powershell 3.0 and above
+[IntPtr]::Size -eq 8		#Any version of Powershell
+```
+If a result of the above expressions is true then Powershell process is 64-bit, else it is 32-bit.
  
 ### Stop execution after error
 As default, Powershell will not stop on errors, Powershell is a fighter and never gives up but you can force it stop on errors if you want. To this you have to set **$ErrorActionPreference** variable to **Stop**:
