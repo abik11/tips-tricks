@@ -1574,8 +1574,9 @@ Be careful, there should not be any space between the fields names in **get** cl
 ### Enable and disable NICs
 Many things that can be done with **netsh** can be also done with **wmic**, for example enabling and disabling network interface cards. Use the following command to list all NICs:
 ```
-wmic nic get name,index,netConnectionID
+wmic nic get name,index,interfaceIndex,netConnectionID
 ```
+Remember, index field is the *physical* numer of network card and interface index is the *logical* number of the network interface (you use this number in `netsh interface ipv4` context). It maybe useful to display the NIC information along with the interface.<br/> 
 With **wmic** you can query WMI to find the NIC you want to enable or disable in many ways:
 ```
 wmic path win32_networkadapter where "NetconnectionID like '%wireless%' and not ProductName like '%Virtual%'" get name,index call disable
