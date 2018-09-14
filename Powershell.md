@@ -193,7 +193,7 @@ get-process VisualStudio -errorAction 'silentlyContinue'
 You can list all processes with **ps** cmdlet and than filter them with **where-object** (?):
 ```powershell
 ps | ? { $_.name -eq "vncviewer" -and $_.MainWindowTitle -match `
-"sepm10d160" } | select MainWindowTitle, StartTime, ProcessName, Id | ft -auto
+"corp11x431" } | select MainWindowTitle, StartTime, ProcessName, Id | ft -auto
 ```
 `ft -auto` will format the result table to make it fit the console screen.
 
