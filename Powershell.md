@@ -85,10 +85,11 @@ While it is not a good practice to use aliases when you develop some large scrip
 * cls = Clear-Host
 
 ### Problems with Execution Policies
-If you will write your own scripts and try to run them, Powershell may not allow you because of default **Execution Policies**. If you want to work without any problem you can change the policy to **unrestricted**, but take into consideration some security issue.
+If you will write your own scripts and try to run them, Powershell may not allow you because of default **Execution Policies**. If you want to work without any problem you can change the policy to **unrestricted** or **bypass**, but take into consideration some security issue.
 ```powershell
 get-executionPolicy -list
 set-executionPolicy unrestricted -scope localMachine
+set-executionPolicy bypass -scope CurrentUser
 ```
 
 ### Powershell providers
