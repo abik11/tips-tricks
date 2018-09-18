@@ -1524,8 +1524,8 @@ It is good to know how to get interface index number because it may be used to c
 Here you can see how to set static IP address, net mask (`/22`), default gateway and primary and secondary DNS server:
 ```
 netsh interface ipv4 set address 12 static 100.110.80.125 255.255.252.0 100.110.84.1
-netsh interface ipv4 set dns 12 static 100.110.86.62
-netsh interface ipv4 set dns 12 static 100.110.86.61 index=2
+netsh interface ipv4 set dnsservers 12 static 100.110.86.62
+netsh interface ipv4 add dnsserver 12 100.110.86.61 index=2
 ```
 All the settings are applied to the interface of index 12. If you want to get the address and other settings automatically from DHCP you should use the following commands:
 ```
