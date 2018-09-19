@@ -3,7 +3,7 @@
 This is not a complete guide how to learn Powershell. This is just a set of some tips, some thoughts of how to do something with Powershell. It may be useful for beginners to quickly go through some difficulties.
 
 * [Everyday struggles](#everyday-struggles)
-* [Processes, services and tasks](#processes,-services-and-tasks)
+* [Processes, services and tasks](#processes-services-and-tasks)
 * [Files and directories](#files-and-directories)
 * [Databases](#databases)
 * [Mastering the syntax](#mastering-the-syntax)
