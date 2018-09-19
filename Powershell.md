@@ -3,7 +3,7 @@
 This is not a complete guide how to learn Powershell. This is just a set of some tips, some thoughts of how to do something with Powershell. It may be useful for beginners to quickly go through some difficulties.
 
 * [Everyday struggles](#everyday-struggles)
-* [Processes and services](#processes-and-services)
+* [Processes, services and tasks](#processes,-services-and-tasks)
 * [Files and directories](#files-and-directories)
 * [Databases](#databases)
 * [Mastering the syntax](#mastering-the-syntax)
@@ -188,7 +188,8 @@ But this approach is not always a good idea. It is much better to silent only th
 get-process VisualStudio -errorAction 'silentlyContinue'
 ```
 
-## Processes and services
+## Processes, services and tasks
+This is a very important feature of any scripting language to be able to spawn, kill and generally manage processes or services. Powershell does it perfectly well.
 
 ### Search process
 You can list all processes with **ps** cmdlet and than filter them with **where-object** (?):
@@ -233,6 +234,21 @@ new-service -name TestService -displayName "Test Service" `
    -binaryPathName "C:\WINDOWS\System32\svchost.exe -k netsvcs" `
 sc.exe delete TestService #usuwanie usługi
 ```
+
+### Create a job
+Although creating processes and services is very useful, sometimes you would like to start some little task simply in the background without creating new process or service. This can be achieved in Powershell with **jobs**. See here how to start a new job:
+```powershell
+Start-Job -ScriptBlock {
+    Add-Type -AssemblyName System.Windows.Forms
+    while($true){
+        $dt = [System.DateTime]::Now
+	if($dt.Minute -eq 10 -and $dt.Second -eq 0){
+	    [Windows.Forms.MessageBox]::Show('Move your ass!')
+	}
+    }
+}
+```
+To see the list of jobs you can use the `Get-Job` cmdlet. Jobs can be stopped with `Stop-Job`, suspended and resumed with `Suspend-Job` and `Resume-Job`. If a job returns some value, you can get this value with `Receive-Job` and you can also wait for some job to finish with `Wait-Job`.
 
 ## Files and directories
 Powershell is perfect tool to work with files and directories. It can be used to easily optimize some repetitve tasks working with files and directories. Give it a try!
