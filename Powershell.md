@@ -1619,6 +1619,9 @@ wmic path win32_networkadapter where index=7 call enable
 #### Linq with Powershell
 [Linq with Powershell](https://www.simple-talk.com/dotnet/net-framework/high-performance-powershell-linq)
 
+#### WinForms with Powershell
+[Building Forms with Powershell](https://blogs.technet.microsoft.com/stephap/2012/04/23/building-forms-with-powershell-part-1-the-form/)<br />
+
 #### UIAutomation
 [UIAutomation](https://uiautomation.codeplex.com/documentation)<br />
 [UIAutomation](https://softwaretestingusingpowershell.wordpress.com/category/ui-automation/)<br />
