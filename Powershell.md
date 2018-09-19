@@ -1605,7 +1605,10 @@ wmic path win32_networkadapter where index=7 call enable
 ## Useful links
 
 #### General Powershell stuff
+[PoshGUI](https://poshgui.com/)<br />
 [Simple-talk](https://www.simple-talk.com/)<br />
+[Precision Computing](http://www.leeholmes.com/blog/)<br />
+[Exploit Monday](http://www.exploit-monday.com/)<br />
 [Lazy Admin](http://www.lazywinadmin.com/)<br />
 [Mad With Powershell](http://www.madwithpowershell.com/)<br />
 [Hey, Scripting Guy](https://blogs.technet.microsoft.com/heyscriptingguy/)<br />
