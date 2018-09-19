@@ -248,6 +248,7 @@ Start-Job -ScriptBlock {
     }
 }
 ```
+The above job will display message box 10 minutes after every hour.<br />
 To see the list of jobs you can use the `Get-Job` cmdlet. Jobs can be stopped with `Stop-Job`, suspended and resumed with `Suspend-Job` and `Resume-Job`. If a job returns some value, you can get this value with `Receive-Job` and you can also wait for some job to finish with `Wait-Job`.
 
 ## Files and directories
