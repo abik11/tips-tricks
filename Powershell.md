@@ -1601,9 +1601,21 @@ With **wmic** you can query WMI to find the NIC you want to enable or disable in
 wmic path win32_networkadapter where "NetconnectionID like '%wireless%' and not ProductName like '%Virtual%'" get name,index call disable
 wmic path win32_networkadapter where index=7 call enable
 ```
+
+### NIC configuration
 It is also easy to get configuration details (the same information as `netsh interface ipv4 show config` shows) with `Win32_NetworkAdapterConfiguration` class. See an example:
 ```
-wmic nicconfig where "interfaceIndex=12" get DHCPEnabled,IPAddress,IPSubnet,DefaultIPGateway
+wmic nicconfig where "interfaceIndex=12" get DHCPEnabled,IPAddress,IPSubnet,DefaultIPGateway,DNSServerSearchOrder
+```
+Of course it is possible to change the configuration with **wmic**:
+```
+wmic nicconfig where index=7 call SetDNSServerSearchOrder ('8.8.8.8','8.8.4.4')
+wmic nicconfig where index=7 call EnableStatic ('100.110.16.20'),('255.255.255.0')
+wmic nicconfig where index=7 call EnableDHCP
+```
+To know more about the functions you can call for `nicconfig` type this command (it works for other classes too):
+```
+wmic nicconfig call /?
 ```
 
 ## Useful links
