@@ -687,6 +687,7 @@ With Powershell you have access to huge amounts of different sources of informat
 Get-Date
 get-date -format 'yyyy.MM'		#2017.11
 get-date -format 'yy' -year 2005	#05
+Get-WmiObject -ClassName Win32_localtime
 ```
 
 ### Object structure
@@ -752,7 +753,7 @@ Add-Type -AssemblyName System.Windows.Forms
 Get-wmiobject win32_processor | select  loadPercentage | fl
 ```
 
-### Operating system information in BIOS
+### Operating system and BIOS details
 ```powershell
 Get-WmiObject Win32_OperatingSystem | select *
 Get-WmiObject Win32_Bios | select *
@@ -761,6 +762,7 @@ Get-WmiObject Win32_Bios | select *
 ### List of installed hotfixes
 ```powershell
 Get-HotFix
+Get-WmiObject -ClassName Win32_QuickFixEngineering
 ```
 
 ### When the PC was turn off
