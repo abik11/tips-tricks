@@ -1157,7 +1157,7 @@ You can restart the given site
 ```
 
 ### Work with Windows
-One of the most useful COM objects for automatization is **Shell.Application**. It provides a lot of functionality for example asociated with Windows Explorer. A nice use case of this COM object can be seen in other tip - *Length of MP3 file*. Here you can see some simple but useful methods:
+One of the most useful COM objects for automatization is **Shell.Application**. It provides a lot of functionality for example asociated with Windows Explorer. A nice use case of this COM object can be seen in other tip - [Length of MP3 file](#length-of-mp3-file). Here you can see some simple but useful methods:
 ```powershell
 $shell = new-object -COMObject Shell.Application
 $shell.TileVertically()
@@ -1261,6 +1261,12 @@ With **Win32Shutdown** you can also perform other operations:
 It is a simple search in Event Log. All we have to do is to find all the logs with **EventId** equal to **1074** which corresponds to the shutdown action. We choose `USER32` as a source because in **user32.dll** there is a function that shutdowns the system.
 ```powershell
 get-eventlog -logName system -source "USER32" | ? { $_.EventId -eq 1074 }| ft -wrap
+```
+
+### Uninstall applications
+With WMI you can uninstall some of the applications.
+```powershell
+(Get-WmiObject -Class Win32_Product -Filter "Name='AppName'").Uninstall()
 ```
 
 ### Remove Appx Packages
@@ -1434,12 +1440,12 @@ su - abik #login as abik
 
 ### Text files
 ```bash
-nl file1 							#displays file with line numeration
-head -30 file1						#displays first 30 lines
-cat file1 | grep abik 				#search for a string 'abik' in file1
-sed s/abik/ABIK/ file1 > file1 		#replaces first occurance of 'abik' to 'ABIK'
-sed s/abik/ABIK/g file1 > file1 	#g - global, all occurances
-sed s/abik/ABIK/3 file1 > file1 	#third occurance
+nl file1				#displays file with line numeration
+head -30 file1				#displays first 30 lines
+cat file1 | grep abik			#search for a string 'abik' in file1
+sed s/abik/ABIK/ file1 > file1		#replaces first occurance of 'abik' to 'ABIK'
+sed s/abik/ABIK/g file1 > file1		#g - global, all occurances
+sed s/abik/ABIK/3 file1 > file1		#third occurance
 ```
 
 ### Network
