@@ -1162,6 +1162,25 @@ Add-Type -TypeDefinition $typeCode
 $time
 ```
 Few things nice to notice - WinApi functions quite often require to provide arguments as structs - this make it a bit difficult to work with them because you have to know the structure of the required struct type. There is a nice web site that may help you: [pinvoke.net](https://www.pinvoke.net/index.aspx), it is a generally great source of information about WinApi for .Net, totally recommended! Another thing good to notice, that you will often encounter while working with WinApi in Powershell is the **[ref]** keyword put before an argument in function call. It is required because WinApi functions often use the given variable as a reference and not as a value and putting this keyword there guarantees that it will work like that.<br />
+WinApi is extremely useful if you want to manipulate windows GUI and controls. Here is a simple example that runs notepad, puts some text in it and maximize it.
+```powershell
+$sig = '
+  [DllImport("user32.dll", EntryPoint = "FindWindowEx")]public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
+  [DllImport("User32.dll")]public static extern int SendMessage(IntPtr hWnd, int uMsg, int wParam, string lParam);
+  [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+'
+Add-Type -MemberDefinition $sig -Name GUI -Namespace Win32
+
+$process = Start-Process notepad -PassThru
+$process.WaitForInputIdle()
+$hwnd = $process.MainWindowHandle
+
+[IntPtr]$child = [Win32.GUI]::FindWindowEx($hwnd, [IntPtr]::Zero, "Edit", $null)
+[Win32.GUI]::SendMessage($child, 0x000C, 0, "Hello notepad from Powershell! :D")
+[Win32.GUI]::ShowWindow($hwnd, 1) #show window
+[Win32.GUI]::ShowWindow($hwnd, 3) #maximize window
+#Other values you can use: 0 - hide, 2 - minimize (for more see MSDN)
+```
 Trying to avoid such low level calls is a good idea, most of things you will need to do is already ported to .Net or even to Powershell cmdlets, but if you are really sure that something cannot be done - it is surely time to work with WinApi.
 
 ### Send slack messages
