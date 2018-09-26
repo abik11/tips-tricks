@@ -7,7 +7,6 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Files and directories](#files-and-directories)
 * [Databases](#databases)
 * [Mastering the syntax](#mastering-the-syntax)
-* [Getting information](#getting-information)
 * [Users and groups](#users-and-groups)
 * [Remote control](#remote-control)
 * [Powershell with Linux](#powershell-with-linux)
@@ -429,12 +428,31 @@ And to change the current directory in .Net use this:
 Powershell is great tool to work with databases. It may easily serve as a glue tool between different kind of systems, importing some data from one to another or enabling integration. You can use ADO .NET in Powershell, SMO (SQL Server Management Objects) or some third party libraries. If you are interested in this topic, read more [here](https://github.com/abik11/tips-tricks/blob/master/DB.md).
 
 ## Mastering the syntax
+Powershell syntax may not be easy to understand at a first glance, so it is good to spend some time seeing what Powershell offers. Such knowledge may help you to finish many tasks much faster. 
 
 ### Creating PSObjects
 **PSObject** is a very flexible structure. It allows you to dynamicaly create structures to store your data depending on your needs. You just have to specify all the properties of the structure and values in a hash array. See an example here:
 ```powershell
 $filelist = ls | % `
   { new-object psobject -property @{ code = $_.Name.Substring(0, $_.Name.IndexOf(".")); CreationTime = $_.CreationTime; }}
+```
+
+### Object structure
+To get the listing of object's properties and methods us the following command:
+```powershell
+get-item myfile.txt | get-member
+```
+Sometimes very useful may be also this one:
+```
+get-item myfile.txt | select-object *
+```
+It will list all the properties of the result object with its values.
+
+### .NET class structure
+The same works well for .NET classes also:
+```powershell
+Add-Type -AssemblyName System.Drawing.Image
+[System.Drawing.Image] | gm
 ```
 
 ### Add your own and .NET types
@@ -678,6 +696,14 @@ But to get randomly an element of the array we can make it even easier:
 $currentPlayer = Get-Random $players
 ```
 
+### Date
+```powershell
+Get-Date
+get-date -format 'yyyy.MM'		#2017.11
+get-date -format 'yy' -year 2005	#05
+Get-WmiObject -ClassName Win32_localtime
+```
+
 ### Powershell 5
 Many new language features were added to Powershell in version 5. For example namespaces:
 ```powershell
@@ -725,105 +751,6 @@ $proxy.Credentials = $cred
 $web = new-object System.Net.WebClient
 $web.Proxy = $proxy
 $result = $web.DownloadString($apiquery) | ConvertFrom-Json #There is also ConvertTo-Json
-```
-
-## Getting information
-With Powershell you have access to huge amounts of different sources of information. With WMI, Event Log, different XML configuration files, COM Shell Object and others you can get some data about the system, network, files. Here you can see few interesting pieces of code. 
-
-### Date
-```powershell
-Get-Date
-get-date -format 'yyyy.MM'		#2017.11
-get-date -format 'yy' -year 2005	#05
-Get-WmiObject -ClassName Win32_localtime
-```
-
-### Object structure
-To get the listing of object's properties and methods us the following command:
-```powershell
-get-item myfile.txt | get-member
-```
-Sometimes very useful may be also this one:
-```
-get-item myfile.txt | select-object *
-```
-It will list all the properties of the result object with its values.
-
-### .NET class structure
-The same works well for .NET classes also:
-```powershell
-Add-Type -AssemblyName System.Drawing.Image
-[System.Drawing.Image] | gm
-```
-
-### Visual Studio 2012 project reference list
-This is also a nice one! Here the **.csproj** XML file is parsed and is searched for the **Reference** nodes. A nice thing to take a glance is that we have to add the namespace used in this file to be able to run XPath query.
-```powershell
-[xml]$project = gc "MyProject.csproj"
-$nm = New-Object -TypeName System.Xml.XmlNamespaceManager -ArgumentList $Project.NameTable
-$nm.AddNamespace('x', 'http://schemas.microsoft.com/developer/msbuild/2003')
-$nodes = $Project.SelectNodes('/x:Project/x:ItemGroup/x:Reference', $nm) 
-$nodes | % { ($_.Include -split ",")[0] }
-```
-
-### Length of MP3 file
-This one is quite tricky! We have to use COM **Shell** Object. Especially interesting for us is the method called **GetDetailsOf**. And detail number **27** has the information about the length of the MP3 file.
-```powershell
-$path = (ls C:\music | select -first 1 fullname).FullName.ToString()
-$folder = split-path $path
-$file = split-path $path -leaf
-
-$shell = New-Object -ComObject Shell.Application
-$shellFolder = $shell.NameSpace($folder)
-$shellFile = $shellfolder.ParseName($file)
-$shellfolder.GetDetailsOf($shellfile, 27)
-```
-
-### List of Appx Packages
-In Windows 10 there is something as Appx Package. As default some stuff is installed like Zune, Spotify and others. You can list it, filter and easily delete, see here:
-```powershell
-Get-AppxPackage *spotify* | remove-AppxPackage
-```
-
-### Computer screen information
-Again, two easy ways (and problably thousands less easy ways :] ) to do that. Here you can see how to get the information about screens from WMI:
-```powershell
-Get-WmiObject -Class Win32_DesktopMonitor
-```
-And here from the .NET class:
-```powershell
-Add-Type -AssemblyName System.Windows.Forms
-[System.Windows.Forms.Screen]::AllScreens
-```
-
-### Processor usage
-```powershell
-Get-wmiobject win32_processor | select  loadPercentage | fl
-```
-
-### Operating system and BIOS details
-```powershell
-Get-WmiObject Win32_OperatingSystem | select *
-Get-WmiObject Win32_Bios | select *
-```
-
-### List of installed hotfixes
-```powershell
-Get-HotFix
-Get-WmiObject -ClassName Win32_QuickFixEngineering
-```
-
-### When the PC was turn off
-It is a simple search in Event Log. All we have to do is to find all the logs with **EventId** equal to **1074** which corresponds to the shutdown action.
-```powershell
-get-eventlog -logName system -source "USER32" | ? { $_.EventId -eq 1074 }| ft -wrap
-```
-
-### Network name and address
-```powershell
-$env:USERDOMAIN
-[System.Net.Dns]::GetHostName()
-[System.Net.Dns]::GetHostEntry([System.Net.Dns]::GetHostName())
 ```
 
 ## Users and groups
@@ -940,6 +867,13 @@ $isAdmin = $winPrincipal.IsInRole("Administrator")
 ### Currently logged in users
 ```powershell
 query user /server:$computer_ip
+```
+
+### Network name and address
+```powershell
+$env:USERDOMAIN
+[System.Net.Dns]::GetHostName()
+[System.Net.Dns]::GetHostEntry([System.Net.Dns]::GetHostName())
 ```
 
 ## Remote control
@@ -1091,7 +1025,7 @@ Get/Set-SCPFolder	-RemoteFolder	-LocalFolder
 And it is good to know that Posh-SSH uses the path from `[Environment]::CurrentDirectory` in its operations.
 
 ## Task automation
-Powershel is a great tool for application scripting and automation. You can work with COM objects, that are provided by many applications, you can control some applications through their command lines parameters, manage system components with WMI, modify system registry and do other thigns! 
+Powershel is a great tool for application scripting, automation and retrieving information from many different sources. You can work with COM objects, that are provided by many applications, you can control some applications through their command lines parameters, manage system components with WMI, modify registry and Event Log and do other thigns!
 
 ### Create a COM Object
 ```powershell
@@ -1147,6 +1081,12 @@ $lay.translate(0.1, 4)	#x,y
 $lay.rotate(30)			#deg
 ```
 
+### Speech synthesizer
+In Windows 7 there is a built-in speech synthesizer which can be controlled by COM object of course. Here is a simple example:
+```powershell
+(new-object -com sapi.spvoice).speak("Hello baby! How are you?")
+```
+
 ### Open Chrome with many tabs
 Chrome.exe has a command line parameter **--new-window**. It will cause Chrome to open all the websites that it takes as separate tabs on browser start.
 ```powershell
@@ -1171,10 +1111,27 @@ There is also another tool called **ffmpeg.exe** that allows to separate the sou
 .\ffmpeg.exe -i file.webm -acodec libmp3lame music.mp3
 ```
 
-### Speech synthesizer
-In Windows 7 there is a built-in speech synthesizer which can be controlled by COM object of course. Here is a simple example:
+### Length of MP3 file
+This one is quite tricky! We have to use COM **Shell** Object. Especially interesting for us is the method called **GetDetailsOf**. And detail number **27** has the information about the length of the MP3 file.
 ```powershell
-(new-object -com sapi.spvoice).speak("Hello baby! How are you?")
+$path = (ls C:\music | select -first 1 fullname).FullName.ToString()
+$folder = split-path $path
+$file = split-path $path -leaf
+
+$shell = New-Object -ComObject Shell.Application
+$shellFolder = $shell.NameSpace($folder)
+$shellFile = $shellfolder.ParseName($file)
+$shellfolder.GetDetailsOf($shellfile, 27)
+```
+
+### Visual Studio 2012 project reference list
+This is also a nice one! Here the **.csproj** XML file is parsed and is searched for the **Reference** nodes. A nice thing to take a glance is that we have to add the namespace used in this file to be able to run XPath query.
+```powershell
+[xml]$project = gc "MyProject.csproj"
+$nm = New-Object -TypeName System.Xml.XmlNamespaceManager -ArgumentList $Project.NameTable
+$nm.AddNamespace('x', 'http://schemas.microsoft.com/developer/msbuild/2003')
+$nodes = $Project.SelectNodes('/x:Project/x:ItemGroup/x:Reference', $nm) 
+$nodes | % { ($_.Include -split ",")[0] }
 ```
 
 ### Send slack messages
@@ -1272,6 +1229,17 @@ $txtboxes[1].Value = "tajne_haslo"
 Hide-UiaCurrentHighlighter
 ```
 
+### Computer screen information
+Again, two easy ways (and problably thousands less easy ways :] ) to do that. Here you can see how to get the information about screens from WMI:
+```powershell
+Get-WmiObject -Class Win32_DesktopMonitor
+```
+And here from the .NET class:
+```powershell
+Add-Type -AssemblyName System.Windows.Forms
+[System.Windows.Forms.Screen]::AllScreens
+```
+
 ### Lock screen, restart and turn off the system
 To lock a screen you have to run **LockWorkStation** function of **user32.dll**. You can import that function through pinvoke, as shown in some previous examples, but there is also another, much simpler way:
 ```powershell
@@ -1288,6 +1256,18 @@ With **Win32Shutdown** you can also perform other operations:
 * 1 - shutdown, 5 - forced shutdown (1+4)
 * 2 - restart, 6 - forced restart (2+4)
 * 8 - power off, 12 - forced power off
+
+### When the PC was turn off
+It is a simple search in Event Log. All we have to do is to find all the logs with **EventId** equal to **1074** which corresponds to the shutdown action. We choose `USER32` as a source because in **user32.dll** there is a function that shutdowns the system.
+```powershell
+get-eventlog -logName system -source "USER32" | ? { $_.EventId -eq 1074 }| ft -wrap
+```
+
+### Remove Appx Packages
+In Windows 10 there is something as Appx Package. As default some stuff is installed like Zune, Spotify and others. You can list it, filter and easily delete, see here:
+```powershell
+Get-AppxPackage *spotify* | remove-AppxPackage
+```
 
 ## Pester and modules
 Pester is the most popular Powershell unit test and mock framework. It is so popular that it became the part of Powershell 5 by default. It is similar to Javascript Mocha and Chai frameworks. Tests written with Pester have rather Behaviour-Driven Development style and tend to be more human-readable.<br />
