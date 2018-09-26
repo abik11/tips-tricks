@@ -776,15 +776,6 @@ $env:USERDOMAIN
 [System.Net.Dns]::GetHostEntry([System.Net.Dns]::GetHostName())
 ```
 
-### Network interfaces
-```powershell
-$netAdapters = get-wmiObject win32_networkAdapterConfiguration `
-				-namespace 'root\CIMV2' | ? { $_.IPEnabled -eq $True }
-$netAdapters[0].DNSDomain
-$netAdapters[0].IPAddress
-$netAdapters[0].Description
-```
-
 ## Users and groups
 One of the most common tasks that can be scripted are connected with users and groups managment. Powershell is a great tool for this, here you will see some commands and cmdlets that might be useful.
 
