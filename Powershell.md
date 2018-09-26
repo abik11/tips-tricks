@@ -1162,7 +1162,7 @@ Add-Type -TypeDefinition $typeCode
 $time
 ```
 Few things nice to notice - WinApi functions quite often require to provide arguments as structs - this make it a bit difficult to work with them because you have to know the structure of the required struct type. There is a nice web site that may help you: [pinvoke.net](https://www.pinvoke.net/index.aspx), it is a generally great source of information about WinApi for .Net, totally recommended! Another thing good to notice, that you will often encounter while working with WinApi in Powershell is the **[ref]** keyword put before an argument in function call. It is required because WinApi functions often use the given variable as a reference and not as a value and putting this keyword there guarantees that it will work like that.<br />
-WinApi is extremely useful if you want to manipulate windows GUI and controls. Here is a simple example that runs notepad, puts some text in it and maximize it.
+WinApi is extremely useful if you want to manipulate windows GUI and controls. Here is a simple example that runs notepad, puts some text in it and maximize it. Notice that this time WinApi functions are imported slightly different way, it is up to you which way do you prefer.
 ```powershell
 $sig = '
   [DllImport("user32.dll", EntryPoint = "FindWindowEx")]public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
