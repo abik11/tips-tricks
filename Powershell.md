@@ -11,8 +11,7 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Users and groups](#users-and-groups)
 * [Remote control](#remote-control)
 * [Powershell with Linux](#powershell-with-linux)
-* [Application scripting](#application-scripting)
-* [Powershell 5](#powershell-5)
+* [Task automation](#task-automation)
 * [Pester and modules](#pester-and-modules)
 * [Appendix A - Linux commands](#appendix-a---linux-commands)
 * [Appendix B - Serial port](#appendix-b---serial-port)
@@ -637,7 +636,7 @@ ls c:\temp | out-gridview -passThru
 
 ### Get the first element of the list
 ```powershell
-(ps | ? { $_.ProcessName -eq "vncviewer" })[0]				# method 1
+(ps | ? { $_.ProcessName -eq "vncviewer" })[0]			# method 1
 ps | ? { $_.ProcessName -eq "vncviewer" } | select -first 1	# method 2
 ```
 The problem with the first method is that if the result is null, you will get an error since you are trying to get the first element of an array that doesn't exist. The second method will simply return nothing, much less error prone solution.
@@ -677,6 +676,55 @@ $currentPlayer = $players[$index]
 But to get randomly an element of the array we can make it even easier:
 ```powershell
 $currentPlayer = Get-Random $players
+```
+
+### Powershell 5
+Many new language features were added to Powershell in version 5. For example namespaces:
+```powershell
+using module Server; #our own module Server.psm1
+using namespace System.Data.SqlClient;
+[SqlConnection]::new()
+```
+Also enums were added:
+```powershell
+enum OSType {
+    Unknown
+    Windows
+    Linux
+}
+[OSType] $myOS = 'Linux'
+[OSType] $myOS2 = 'Windows'
+```
+and classes with all the object-oriented stuff like constructors, inheritance, overrides and so on:
+```powershell
+class Vehicle {
+     [int] $Mileage
+     Vehicle([int] $mileage){
+          $this.Mileage = $mileage
+     }
+}
+
+class Car : Vehicle {
+     [int] $Speed
+     Car ([int] $mileage, [int] $speed) : base($mileage){
+          $this.Speed = $speed
+     }
+     [void] Drive-Faster([int] $moreSpeed){
+          $this.Speed += $moreSpeed
+     }
+}
+
+$myCar = [Car]::new(100, 50)
+```
+Another new thing is a quite big number of new cmdlets, among them functions that allow to easily convert data from and to JSON format. Here you can see an example of how to get data from web service (with default proxy) and finally convert it to JSON:
+```powershell
+$apiquery = 'http://samples.openweathermap.org/data/2.5/weather?...'
+$proxy = [System.Net.WebProxy]::DefaultProxy
+$cred = [System.Net.CredentialCache]::DefaultWebProxy
+$proxy.Credentials = $cred
+$web = new-object System.Net.WebClient
+$web.Proxy = $proxy
+$result = $web.DownloadString($apiquery) | ConvertFrom-Json #There is also ConvertTo-Json
 ```
 
 ## Getting information
@@ -1042,8 +1090,10 @@ Get/Set-SCPFolder	-RemoteFolder	-LocalFolder
 ```
 And it is good to know that Posh-SSH uses the path from `[Environment]::CurrentDirectory` in its operations.
 
-## Application scripting
-Powershel is a great tool for application scripting and automatization. You can work with COM objects, that are provided by many applications, you can control some applications through their command lines parameters, and do other thigns! Look here:
+## Task automation
+Powershel is a great tool for application scripting and automation. You can work with COM objects, that are provided by many applications, you can control some applications through their command lines parameters, manage system components with WMI, modify system registry and do other thigns! 
+
+### Create a COM Object
 ```powershell
 $ie = new-object -comObject internetExplorer.Application
 $ie.adressBar = $false
@@ -1127,6 +1177,28 @@ In Windows 7 there is a built-in speech synthesizer which can be controlled by C
 (new-object -com sapi.spvoice).speak("Hello baby! How are you?")
 ```
 
+### Send slack messages
+If you use slack maybe you have heard about WebHooks. Thanks to WebHooks you can integrate external applications with slack. They can send messages and inform you about some actions, for example TFS can send you a message that a check-in was done. You can also create your own messages with Powershell thanks to **Invoke-WebRequest** cmdlet:
+```powershell
+$webHook = https://hooks.slack.com/services/aaa/bbb
+$body = 'payload={"text":":slack: test"}'
+invoke-webRequest $webHook -Method POST -Body $body
+```
+If the network from which you send messages is under proxy, to make this work, you may need to add some exceptions for the following addresses: *.slack.com *.slack-msgs.com *slack-files.com *slack-imgs.com *slack-edge.com *slack-core.com *slack-redir.net.
+
+### IIS 
+There is a nice command line tool available for IIS managment in `C:\Windows\System32\inetsrv`. You can get the list of IIS object, actions that you can make with site (or any other) object, the list of all sites:
+```powershell
+.\appcmd.exe 
+.\appcmd.exe site /?
+.\appcmd.exe list site
+```
+You can restart the given site
+```powershell
+.\appcmd.exe stop site /site.name:MyWeb
+.\appcmd.exe start site /site.name:MyWeb
+```
+
 ### Work with Windows
 One of the most useful COM objects for automatization is **Shell.Application**. It provides a lot of functionality for example asociated with Windows Explorer. A nice use case of this COM object can be seen in other tip - *Length of MP3 file*. Here you can see some simple but useful methods:
 ```powershell
@@ -1182,28 +1254,6 @@ $hwnd = $process.MainWindowHandle
 ```
 Trying to avoid such low level calls is a good idea, most of things you will need to do is already ported to .Net or even to Powershell cmdlets, but if you are really sure that something cannot be done - it is surely time to work with WinApi.
 
-### Send slack messages
-If you use slack maybe you have heard about WebHooks. Thanks to WebHooks you can integrate external applications with slack. They can send messages and inform you about some actions, for example TFS can send you a message that a check-in was done. You can also create your own messages with Powershell thanks to **Invoke-WebRequest** cmdlet:
-```powershell
-$webHook = https://hooks.slack.com/services/aaa/bbb
-$body = 'payload={"text":":slack: test"}'
-invoke-webRequest $webHook -Method POST -Body $body
-```
-If the network from which you send messages is under proxy, to make this work, you may need to add some exceptions for the following addresses: *.slack.com *.slack-msgs.com *slack-files.com *slack-imgs.com *slack-edge.com *slack-core.com *slack-redir.net.
-
-### IIS 
-There is a nice command line tool available for IIS managment in `C:\Windows\System32\inetsrv`. You can get the list of IIS object, actions that you can make with site (or any other) object, the list of all sites:
-```powershell
-.\appcmd.exe 
-.\appcmd.exe site /?
-.\appcmd.exe list site
-```
-You can restart the given site
-```powershell
-.\appcmd.exe stop site /site.name:MyWeb
-.\appcmd.exe start site /site.name:MyWeb
-```
-
 ### Search controls in UIA
 ```powershell
 $notepadProc = ps | ? { $_.MainWindowTitle -match 'Notatnik' }
@@ -1222,60 +1272,22 @@ $txtboxes[1].Value = "tajne_haslo"
 Hide-UiaCurrentHighlighter
 ```
 
-## Powershell 5
-Powershell 5 brought many nice improvments to the language. Here you can see only few of them.
-
-### Using namespaces
+### Lock screen, restart and turn off the system
+To lock a screen you have to run **LockWorkStation** function of **user32.dll**. You can import that function through pinvoke, as shown in some previous examples, but there is also another, much simpler way:
 ```powershell
-using module Server; #our own module Server.psm1
-using namespace System.Data.SqlClient;
-[SqlConnection]::new()
+rundll32.exe user32.dll,LockWorkStation
 ```
-
-### Enum
+If you want to log off the system you have few different ways:
 ```powershell
-enum OSType {
-    Unknown
-    Windows
-    Linux
-}
-[OSType] $myOS = 'Linux'
-[OSType] $myOS2 = 'Windows'
+logoff.exe
+shutdown.exe -l
+(Get-WmiObject -Class Win32_OperatingSystem).Win32Shutdown(0)
 ```
-
-### Classes and inheritance
-```powershell
-class Vehicle {
-     [int] $Mileage
-     Vehicle([int] $mileage){
-          $this.Mileage = $mileage
-     }
-}
-
-class Car : Vehicle {
-     [int] $Speed
-     Car ([int] $mileage, [int] $speed) : base($mileage){
-          $this.Speed = $speed
-     }
-     [void] Drive-Faster([int] $moreSpeed){
-          $this.Speed += $moreSpeed
-     }
-}
-
-$myCar = [Car]::new(100, 50)
-```
-
-### Get data from web service with default proxy
-```powershell
-$apiquery = 'http://samples.openweathermap.org/data/2.5/weather?...'
-$proxy = [System.Net.WebProxy]::DefaultProxy
-$cred = [System.Net.CredentialCache]::DefaultWebProxy
-$proxy.Credentials = $cred
-$web = new-object System.Net.WebClient
-$web.Proxy = $proxy
-$result = $web.DownloadString($apiquery) | ConvertFrom-Json
-#ConvertTo-Json
-```
+With **Win32Shutdown** you can also perform other operations: 
+* 0 - log off, 4 - forced log off (0+4)
+* 1 - shutdown, 5 - forced shutdown (1+4)
+* 2 - restart, 6 - forced restart (2+4)
+* 8 - power off, 12 - forced power off
 
 ## Pester and modules
 Pester is the most popular Powershell unit test and mock framework. It is so popular that it became the part of Powershell 5 by default. It is similar to Javascript Mocha and Chai frameworks. Tests written with Pester have rather Behaviour-Driven Development style and tend to be more human-readable.<br />
