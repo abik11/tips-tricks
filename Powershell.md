@@ -647,6 +647,14 @@ Here you see an example of searching the processes listening on port 1900. This 
 netstat /abn | select-string -pattern '1900'
 ```
 
+### Slice an array
+It is very often useful to get for example the elements of an array from 4 to 8, or last two or something like this, which is often called slicing. Here in a little example you will see how to do it with Powershell:
+```powershell
+$stringArray = "This is an array of chars"
+$tmp = $stringArray[($strinArray.Length-3)..($strinArray.Length-1)] #last two elements
+$tmp = $stringArray[4..8]
+```
+
 ### Show results in grid
 ```powershell
 ls c:\temp | out-gridview -passThru
