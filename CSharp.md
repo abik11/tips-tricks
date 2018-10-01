@@ -5,8 +5,6 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 * [Performance and under the hood](#performance-and-under-the-hood) 
 * [Useful links](#useful-links)
 
-## Language tips
-
 ### CSC Compiler
 If you want to test some little piece of code and creating a new solution in Visual Studio is defenietely waste of time for you for such a little piece, than you can use CSC compiler directly from command line, see how to do it:
 ```powershell
@@ -18,6 +16,9 @@ If you need to add some DLL's you have to use `/r` switch:
 ```powershell
 & "$cscFullPath" /r:System.DirectoryServices.dll, System.DirectoryServices.AccountManagement.dll /out:program.exe /target:exe program.cs
 ```
+It is a very good idea to use CSC while learning and trying new things. You just have to create one .cs file, compile it and run!
+
+## Language tips
 
 ### IDisposable
 Every class that has some unmanaged resources should implement **IDisposable** interface. It is because Garbage Collector knows nothing about such resources. Here is an example of implementation proposed by Microsoft:
