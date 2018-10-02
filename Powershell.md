@@ -1033,7 +1033,7 @@ Get/Set-SCPFolder	-RemoteFolder	-LocalFolder
 And it is good to know that Posh-SSH uses the path from `[Environment]::CurrentDirectory` in its operations.
 
 ## Task automation
-Powershel is a great tool for application scripting, automation and retrieving information from many different sources. You can work with COM objects, that are provided by many applications, you can control some applications through their command lines parameters, manage system components with WMI, modify registry and Event Log and do other thigns!
+Powershel is a great tool for application scripting, automation and retrieving information from many different sources. You can work with COM objects, that are provided by many applications, you can control some applications through their command lines parameters, manage system components with [WMI](https://docs.microsoft.com/pl-pl/windows/desktop/WmiSdk/wmi-tasks-for-scripts-and-applications), modify registry and Event Log and do other thigns!
 
 ### Create a COM Object
 ```powershell
