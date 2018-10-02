@@ -1,5 +1,5 @@
 # CSharp
-Oh C#... the language of love! :D The one to rule them all, the best of the bests :D This document will be constantly in progress, at least I hope so. It is not a from zero to hero guide to teach C# language. It is rather some gathering of things that was useful for me while working as a programmer, especially from my beginnings.
+Oh C#... the language of love! :D The one to rule them all, the best of the bests :D This document will be constantly in progress, at least I hope so. It is not a from zero to hero guide to teach C# language. It is rather some gathering of things that was useful or interesting for me while working as a programmer, especially from my beginnings.
 
 * [Language tips](#language-tips)
 * [Performance and under the hood](#performance-and-under-the-hood) 
