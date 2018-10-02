@@ -429,6 +429,9 @@ If some conflicts will occur, TFS will allow you to resolve them with the Resolv
 ##### Reparent
 Sometimes it maybe a good choice to change the relationship between branches, to convert a child into parent and reverse. To do that, first you have to change child's branch parent to **No parent** and then assign this branch as a parent for the second branch (which was a parent before). You will the reparent option here: ->Source Control Explorer ->Right click on a branch ->Branching and Merging ->Reparent. It can be very useful to see branches hierarchy, go to ->Source Control Explorer ->Right click on a branch ->Branching and Merging ->View Hierarchy.
 
+##### TF14098: Access Denied: User ... needs ManageBranch permission(s)
+If you see the above error you have to add specific permission to given user or a group. In Visual Studio go to ->Team Explorer ->Source Control Explorer ->Right click at the TFS projects or the whole collection ->Advanced ->Security. In the Permissions window you can click Add button to add a TFS group or Windows user identity and then set **Manage branch** permission to **Allow**. 
+
 ### Authorization error after changing account password
 If you will encounter the following error code: `TF30063` that probably means that you cannot be authorized to connect TFS server. It can happen if you changed your current Windows account password. Go to:<br />
 *(English)* ->Control Panel ->User accounts ->Credential Manager ->Windows Credentials ->Choose TFS ->Edit ->Put new password<br/>
