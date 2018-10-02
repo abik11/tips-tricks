@@ -338,7 +338,7 @@ StringBuilder tmp2 = new StringBuilder();
 tmp2.append("a").append("b").append("c");
 ```
 In case of reference types it is important to remember that their values are not copied, but they reference are. In the following example both `tmp1` and `tmp2` are references to **the same object**:
-```
+```csharp
 List<int> tmp1;
 List<int> tmp2 = tmp1; 
 ```
