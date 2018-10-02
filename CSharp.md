@@ -343,6 +343,43 @@ List<int> tmp1;
 List<int> tmp2 = tmp1; 
 ```
 
+### Performance tips
+* Avoid boixng and uboxing (casting variables to **object**) - use `int[]` and `List<int>` instead of **List** and **ArrayList**
+* Use **StringBuilder** - it uses the pointer to the string internally and does not create new string every time you try to modify it.
+* Array of int (`int[]`) is faster than list of int (`List<int>`) and faster than anything else actually.
+* For loop is faster than foreach loop (but both are very fast for `int[]`).
+* Do NOT use two-dimensional arrays. Instead flatten the array. Instead of indexing the array like this `[x, y]`, you will have to this like this `[x * columns + y]`. If you cannot flatten the array (probably always you can) better use jagged arrays than two-dimensional.
+* If it is possible avoid throwing exceptions and never catch general exceptions of **Exception** class.
+* Use `int.TryParse` instead of `int.Parse` - **TryParse** doesn't throw exceptions.
+* Use many small and short living objects, don't let them to be put into 1 and 2 generation of GC and use few large and long living objects that will be put on large objects heap. This way you will go along with Garbage Collector strategy and take advantage of it.
+* For image manipulation or data bigger than more or less 10 MB use pointers.
+
+### Intermediate language
+
+Programs written in C# are translated to [**Common Intermediate Language** (CIL)](https://en.wikipedia.org/wiki/Common_Intermediate_Language). This is a language which looks like Assembler a bit with and it is then executed by the .NET Runtime. That's why C# applications can be portable because if you have .NET Runtime installed on your operating system you will be able to run C# program. It is not mandatory to know CIL and its instructions but it is quite advisable to at least understand some most basic concepts of how C# programs look after compilation to CIL.<br />
+Here you can see some most basic instructions (this is not an example of a program):
+```
+ldc.i4.1       //load constant 1 as integer 32bit and put it on stack
+ldloc.0        //load value from variable location 0 and put it on stack
+stloc.1        //take a value from the top of stack and store it in variable location 1
+add            //add two top values on stack
+bne #000000a   //branch not equal - go to given instruction if two top values on stack are not equal
+br #000000a    //branch to given instruction
+```
+And here you can see an example.<br/>
+C# code:
+```csharp
+array[5] = 10;
+```
+CIL code:
+```
+ldloc.0     /// array
+ldc.i4.5    /// [5]
+ldc.i4.s 10 /// 10
+stelem.i4   /// =
+```
+[Here](https://en.wikipedia.org/wiki/List_of_CIL_instructions) you can see the whole list of instructions. You can decompile .NET programs with **ildasm.exe**. You can find it usually in the following path: `C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools` and [here](https://docs.microsoft.com/en-us/previous-versions/dotnet/netframework-2.0/f7dy01k1(v=vs.80)) you can find the docs.
+
 ## Other
 
 ### NLog
@@ -397,4 +434,5 @@ If you have configured NLog and it is not logging nothing at all the first step 
 Quite often the problem is about the permissions to a given path to which NLog is supposed to write, but if it is something else you will be able to find answer from NLog internal logs.
 
 ## Useful links
-...
+
+[Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
