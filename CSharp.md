@@ -3,6 +3,7 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 
 * [Language tips](#language-tips)
 * [Performance and under the hood](#performance-and-under-the-hood) 
+* [Other](#other)
 * [Useful links](#useful-links)
 
 ### CSC Compiler
@@ -341,6 +342,59 @@ In case of reference types it is important to remember that their values are not
 List<int> tmp1;
 List<int> tmp2 = tmp1; 
 ```
+
+## Other
+
+### NLog
+NLog (or other logging utility) allows you to write logs of your application to be able to analyze the way it behaves, find bugs or quickly troubleshoot issues. It is easy to use and install - you can download it from NuGet.
+
+##### Example of NLog configuration
+NLog.config:
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<nlog xmlns="http://www.nlog-project.org/schemas/NLog.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.nlog-project.org/schemas/NLog.xsd NLog.xsd"
+      autoReload="true"
+      throwExceptions="false"
+      internalLogLevel="Off" internalLogFile="c:\temp\nlog-internal.log">
+
+   <targets>
+      <target name="traceLog"
+         xsi:type="File"
+         fileName="${basedir}/logs/trace.txt"
+         layout="SHERLOCK_LOGIC|${longdate}|${level}|${callsite}|${machinename} ${message}"
+         archiveFileName="${basedir}/logs/trace.{#}.txt"
+         archiveEvery="Day"
+         archiveNumbering="Rolling"
+         maxArchiveFiles="10" />
+
+      <target name="errorLog"
+         xsi:type="File"
+         fileName="${basedir}/logs/error.txt"
+         layout="SHERLOCK_LOGIC|${longdate}|${level}|${callsite}|${machinename} ${message}"
+         archiveFileName="${basedir}/logs/error.{#}.txt"
+         archiveEvery="Month"
+         archiveNumbering="Rolling"
+         maxArchiveFiles="50" />
+   </targets>
+
+   <rules>
+      <logger name="*" minlevel="Trace" writeTo="traceLog" />
+      <logger name="*" minlevel="Error" writeTo="errorLog" />
+   </rules>
+</nlog>
+```
+The simplest way to add NLog to a class:
+```csharp
+protected static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+//logger.Trace(); logger.Error(); etc...
+```
+it is a good idea to use dependency injection and inject **NLog.Logger** class - see [here](https://ludwigstuyck.wordpress.com/2013/03/04/avoiding-the-use-of-static-variables-when-using-log4net/).
+
+##### NLog is not logging
+If you have configured NLog and it is not logging nothing at all the first step you should do is to change the value of **internalLogLevel** from **Off** (`internalLogLevel="Off"`) to **Debug** (`internalLogLevel="Debug"`) and set **internalLogFile** where NLog will write its own logs (`internalLogFile="c:\temp\nlog-internal.log"`).<br />
+Quite often the problem is about the permissions to a given path to which NLog is supposed to write, but if it is something else you will be able to find answer from NLog internal logs.
 
 ## Useful links
 ...
