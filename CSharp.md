@@ -347,12 +347,11 @@ List<int> tmp2 = tmp1;
 * Avoid boixng and uboxing (casting variables to **object**) - use `int[]` and `List<int>` instead of **List** and **ArrayList**
 * Use **StringBuilder** - it uses the pointer to the string internally and does not create new string every time you try to modify it.
 * Array of int (`int[]`) is faster than list of int (`List<int>`) and faster than anything else actually.
-* For loop is faster than foreach loop (but both are very fast for `int[]`).
+* For loop is faster than foreach loop while iterating lists (but both are very fast for `int[]`).
 * Do NOT use two-dimensional arrays. Instead flatten the array. Instead of indexing the array like this `[x, y]`, you will have to this like this `[x * columns + y]`. If you cannot flatten the array (probably always you can) better use jagged arrays than two-dimensional.
 * If it is possible avoid throwing exceptions and never catch general exceptions of **Exception** class.
 * Use `int.TryParse` instead of `int.Parse` - **TryParse** doesn't throw exceptions.
 * Use many small and short living objects, don't let them to be put into 1 and 2 generation of GC and use few large and long living objects that will be put on large objects heap. This way you will go along with Garbage Collector strategy and take advantage of it.
-* For image manipulation or data bigger than more or less 10 MB use pointers.
 
 ### Intermediate language
 
