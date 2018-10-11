@@ -12,9 +12,9 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Powershell with Linux](#powershell-with-linux)
 * [Task automation](#task-automation)
 * [Pester and modules](#pester-and-modules)
-* [Appendix A - Serial port](#appendix-b---serial-port)
-* [Appendix B - Colors in .Net](#appendix-c---colors-in-.net)
-* [Appendix C - Wmic and netsh](#appendix-d---wmic-and-netsh)
+* [Appendix A - Serial port](#appendix-a---serial-port)
+* [Appendix B - Colors in .Net](#appendix-b---colors-in-.net)
+* [Appendix C - Wmic and netsh](#appendix-c---wmic-and-netsh)
 * [Useful links](#useful-links)
 
 ## Everyday struggles
