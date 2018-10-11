@@ -915,6 +915,13 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ImportantData' AND xtype='U'
 CREATE TABLE [Corpo].[dbo].[ImportantData]([Text] [varchar](256) NULL);
 ```
 
+### Strings with diacritical marks
+To be able to store strings with diacritical marks or even more - different alpabets, you should use **nvarchar** type (which uses UTF) and mark the string as unicode with **N** prefix:
+```
+SELECT 'ęóąśłżźć' --eoaslzzc
+SELECT N'ęóąśłżźć' --ęóąśłżźć
+```
+
 ### How to get string length with spaces
 There is a very popular function in T-SQL called **LEN**, it is often used to get the length of some string value. It has one disadvantage that it is not counting spaces, so if you want to know the total length of the raw string you have to use another function called **DATALENGTH**. It is very simple to use. Here you can see an example showing the difference between both functions:
 ```sql
