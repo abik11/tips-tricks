@@ -976,6 +976,10 @@ FROM OPENQUERY(SERVER1, '
 	FROM Table1')
 ```
 
+### Error: SQLServerAgent is not currently running
+If you will encounter the following error: `SQLServerAgent is not currently running so it cannot be notified of this action`, the first thing you should check is the SQL Server Agent service in SQL Server Configuration Manager (SQL Server Services), if it is started or not.<br />
+If the problem is more serious and starting the service doesn't help, it is good idea to check SQL Server Agent's log file - `SQLAgent.out`. If you don't know where to find this file: ->Right click on the **SQL Server Agent** in SQL Server Management Studio ->Properties ->General ->File name.
+
 ### Connection information
 To get information about all the connections to SQL Server you can use the following query:
 ```sql
