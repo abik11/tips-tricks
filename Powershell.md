@@ -1562,3 +1562,6 @@ wmic nicconfig call /?
 #### Pester
 [Pester](https://www.red-gate.com/simple-talk/sysadmin/powershell/practical-powershell-unit-testing-getting-started/)<br />
 [Pester](https://github.com/pester/Pester/wiki)<br />
+
+### Powercat - Powershell implementation of netcat
+[Powercat](https://github.com/besimorhino/powercat)<br />
