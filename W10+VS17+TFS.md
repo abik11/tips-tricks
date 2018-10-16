@@ -23,7 +23,10 @@
 ### Run commands
 * `msconfig` - autorun settings and tools
 * `compmgmt.msc` - event log, tasks, users, services and devices
+* `control.exe` - control panel
+* `OptionalFeatures`- turn Windows features on or off
 * `sysdm.cpl` - system variables, remote settings
+* `ncpa.cpl` - network settings
 * `diskmgmt.msc` - disk management (resize, add new)
 * `MsInfo32.exe` - system info
 * `winver` - system version
@@ -31,7 +34,6 @@
 * `regedit` - registry editor 
 * `gpedit.msc`  - local group policy
 * `cmd`  - command line
-* `OptionalFeatures`- turn Windows features on or off
 
 ### Minimize all windows despite the current one
 You can click on window and hold it and try to shake it with mouse. All other open windows should be minimized and only the one that you shaked should remain open. Cooool.
