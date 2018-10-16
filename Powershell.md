@@ -13,8 +13,7 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Task automation](#task-automation)
 * [Pester and modules](#pester-and-modules)
 * [Appendix A - Serial port](#appendix-a---serial-port)
-* [Appendix B - Colors in .Net](#appendix-b---colors-in-.net)
-* [Appendix C - Wmic and netsh](#appendix-c---wmic-and-netsh)
+* [Appendix B - Wmic and netsh](#appendix-b---wmic-and-netsh)
 * [Useful links](#useful-links)
 
 ## Everyday struggles
@@ -1425,21 +1424,7 @@ serialPort.DataReceived += methodDelegate;	//methodDelegate - SerialDataReceived
 ```
 For more detailed information go [here](https://msdn.microsoft.com/pl-pl/library/system.io.ports.serialport(v=vs.110).aspx) or [here](http://www.sparxeng.com/blog/software/must-use-net-system-io-ports-serialport)
 
-## Appendix B - Colors in .Net
-In general colors in .Net are represented by **Color** class form **System.Drawing** namespace. They consist of four 8 bit numbers representing transparency (alpha), red, green and blue and the whole color can be represented simply by a 32 bit integer value. Once I encountered a system that was saving colors of some objects as such 32 bit integer value, for example *-5658199*. This is some kind of grey and I was asked to change it to lighter grey. I didn't know what is this number and how to understand it, how to convert it to hex notation or ARGB. Powershell helped me a lot to understand it and to achieve my goal. I tried to put this mysterious number as an argument of **FromArgb** static method of **Color** class and it return an object of type **Color** with all the color details.
-```powershell
-Add-Type -AssemblyName System.Drawing
-$color = [System.Drawing.Color]::FromArgb(-5658199)
-$color.Name
-```
-This integer is nothing more than just color written as ARGB in decimal notation instead of hexadecimal, the one that we are all used to when it comes to dealing with colors! You can see the hex notation accessing **Name** property of color object. Building a new color is quite easy also if you know red, green and blue elements. You just have to use **ToArgb** method to get the color representation as decimal integer:
-```powershell
-$color = [System.Drawing.Color]::FromArgb(216, 216, 216)
-$color.ToArgb()
-```
-That's all!
-
-## Appendix C - Wmic and netsh
+## Appendix B - Wmic and netsh
 There are two extremely powerfull commands in Windows. Actually there are much more, but here I would like to say a word or two about **wmic** and **netsh**. The first one is WMI (Windows Management Instrumentation) command line tool that allows you to get almost any kind of information about software and hardware and manage the system. The second command is intended to configure and manage networks through command line. Both tools are designed for someting different but you can sometimes achieve the same goal using them. It is also good to know that they both can work in interactive (shell) mode but for scripting it is much better to use them simply as commands putting all the required parameters.
 
 ### Netsh
