@@ -432,6 +432,19 @@ it is a good idea to use dependency injection and inject **NLog.Logger** class -
 If you have configured NLog and it is not logging nothing at all the first step you should do is to change the value of **internalLogLevel** from **Off** (`internalLogLevel="Off"`) to **Debug** (`internalLogLevel="Debug"`) and set **internalLogFile** where NLog will write its own logs (`internalLogFile="c:\temp\nlog-internal.log"`).<br />
 Quite often the problem is about the permissions to a given path to which NLog is supposed to write, but if it is something else you will be able to find answer from NLog internal logs.
 
+### Colors in .Net
+In general colors in .Net are represented by **Color** class form **System.Drawing** namespace. They consist of four 8 bit numbers representing transparency (alpha), red, green and blue and the whole color can be represented simply by a 32 bit integer value. For example *-5658199* is some kind of grey. To convert it to hex notation or ARGB you can use Powershell. **FromArgb** static method of **Color** class returns an object of type **Color** with all the color details.
+```powershell
+Add-Type -AssemblyName System.Drawing
+$color = [System.Drawing.Color]::FromArgb(-5658199)
+$color.Name
+```
+This integer is nothing more than just color written as ARGB in decimal notation instead of hexadecimal, the one that we are all used to when it comes to dealing with colors. You can see the hex notation accessing **Name** property of color object. Building a new color is quite easy also if you know red, green and blue elements. You just have to use **ToArgb** method to get the color representation as decimal integer:
+```powershell
+$color = [System.Drawing.Color]::FromArgb(216, 216, 216)
+$color.ToArgb()
+```
+
 ## Useful links
 
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
