@@ -449,6 +449,33 @@ public sealed class AutomapServiceBehavior : Attribute, IServiceBehavior
 public class Service : IService { }
 ```
 
+##### Modify properties while mapping
+It is possible to define quite advanced mapping rules in AutoMapper configuration (inside of **Initialize** method). It is very common to set or modify values of some properties, see an example: 
+```csharp
+ctg.CreateMap<Employee, EmployeeDTO>()
+    .ForMember(
+        dest => dest.DateText, 
+        opt => opt.MapFrom(src => src.Date.ToShortDateString())
+    );
+```
+
+##### Collections
+If you have the following mapping configuration:
+```csharp
+Mapper.Initialize(cfg => 
+{ 
+    cfg.CreateMap<Source, Dest>();
+});
+```
+then you can also use mapped types with collections and arrays, so all the following expressions are correct:
+```csharp
+IEnumerable<Dest> dest = Mapper.Map<Source[], IEnumerable<Dest>>(sources);
+ICollection<Dest> dest = Mapper.Map<Source[], ICollection<Dest>>(sources);
+IList<Dest> dest = Mapper.Map<Source[], IList<Dest>>(sources);
+List<Dest> dest = Mapper.Map<Source[], List<Dest>>(sources);
+Dest[] dest = Mapper.Map<Source[], Dest[]>(sources);
+```
+
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
 
