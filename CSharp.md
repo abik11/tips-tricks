@@ -297,7 +297,33 @@ Sometimes you may want to return a lot of data through service method, but the d
 </bindings>
 </system.serviceModel>
 ```
-and then while defining endpoints assign this configuration with **bindingConfiguration** attribute.
+and then while defining endpoints assign this configuration with **bindingConfiguration** attribute. Be careful, if you want to use configuration for other type of endpoint binding than basic HTTP binding, you have to define them separately with correct markups (for example **webHttpBinding**).
+
+### Many endpoints for one service
+Sometimes it is required to allow to communicate with service through different protocols. To achieve this you can define several endpoints for the service. Here you can see a basic HTTP endpoint and web HTTP endpoint:
+```xml
+<system.serviceModel>
+<services>
+    <service name="App.Service.MainService">
+        <!--- BASIC ENDPOINT -->
+        <endpoint address="base"
+                  binding="basicHttpBinding"
+                  name="MainServiceBasicHttpEndpoint"        
+                  contract="App.Contracts.IMainService" 
+                  bindingConfiguration="LargeBuffer" />
+   
+        <!-- WEB ENDPOINT --> 
+        <!-- http://localhost:55555/MainService.svc/web -->
+        <endpoint address="web"
+                  binding="webHttpBinding"
+                  name="MainServiceWebHttpEndpoint"        
+                  contract="App.Contracts.IMainService"
+                  behaviorConfiguration="webBehaviour"
+                  bindingConfiguration="WebLargeBuffer" />
+    </service>
+</services>
+</system.serviceModel>
+```
 
 ### Error details
 While developing WCF services you may want to know the details of errors that happen. As default WCF doesn't show any details which is quite smart in the context of security. To allow to send error details add the following in **Web.config**:
@@ -378,6 +404,50 @@ catch(Exception)
 }
 ```
 You can read more about this [here](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/avoiding-problems-with-the-using-statement).
+
+### AutoMapper
+AutoMapper is an extremely useful library that allows you to map objects in C# from one class to another. It is very useful in the context of WCF, for example when you get some objects through your ORM and you have to convert them to DTO (Data Contracts) objects to be able to return them from a service method. With AutoMapper such operations are quite easy to do.
+
+##### Add AutoMapper to project
+->Tools ->NuGet Package Manager ->Package Manager Console ->`install-package AutoMapper`
+* AutomapperConfiguration.cs
+```csharp
+public class AutomapperConfiguration
+{
+    public static void Configure()
+    {
+        Mapper.Initialize(ctg =>
+        {
+            ctg.CreateMap<Customer, CustomerDTO>();
+        });
+    }
+}
+```
+* AutomapServiceBehavior.cs
+```csharp
+public sealed class AutomapServiceBehavior : Attribute, IServiceBehavior
+{
+    public AutomapServiceBehavior(){ }
+
+    public void AddBindingParameters
+        (ServiceDescription serviceDescription, ServiceHostBase serviceHostBase,
+         Collection<ServiceEndpoint> endpoints, BindingParameterCollection bindingParameters)
+    {
+        AutomapperConfiguration.Configure();
+    }
+
+    public void ApplyDispatchBehavior
+        (ServiceDescription serviceDescription, ServiceHostBase serviceHostBase){ }
+
+    public void Validate
+        (ServiceDescription serviceDescription, ServiceHostBase serviceHostBase){ }
+}
+```
+* Service.svc
+```csharp
+[AutomapServiceBehavior]
+public class Service : IService { }
+```
 
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
