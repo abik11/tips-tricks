@@ -2,6 +2,7 @@
 Oh C#... the language of love! :D The one to rule them all, the best of the bests :D This document will be constantly in progress, at least I hope so. It is not a from zero to hero guide to teach C# language. It is rather some gathering of things that was useful or interesting for me while working as a programmer, especially at the beginning.
 
 * [Language tips](#language-tips)
+* [WCF](#wcf)
 * [Performance and under the hood](#performance-and-under-the-hood) 
 * [Other](#other)
 * [Useful links](#useful-links)
@@ -470,3 +471,8 @@ $color.ToArgb()
 
 ##### WCF
 [WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)
+[Hosting WCF Services](https://docs.microsoft.com/en-us/dotnet/framework/wcf/hosting-services)
+[Hosting and consuming WCF Services](https://msdn.microsoft.com/en-us/library/bb332338.aspx)
+[WCF project's structure](https://www.codemag.com/article/0809101)
+[Avoiding Problems with the Using statement](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/avoiding-problems-with-the-using-statement)
+[AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)
