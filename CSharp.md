@@ -476,6 +476,48 @@ List<Dest> dest = Mapper.Map<Source[], List<Dest>>(sources);
 Dest[] dest = Mapper.Map<Source[], Dest[]>(sources);
 ```
 
+##### Nested mappings
+Nested mappings is a very important feature of AutoMapper. If a class internally stores an instance of another class, for example as a property or field, then if you will define mappings for the internally used class, AutoMapper will be able to map it toegether with the class that uses it.
+```csharp
+public class OuterSource{
+     public InnerSource field1;
+}
+
+Mapper.Initialize(c=> {
+     cfg.CreateMap<OuterSource, OuterDest>();
+     cfg.CreateMap<InnerSource, InnerDest>();
+});
+```
+
+### Fault contracts
+* Service contract
+```csharp
+[OperationContract]
+[FaultContract(typeof(CustomFault))]
+int getData();
+```
+* DTO
+```csharp
+[DataContract]
+public class CustomFault 
+{
+    [DataMember]
+    public string Message { get; set; }
+    [DataMember]
+    public string Code { get; set; }
+}
+```
+* Service
+```csharp
+public int GetData()
+{
+    CustomFault fault = new CustomFault();
+    fault.Code = "XB10";
+    fault.Message = "Unknown error";
+    throw new FaultException<CustomFault>(fault);
+}
+```
+
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
 
