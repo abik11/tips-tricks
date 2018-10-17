@@ -539,6 +539,12 @@ $color.ToArgb()
 ##### General stuff
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
 
+##### Online tools
+[.Net error translator 1](http://finderr.net/)<br />
+[.Net error translator 2](http://www.errortoenglish.com/)<br />
+[Regex editor](http://regexr.com/)<br />
+[Barcode generator](http://barcode.tec-it.com/en)<br />
+
 ##### WCF
 [WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)<br />
 [Hosting WCF Services](https://docs.microsoft.com/en-us/dotnet/framework/wcf/hosting-services)<br />
