@@ -308,8 +308,8 @@ finally
     client.Close(); // here an exception can be thrown and it will NOT be catched
 }
 ```
-If an exception will be thrown in the **finally** then your connection to WCF service will not be closed properly. The safe way of executing WCF methods looks like this:
-```
+If an exception will be thrown in the **finally** block then your connection to WCF service will not be closed properly. The safe way of executing WCF methods looks like this:
+```csharp
 DataServiceClient client = new DataServiceClient()
 try
 {
@@ -330,6 +330,33 @@ catch(Exception)
 }
 ```
 You can read more about this [here](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/avoiding-problems-with-the-using-statement).
+
+### WCF errors
+WCF is quite advanced technology and you may encounter many different errors while working with it. Here are listed some of them with solution that may help.
+
+##### Cannot find type ... 
+* Conent of the error: `Nie mozna odnalezc typu ,App.Service.Service1" dostarczonego jako wartosc atrybutu Service w dyrektywie ServiceHost...`
+* Solution: ->Prawy Myszy na plik serwisu (svc) ->Open With ->Web Service Editor ->Upewnić się, że atrybuty Service oraz CodeBehind mają poprawne wartości
+
+##### Access to the path 'xxx' is denied
+Prawdopodobnie WCF'owy serwis próbuje zapisać plik w miejscu, do którego nie ma dostępu. Należy przypisać uprawnienia do zapisu w tym folderze dla wybranego application pool, w którym działa serwis. Np:<br />
+->Prawy Myszy na folderze ->Właściwości ->Bezpieceństwo ->Edytuj ->Dodaj ->Lokacje...<br />
+->Wybierz obecną maszynę ->Nazwa obiektu: IIS APPPOOL\MyServiceAppPool<br />
+<br />
+Ewentualnie w razie problemów ze znalezieniem nazwy Application Pool:<br />
+->Prawy Myszy na folderze ->Właściwości ->Bezpieceństwo ->Edytuj ->Dodaj ->Zaawansowane ->Lokalizacje... ->Wybierz obecną maszynę ->Znajdź teraz ->IIS_IUSRS<br />
+<br />
+Można też skorzystać z komendy:<br />
+`cacls '\\100.110.60.111\c$\inetpub\Sherlock_Service\Files' /E /G BUILTIN\IIS_IUSRS:F`
+/E - nie usunie istniejących uprawnień, /G - grant (/R - revoke), :F - full access (:N - none)
+<br />
+https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc726004(v=ws.11)
+
+##### The target assembly contains no service types. 
+->Prawy Myszy na projekcie z kontraktami ->Properties ->WCF Options ->Start WCF Service Host when debugging another project in the same solution.
+
+##### Exporting enums
+-Treśc: Właściwie to nie błąd, ale ciekawostka - referencja do serwisu WCF eksportuje enumy również w przestrzeni nazw. Ale jeśli np. enumy znajdują się w projekcie X i projekt Y ma referencję do projektu X (tego z enumami), to referencja do serwisu WCF nie wyeksportuje do przestrzeni nazw tych enumów (ponieważ są już w projekcie X, do którego mamy referencję w Y).
 
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
