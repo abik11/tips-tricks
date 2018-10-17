@@ -288,6 +288,49 @@ While developing WCF services you may want to know the details of errors that ha
 </behaviors>
 ```
 
+### Problems with using statement
+Here is a common way in which you could call some method of WCF service - with using statement:
+```csharp
+using(DataServiceClient client = new DataServiceClient())
+{
+     client.ExecuteMethod();
+}
+```
+This is actually translated to this one under the hood:
+```csharp
+DataServiceClient client = new DataServiceClient();
+try
+{
+    client.ExecuteMethod();
+}
+finally
+{
+    client.Close(); // here an exception can be thrown and it will NOT be catched
+}
+```
+If an exception will be thrown in the **finally** then your connection to WCF service will not be closed properly. The safe way of executing WCF methods looks like this:
+```
+DataServiceClient client = new DataServiceClient()
+try
+{
+    client.ExecuteMethod();
+}
+catch(CommunicationException)
+{
+    client.Abort();
+}
+catch(TimeoutException)
+{
+    client.Abort();
+}
+catch(Exception)
+{
+    client.Abort();
+    throw;
+}
+```
+You can read more about this [here](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/avoiding-problems-with-the-using-statement).
+
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
 
@@ -470,9 +513,8 @@ $color.ToArgb()
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
 
 ##### WCF
-[WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)
-[Hosting WCF Services](https://docs.microsoft.com/en-us/dotnet/framework/wcf/hosting-services)
-[Hosting and consuming WCF Services](https://msdn.microsoft.com/en-us/library/bb332338.aspx)
-[WCF project's structure](https://www.codemag.com/article/0809101)
-[Avoiding Problems with the Using statement](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/avoiding-problems-with-the-using-statement)
-[AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)
+[WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)<br />
+[Hosting WCF Services](https://docs.microsoft.com/en-us/dotnet/framework/wcf/hosting-services)<br />
+[Hosting and consuming WCF Services](https://msdn.microsoft.com/en-us/library/bb332338.aspx)<br />
+[WCF project's structure](https://www.codemag.com/article/0809101)<br />
+[AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)<br />
