@@ -269,6 +269,24 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 }
 ```
 
+## WCF
+
+### WCF Test Client
+If you develop WCF services, there is a simple but nice tool distributed toegether with Visual Studio 2017 to test WCF services. You can find it in the following path: `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE`.
+
+### Error details
+While developing WCF services you may want to know the details of errors that happen. As default WCF doesn't show any details which is quite smart in the context of security. To allow to send error details add the following in **Web.config**:
+```xml
+<behaviors>
+<serviceBehaviors>
+    <behavior name="">
+        <serviceMetadata httpGetEnabled="true" />
+        <serviceDebug includeExceptionDetailInFaults="true">
+    </behavior>
+</serviceBehaviors>
+</behaviors>
+```
+
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
 
@@ -447,4 +465,8 @@ $color.ToArgb()
 
 ## Useful links
 
+##### General stuff
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
+
+##### WCF
+[WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)
