@@ -561,8 +561,6 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Barcode generator](http://barcode.tec-it.com/en)<br />
 [SHA256 calculator](http://www.xorbin.com/tools/sha256-hash-calculator)<br />
 [MD5 checksum](http://onlinemd5.com/)<br />
-[.Net error translator 1](http://finderr.net/)<br />
-[.Net error translator 2](http://www.errortoenglish.com/)<br />
 [UML editor](https://www.draw.io/)<br />
  
 #### Online web-dev tools
