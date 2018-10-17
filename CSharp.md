@@ -275,6 +275,30 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 ### WCF Test Client
 If you develop WCF services, there is a simple but nice tool distributed toegether with Visual Studio 2017 to test WCF services. You can find it in the following path: `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE`.
 
+### Service config editor
+->Right click on: Web.config (in WCF project) ->Edit WCF Configuration
+
+### Returning big amounts of data
+Sometimes you may want to return a lot of data through service method, but the default maximum size may not allow you. To change it, in Web.config add this:
+```xml
+<system.serviceModel>
+<bindings>
+    <basicHttpBinding>
+        <binding name="LargeBuffer" 
+                 maxBufferSize="2147483647" 
+                 maxReceivedMessageSize="2147483647">
+            <readerQuotas maxDepth="2147483647"
+                          maxStringContentLength="2147483647"
+                          maxArrayLength="2147483647"
+                          maxBytesPerRead="2147483647"
+                          maxNameTableCharCount="2147483647" />
+        </binding>
+    </basicHttpBinding>
+</bindings>
+</system.serviceModel>
+```
+and then while defining endpoints assign this configuration with **bindingConfiguration** attribute.
+
 ### Error details
 While developing WCF services you may want to know the details of errors that happen. As default WCF doesn't show any details which is quite smart in the context of security. To allow to send error details add the following in **Web.config**:
 ```xml
@@ -287,6 +311,30 @@ While developing WCF services you may want to know the details of errors that ha
 </serviceBehaviors>
 </behaviors>
 ```
+
+### WCF errors
+WCF is quite advanced technology and you may encounter many different errors while working with it. Here are listed some of them with solution that may help.
+
+##### Cannot find type "App.Service.Service1" provided as the Service attribute value in the ServiceHost directive could not be found
+->Right click on the service file (svc) ->Open With ->Web Service Editor ->Make sure that Service and Code Behind attributes have correct values.
+
+##### Access to the path 'xyz' is denied
+If you see such error, probably WCF service is trying to save or modify a file in a path where it is not allowed. You have to grant write permission on the given directory for application pool to which the service is assigned:<br />
+->Right click on directory ->Properties ->Security ->Edit ->Add ->Advanced ->Locations... ->Choose current machine ->Object name: IIS APPPOOL\MyServiceAppPool<br /><br />
+In case if you couldn't find the correct application pool (actually you always should), you can add the permission for **IIS_IUSRS** group:<br />
+->Right click on directory ->Properties ->Security ->Edit ->Add ->Advanced ->Locations... ->Choose current machine ->Find now: IIS_IUSRS<br /><br />
+You can also use the command:
+```
+cacls '\\100.110.60.111\c$\inetpub\MyApp_Service\Files' /E /G BUILTIN\IIS_IUSRS:F
+```
+* /E - do not delete current permissions
+* /G - grant (/R - revoke) 
+* :F - full access (:N - none)
+
+Read more: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc726004(v=ws.11)
+
+##### The target assembly contains no service types. 
+->Right click on the project that contains WCF contracts ->Properties ->WCF Options ->Start WCF Service Host when debugging another project in the same solution.
 
 ### Problems with using statement
 Here is a common way in which you could call some method of WCF service - with using statement:
@@ -330,30 +378,6 @@ catch(Exception)
 }
 ```
 You can read more about this [here](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/avoiding-problems-with-the-using-statement).
-
-### WCF errors
-WCF is quite advanced technology and you may encounter many different errors while working with it. Here are listed some of them with solution that may help.
-
-##### Cannot find type "App.Service.Service1" provided as the Service attribute value in the ServiceHost directive could not be found
-->Right click on the service file (svc) ->Open With ->Web Service Editor ->Make sure that Service and Code Behind attributes have correct values.
-
-##### Access to the path 'xyz' is denied
-If you see such error, probably WCF service is trying to save or modify a file in a path where it is not allowed. You have to grant write permission on the given directory for application pool to which the service is assigned:<br />
-->Right click on directory ->Properties ->Security ->Edit ->Add ->Advanced ->Locations... ->Choose current machine ->Object name: IIS APPPOOL\MyServiceAppPool<br /><br />
-In case if you couldn't find the correct application pool (actually you always should), you can add the permission for **IIS_IUSRS** group:<br />
-->Right click on directory ->Properties ->Security ->Edit ->Add ->Advanced ->Locations... ->Choose current machine ->Find now: IIS_IUSRS<br /><br />
-You can also use the command:
-```
-cacls '\\100.110.60.111\c$\inetpub\MyApp_Service\Files' /E /G BUILTIN\IIS_IUSRS:F
-```
-* /E - do not delete current permissions
-* /G - grant (/R - revoke) 
-* :F - full access (:N - none)
-
-Read more: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc726004(v=ws.11)
-
-##### The target assembly contains no service types. 
-->Right click on the project that contains WCF contracts ->Properties ->WCF Options ->Start WCF Service Host when debugging another project in the same solution.
 
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
