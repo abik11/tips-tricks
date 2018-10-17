@@ -490,13 +490,8 @@ Mapper.Initialize(c=> {
 ```
 
 ### Fault contracts
-* Service contract
-```csharp
-[OperationContract]
-[FaultContract(typeof(CustomFault))]
-int getData();
-```
-* DTO
+Fault contracts are an elegant way of error handling in WCF. You can create a specified data contract that will be used for exceptions.
+* DTO - Firstly you have to create a data contranct, the same way as a typical DTO
 ```csharp
 [DataContract]
 public class CustomFault 
@@ -507,14 +502,27 @@ public class CustomFault
     public string Code { get; set; }
 }
 ```
-* Service
+* Service contract - Mark a method with **FaultContract** attribute
 ```csharp
-public int GetData()
+[OperationContract]
+[FaultContract(typeof(CustomFault))]
+void RunMethod();
+```
+* Service - Catch an exception and throw **FaultException** of your DTO 
+```csharp
+public void RunMethod()
 {
-    CustomFault fault = new CustomFault();
-    fault.Code = "XB10";
-    fault.Message = "Unknown error";
-    throw new FaultException<CustomFault>(fault);
+    try 
+    {
+        DoSomething();
+    }
+    catch(Exception)
+    {
+        CustomFault fault = new CustomFault();
+        fault.Code = "XB10";
+        fault.Message = "Unknown error";
+        throw new FaultException<CustomFault>(fault);
+    }
 }
 ```
 
