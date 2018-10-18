@@ -279,13 +279,14 @@ If you develop WCF services, there is a simple but nice tool distributed toegeth
 ->Right click on: Web.config (in WCF project) ->Edit WCF Configuration
 
 ### Service method returning JSON
+If you want to create a service method that will return JSON, so the data can be easily accessed and consumed through AJAX you have to add **WebInvoke** attribute to method defintion in the contract like this:
 ```csharp
 [OperationContract]
 [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped")]
 [return: MessageParameter(Name = "result")]
 ResultDto GetData();
 ```
-
+Then in **Web.config** you have to add endopoint with **webHttpBinging**.
 ```xml
 <system.serviceModel>
     <services>
@@ -304,6 +305,9 @@ ResultDto GetData();
           </behavior>
     </endpointBehaviors> 
 </behaviors>
+```
+It is also a good idea to enable CORS requests, also in **Web.config**:
+```xml
 <system.webServer>
     <httpProtocol>
         <customHeaders>
