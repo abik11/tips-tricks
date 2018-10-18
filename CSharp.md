@@ -278,6 +278,42 @@ If you develop WCF services, there is a simple but nice tool distributed toegeth
 ### Service config editor
 ->Right click on: Web.config (in WCF project) ->Edit WCF Configuration
 
+### Service method returning JSON
+```csharp
+[OperationContract]
+[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped")]
+[return: MessageParameter(Name = "result")]
+ResultDto GetData();
+```
+
+```xml
+<system.serviceModel>
+    <services>
+        <service name="App.Service.MainService">
+           <endpoint address="../MainService.svc"
+             binding="webHttpBinding"
+             contract="App.Contracts.IMainService"
+             behaviorConfiguration="webBehaviour" />
+        </service>
+    </services>
+</system.serviceModel>
+<behaviors>
+    <endpointBehaviors>
+          <behavior name="webBehaviour">
+             <webHttp/>
+          </behavior>
+    </endpointBehaviors> 
+</behaviors>
+<system.webServer>
+    <httpProtocol>
+        <customHeaders>
+           <add name="Access-Control-Allow-Origin" value="*" />
+           <add name="Access-Control-Allow-Headers" value="Content-Type, Accept" />
+        </customHeaders>
+    </httpProtocol>
+</system.webServer>
+```
+
 ### Returning big amounts of data
 Sometimes you may want to return a lot of data through service method, but the default maximum size may not allow you. To change it, in Web.config add this:
 ```xml
