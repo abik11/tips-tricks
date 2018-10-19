@@ -566,6 +566,102 @@ public void RunMethod()
 }
 ```
 
+### Concurrent mode
+```csharp
+[ServiceBehaviour(ConcurrencyMode = ConcurrencyMode.Multiple)]
+```
+
+### Duplex method
+
+/ wsDualHttpBinding /
+[ServiceContract(CallbackContract = typeof(IServiceCallback))]
+interface IService
+{
+    [OperationContract(IsOneWay = true)]
+    void Method(string message);
+}
+
+interface IServiceCallback 
+{
+    [OperationContract(IsOneWay = true)]
+    void Callback(string message);
+}
+
+public class Service : IService, IServiceCallback 
+{
+    public void Method(string message)
+    {
+        IServiceCallback callback = 
+            OperationContext.Current.GetCallbackChannel<IServiceCallback>();
+        callback.Callback(message);
+    }
+}
+
+/ klient /
+public class Callback : ServiceReference.IServiceCallback
+{
+    public void Callback(string message)
+    {
+        MessageBox.Show(message);
+    }
+}
+
+public class Client 
+{
+    public CallMethod()
+    {
+        var context = new InstanceContext(new Callback());
+        ServiceClient client = new ServiceClient(context);
+    }
+}
+
+### Transaction 
+[ServiceContract]
+public interface IExampleService 
+{
+    [OperationContract]
+    [TransactionFlow(TransactionFlowOption.Mandatory)]
+    void UpdateData(string text);
+
+    [OperationContract]
+    [TransactionFlow(TransactionFlowOption.Mandatory)]
+    void ExecuteOperation();
+}
+
+[ServiceBehavior
+(TransactionIsolationLevel = IsolationLevel.Serializable, TransactionTimeout = "00:00:30")]
+public class ExampleService: IExampleService
+{
+    [OperationBehavior
+    (TransactionScopeRequired = true, TransactionAutoComplete = true)]
+    void UpdateData(string text){}
+
+    [OperationBehavior
+    (TransactionScopeRequired = true, TransactionAutoComplete = true)]
+    void ExecuteOperation(){}
+}
+
+//Client:
+using(TransactionScope scope = new TransactionScope())
+{
+    ExampleServiceClient client = new ExampleServiceClient();
+    client.UpdateData(text);
+    client.ExecuteOperation();
+    scope.Complete();
+    client.Close();
+}
+
+### Transactions with sessions
+//trzeba dodać takie rzeczy:
+
+[ServiceContract(SessionMode = SessionMode.Required)]
+
+[ServiceBehavior
+(TransactionIsolationLevel = IsolationLevel.Serializable, TransactionTimeout = "00:00:30", 
+InstanceContextMode = InstanceContextMode.PerSession, TransactionAutoCompleteOnSessionClose = true)]
+
+[OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = false)]
+
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
 
