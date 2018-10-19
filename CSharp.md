@@ -486,6 +486,7 @@ public sealed class AutomapServiceBehavior : Attribute, IServiceBehavior
 * Service.svc
 ```csharp
 [AutomapServiceBehavior]
+[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
 public class Service : IService { }
 ```
 
