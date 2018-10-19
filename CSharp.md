@@ -282,6 +282,14 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 }
 ```
 
+### Redirect to other action
+```csharp
+public ActionResult RedirectingView()
+{
+   return RedirectToAction("OtherView", "OtherController", new { Parameter1 = 101010 });
+}
+```
+
 ## WCF
 Windows Communication Foundation is a framework for developing services. It allows you to build services over different procotols and host them in many ways. It is very powerful, flexible and complex. It enforces you a bit to structure your project, you need to separate contracts (method and data contracts - DTO), logic (used by service), service, service hosting and client with a reference to the service.
 
