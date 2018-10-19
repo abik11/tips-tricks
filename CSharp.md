@@ -290,6 +290,37 @@ public ActionResult RedirectingView()
 }
 ```
 
+### Add URL redirection
+As default you can find routes in **App_Start** directory in **RouteConfig.cs** file. There you can add additional routes, like this:
+```csharp
+routes.MapRoute(
+    name: "QueenMobile",
+    url: "Queen",
+    defaults: new { controller = "SWSMobile", action = "Index", id = UrlParameter.Optional }
+);
+```
+Name and URL should not have the same value.
+
+### Put C# array to Javascript
+```csharp
+@{ int[] numbers = new int[]{ 1, 2, 3, 4 }; }
+<div onclick="iterate( @Html.Raw(Json.Encode(numbers)) );">Iterate array</div>
+```
+```javascript
+function iterate(numbers) {
+   numbers.forEach((item, index) => {
+      console.log(`${index}. Current item: ${item}`);
+   });
+}
+```
+
+### Add some namespace to Razor
+In **Web.config** file in **Views** directory you can add following line:
+```xml
+<add namespace="Some.Namespace" />
+```
+This will allow you to use some namespace in your Razor views.
+
 ## WCF
 Windows Communication Foundation is a framework for developing services. It allows you to build services over different procotols and host them in many ways. It is very powerful, flexible and complex. It enforces you a bit to structure your project, you need to separate contracts (method and data contracts - DTO), logic (used by service), service, service hosting and client with a reference to the service.
 
