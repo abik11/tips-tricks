@@ -2,6 +2,7 @@
 Oh C#... the language of love! :D The one to rule them all, the best of the bests :D This document will be constantly in progress, at least I hope so. It is not a from zero to hero guide to teach C# language. It is rather some gathering of things that was useful or interesting for me while working as a programmer, especially at the beginning.
 
 * [Language tips](#language-tips)
+* [ASP.NET MVC](#asp.net-mvc)
 * [WCF](#wcf)
 * [Performance and under the hood](#performance-and-under-the-hood) 
 * [Other](#other)
@@ -267,6 +268,17 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
    }
    
    return null;
+}
+```
+
+## ASP.NET MVC
+
+### Browser detection
+```csharp
+@using System.Web
+@{
+    string browser = Request.Browser.Browser;
+    if(browser == "InternetExplorer"){ // ... }
 }
 ```
 
@@ -873,6 +885,12 @@ $color.ToArgb()
 [.Net error translator 2](http://www.errortoenglish.com/)<br />
 [Regex editor](http://regexr.com/)<br />
 [Barcode generator](http://barcode.tec-it.com/en)<br />
+
+##### ASP.NET MVC
+[ASP.NET MVC 5 Internationalization](http://afana.me/archive/2011/01/14/aspnet-mvc-internationalization.aspx/)<br />
+[HTTP File Upload](https://www.hanselman.com/blog/ABackToBasicsCaseStudyImplementingHTTPFileUploadWithASPNETMVCIncludingTestsAndMocks.aspx)<br />
+[Dynamic image generation](https://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)<br />
+[Global authentication and Allow Anonymous](https://weblogs.asp.net/jongalloway/asp-net-mvc-authentication-global-authentication-and-allow-anonymous)<br />
 
 ##### WCF
 [WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)<br />
