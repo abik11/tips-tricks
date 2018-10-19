@@ -567,12 +567,12 @@ public void RunMethod()
 ```
 
 ### Concurrent mode
+To turn on concurrency for your WCF service you have to add the following attribute for your service:
 ```csharp
 [ServiceBehaviour(ConcurrencyMode = ConcurrencyMode.Multiple)]
 ```
 
 ### Duplex method
-
 / wsDualHttpBinding /
 [ServiceContract(CallbackContract = typeof(IServiceCallback))]
 interface IService
@@ -615,7 +615,9 @@ public class Client
     }
 }
 
-### Transaction 
+### Transaction
+Implementing transactions in WCF is not very easy, but sometimes it is absolutely necessary. Firstly you have to mark methods that use transactions with **TransactionFlow** attribute:
+```csharp
 [ServiceContract]
 public interface IExampleService 
 {
@@ -627,21 +629,21 @@ public interface IExampleService
     [TransactionFlow(TransactionFlowOption.Mandatory)]
     void ExecuteOperation();
 }
-
-[ServiceBehavior
-(TransactionIsolationLevel = IsolationLevel.Serializable, TransactionTimeout = "00:00:30")]
+```
+Then you also have to add a bunch of attributes in your service implementation:
+```csharp
+[ServiceBehavior(TransactionIsolationLevel = IsolationLevel.Serializable, TransactionTimeout = "00:00:30")]
 public class ExampleService: IExampleService
 {
-    [OperationBehavior
-    (TransactionScopeRequired = true, TransactionAutoComplete = true)]
+    [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
     void UpdateData(string text){}
 
-    [OperationBehavior
-    (TransactionScopeRequired = true, TransactionAutoComplete = true)]
+    [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
     void ExecuteOperation(){}
 }
-
-//Client:
+```
+To be able to call transactional methods in the client side, you should use **TransactionScope**:
+```csharp
 using(TransactionScope scope = new TransactionScope())
 {
     ExampleServiceClient client = new ExampleServiceClient();
@@ -650,17 +652,35 @@ using(TransactionScope scope = new TransactionScope())
     scope.Complete();
     client.Close();
 }
+```
 
-### Transactions with sessions
-//trzeba dodać takie rzeczy:
-
+##### Transactions with sessions
+If you want to create transactions with sessions you have to change the configuration of the attributes:
+```csharp
 [ServiceContract(SessionMode = SessionMode.Required)]
+public interface IExampleService 
+{
+    [OperationContract]
+    [TransactionFlow(TransactionFlowOption.Mandatory)]
+    void UpdateData(string text);
 
-[ServiceBehavior
-(TransactionIsolationLevel = IsolationLevel.Serializable, TransactionTimeout = "00:00:30", 
+    [OperationContract]
+    [TransactionFlow(TransactionFlowOption.Mandatory)]
+    void ExecuteOperation();
+}
+```
+```csharp
+[ServiceBehavior(TransactionIsolationLevel = IsolationLevel.Serializable, TransactionTimeout = "00:00:30", 
 InstanceContextMode = InstanceContextMode.PerSession, TransactionAutoCompleteOnSessionClose = true)]
+public class ExampleService: IExampleService
+{
+    [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = false)]
+    void UpdateData(string text){}
 
-[OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = false)]
+    [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = false)]
+    void ExecuteOperation(){}
+}
+```
 
 ## Performance and under the hood
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
