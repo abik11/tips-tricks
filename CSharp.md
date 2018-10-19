@@ -4,7 +4,7 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 * [Language tips](#language-tips)
 * [ASP.NET MVC](#asp.net-mvc)
 * [WCF](#wcf)
-* [Performance and under the hood](#performance-and-under-the-hood) 
+* [Performance tips](#performance-tips) 
 * [Other](#other)
 * [Useful links](#useful-links)
 
@@ -699,7 +699,7 @@ public class ExampleService: IExampleService
 }
 ```
 
-## Performance and under the hood
+## Performance tips
 Performance is often a very important factor. But to be able to optimize and speed up something it is crucial to know how C# runtime and the language itself work. Also keep in mind that you should optimize stuff only when it is really necessary. If something works pretty fast there is no point in waisting your time trying to gain few miliseconds speed up unless you develop some real time software of a game.
 
 ### Measuring performance
