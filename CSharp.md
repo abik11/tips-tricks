@@ -573,7 +573,9 @@ To turn on concurrency for your WCF service you have to add the following attrib
 ```
 
 ### Duplex method
-/ wsDualHttpBinding /
+To be able to implement duplex method you have to switch your service to **wsDualHttpBinding** binding mode. Duplex method allows you to call a callback after a service method is finished. See here how to set it up:
+* Service
+```csharp
 [ServiceContract(CallbackContract = typeof(IServiceCallback))]
 interface IService
 {
@@ -596,8 +598,9 @@ public class Service : IService, IServiceCallback
         callback.Callback(message);
     }
 }
-
-/ klient /
+```
+* Client
+```csharp
 public class Callback : ServiceReference.IServiceCallback
 {
     public void Callback(string message)
@@ -614,6 +617,7 @@ public class Client
         ServiceClient client = new ServiceClient(context);
     }
 }
+```
 
 ### Transaction
 Implementing transactions in WCF is not very easy, but sometimes it is absolutely necessary. Firstly you have to mark methods that use transactions with **TransactionFlow** attribute:
@@ -668,8 +672,7 @@ public interface IExampleService
     [TransactionFlow(TransactionFlowOption.Mandatory)]
     void ExecuteOperation();
 }
-```
-```csharp
+
 [ServiceBehavior(TransactionIsolationLevel = IsolationLevel.Serializable, TransactionTimeout = "00:00:30", 
 InstanceContextMode = InstanceContextMode.PerSession, TransactionAutoCompleteOnSessionClose = true)]
 public class ExampleService: IExampleService
