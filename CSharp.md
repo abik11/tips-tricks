@@ -937,3 +937,4 @@ $color.ToArgb()
 [Hosting and consuming WCF Services](https://msdn.microsoft.com/en-us/library/bb332338.aspx)<br />
 [WCF project's structure](https://www.codemag.com/article/0809101)<br />
 [AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)<br />
+[Referencja Cykliczna - PL](https://cezarywalenciuk.pl/blog/programing/post/wcf-i-circular-reference-referencja-cykliczna)<br />
