@@ -1443,6 +1443,7 @@ SQLCMD has some useful options, here is a small list:
 * **-q** execute query and enter interactive mode
 * **-Q** execute query without entering interactive mode
 * **-i** input file with SQL commands to be executed
+
 Instead of Windows Authentication you can use SQL login with **-U** and **-P** parameters for user login and password.
 
 ### Parametrized SQL queries from command line 
