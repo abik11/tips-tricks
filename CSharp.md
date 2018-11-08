@@ -302,6 +302,14 @@ routes.MapRoute(
 ```
 Name and URL should not have the same value.
 
+### Access URL parameters
+```csharp
+if(Request.QueryString["status"] == "success")
+{ 
+   //... 
+}
+```
+
 ### Put C# array to Javascript
 ```csharp
 @{ int[] numbers = new int[]{ 1, 2, 3, 4 }; }
@@ -456,6 +464,15 @@ fetch(url, { credentials: 'include' })
 $.ajax({ 
    xhrFields: { withCredentials: true } 
 });
+```
+
+### Display image from Image object in HTML 
+```csharp
+var base64 = Convert.ToBase64String(image);
+var imgSrc = String.Format("data:{1};base64,{0}", base64, fileMimeType);
+```
+```html
+<img src='@imgSrc' />
 ```
 
 ## WCF
