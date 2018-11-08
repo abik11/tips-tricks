@@ -357,6 +357,107 @@ All the HTML content that you will define inside of a section will be put in the
 </html>
 ```
 
+### Authorization with Active Directory group
+To allow AD authorization you have to enable it in IIS: ->Sites ->Your application ->Authentication ->**Anonymous Authentication**: Enabled, **Windows Authentication**: Enabled.<br />
+Here is an example of authorization atribute that uses AD groups:
+```csharp
+public class AuthorizeADAttribute : AuthorizeAttribute
+{
+   public string Groups { get; set; }
+
+   public override void OnAuthorization(AuthorizationContext filterContext)
+   {
+      base.OnAuthorization(filterContext);
+      var groups = Groups.Split(',');
+
+      var windowsIdentity = filterContext.HttpContext.User.Identity as WindowsIdentity;
+      var winPrincipal = new WindowsPrincipal(windowsIdentity);
+      var context = new PrincipalContext(ContextType.Domain, "SAMSUNG");
+      var userPrincipal = UserPrincipal.FindByIdentity
+             (context, IdentityType.SamAccountName, winPrincipal.Identity.Name);
+
+      try
+      {
+         bool isAuthorized = false;
+
+         for (int i = 0; i < groups.Length; i++)
+         {
+            if (userPrincipal.IsMemberOf(context, IdentityType.Name, groups[i].Trim()))
+            {
+               isAuthorized = true;
+               break;
+            }
+         }
+
+         if (!isAuthorized)
+            filterContext.Result = new ViewResult { ViewName = "~/Views/Error/401.cshtml" };
+      }
+      catch (Exception)
+      {
+         filterContext.Result = new ViewResult { ViewName = "~/Views/Error/401.cshtml" };
+      }
+   }
+}
+```
+If the attribute is ready, it is possible to apply it to every controller as default - but of course don't do that if you only want to use this kind of autorization only for some of your controllers. In **Global.asax.cs** in **Application_Start** method, as default, there is a call to **RegisterGlobalFilters**, it looks like this:
+```chsarp
+protected void Application_Start()
+{
+   AreaRegistration.RegisterAllAreas();
+   FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+   RouteConfig.RegisterRoutes(RouteTable.Routes);
+   BundleConfig.RegisterBundles(BundleTable.Bundles);
+}
+```
+And then in **FilterConfig.cs** you can define a default authorization atribute for all controllers:
+```csharp
+public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+{
+    filters.Add(new HandleErrorAttribute());
+    filters.Add(new AuthorizeAttribute());
+}
+```
+Now automatically every controller will be authorized with AD. You can allow unauthorized user to access some controllers or methods with **AllowAnonymous** attribute. See here an example:
+```csharp
+public class EmployeeController : Controller
+{
+   [AllowAnonymous]
+   public ActionResult Index()
+   {
+      return View();
+   }
+
+   public ActionResult Registration()
+   {
+      return View();
+   }
+
+   [AuthorizeAD(Groups = "IT_Group,HR_Group")]
+   public ActionResult Status()
+   {
+      return View();
+   }
+
+   public ActionResult History()
+   {
+      return View();
+   }
+}
+```
+*Registration* and *History* methods of *EmployeeController* are available for users registered in AD. *Index* method is available also for users that are not registered in AD and *Status* is available for registered users that belong to specified AD groups.<br />
+If you have to call a method that requires AD authorization through AJAX, it is required to attach Windows credentials:
+* Fetch API:
+```javascript
+fetch(url, { credentials: 'include' })
+   .then(() => {});
+```
+* JQuery:
+```javascript
+$.ajax({ 
+   xhrFields: { withCredentials: true } 
+});
+```
+
 ## WCF
 Windows Communication Foundation is a framework for developing services. It allows you to build services over different procotols and host them in many ways. It is very powerful, flexible and complex. It enforces you a bit to structure your project, you need to separate contracts (method and data contracts - DTO), logic (used by service), service, service hosting and client with a reference to the service.
 
