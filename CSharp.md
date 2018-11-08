@@ -400,7 +400,7 @@ public class AuthorizeADAttribute : AuthorizeAttribute
 }
 ```
 If the attribute is ready, it is possible to apply it to every controller as default - but of course don't do that if you only want to use this kind of autorization only for some of your controllers. In **Global.asax.cs** in **Application_Start** method, as default, there is a call to **RegisterGlobalFilters**, it looks like this:
-```chsarp
+```csharp
 protected void Application_Start()
 {
    AreaRegistration.RegisterAllAreas();
