@@ -272,6 +272,7 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 ```
 
 ## ASP.NET MVC
+ASP.NET MVC is a .Net web app framework based on the design pattern called Model-View-Controller. It is quite popular, easy to learn but hard to master.
 
 ### Browser detection
 ```csharp
@@ -320,6 +321,41 @@ In **Web.config** file in **Views** directory you can add following line:
 <add namespace="Some.Namespace" />
 ```
 This will allow you to use some namespace in your Razor views.
+
+### Sections
+Sections are an mechanism that allows you to define a layout with specified sections that will be later filled with some HTML depending on a specified MVC view. In a **Shared** directory there is a **\_Layout.cshtml** file where you can use a **RenderSection** function to specify the layout with sections:
+```html
+<html>
+<body>
+    <div class="menu">
+        @RenderSection("menu", required: false)
+    </div>
+    <div class="container">  
+        @RenderBody()
+    </div>
+</body>
+</html>
+```
+Then you can create a new **cshtml** file and define the content for the section. You can do it with **section** directive:
+```html
+@section menu {
+    <a href="#">Home</a>
+}
+<h1>Hello!</h1>
+```
+All the HTML content that you will define inside of a section will be put in the layout where you call the **RenderSection** with section's name. All the other stuff will be put in place of **RenderBody** function. Here you can see the generated HTML:
+```html
+<html>
+<body>
+    <div class="menu">
+        <a href="#">Home</a>
+    </div>
+    <div class="container">  
+        <h1>Hello!</h1>
+    </div>
+</body>
+</html>
+```
 
 ## WCF
 Windows Communication Foundation is a framework for developing services. It allows you to build services over different procotols and host them in many ways. It is very powerful, flexible and complex. It enforces you a bit to structure your project, you need to separate contracts (method and data contracts - DTO), logic (used by service), service, service hosting and client with a reference to the service.
