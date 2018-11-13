@@ -376,34 +376,48 @@ public class AuthorizeADAttribute : AuthorizeAttribute
    public override void OnAuthorization(AuthorizationContext filterContext)
    {
       base.OnAuthorization(filterContext);
-      var groups = Groups.Split(',');
-
-      var windowsIdentity = filterContext.HttpContext.User.Identity as WindowsIdentity;
-      var winPrincipal = new WindowsPrincipal(windowsIdentity);
-      var context = new PrincipalContext(ContextType.Domain, "SAMSUNG");
-      var userPrincipal = UserPrincipal.FindByIdentity
-             (context, IdentityType.SamAccountName, winPrincipal.Identity.Name);
+      string[] groups = Groups.Split(',');
+      string userName = UserHelper.GetUserName(filterContext.HttpContext.User);
 
       try
       {
-         bool isAuthorized = false;
-
-         for (int i = 0; i < groups.Length; i++)
-         {
-            if (userPrincipal.IsMemberOf(context, IdentityType.Name, groups[i].Trim()))
-            {
-               isAuthorized = true;
-               break;
-            }
-         }
-
-         if (!isAuthorized)
+         bool isAuthorized = UserHelper.IsMemberOfAny(groups, userName);
+            
+         if(!isAuthorized)
             filterContext.Result = new ViewResult { ViewName = "~/Views/Error/401.cshtml" };
       }
       catch (Exception)
       {
-         filterContext.Result = new ViewResult { ViewName = "~/Views/Error/401.cshtml" };
+         filterContext.Result = new ViewResult { ViewName = "~/Views/Error/NotAuthorise.cshtml" };
       }
+   }
+}
+
+public static class UserHelper
+{
+   public static string GetUserName(IPrincipal user)
+   {
+      WindowsIdentity windowsIdentity = user.Identity as WindowsIdentity;
+      WindowsPrincipal winPrincipal = new WindowsPrincipal(windowsIdentity);
+
+      if (winPrincipal.Identity.Name.StartsWith("Corp\\"))
+         return winPrincipal.Identity.Name.Replace("Corp\\", "");
+      else
+         return winPrincipal.Identity.Name;
+   }
+
+   public static bool IsMemberOfAny(string[] groupNames, string userName, string domainName = "Corp")
+   {
+      PrincipalContext context = new PrincipalContext(ContextType.Domain, domainName);
+      UserPrincipal userPrincipal = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, userName);
+
+      for (int i = 0; i < groupNames.Length; i++)
+      {
+         if (userPrincipal.IsMemberOf(context, IdentityType.Name, groupNames[i].Trim()))
+            return true;
+      }
+
+      return false;
    }
 }
 ```
