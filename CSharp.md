@@ -525,7 +525,7 @@ and a POST request with a JSON like this:
    }
 }
 ```
-then be careful! Because Model Binder will not bind the whole JSON structure to the Item class. It will take the inner *Item* property (of type *InnerItem* in C# class) and bind this to the controller's method parameter! That means that `item.Id` will equal 67 and not 42 as expected! This happens because the name of the inner property is called *Item*, just like the name of the parameter of action method. Altough such scenario is possible, it is rather extremely rare so in general don't fear to use Model Binder, it is a really great feature of MVC .NET.
+then be careful! Because Model Binder will not bind the whole JSON structure to the Item class. It will take the inner *Item* property (of type *InnerItem* in C# code) and bind this to the controller's method parameter! That means that `item.Id` will equal 67 and not 42 as expected! This happens because the name of the inner property is called *Item*, just like the name of the parameter of action method. Altough such scenario is possible, it is rather extremely rare so in general don't fear to use Model Binder, it is a really great feature of MVC .NET.
 
 ## WCF
 Windows Communication Foundation is a framework for developing services. It allows you to build services over different procotols and host them in many ways. It is very powerful, flexible and complex. It enforces you a bit to structure your project, you need to separate contracts (method and data contracts - DTO), logic (used by service), service, service hosting and client with a reference to the service.
