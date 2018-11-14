@@ -517,11 +517,11 @@ public ActionResult UpdateItem(Item item)
 and a POST request with a JSON like this:
 ```json
 {
-   Id: 42,
-   Name: 'NewItem #42'
-   Item: {
-      Id: 67,
-      Name: 'Item No 67'
+   'Id': 42,
+   'Name': 'NewItem #42'
+   'Item': {
+      'Id': 67,
+      'Name': 'Item No 67'
    }
 }
 ```
