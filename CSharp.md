@@ -489,6 +489,44 @@ var imgSrc = String.Format("data:{1};base64,{0}", base64, fileMimeType);
 <img src='@imgSrc' />
 ```
 
+### Model Binder
+**Model Binder** is a component of MVC .NET that is responsible for filling your objects with the data taken from HTTP request parameters. It is very useful and saves a lot of time, but it can also cause you some problems. For example here we've got some (more or less :)) complex class:
+```csharp
+public class Item 
+{
+   public int Id { get; set; }
+   public string Name { get; set; }
+   public InnerItem Item { get; set; }
+}
+
+public class InnerItem 
+{
+   public int Id { get; set; }
+   public string Name { get; set; }
+}
+```
+and an action method in some controller like this:
+```csharp
+[HttpPost]
+public ActionResult UpdateItem(Item item)
+{
+   var itemName = item.Name;
+   return View(itemName);
+}
+```
+and a POST request with a JSON like this:
+```json
+{
+   Id: 42,
+   Name: 'NewItem #42'
+   Item: {
+      Id: 67,
+      Name: 'Item No 67'
+   }
+}
+```
+then be careful! Because Model Binder will not bind the whole JSON structure to the Item class. It will take the inner *Item* property (of type *InnerItem* in C# class) and bind this to the controller's method parameter! That means that `item.Id` will equal 67 and not 42 as expected! This happens because the name of the inner property is called *Item*, just like the name of the parameter of action method. Altough such scenario is possible, it is rather extremely rare so in general don't fear to use Model Binder, it is a really great feature of MVC .NET.
+
 ## WCF
 Windows Communication Foundation is a framework for developing services. It allows you to build services over different procotols and host them in many ways. It is very powerful, flexible and complex. It enforces you a bit to structure your project, you need to separate contracts (method and data contracts - DTO), logic (used by service), service, service hosting and client with a reference to the service.
 
