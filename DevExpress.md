@@ -1,6 +1,7 @@
 # DevExpress
 
 * [XPO](#xpo)
+* [Useful links](#useful-links)
 
 ## XPO
 XPO is an ORM (Object-Relational Mapper) shiped by DevExpress. It is quite efficient and easy to use. Really good ORM.
