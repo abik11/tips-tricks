@@ -1,5 +1,5 @@
 # DevExpress
-This is not a documentation or a complete tutorial, just a bunch of tricks and tips that have been useful to me while working with an amazing libraries shipped by DevExpress. Hope you will find something useful or interesting here.
+This is not a documentation or a complete tutorial, just a bunch of tricks and tips that have been useful to me while working with an amazing libraries shipped by DevExpress. DevExpress has a huge and very detailed documentation, but sometimes it is difficult to find something there because of its size so I hope you will find something useful or interesting here.
 
 * [XPO](#xpo)
 * [ASP.NET MVC Extensions](#asp.net-mvc-extensions)
@@ -185,6 +185,135 @@ DevExpress ships a huge number of ASP.NET MVC Extensions that will make web deve
 <menu>
      <MenuItem Text="Summary" NavigateUrl="/Report/Summary"></MenuItem>
 </menu>
+```
+
+### Grid
+
+##### Add custom column to grid
+```csharp
+GridViewSettings settings = new GridViewSettings();
+settings.KeyFieldName = "Oid";
+settings.Name = "ProjectProposal";
+settings.CallbackRouteValues = 
+    new { Controller = "Report", Action = "ProposalsListGridViewPartial" };
+settings.Columns.Add("Oid", "Proposal ID");
+settings.Columns.Add(column => { column.Caption = "Actual"; });
+
+settings.CustomColumnDisplayText = (sender, e) => 
+{
+    if (e.Column.Caption == "Actual") 
+    {
+        int proposalOid = (int)e.GetFieldValue("Oid");
+        e.DisplayText = ProposalDataProvider
+            .GetSavingsForProposal(proposalOid).
+            Sum(x => x.Actual).ToString();
+    }
+};
+```
+
+##### Cell color - Grid View
+```csharp
+settings.HtmlDataCellPrepared = (sender, e) =>
+ {
+    if (e.DataColumn.FieldName == "Status")
+    {
+        if ((ProposalStatus)e.GetValue("Status") == ProposalStatus.Reject)
+        {
+            e.Cell.BackColor = System.Drawing.Color.FromArgb(0xFF, 0xAE, 0xAE);
+        }
+        else if ((ProposalStatus)e.GetValue("Status") == ProposalStatus.Finished)
+        {
+            e.Cell.BackColor = System.Drawing.Color.FromArgb(0xB2, 0xFF, 0xC4);
+        }
+    }
+};
+```
+
+### Chart
+
+##### Chart
+```csharp
+@Html.DevExpress().Chart(settings =>
+{
+    //GENERAL
+    settings.Name = ProductionPlan";
+    settings.Width = 1500;
+    settings.Height = 900;
+
+    //SERIES - można dodać więcej serię niż jedną !!!
+    Series chartSeries = new Series("Plan", DevExpress.XtraCharts.ViewType.Bar);
+    chartSeries.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Auto;
+    chartSeries.ArgumentDataMember = "Month";
+    chartSeries.ValueDataMembers[0] = "YTDPlan"; 
+    ((BarSeriesView)chartSeries.View).BarWidth = 0.4;
+    ((BarSeriesView)chartSavingsSeries.View).FillStyle.FillMode = FillMode.Solid;
+    chartSeries.View.Color = System.Drawing.Color.FromArgb(180, 80, 10);
+    settings.Series.Add(chartSeries);
+    
+    //GENERAL APPEARACNE
+    settings.BorderOptions.Visibility = DefaultBoolean.False;
+    settings.BackColor = System.Drawing.Color.FromArgb(255,255,255);
+    XYDiagram diagram = (XYDiagram)settings.Diagram;
+    diagram.DefaultPane.BackColor = System.Drawing.Color.FromArgb(255,255,255);
+
+    //AXIS APPEARANCE - analogicznie dla osi x
+    Axis2D axisY = ((XYDiagram)settings.Diagram).AxisY;
+    axisY.Interlaced = false;
+    axisY.GridLines.Color = System.Drawing.Color.Black;
+    axisY.NumericScaleOptions.GridSpacing = 5;
+    axisY.Label.Font = new System.Drawing.Font("Calibri", 16, 
+                                        System.Drawing.FontStyle.Regular);
+    axisY.Label.TextColor = System.Drawing.Color.White;
+    axisY.Lablel.EnabelAntialiasing = DefaultBoolean.True;
+
+    //LEGEND
+    settings.Legend.Visible = true;
+    settings.Legend.AlignmentVertical = LegendAlignmentVertical.Center;
+    settings.Legend.Font = new System.Drawing.Font("Calibri", 12,        
+                                                     System.Drawing.FontStyle.Bold);
+    settings.Legend.TextColor = System.Drawing.Color.White;
+    settings.Legend.BackColor = System.Drawing.Color.FromArgb(0x14, 0x20, 0x2F);
+    settings.CrosshairEnabled = DefaultBoolean.False;
+     
+    //LABELS
+    chartSeries.LabelsVisibility = DefaultBoolean.True;
+    chartSeries.Label.BorderVisibility = DefaultBoolean.False;
+    chartSeries.Label.FillStyle.FillMode = FillMode.Empty;
+    chartSeries.Label.Font = new System.Drawing.Font("Calibri", 12, 
+                                                       System.Drawing.FontStyle.Bold);
+    chartSeries.Label.TextColor = System.Drawing.Color.White;
+    chartSeries.Label.LineVisibility = DefaultBoolean.False;
+    chartSeries.Label.LineLength = 10;
+    chartSeries.Label.Antialiasing = true;
+
+    //TITLE
+    settings.Titles.Add(
+        new ChartTitle()
+        {
+            Text = String.Format("{0} SAVING MONTHLY TREND", DateTime.Now.Year),
+            Alignment = System.Drawing.StringAlignment.Center,
+            Font = new System.Drawing.Font("Calibri", 24, 
+                                   System.Drawing.FontStyle.Bold),
+            TextColor = System.Drawing.Color.White,
+            Visible = true,
+            Indent = 5
+        });
+
+    //LABEL FORMAT
+    settings.CustomDrawSeriesPoint = (sender, e) =>
+    {
+        decimal labelValue = 0;
+        if (decimal.TryParse(e.LabelText, out labelValue))
+        {
+            e.LabelText = DisplayHelper.DecimalToString(labelValue, 2);
+        }
+    };
+}).Bind(Model).GetHtml()
+```
+
+##### Labels over labels
+```csharp
+exampleSeries.Label.ResolveOverlappingMode = ResolveOverlappingMode.Default;
 ```
 
 ## Useful links
