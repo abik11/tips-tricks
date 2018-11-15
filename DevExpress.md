@@ -1,6 +1,8 @@
 # DevExpress
+This is not a documentation or a complete tutorial, just a bunch of tricks and tips that have been useful to me while working with an amazing libraries shipped by DevExpress. Hope you will find something useful or interesting here.
 
 * [XPO](#xpo)
+* [ASP.NET MVC Extensions](#asp.net-mvc-extensions)
 * [Useful links](#useful-links)
 
 ## XPO
@@ -126,6 +128,9 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
         emp.Delete();
 }
 ```
+
+## ASP.NET MVC Extensions
+DevExpress ships a huge number of ASP.NET MVC Extensions that will make web development much easier. There are grids, lists, menus, charts, buttons and much more.
 
 ## Useful links
 
