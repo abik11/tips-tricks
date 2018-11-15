@@ -132,6 +132,61 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 ## ASP.NET MVC Extensions
 DevExpress ships a huge number of ASP.NET MVC Extensions that will make web development much easier. There are grids, lists, menus, charts, buttons and much more.
 
+### Menu
+
+##### Menu
+```csharp
+@Html.DevExpress().Menu(
+     settings =>
+          {
+               settings.Name = "mainMenu";
+               settings.ControlStyle.Font.Size = 12;
+               settings.ControlStyle.CssClass = "roundedBorders";
+
+               settings.Items.Add(item =>
+               {
+                  item.Text = "Summary";
+                  item.NavigateUrl = "/Report/Summary";
+                  item.Image.IconID = "grid_pivot_16x16";
+               });
+
+               settings.Items.Add(item =>
+               {
+                  item.Name = "ReportsMenu"
+                  item.Text = "Reports";
+                  item.Image.IconID = "grid_pivot_16x16";
+                  item.Items.Add(items =>
+                  {
+                     items.Text = "Production Report";
+                     items.Image.IconID = "chart_drilldownonseries_chart_16x16";
+                     items.NavigateUrl = "/Report/Production";
+                  });
+                  item.Items.Add(items =>
+                  {
+                     items.Text = "Delivery Report";
+                     items.Image.IconID = "chart_kpi_16x16";
+                     items.NavigateUrl = "/Report/Delivery";
+                  });
+           });
+}).GetHtml()
+```
+
+##### Menu with XML
+```csharp
+@Html.DevExpress().Menu(
+     settings => 
+          {
+               settings.Name = "mainMenu";
+               settings.NavigateUrlField = "NavigateUrl";
+          })
+          .BindToXML(Server.MapPath("~/App_Data/MainMenu.xmll"), "//MenuItem").GetHtml()
+```
+```xml
+<menu>
+     <MenuItem Text="Summary" NavigateUrl="/Report/Summary"></MenuItem>
+</menu>
+```
+
 ## Useful links
 
 #### XPO
