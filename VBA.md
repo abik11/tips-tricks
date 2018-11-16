@@ -271,6 +271,14 @@ findResult = Range("A1:D10").Find("PLN", LookAt:=xlWhole)
 ```
 The **xlWhole** value will make this function to match whole words, we change it **xlPart** and it will try to match also parts of the words.
 
+### Take whole data from column
+If you want to get all the data from a column, starting from selected cell up to the end of the data in given column (or row) you can make it easily. See an example, here we take the range from D2 down up to the last filled column (D3, D4 and so on):
+```vba 
+Set LastFilledCell = Range("D2").End(xlDown)
+ColumnValues = Range("D2", LastFilledCell).Value
+```
+You can "go up" with `xlUp` or go left and right with `xlToLeft` and `xlToRight`.
+
 ### Worksheet and workbook events
 1. Go to: ->Developer ->Visual Basic ->Project Explorer ->**Microsoft Excel Objects**
 2. Double click on *Sheet1* (or any other) or *ThisWorkbook*
