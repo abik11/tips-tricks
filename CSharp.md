@@ -560,26 +560,27 @@ If you will encounter an exception with the following message:
 ```
 Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property.
 ```
---Wskazówki:
-Sprawdź czy masz poniższy wpis w Web.config w znaczniku system.web/extensions/scripting/webServices:
-<jsonSerialization maxJsonLength="50000000" />
-W aplikacji MVC może to nie wystarczyć, dodaj taką metodę w kontrolerze:
-protected override JsonResult Json
-    (object data, string contentType, 
-     System.Text.Encoding contentEncoding, 
-     JsonRequestBehavior behavior)
+Find `<jsonSerialization>` tag in **Web.config** file and what is the **maxJsonLength**. The value may be too low for the data you want to send, for example:
+```xml
+<jsonSerialization maxJsonLength="5000000" />
+```
+Add the following method in controller:
+```csharp
+protected override JsonResult Json 
+   (object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
 {
-    return new JsonResult()
-    {
-        Data = data,
-        ContentType = contentType,
-        ContentEncoding = contentEncoding,
-        JsonRequestBehavior = behavior,
-        MaxJsonLength = Int32.MaxValue
-    };
+   return new JsonResult()
+   {
+      Data = data,
+      ContentType = contentType,
+      ContentEncoding = contentEncoding,
+      JsonRequestBehavior = behavior,
+      MaxJsonLength = Int32.MaxValue
+   };
 }
+```
 
-Could not load file or assembly 'WebGrease' or one of its dependencies
+### Could not load file or assembly 'WebGrease' or one of its dependencies
 -> Tools -> NuGet Package Manager -> Package Manager Console
 -> Install-Package WebGrease -Version 1.5.2
 
