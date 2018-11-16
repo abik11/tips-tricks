@@ -581,37 +581,39 @@ protected override JsonResult Json
 ```
 
 ### Could not load file or assembly 'WebGrease' or one of its dependencies
--> Tools -> NuGet Package Manager -> Package Manager Console
--> Install-Package WebGrease -Version 1.5.2
+-> Tools -> NuGet Package Manager -> Package Manager Console -> Install-Package WebGrease -Version 1.5.2
 
-Invalid regular expression flags - w onclick
----Zamenić to:
-<a onclick='@Url.Action("Method", "Ctrl", new { jsonRegistryArray = Json.Encode(data.List) })'>@data.Name</a>
----na to:
-<a onclick='window.location.href="@Url.Action("Method", "Ctrl", new { jsonRegistryArray = Json.Encode(data.List) })"'>@data.Name</a>
+### Invalid regular expression flags - in onclick
+If you will do something like this:
+```html
+<a onclick='@Url.Action("Method", "Controller", new { jsonRegistryArray = Json.Encode(data.List) })'>@data.Name</a>
+```
+it won't work, but something like this will do:
+```html
+<a onclick='window.location.href="@Url.Action("Method", "Controller", new { jsonRegistryArray = Json.Encode(data.List) })"'>@data.Name</a>
+```
 
-Błąd gdy login do bazy danych się nie zgadza
----Treść:
+### Database connection error
+Problems with database connection can have many different symptoms, but one of the very common is the following error message:
+```
 Server Error in '/' Application.
 Runtime Error
-Description: An exception occurred while processing your request. Additionally, another exception occurred while executing the custom error page for the first exception. The request has been terminated. 
----Wskazówki:
-Może pojawić się po zrobieniu restore'a bazy (wtedy logowanie na istniejących użytkowników nie działa)
+Description: An exception occurred while processing your request. Additionally, another exception occurred while executing the custom error page for the first exception. The request has been terminated.
+```
+It is very generic error message that actually says nothing about the database, but it is often the reason. Some connection problems may occur when you will restore a database (login's passwords are cleared then).
 
-Assembly not referenced in razor view
---Treść:
-error CS0012: The type 'ABC' is defined in an assembly that is not referenced. You must add a reference to assembly 'ABCProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'
---Wskazówki:
-W twoim projekcie w \Views\Web.config, 
-wewnątrz: <compilation><assemblies></assemblies></compilation>,
-dodać: <add assembly="ABCProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+### Assembly not referenced in razor view
+If you will encounter the the following error:
+```
+error CS0012: The type 'ClassName' is defined in an assembly that is not referenced. You must add a reference to assembly 'ProjectMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'
+```
+In your project in `\Views\Web.config`, inside of `<compilation><assemblies></assemblies></compilation>`, add the following markup:
+```csharp
+<add assembly="ProjectMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+```
 
-No assembly found containing an OwinStartupAttribute
---Treść:
-Nie można otworzyć strony:
-No assembly found containing an OwinStartupAttribute
---Wskazówki:
-Usuń folder Bin oraz Obj bo zawierają biblioteki owin, a twój projekt nie ma klasy startowej owin
+### No assembly found containing an OwinStartupAttribute
+If you see such an error then delete **Bin** and **Obj** directories because probably they contain **owin** libraries and your project has **owin** start class defined.
 
 ### DevExpress ASP.NET MVC Extensions
 There are great extensions for ASP.NET MVC made by DevExpress, if you are interested to know more, go [here](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#asp.net-mvc-extensions).
