@@ -275,6 +275,9 @@ If you such error in javascript console and the web app is not looking good that
 ##### Uncaught ReferenceError: ko is not defined
 If you such error in javascript console and the web app is not looking good that means that Knockout.js is not linked or JQuery and Knockout are linked after and not before DevExpress javascript files.
 
+##### Uncaught RangeError: Maximum call stack size exceeded
+Such error in javascript console may be cause by multiple calls to `Html.GetScripts()`.
+
 ## Useful links
 
 #### XPO
