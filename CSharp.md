@@ -480,6 +480,10 @@ $.ajax({
 });
 ```
 
+### Get user name
+* inside of a view: `HttpContext.Current.User.Identity.Name`
+* inside of a controller: `HttpContext.User.Identity.Name`
+
 ### Display image from Image object in HTML 
 ```csharp
 var base64 = Convert.ToBase64String(image);
@@ -526,6 +530,87 @@ and a POST request with a JSON like this:
 }
 ```
 then be careful! Because Model Binder will not bind the whole JSON structure to the Item class. It will take the inner *Item* property (of type *InnerItem* in C# code) and bind this to the controller's method parameter! That means that `item.Id` will equal 67 and not 42 as expected! This happens because the name of the inner property is called *Item*, just like the name of the parameter of action method. Altough such scenario is possible, it is rather extremely rare so in general don't fear to use Model Binder, it is a really great feature of MVC .NET.
+
+### Errors
+
+##### HTTP Error 404.0 - Not found - Two classes with the same name
+Sometimes you may encounter an exception with the following content:
+```
+Multiple types were found that match the controller named 'Dashboard'. (...) The request for 'Dashboard' has found the following matching controllers:
+DevExpress.DashboardWeb.Mvc.DashboardController
+Corp.ProjectMVC.Controllers.DashboardController
+```
+It may not be easy to found the true cause of the exception, so if you struggle to find it, try to add a breakpoint in **Global.asax** file in **Application_Error** function on the following line:
+```csharp
+Exception exception = Server.GetLastError();
+```
+and see the error message there. <br />
+The easiest solution for this problem is to change the name of your controller class, but that is probably not what you want. Another thing what you can do is to select controllers' namespace in your routes like this:
+```csharp
+routes.MapRoute(
+   name: "Default",
+   url: "{controller}/{action}/{id}",
+   defaults: new { controller = "Project", action = "Home", id = UrlParameter.Optional },
+   namespaces: new[] { "Corp.ProjectMVC.Controllers" }
+);
+```
+
+### MaxJsonLength exception
+If you will encounter an exception with the following message:
+```
+Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property.
+```
+--Wskazówki:
+Sprawdź czy masz poniższy wpis w Web.config w znaczniku system.web/extensions/scripting/webServices:
+<jsonSerialization maxJsonLength="50000000" />
+W aplikacji MVC może to nie wystarczyć, dodaj taką metodę w kontrolerze:
+protected override JsonResult Json
+    (object data, string contentType, 
+     System.Text.Encoding contentEncoding, 
+     JsonRequestBehavior behavior)
+{
+    return new JsonResult()
+    {
+        Data = data,
+        ContentType = contentType,
+        ContentEncoding = contentEncoding,
+        JsonRequestBehavior = behavior,
+        MaxJsonLength = Int32.MaxValue
+    };
+}
+
+Could not load file or assembly 'WebGrease' or one of its dependencies
+-> Tools -> NuGet Package Manager -> Package Manager Console
+-> Install-Package WebGrease -Version 1.5.2
+
+Invalid regular expression flags - w onclick
+---Zamenić to:
+<a onclick='@Url.Action("Method", "Ctrl", new { jsonRegistryArray = Json.Encode(data.List) })'>@data.Name</a>
+---na to:
+<a onclick='window.location.href="@Url.Action("Method", "Ctrl", new { jsonRegistryArray = Json.Encode(data.List) })"'>@data.Name</a>
+
+Błąd gdy login do bazy danych się nie zgadza
+---Treść:
+Server Error in '/' Application.
+Runtime Error
+Description: An exception occurred while processing your request. Additionally, another exception occurred while executing the custom error page for the first exception. The request has been terminated. 
+---Wskazówki:
+Może pojawić się po zrobieniu restore'a bazy (wtedy logowanie na istniejących użytkowników nie działa)
+
+Assembly not referenced in razor view
+--Treść:
+error CS0012: The type 'ABC' is defined in an assembly that is not referenced. You must add a reference to assembly 'ABCProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'
+--Wskazówki:
+W twoim projekcie w \Views\Web.config, 
+wewnątrz: <compilation><assemblies></assemblies></compilation>,
+dodać: <add assembly="ABCProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+
+No assembly found containing an OwinStartupAttribute
+--Treść:
+Nie można otworzyć strony:
+No assembly found containing an OwinStartupAttribute
+--Wskazówki:
+Usuń folder Bin oraz Obj bo zawierają biblioteki owin, a twój projekt nie ma klasy startowej owin
 
 ### DevExpress ASP.NET MVC Extensions
 There are great extensions for ASP.NET MVC made by DevExpress, if you are interested to know more, go [here](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#asp.net-mvc-extensions).
