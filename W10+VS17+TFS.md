@@ -476,6 +476,7 @@ For those familiar with Visual Studio the thing that can be annoying while using
 ### Extensions
 There are many extensions available for VS Code that can convert in a complex IDE with specialized tools for different programming languages or frameworks.
 * **Path Intellisense** - adds autocompletion for file names (extremely useful)
+* **Live Server** - it allows you to right click on a HTML file and select **Open with Live Server** to start a little HTTP server that will serve you your HTML file - be careful to be able to use it you must open some folder (CTRL + K, CTRL + O), it doesn't work with single file
 * **Vetur** - syntax highlighting for Vue components
 * **AutoHotkey** - syntax highlighting for AHK files
 * **Better Line Select** - adds a new shortcut `CTRL + L` that selects the current line and puts the cursor under the selected line and `CTRL + SHIFT + L` that also selects the current line and puts the cursor above the selected line (it may not work if you will install Visual Studio Keymap)
