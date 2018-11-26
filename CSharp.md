@@ -271,6 +271,20 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 }
 ```
 
+## WinForms
+
+### How to access the form state from other thread
+```csharp
+delegate void ScannerDelegate(string receivedData);
+void DataReceiveAction(string data){ label.Text = data.ToString(); }
+
+this.BeginInvoke(new ScannerDelegate(DataReceiveAction), new object[] { data });
+```
+This can be also done slighlty different way with the TPL library.
+
+### Error while starting an app - Checking application correctness failed
+->Right click on Project ->Properties ->Application ->Manifest: Create application without a manifest
+
 ## ASP.NET MVC
 ASP.NET MVC is a .Net web app framework based on the design pattern called Model-View-Controller. It is quite popular, easy to learn but hard to master.
 
