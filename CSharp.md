@@ -277,7 +277,10 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 ### How to access the form state from other thread
 ```csharp
 delegate void ScannerDelegate(string receivedData);
-void DataReceiveAction(string data){ label.Text = data.ToString(); }
+
+void DataReceiveAction(string data){ 
+   label.Text = data.ToString(); 
+}
 
 this.BeginInvoke(new ScannerDelegate(DataReceiveAction), new object[] { data });
 ```
