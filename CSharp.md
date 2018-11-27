@@ -324,6 +324,9 @@ string filtr = "Image files (*.bmp, *.jpg, *.png) | *.bmp; *.jpg; *.png|
    BMP files (*.bmp)|*.bmp|JPG files (*.jpg)|*.jpg| PNG files (*.png)|*.png";
 ```
 
+### Bind a property to a setting
+->Go to control's properties ->(ApplicationSettings) ->(PropertyBinding)
+
 ### Error while starting an app - Checking application correctness failed
 ->Right click on Project ->Properties ->Application ->Manifest: Create application without a manifest
 
