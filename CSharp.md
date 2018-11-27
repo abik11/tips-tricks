@@ -273,7 +273,7 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 ```
 
 ## WinForms
-WinForms is 
+WinForms is a .Net wrapper for WinApi, it allows you to build GUI for Windows applications through a really big group of classes, methods and properties. It is easy to use, lately quite criticized for not being well suitable for bigger projects - it is hard to separate logic from the code that handles th GUI. WPF is another .Net way of doing desktop apps.
 
 ### How to access the form state from other thread
 ```csharp
