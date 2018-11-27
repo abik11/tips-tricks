@@ -133,6 +133,27 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 ## WinForms Controls
 DevExpress developed a really big number of high quality WinForms controls. The only problem with them is that if you will use them once, you will never want to use WinForms without DevExpress again.
 
+### Grid
+
+##### Grid View
+
+* Add grouping panel<br />
+->Run Designer ->Feature Browser ->Grouping ->Group Panel
+* Allow in-place editors (editable grid)<br />
+->Run Designer ->Feature Browser ->Editing ->In-place Editors
+* Filtering data in the grid (Auto Filter Row)
+->Run Designer ->Feature Browser ->Filtering ->Auto Filter Row
+* Summing up the columns<br />
+->Run Designer ->Feature Browser ->Summary ->Total Summary ->Show Footer
+* Merging cells<br />
+->Go to grid view's properties ->OptionsView ->AllowCellMerge
+* Turn off row selected row highlighting<br />
+->Go to grid view's properties ->OptionsSelection ->EnableApperanceFocusRow = false
+* Export grid data to excel<br />
+```csharp
+gridView.ExportToXlsx(stringFileName);
+```
+
 ### NavbarControl
 
 ##### Changing icon's size
