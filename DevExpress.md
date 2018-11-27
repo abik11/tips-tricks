@@ -159,6 +159,11 @@ Set the following properties:
 * Properties.TextEditStyle = Standard
 * Properties.SearchMode = AutoComplete
 
+### Block picture changes in PictureEdit
+Set the following properties:
+* Properties.ReadOnly = True 
+* Properties.ShowMenu = False
+
 ## ASP.NET MVC Extensions
 DevExpress ships a huge number of ASP.NET MVC Extensions that will make web development much easier. There are grids, lists, menus, charts, buttons and much more.
 
