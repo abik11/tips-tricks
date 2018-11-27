@@ -273,12 +273,14 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 ```
 
 ## WinForms
+WinForms is 
 
 ### How to access the form state from other thread
 ```csharp
 delegate void ScannerDelegate(string receivedData);
 
-void DataReceiveAction(string data){ 
+void DataReceiveAction(string data)
+{ 
    label.Text = data.ToString(); 
 }
 
@@ -305,17 +307,35 @@ private void ribbon_Paint(object sender, PaintEventArgs e)
 }
 ```
 
+### Playing WAV sounds
+```csharp
+using System.Media;
+
+SoundPlayer player = new SoundPlayer(Properties.Resources.Sound_wav);
+player.Play();
+```
+
 ### App window maximized at start
 Set your main form's property **WindowState** to **Maximized**.
 
 ### Filter for image files for OpenFileDialog
 ```csharp
 string filtr = "Image files (*.bmp, *.jpg, *.png) | *.bmp; *.jpg; *.png| 
-   BMP files (*.bmp)|*.bmp|JPG files (*.jpg)|*.jpg| PNG files (*.png)|*.png"
+   BMP files (*.bmp)|*.bmp|JPG files (*.jpg)|*.jpg| PNG files (*.png)|*.png";
 ```
 
 ### Error while starting an app - Checking application correctness failed
 ->Right click on Project ->Properties ->Application ->Manifest: Create application without a manifest
+
+### Domain authorization
+```csharp
+PrincipalContext ctx = new PrincipalContext(ContextType.Domain, Environment.UserDomainName);
+UserPrincipal user = UserPrincipal.FindByIdentity(ctx, Environment.UserName);
+GroupPrincipal group = GroupPrincipal.FindByIdentity(ctx, "_Group1");
+
+if(!user.IsMemberOf(group))
+    Close();
+```
 
 ## ASP.NET MVC
 ASP.NET MVC is a .Net web app framework based on the design pattern called Model-View-Controller. It is quite popular, easy to learn but hard to master.
