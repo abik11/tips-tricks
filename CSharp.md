@@ -327,7 +327,7 @@ string filtr = "Image files (*.bmp, *.jpg, *.png) | *.bmp; *.jpg; *.png|
 ### Error while starting an app - Checking application correctness failed
 ->Right click on Project ->Properties ->Application ->Manifest: Create application without a manifest
 
-### Domain authorization
+### Domain group authorization
 ```csharp
 PrincipalContext ctx = new PrincipalContext(ContextType.Domain, Environment.UserDomainName);
 UserPrincipal user = UserPrincipal.FindByIdentity(ctx, Environment.UserName);
