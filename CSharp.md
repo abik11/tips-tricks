@@ -286,6 +286,34 @@ this.BeginInvoke(new ScannerDelegate(DataReceiveAction), new object[] { data });
 ```
 This can be also done slighlty different way with the TPL library.
 
+### Paint event
+Sometimes default controls may not be enough or you will need to modify them somehow. You can use **Paint** event to add some images or generally affect the way a control is displayed, here is an example of adding an image to ribbon control:
+```csharp
+private void ribbon_Paint(object sender, PaintEventArgs e)
+{
+   //Using image from resources
+   Image bgImage = Properties.Resources.logo_img;
+
+   Rectangle rect = ribbon.ClientRectangle;
+   rect.Width = 304;
+   rect.Height = 96;
+   
+   //Setting the image's position depending on the ribbon's size
+   rect.X = ribbon.ClientRectangle.Width - rect.Width - 10;
+   rect.Y = ribbon.ClientRectangle.Height - rect.Height;
+   e.Graphics.DrawImage(bgImage, rect);
+}
+```
+
+### App window maximized at start
+Set your main form's property **WindowState** to **Maximized**.
+
+### Filter for image files for OpenFileDialog
+```csharp
+string filtr = "Image files (*.bmp, *.jpg, *.png) | *.bmp; *.jpg; *.png| 
+   BMP files (*.bmp)|*.bmp|JPG files (*.jpg)|*.jpg| PNG files (*.png)|*.png"
+```
+
 ### Error while starting an app - Checking application correctness failed
 ->Right click on Project ->Properties ->Application ->Manifest: Create application without a manifest
 
