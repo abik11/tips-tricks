@@ -164,6 +164,23 @@ Set the following properties:
 * Properties.ReadOnly = True 
 * Properties.ShowMenu = False
 
+### RibbonControl
+It is a nice idea to create a form with RibbonControl from which other forms will inherit (*CustomRibbonForm*). To add a new DevExpress form: ->Right Click ->Add DevExpress Item ->Form. To edit the ribbon: ->Triangle ->Add PageGroup ->Right click on a group ->Add Button.<br />
+To delete red triangle set **ShowToolbarCustomiseItem** property of RibbonControl to **false**. If you want to hide ribbon set **RibbonVisibility** property of main form to **Hidden**.
+
+### Setting icon in application with RibbonControl
+* Set icon in RibbonControl<br />
+Set property: **ApplicationIcon**
+* Set application's icon<br />
+->Right click on Project ->Properties ->Application ->Icon and manifest
+
+### Manually adding event handler
+```csharp
+this.teMatrixNumber.EditValueChanged += new System.EventHandler(this.ReadAndSendData);
+
+protected void ReadAndSendData(object sender, EventArgs e){ }
+```
+
 ## ASP.NET MVC Extensions
 DevExpress ships a huge number of ASP.NET MVC Extensions that will make web development much easier. There are grids, lists, menus, charts, buttons and much more.
 
