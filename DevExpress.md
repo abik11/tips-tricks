@@ -133,6 +133,36 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 ## WinForms Controls
 DevExpress developed a really big number of high quality WinForms controls. The only problem with them is that if you will use them once, you will never want to use WinForms without DevExpress again.
 
+### NavbarControl
+
+##### Changing icon's size
+```csharp
+private void setIconsSize() 
+{ 
+   List<NavBarGroup> groups = navBarLeft.Groups.ToList();
+   List<NavBarGroup> noChange = new List<NavBarGroup>() { nbgImage  };
+   if((bool)Properties.Settings.Default["BigIcons"])
+   {
+      groups.Where(g => !noChange.Contains(g)).ToList()
+          .ForEach(g => g.GroupStyle = NavBarGroupStyle.LargeIconsText);
+   }
+   else
+   {
+      groups.ForEach(g => g.GroupStyle = NavBarGroupStyle.SmallIconsText);
+   }
+}
+```
+
+##### Showing only some navbar groups
+```csharp
+private void setNavBarItemVisible(List<NavBarGroup> visibleGroup)
+{
+   visibleGroup.ForEach(g => g.Visible = true);
+   navBar.Groups.Where(g => !visibleGroup.Contains(g))
+     .ToList().ForEach(vg => vg.Visible = false);
+}
+```
+
 ### LookUpEdit
 LookUpEdit is similar to ComboBox but it has much more functionality.
 
@@ -173,6 +203,14 @@ To delete red triangle set **ShowToolbarCustomiseItem** property of RibbonContro
 Set property: **ApplicationIcon**
 * Set application's icon<br />
 ->Right click on Project ->Properties ->Application ->Icon and manifest
+
+### Splash screen - wait form
+Add control **SplashScreenManager**, click on little triangle and click on **Add Wait Form**. In the background a *WaitForm1* class is created which you can modify to change your wait form view. Now you can show and close a wait form when you need it:
+```csharp
+splashScreenManager1.ShowWaitForm();
+//...
+splashScreenManager.CloseWaitForm();
+```
 
 ### Manually adding event handler
 ```csharp
