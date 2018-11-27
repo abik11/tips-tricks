@@ -337,6 +337,9 @@ if(!user.IsMemberOf(group))
     Close();
 ```
 
+### DevExpress WinForms Controls
+You can speed up your development with DevExpress controls. Read more [here](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#winforms-controls).
+
 ## ASP.NET MVC
 ASP.NET MVC is a .Net web app framework based on the design pattern called Model-View-Controller. It is quite popular, easy to learn but hard to master.
 
