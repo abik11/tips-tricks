@@ -129,6 +129,35 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 }
 ```
 
+### WinForms Controls
+DevExpress developed a really big number of high quality WinForms controls. The only problem with them is that if you will use them once, you will never want to use WinForms without DevExpress again.
+
+### LookUpEdit
+LookUpEdit is similar to ComboBox but it has much more functionality.
+
+##### Data binding
+```csharp
+private XPCollection<UserType> _userTypes = new XPCollection<UserType>(_uow);
+private XPCollection<User> _users = _uow.Query<User>().FirstOrDefault(x => x.Oid == userOid);
+
+lueUserType.Properties.DataSource = _userTypes;
+lueUserType.Properties.DisplayMember = "Name";
+lueUserType.Properties.ValueMember = "This";
+lueUserType.Properties.Columns.Clear();
+lueUserType.Properties.Columns.Add(new LookUpColumnInfo("Name")); //this column will be displayed in LookUpEdit
+lueUserType.Properties.BestFitMode = BestFitMode.BestFitResizePopup;
+lueUserType.Properties.SearchMode = SearchMode.AutoComplete;
+lueUserType.Properties.AutoSearchColumnIndex = 0;
+lueUserType.Properties.DropDownRows = 10;
+
+lueUserType.DataBindings.Add("EditValue", _user, "UserType!", false, DataSourceUpdateMode.OnPropertyChanged);
+```
+
+##### Allow manually typing in LookUpEdit
+Set the following properties:
+* Properties.TextEditStyle = Standard
+* Properties.SearchMode = AutoComplete
+
 ## ASP.NET MVC Extensions
 DevExpress ships a huge number of ASP.NET MVC Extensions that will make web development much easier. There are grids, lists, menus, charts, buttons and much more.
 
