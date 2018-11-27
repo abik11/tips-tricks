@@ -2,6 +2,7 @@
 This is not a documentation or a complete tutorial, just a bunch of tricks and tips that have been useful to me while working with an amazing libraries shipped by DevExpress. DevExpress has a huge and very detailed documentation, but sometimes it is difficult to find something there because of its size so I hope you will find something useful or interesting here.
 
 * [XPO](#xpo)
+* [WinForms Controls](#winforms-controls)
 * [ASP.NET MVC Extensions](#asp.net-mvc-extensions)
 * [Useful links](#useful-links)
 
@@ -129,7 +130,7 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 }
 ```
 
-### WinForms Controls
+## WinForms Controls
 DevExpress developed a really big number of high quality WinForms controls. The only problem with them is that if you will use them once, you will never want to use WinForms without DevExpress again.
 
 ### LookUpEdit
