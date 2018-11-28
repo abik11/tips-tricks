@@ -4,6 +4,7 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 * [Language tips](#language-tips)
 * [Threading (In progress)](#threading)
 * [WinForms](#winforms)
+* [WPF](#wpf)
 * [ASP.NET MVC](#asp.net-mvc)
 * [WCF](#wcf)
 * [Performance tips](#performance-tips) 
@@ -347,6 +348,94 @@ if(!user.IsMemberOf(group))
 You can speed up your development with DevExpress controls. Read more [here](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#winforms-controls).
 
 ## WPF
+Windows Presentation Framework is just as its name says a framework, designed to develop Windows application. It is different from WinForms because it doesn't use WinApi controls, it paints all the forms so the control that we have over the presentation layer of our application is much bigger. Another difference is that WPF forms usually (almost always) are wirtten with a language called XAML which is an extension of XML, a bit similar to HTML - you can build a form using tags. Also in WPF it is recommended to use MVVM (Model-View-ViewModel) design pattern to separate presentation layer (GUI) from logic.
+
+### Building a layout
+Here is a simple example of a layout built with Grid and StackPanel: 
+```xaml
+<Window x:Class="App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WtfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+   <Grid>
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+         <RowDefinition />
+         <RowDefinition />
+      </Grid.RowDefinitions>
+      
+      <Button Grid.Column="0" Grid.Row="0" Width="100" Height="50" Name="btnTest">
+         Button Text
+      </Button>
+      
+      <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+         <Button Margin="10"  Width="200" Height="50" Name="btnStackPanel">
+            Stack Panel 1
+         </Button>
+         <TextBox Margin="10" Width="200" Height="50" 
+                          TextAlignment="Center" Name="tbStackPanel">
+            Text Box 1
+         </TextBox>
+      </StackPanel>
+   </Grid>
+</Window>
+```
+
+### DataGrid
+Just a very little example of a DataGrid with data binding
+```xaml
+<DataGrid Name="dgPeople" AutoGenerateColumns="False" ItemsSource="{Binding People}">
+     <DataGrid.Columns>
+
+          <DataGridTextColumn Header="Last Name" 
+               Binding="{Binding LastName}"></DataGridTextColumn>
+
+          <DataGridTextColumn Header="{x:Static str:Strings.DayOfBirth}" 
+                Binding="{Binding Birthday, StringFormat=\{0:dd.MM.yyyy\}}">
+                </DataGridTextColumn>
+
+     </DataGrid.Columns>
+</DataGrid>
+```
+
+### A button with an image
+```xaml
+<Button Name="btCancel" Width="100" Margin="10" IsEnabled="False"
+  Command="{Binding CancelCommand}" Click="btCancel_Click">
+        <StackPanel Orientation="Horizontal">
+                <Image Source="/MyProject.Resources;Component/Images/cancel.png" 
+                  Stretch="None"></Image>
+                <TextBlock Text="{x:Static str:Strings.Cancel}"></TextBlock>
+        </StackPanel>
+</Button>
+```
+The image you want to use must have the **Build Action** property set to **Resource**.
+
+### Turn off last child fill in DockPanel
+The last element of a DockPanel always fills all the place that is not filled with other elements. Sometimes (or actually quite often) you may not want it to work like this. It can be easily turn off with **LastChildFill** property of DockPanel: 
+```xaml
+<DockPanel LastChildFill="False"></DockPanel>
+```
+
+### Adding a splitter to a grid
+```xaml
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="5" />
+        <ColumnDefinition Width="*" />
+    <Grid.ColumnDefinitions>
+    <StackPanel></StackPanel>
+    <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+    <StackPanel Grid.Column="2"></StackPanel>
+</Grid>
+```
 
 ### Binding a command to a non-default event
 Firstly you have to add the following namespace: `xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"`.
