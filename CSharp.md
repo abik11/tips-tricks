@@ -1297,6 +1297,9 @@ $color.ToArgb()
 [Regex editor](http://regexr.com/)<br />
 [Barcode generator](http://barcode.tec-it.com/en)<br />
 
+##### WPF
+[WPF Snoop](https://github.com/cplotts/snoopwpf)<br />
+
 ##### ASP.NET MVC
 [ASP.NET MVC 5 Internationalization](http://afana.me/archive/2011/01/14/aspnet-mvc-internationalization.aspx/)<br />
 [HTTP File Upload](https://www.hanselman.com/blog/ABackToBasicsCaseStudyImplementingHTTPFileUploadWithASPNETMVCIncludingTestsAndMocks.aspx)<br />
