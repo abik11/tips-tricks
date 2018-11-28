@@ -386,6 +386,7 @@ Here is a simple example of a layout built with Grid and StackPanel:
    </Grid>
 </Window>
 ```
+It is good to note that you define grid columns and rows with separate tags (**ColumnDefinition**, **RowDefinition**) and then inside of the grid you can position elements using **Grid.Column** and **Grid.Row** properties. You can also use **Grid.RowSpan** and **Grid.ColumnSpan**.
 
 ### DataGrid
 Just a very little example of a DataGrid with data binding
@@ -455,6 +456,34 @@ Firstly you have to add the following namespace: `xmlns:i="http://schemas.micros
      <KeyBinding Key="Delete" Command="{Binding EditCommand}" />
 </DataGrid.InputBindings>
 ```
+
+### Internationalization
+To support many languages in WPF application you have to take few steps.
+1. Prepare *MyProject.Resource* project that will contain string files for each language that you want to support.
+2. Add this project to namespaces in your forms:
+```
+xmlns:str="clr-namespace:MyProject.Resources;assembly=MyProject.Resources"
+```
+3. Statically assign string values, like this:
+```xaml
+<Button Name="btSave" Content="{x:Static str:Strings.Save}"></Button>
+```
+4. Override **OnStart** method of your **App.xaml.cs** file:
+```csharp
+protected override void OnStartup(StartupEventArgs e)
+{
+   base.OnStartup(e);
+
+   Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
+   Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
+
+   FrameworkElement.LanguageProperty.OverrideMetadata
+      (typeof(FrameworkElement), 
+      new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+}
+```
+<br />
+If you want to change the language, it would be a good idea to save the language string (*en-GB* or other) in app settings, manipulate that setting in the app and restart the app after it has been changed.
 
 ## ASP.NET MVC
 ASP.NET MVC is a .Net web app framework based on the design pattern called Model-View-Controller. It is quite popular, easy to learn but hard to master.
