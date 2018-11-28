@@ -154,6 +154,32 @@ DevExpress developed a really big number of high quality WinForms controls. The 
 gridView.ExportToXlsx(stringFileName);
 ```
 
+##### Grid Control
+* Delete a plus sign in a row<br />
+->Properties (GridControl) ->ShowOnlyPredefinedDetails = true
+* Getting a row<br />
+```csharp
+User obj = gvUsers.GetFocusedRow() as User;
+if (obj != null)
+{}
+```
+* Add control to the grid<br />
+->Run Designer ->Main ->Columns ->Add Column<br />
+->Go to ColumnEdit properties ->New ->SimpleButton (or other control) ->Properties ->OptionsColumn ->AllowEdit = True<br />
+->Repository ->In-place Editor Repository (select your control) ->Buttons ->Kind = Glyph, Image = Select your image, TextEditStyle = HideTextEditor
+* Add data source through XPCollection
+1. Add XPCollection component
+2. Rebuild project
+3. Set property ObjectClassInfo of XPCollection to some class from domain
+4. Rebuild project (build)
+5. Click little triangle of GridControl
+6. Set Choose Data Source as XPCollection<br />
+Add this in code
+```csharp
+gcSomeGrid.DataSource = _data;
+gcSomeGrid.RefreshDataSource();
+```
+
 ### NavbarControl
 
 ##### Changing icon's size
