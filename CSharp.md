@@ -346,6 +346,27 @@ if(!user.IsMemberOf(group))
 ### DevExpress WinForms Controls
 You can speed up your development with DevExpress controls. Read more [here](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#winforms-controls).
 
+## WPF
+
+### Binding a command to a non-default event
+Firstly you have to add the following namespace: `xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"`.
+```xaml
+<i:Interaction.Triggers>
+    <i:EventTrigger EventName="MouseDown">
+        <i:InvokeCommandAction 
+            Command="{Binding  TopPanelMouseDownCommand}"
+            CommandParameter="{Binding ElementName=this}" />
+    </i:EventTrigger>
+</i:Interaction.Triggers>
+```
+
+### Binding a command to a key
+```xaml
+<DataGrid.InputBindings>
+     <KeyBinding Key="Delete" Command="{Binding EditCommand}" />
+</DataGrid.InputBindings>
+```
+
 ## ASP.NET MVC
 ASP.NET MVC is a .Net web app framework based on the design pattern called Model-View-Controller. It is quite popular, easy to learn but hard to master.
 
