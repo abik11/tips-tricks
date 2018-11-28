@@ -630,7 +630,7 @@ routes.MapRoute(
 );
 ```
 
-### MaxJsonLength exception
+##### MaxJsonLength exception
 If you will encounter an exception with the following message:
 ```
 Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property.
@@ -655,10 +655,10 @@ protected override JsonResult Json
 }
 ```
 
-### Could not load file or assembly 'WebGrease' or one of its dependencies
+##### Could not load file or assembly 'WebGrease' or one of its dependencies
 -> Tools -> NuGet Package Manager -> Package Manager Console -> Install-Package WebGrease -Version 1.5.2
 
-### Invalid regular expression flags - in onclick
+##### Invalid regular expression flags - in onclick
 If you will do something like this:
 ```html
 <a onclick='@Url.Action("Method", "Controller", new { jsonRegistryArray = Json.Encode(data.List) })'>@data.Name</a>
@@ -668,7 +668,7 @@ it won't work, but something like this will do:
 <a onclick='window.location.href="@Url.Action("Method", "Controller", new { jsonRegistryArray = Json.Encode(data.List) })"'>@data.Name</a>
 ```
 
-### Database connection error
+##### Database connection error
 Problems with database connection can have many different symptoms, but one of the very common is the following error message:
 ```
 Server Error in '/' Application.
@@ -677,7 +677,7 @@ Description: An exception occurred while processing your request. Additionally, 
 ```
 It is very generic error message that actually says nothing about the database, but it is often the reason. Some connection problems may occur when you will restore a database (login's passwords are cleared then).
 
-### Assembly not referenced in razor view
+##### Assembly not referenced in razor view
 If you will encounter the the following error:
 ```
 error CS0012: The type 'ClassName' is defined in an assembly that is not referenced. You must add a reference to assembly 'ProjectMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'
@@ -687,7 +687,7 @@ In your project in `\Views\Web.config`, inside of `<compilation><assemblies></as
 <add assembly="ProjectMVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
 ```
 
-### No assembly found containing an OwinStartupAttribute
+##### No assembly found containing an OwinStartupAttribute
 If you see such an error then delete **Bin** and **Obj** directories because probably they contain **owin** libraries and your project has **owin** start class defined.
 
 ### DevExpress ASP.NET MVC Extensions
