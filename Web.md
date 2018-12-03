@@ -17,10 +17,21 @@ var1 === void 0
 ```
 
 ##### Foreach
+**For ... in** loop can be used with arrays and objects:
 ```javascript
-for(obj in arrayOfObjects){ 
+var obj = { a:1, b:2 };
+for(property in obj){ 
   //... do something
 }
+
+var a = [1, 2, 3];
+for(element in a){ 
+  //... do something
+}
+```
+If you want to iterate through arrays you can also use array's forEach method like this:
+```javascript
+fruits.forEach(fruit => console.log("Buy: " + fruit));
 ```
 
 ##### Classes and inheritance
@@ -61,7 +72,6 @@ Person.prototype.greet = function(){} //Non-static method
 Person.speak = function(){} //Static method
 ```
 
-
 ##### Default method parameter value 
 ```javascript
 function func1(a, b){
@@ -77,6 +87,13 @@ function func2(a, b){
    if (b === void 0) b = 20;
    //...
 }
+```
+
+##### Object.assign
+With `Object.assign` you can easily extend your existing objects with new properties. This may be often a quite useful!
+```javascript
+var a = { a:1, b:2, c:3 };
+a = Object.assign(a, { d:4, e:5 });
 ```
 
 ### DOM
