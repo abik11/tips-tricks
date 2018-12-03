@@ -8,6 +8,21 @@
 ### Syntax
 Some syntax construction or details in Javascript may not be so obvious for developers that are used to other languages, so it is nice to learn a little bit about that.
 
+##### Check if a variable exists
+This is extremely useful to know if a variable exists. You can do it more than one way:
+```javascript
+typeof var1 === 'undefined'
+typeof(var1) === 'undefined' 
+var1 === void 0
+```
+
+##### Foreach
+```javascript
+for(obj in arrayOfObjects){ 
+  //... do something
+}
+```
+
 ### DOM
 One of the most important use cases of Javascript is to work with Document Object Model - DOM.
 
