@@ -4,6 +4,7 @@ This is not a documentation or a complete tutorial, just a bunch of tricks and t
 * [XPO](#xpo)
 * [WinForms Controls](#winforms-controls)
 * [ASP.NET MVC Extensions](#aspnet-mvc-extensions)
+* [DevExtreeme](#devextreeme)
 * [Useful links](#useful-links)
 
 ## XPO
@@ -414,6 +415,58 @@ If you such error in javascript console and the web app is not looking good that
 
 ##### Uncaught RangeError: Maximum call stack size exceeded
 Such error in javascript console may be cause by multiple calls to `Html.GetScripts()`.
+
+## DevExtreeme
+DevExtreeme is a Javascript library with a really big set of controls. They can be used with JQuery, Angular, React and Vue.
+
+### Grid
+
+##### Edit only selected columns in grid
+```javascript
+var editbaleColumns = ["Name", "Category"];
+
+container.dxDataGrid({
+     dataSource: data,
+     editing: {
+          allowUpdating: true,
+          mode: 'batch'
+     },
+     onEditingStart: function(info){
+          if(editableColumns.indexOf(info.column.caption) != -1){
+               info.cancel = false;
+          }
+          else {
+               info.cancel = true;
+          }
+     },
+     onRowUpdated: function(info){
+          console.log(info.key.Oid);
+          console.log(info.data.Name);
+          console.log(info.data.Category);
+     },
+     //columns: [ ... ]
+});
+```
+
+##### Styling a grid column
+```javascript
+columns: [{ dataField: "Name", caption: "User Name", cssClass: "dx-grid-your-class" }]
+```
+
+##### Turn off row selection
+```javascript
+selection: { mode: "none" }
+```
+
+##### Turn off filters
+```javascript
+filterRow: { visible: false }
+```
+
+##### Export to excel
+```javascript
+export: { enabled: true, fileName: "report" }
+```
 
 ## Useful links
 
