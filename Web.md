@@ -23,6 +23,38 @@ for(obj in arrayOfObjects){
 }
 ```
 
+##### Classes and inheritance
+Actually in Javascript there is no such thing as class in the same meaning that is used in other programming languages like C#, C++, PHP or Python. It works differently in Javascript. You can create new objects that are based on other objects - this way you can implment inheritance and classes. To make it all work you have to heavily use object's **prototype**. Here you can see a very simple example of how it works: 
+```javascript
+//PERSON --- --- --- --- --- ---
+var Person = function() {
+  this.canSpeak = true;
+};
+
+Person.prototype.greet = function() {
+  if (this.canSpeak) {
+    console.log('Hello!');
+  }
+};
+
+//EMPLOYEE --- --- --- --- --- ---
+var Employee = function(name, title) {
+  Person.call(this); //!!!
+  this.name = name;
+  this.title = title;
+};
+
+Employee.prototype = Object.create(Person.prototype); //!!!
+Employee.prototype.constructor = Employee; //!!!
+
+Employee.prototype.greet = function() {
+  if (this.canSpeak) {
+    console.log('Hello, I am ' + this.name + ', ' + this.title);
+  }
+};
+```
+In ECMAScript 2017 there was added **class** and **extends** keywords but this is just a syntactic sugar which is under the hood translated to the code that looks like the one above.
+
 ### DOM
 One of the most important use cases of Javascript is to work with Document Object Model - DOM.
 
