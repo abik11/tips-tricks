@@ -25,8 +25,8 @@
 
 #### Javascript libraries
 [Axios - AJAX Library](https://github.com/mzabriskie/axios)<br />
-[Axios Tutorial](https://alligator.io/vuejs/rest-api-axios/)
-[Lodash](https://lodash.com/)
+[Axios Tutorial](https://alligator.io/vuejs/rest-api-axios/)<br />
+[Lodash](https://lodash.com/)<br />
 [Dexie - IndexedDB Wrapper](https://dexie.org/)<br />
 [Howler - Web Audio Library](https://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)</br >
 [Brain.js - Machine Learning for Javascript](https://harthur.github.io/brain/)<br />
