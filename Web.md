@@ -1,20 +1,27 @@
 # Web development
 
+* [Javascript](#javascript)
+* [Useful links](#useful-links)
+
 ## Javascript
 
 ## Useful links
 
 #### General stuff
 [MDN - Mozilla Developer's Network](https://developer.mozilla.org/en-US/docs/Web/API)<br />
+[Npm documentation](https://docs.npmjs.com/about-npm/index.html)<br />
 [Traversy Media - Amazing viedo tutorials on YouTube](https://www.youtube.com/user/TechGuyWeb/videos)<br />
 [Tutoriale po polsku](http://www.polskifrontend.pl/)<br />
 [Tutorials in English](http://tutorialzine.com/)<br />
 [TodoMVC - helping you to choose correct web framework](http://todomvc.com/)<br />
 [Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html)<br />
 
-#### Chrome
-[DevTools](chrome://inspect/)<br />
-[Chrome URLs](chrome://about/)<br />
+#### Webpack
+[Webpack Tutorial](https://tutorialzine.com/2017/04/learn-webpack-in-15-minutes)<br />
+[Wepback Video Tutorial - Ihatetomatoes](https://www.youtube.com/watch?v=JdGnYNtuEtE&list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY&index=1)<br />
+[Webpack Video Tutorial - Academind](https://www.youtube.com/watch?v=GU-2T7k9NfI&list=PL55RiY5tL51rcCnrOrZixuOsZhAHHy6os)<br />
+[Webpack config example](https://github.com/vuejs-templates/webpack-simple/blob/master/template/webpack.config.js)<br />
+[How to integrate Webpack into VS2015](https://sochix.ru/how-to-integrate-webpack-into-visual-studio-2015/)<br />
 
 #### Javascript libraries
 [Axios - AJAX Library](https://github.com/mzabriskie/axios)<br />
@@ -27,3 +34,7 @@
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
 http://lorempixel.com/<br />
+
+#### Chrome
+DevTools - chrome://inspect/<br />
+Chrome URLs - chrome://about/<br />
