@@ -27,33 +27,57 @@ for(obj in arrayOfObjects){
 Actually in Javascript there is no such thing as class in the same meaning that is used in other programming languages like C#, C++, PHP or Python. It works differently in Javascript. You can create new objects that are based on other objects - this way you can implment inheritance and classes. To make it all work you have to heavily use object's **prototype**. Here you can see a very simple example of how it works: 
 ```javascript
 //PERSON --- --- --- --- --- ---
-var Person = function() {
+var Person = function(name) {
   this.canSpeak = true;
+  this.name = name;
 };
 
 Person.prototype.greet = function() {
   if (this.canSpeak) {
-    console.log('Hello!');
+    console.log('Hello! My name is ' + this.name);
   }
 };
 
 //EMPLOYEE --- --- --- --- --- ---
 var Employee = function(name, title) {
-  Person.call(this); //!!!
-  this.name = name;
+  Person.call(this, name); // Call the parent class constructor!!!
   this.title = title;
 };
 
-Employee.prototype = Object.create(Person.prototype); //!!!
-Employee.prototype.constructor = Employee; //!!!
+Employee.prototype = Object.create(Person.prototype); // Attach parent class prototype to child class prototype!!!
+Employee.prototype.constructor = Employee; // Set constructor to child class constructor !!!
 
 Employee.prototype.greet = function() {
   if (this.canSpeak) {
-    console.log('Hello, I am ' + this.name + ', ' + this.title);
+    console.log('Hello, my name is ' + this.name + ' and my title is ' + this.title);
   }
 };
 ```
 In ECMAScript 2017 there was added **class** and **extends** keywords but this is just a syntactic sugar which is under the hood translated to the code that looks like the one above.
+
+##### Static method
+```javascript
+Person.prototype.greet = function(){} //Non-static method 
+Person.speak = function(){} //Static method
+```
+
+
+##### Default method parameter value 
+```javascript
+function func1(a, b){
+  if (typeof(a) === 'undefined') a = 10;
+  if (typeof(b) === 'undefined') b = 20;
+  //...
+}
+
+// or:
+
+function func2(a, b){
+   if (a === void 0) a = 10;
+   if (b === void 0) b = 20;
+   //...
+}
+```
 
 ### DOM
 One of the most important use cases of Javascript is to work with Document Object Model - DOM.
