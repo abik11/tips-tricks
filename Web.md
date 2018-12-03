@@ -9,7 +9,7 @@
 Some syntax construction or details in Javascript may not be so obvious for developers that are used to other languages, so it is nice to learn a little bit about that.
 
 ### DOM
-One of the biggest strengths of Javascript is that it can work with Document Object Model - DOM.
+One of the most important use cases of Javascript is to work with Document Object Model - DOM.
 
 ## Useful links
 
