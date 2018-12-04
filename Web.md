@@ -217,7 +217,7 @@ You can add in HTML tags your own data properties with **data-** prefix, for exa
 and then you can easily access them from JS:
 ```javascript
 //pure JS:
-var element = document.querySelector('#user')'
+var element = document.querySelector('#user');
 var name = element.dataset.name;
 element.dataset.myCustomKey = "test2";
 
