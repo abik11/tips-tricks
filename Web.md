@@ -96,29 +96,35 @@ var a = { a:1, b:2, c:3 };
 a = Object.assign(a, { d:4, e:5 });
 ```
 
+### Asynchronous programming
+In Javascript there plenty of asynchronous operations. 
+
 ##### Promise
 Promises are amazing. They are really amazing. There is no better way to handle asynchronous programming in Javascript.
 ```javascript
 var p =  new Promise(function(resolve, reject){
-    //Tutaj wykonaj swoje zadanie
-    if( /* zakończono powodzeniem? */ ){
-        resolve(10);
-    } 
-    else {
-        reject(-1);    
-    }
+    obj.asyncMethod(result => resolve(result), error => reject(error));
 });
 
-p.then(function(num){ return num *2; })
-  .then(function(num){ return num *2; })
-  .catch(function(num){ /* on error */ });
-
-***Wykonanie wszystkich promise'ów:
-Promise.all([promise1, promise2]).then(function(values){}).catch(function(){});
-
-***Wykonanie dowolnego promise'a:
-Promise.race([promise1, promise2]).then(function(value){}).catch(function(){});
+p.then(result => {})
+  .then(() => {})
+  .then(() => {})
+  .catch(e => console.log(e));
 ```
+If you've got more than one promise you can wait for all of them or for the first to finish
+```javascript
+Promise.all([promise1, promise2])
+  .then(results => {
+    console.log(result[0]);
+    console.log(result[1]);
+  })
+  .catch(e => console.log(e));
+
+Promise.race([promise1, promise2])
+  .then(result => console.log(result))
+  .catch(e => console.log(e));
+```
+Promises are getting more and more commmon and now they have became a real standard in Javascript. There is a new AJAX API called **fetch** which returns promises. See here an example:
 ```javascript
 function loadData(url) {
    return fetch(url)
@@ -126,22 +132,12 @@ function loadData(url) {
       .then(function (result) { return result; });
 }
 
-function loadStudentsData() {
-   return loadData("/University/GetStudents/");
+function loadUserData() {
+   return loadData("/MyPortal/Users/");
 }
 
-$(function () {
-   var studentsData = loadStudentsData();
-   Promise
-      .all([studentsData])
-      .then(results => { doSomething(results[0]); })
-      .catch(error => { errorHandler(error, "An error occured!"); });   
-});
-
-function errorHandler(error, userFriendlyMessage){
-   console.error(error);
-   alert(userFriendlyMessage);
-}
+loadUserData()
+  .then(userData => console.log(userData));
 ```
 
 ### DOM
