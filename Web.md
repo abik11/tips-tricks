@@ -140,6 +140,34 @@ loadUserData()
   .then(userData => console.log(userData));
 ```
 
+##### Async and await
+There are **async** and **await** keywords in JS that can make your asynchronous code even more readable. In simple words **await** just waits for the asynchronous function to end and **async** is used just to mark a function that will internally use **await**. See an example:
+```javascript
+var p =  new Promise(function(resolve, reject){
+    obj.asyncMethod(result => resolve(result), error => reject(error));
+});
+
+var result = await p;
+```
+You can ofcourse use await with functions that return promises:
+```javascript
+function loadData(url) {
+   return fetch(url)
+      .then(result => result.json())
+      .then(function (result) { return result; });
+}
+
+var data = await loadData("/MyPortal/Users/");
+```
+Or we could also use await to get the results of fetch, this time marking the *loadData* function as async:
+```javascript
+async function loadData(url) {
+   return await fetch(url)
+      .then(result => result.json())
+      .then(function (result) { return result; });
+}
+```
+
 ### DOM
 One of the most important use cases of JS is to work with Document Object Model - DOM.
 
