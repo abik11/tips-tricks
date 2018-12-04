@@ -247,17 +247,17 @@ else {
 ```
 
 ### Timeouts and intervals
-Examples:
+The difference between timeout and interval is that the first one runs only once and interval runs periodically after specified amount of miliseconds. Here you can see how to manage them - both are very useful and important:
 ```javascript
-t1 = window.setTimeout(function(){}, 1500); //wykonuje się tylko raz
-t2 = window.setInterval(function(){}, 1500); //wykonuje się nieustannie
+var t1 = window.setTimeout(function(){}, 1500); //this runs only once
+var t2 = window.setInterval(function(){}, 1500); //this runs every 1500 miliseconds
 window.clearTimeout(t1);
 window.clearInterval(t2);
 ```
-Quasi-sleep:
+Timeout can be used to implement a quasi-sleep function in JS - if you want your code to wait for the given amount of time:
 ```javascript
 setTimeout(function(){
-     //Tutaj dać kod, który ma się wykonać po określonym czasie...
+     //Here you can put the code that will be run after 1 second...
 }, 1000);
 ```
 
