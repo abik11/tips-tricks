@@ -6,7 +6,7 @@
 ## Javascript
 
 ### Syntax
-Some syntax construction or details in Javascript may not be so obvious for developers that are used to other languages, so it is nice to learn a little bit about that.
+Some syntax construction or details in JS may not be so obvious for developers that are used to other languages, so it is nice to learn a little bit about that.
 
 ##### Check if a variable exists
 This is extremely useful to know if a variable exists. You can do it more than one way:
@@ -35,7 +35,7 @@ fruits.forEach(fruit => console.log("Buy: " + fruit));
 ```
 
 ##### Classes and inheritance
-Actually in Javascript there is no such thing as class in the same meaning that is used in other programming languages like C#, C++, PHP or Python. It works differently in Javascript. You can create new objects that are based on other objects - this way you can implment inheritance and classes. To make it all work you have to heavily use object's **prototype**. Here you can see a very simple example of how it works: 
+Actually in JS there is no such thing as class in the same meaning that is used in other programming languages like C#, C++, PHP or Python. It works differently in JS. You can create new objects that are based on other objects - this way you can implment inheritance and classes. To make it all work you have to heavily use object's **prototype**. Here you can see a very simple example of how it works: 
 ```javascript
 //PERSON --- --- --- --- --- ---
 var Person = function(name) {
@@ -97,10 +97,10 @@ a = Object.assign(a, { d:4, e:5 });
 ```
 
 ### Asynchronous programming
-In Javascript there plenty of asynchronous operations, so it is very important to know how to handle and build an asynchronous API.
+In JS there plenty of asynchronous operations, so it is very important to know how to handle and build an asynchronous API.
 
 ##### Promise
-Promises are amazing. They are really amazing. There is no better way to handle asynchronous programming in Javascript.
+Promises are amazing. They are really amazing. There is no better way to handle asynchronous programming in JS.
 ```javascript
 var p =  new Promise(function(resolve, reject){
     obj.asyncMethod(result => resolve(result), error => reject(error));
@@ -124,7 +124,7 @@ Promise.race([promise1, promise2])
   .then(result => console.log(result))
   .catch(e => console.log(e));
 ```
-Promises are getting more and more commmon and now they have became a real standard in Javascript. There is a new AJAX API called **fetch** which returns promises. See here an example:
+Promises are getting more and more commmon and now they have became a real standard in JS. There is a new AJAX API called **fetch** which returns promises. See here an example:
 ```javascript
 function loadData(url) {
    return fetch(url)
@@ -141,13 +141,13 @@ loadUserData()
 ```
 
 ### DOM
-One of the most important use cases of Javascript is to work with Document Object Model - DOM.
+One of the most important use cases of JS is to work with Document Object Model - DOM.
 
-##### TWORZENIE OBIEKTÓW DOM
+##### Add new elements
 ```javascript
 var element = document.createElement("div");
-div.className = "redClass";
-div.id = "userName";
+div.className = "bg-red";
+div.id = "user-name";
 
 var textArea = document.createElement("textarea");
 textArea.rows = 4;
@@ -156,19 +156,17 @@ textArea.cols = 30;
 element.appendChild(textArea);
 document.getElementById("container").appendChild(element);
 
-//////Wstawianie tekstu:
-element.appendChild(document.createTextNode("Jestem text node");
-element.innerText = "Jestem text node"; //IE ONLY
+element.appendChild(document.createTextNode("A text example");
 ```
 
-##### USUWANIE OBIEKTÓW DOM
+##### Delete elements
 ```javascript
 var element = document.getElementById("container");
-var innerElements = element.getElementsByTagName("div")[0];
+var innerElement = element.getElementsByTagName("div")[0];
 element.removeChild(innerElement);
 ```
 
-##### TOGGLE BEZ JQUERY
+##### Toggle an element
 ```javascript
 function toggleElementById(elementId)
 {
@@ -183,6 +181,22 @@ function toggleElementById(elementId)
 		element.style.display = "block";
 	}
 }
+```
+
+##### Query Selector
+This is the which you should get DOM elements in pure JS.
+```javascript
+var baseElement = document.querySelector(".navbar");
+var menuButtons = baseElement.querySelector(".button");
+```
+
+##### Manage element's CSS classes
+With the element's **classList** property you have access to all the CSS classes that an element is attached to.
+```javascript
+element.classList.add("new-class");
+element.classList.remove("existing-class");
+element.classList.contains("one-class");
+element.classList.toggle("another-class");
 ```
 
 ## Useful links
@@ -209,7 +223,7 @@ function toggleElementById(elementId)
 [Lodash](https://lodash.com/)<br />
 [Dexie - IndexedDB Wrapper](https://dexie.org/)<br />
 [Howler - Web Audio Library](https://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)</br >
-[Brain.js - Machine Learning for Javascript](https://harthur.github.io/brain/)<br />
+[Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
 
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
