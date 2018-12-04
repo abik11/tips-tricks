@@ -97,7 +97,7 @@ a = Object.assign(a, { d:4, e:5 });
 ```
 
 ### Asynchronous programming
-In Javascript there plenty of asynchronous operations. 
+In Javascript there plenty of asynchronous operations, so it is very important to know how to handle and build an asynchronous API.
 
 ##### Promise
 Promises are amazing. They are really amazing. There is no better way to handle asynchronous programming in Javascript.
