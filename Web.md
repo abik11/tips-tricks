@@ -246,6 +246,21 @@ else {
 }
 ```
 
+### Timeouts and intervals
+Examples:
+```javascript
+t1 = window.setTimeout(function(){}, 1500); //wykonuje się tylko raz
+t2 = window.setInterval(function(){}, 1500); //wykonuje się nieustannie
+window.clearTimeout(t1);
+window.clearInterval(t2);
+```
+Quasi-sleep:
+```javascript
+setTimeout(function(){
+     //Tutaj dać kod, który ma się wykonać po określonym czasie...
+}, 1000);
+```
+
 ## Useful links
 
 #### General stuff
