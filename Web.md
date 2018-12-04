@@ -96,6 +96,54 @@ var a = { a:1, b:2, c:3 };
 a = Object.assign(a, { d:4, e:5 });
 ```
 
+##### Promise
+Promises are amazing. They are really amazing. There is no better way to handle asynchronous programming in Javascript.
+```javascript
+var p =  new Promise(function(resolve, reject){
+    //Tutaj wykonaj swoje zadanie
+    if( /* zakończono powodzeniem? */ ){
+        resolve(10);
+    } 
+    else {
+        reject(-1);    
+    }
+});
+
+p.then(function(num){ return num *2; })
+  .then(function(num){ return num *2; })
+  .catch(function(num){ /* on error */ });
+
+***Wykonanie wszystkich promise'ów:
+Promise.all([promise1, promise2]).then(function(values){}).catch(function(){});
+
+***Wykonanie dowolnego promise'a:
+Promise.race([promise1, promise2]).then(function(value){}).catch(function(){});
+```
+```javascript
+function loadData(url) {
+   return fetch(url)
+      .then(result => result.json())
+      .then(function (result) { return result; });
+}
+
+function loadStudentsData() {
+   return loadData("/University/GetStudents/");
+}
+
+$(function () {
+   var studentsData = loadStudentsData();
+   Promise
+      .all([studentsData])
+      .then(results => { doSomething(results[0]); })
+      .catch(error => { errorHandler(error, "An error occured!"); });   
+});
+
+function errorHandler(error, userFriendlyMessage){
+   console.error(error);
+   alert(userFriendlyMessage);
+}
+```
+
 ### DOM
 One of the most important use cases of Javascript is to work with Document Object Model - DOM.
 
