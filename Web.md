@@ -288,6 +288,17 @@ setTimeout(function(){
      //Here you can put the code that will be run after 1 second...
 }, 1000);
 ```
+By the way, with promises it can be done slightly better I guess:
+```javascript
+function sleep(ms){
+    return new Promise(resolve => {
+        setTimeout(function(){ resolve(); }, ms);
+    });
+}
+
+await sleep(4000);
+console.log("test");
+```
 
 ## Useful links
 
