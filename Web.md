@@ -198,6 +198,33 @@ element.classList.remove("existing-class");
 element.classList.contains("one-class");
 element.classList.toggle("another-class");
 ```
+With **toggle** method it is even easier to toggle an element. For example you can add the following CSS class:
+```css
+.hide {
+	display: none;
+}
+```
+and then just toggle this class:
+```javascript
+element.classList.toggle('hide');
+```
+
+##### Data properties
+You can add in HTML tags your own data properties with **data-** prefix, for example:
+```html
+<div id="user" data-name="John" data-id="42341" data-my-custom-key="test"></div>
+```
+and then you can easily access them from JS:
+```javascript
+//pure JS:
+var element = document.querySelector('#user')'
+var name = element.dataset.name;
+element.dataset.myCustomKey = "test2";
+
+//JQuery:
+$('#user').data('my-custom-key');
+$('#user').data('myCustomKey');
+```
 
 ## Useful links
 
