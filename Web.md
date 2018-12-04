@@ -143,6 +143,48 @@ loadUserData()
 ### DOM
 One of the most important use cases of Javascript is to work with Document Object Model - DOM.
 
+##### TWORZENIE OBIEKTÓW DOM
+```javascript
+var element = document.createElement("div");
+div.className = "redClass";
+div.id = "userName";
+
+var textArea = document.createElement("textarea");
+textArea.rows = 4;
+textArea.cols = 30;
+
+element.appendChild(textArea);
+document.getElementById("container").appendChild(element);
+
+//////Wstawianie tekstu:
+element.appendChild(document.createTextNode("Jestem text node");
+element.innerText = "Jestem text node"; //IE ONLY
+```
+
+##### USUWANIE OBIEKTÓW DOM
+```javascript
+var element = document.getElementById("container");
+var innerElements = element.getElementsByTagName("div")[0];
+element.removeChild(innerElement);
+```
+
+##### TOGGLE BEZ JQUERY
+```javascript
+function toggleElementById(elementId)
+{
+	var element = document.getElementById(elementId);
+	var visibility = element.style.display; 
+	if(visibility === "block")
+	{
+		element.style.display = "none";
+	}
+	else if(visibility === "none")
+	{
+		element.style.display = "block";
+	}
+}
+```
+
 ## Useful links
 
 #### General stuff
