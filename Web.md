@@ -226,6 +226,26 @@ $('#user').data('my-custom-key');
 $('#user').data('myCustomKey');
 ```
 
+### Local web storage
+If you have to store some little quantity of date on the client side, you can use local storage instead of cookies. 
+```javascript
+if(localStorage.views){
+	localStorage.views = parseInt(localStorage.views) + 1;
+}
+else {
+       localStorage.views = 1;
+}
+```
+There is also session storage which you can use to store temporary data for the current session. The data inside of session storage will disapear when you will close your browser tab.
+```javascript
+if(sessionStorage.views){
+      sessionStorage.views = parseInt(sessionStorage.views) + 1;
+}
+else {
+       sessionStorage.views = 1;
+}
+```
+
 ## Useful links
 
 #### General stuff
