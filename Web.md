@@ -300,6 +300,19 @@ await sleep(4000);
 console.log("test");
 ```
 
+### Open link in a different browser
+```html
+<script>
+   function openURL() {
+      var shell = new window.ActiveXObject("WScript.Shell");
+      shell.run("Chrome http://google.com");
+   }
+</script>
+<input type="button" onclick="openURL()" value="Click here" />
+W InternetExplorer trzeba odblokować ActiveX:
+->Opcje ->Opcje internetowe ->Zabezpieczenia ->Poziom niestandardowy ->Kontrolki ActiveX i wtyczki ->Inicjowanie i wykonywanie skryptów kontrolek ActiveX niezaznaczonych jako bezpieczne do wykonywania ->Włącz
+```
+
 ## Useful links
 
 #### General stuff
