@@ -300,7 +300,7 @@ await sleep(4000);
 console.log("test");
 ```
 
-### Open link in a different browser
+### Open link in a different browser (IE only)
 ```html
 <script>
    function openURL() {
@@ -309,9 +309,8 @@ console.log("test");
    }
 </script>
 <input type="button" onclick="openURL()" value="Click here" />
-W InternetExplorer trzeba odblokować ActiveX:
-->Opcje ->Opcje internetowe ->Zabezpieczenia ->Poziom niestandardowy ->Kontrolki ActiveX i wtyczki ->Inicjowanie i wykonywanie skryptów kontrolek ActiveX niezaznaczonych jako bezpieczne do wykonywania ->Włącz
 ```
+To make it work you have to enable ActiveX in Internet Explorer. Got to: ->Options ->Internet options ->Security ->Custom level ->ActiveX controls and plugins ->Initializing and executing ActiveX controls scripts not marked as safe to execute ->Turn on
 
 ## Useful links
 
