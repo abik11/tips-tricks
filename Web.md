@@ -168,6 +168,20 @@ async function loadData(url) {
 }
 ```
 
+### Data types
+
+##### Arrays
+```javascript
+var tasks = [];
+tasks.push({ text: 'New task' });
+var task = tasks[0];
+tasks.splice(tasks.indexOf(task), 1);
+
+var fruits = [];
+var appleExists = fruits.indexOf("apple") != -1; 
+fruits.forEach(fruit => console.log("Buy: " + fruit));
+```
+
 ### DOM
 One of the most important use cases of JS is to work with Document Object Model - DOM.
 
