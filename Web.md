@@ -418,6 +418,32 @@ var result = pattern.test(browser);
 ```
 To make it work you have to enable ActiveX in Internet Explorer. Got to: ->Options ->Internet options ->Security ->Custom level ->ActiveX controls and plugins ->Initializing and executing ActiveX controls scripts not marked as safe to execute ->Turn on
 
+### Blob and FileReader
+Blob represent raw date, raw bytes. It may be useful while working with File API or in few other use cases. Here you can see how to create a blob from string:
+```javascript
+var str = "abc";
+var blob = new Blob([str], { type: 'plain/text' });
+```
+To read the data inside of a blob (or a file) you have to use **FileReader**, call its **readAsText** or **readAsBinaryString** which will execute **onloadend** event when blob will be read.
+```javascript
+var rdr = new FileReader();
+var result;
+
+rdr.onloadend = () => result = rdr.result;
+rdr.readAsText(blob);
+rdr.readAsBinaryString(blob);
+```
+You can also read a blob as a buffer if you prefer
+```javascript
+var rdr = new FileReader();
+var buffer;
+
+rdr.onloadend = () => buffer = rdr.result;
+rdr.readAsArrayBuffer(blob);
+var uintArray = new Uint8Array(buffer); //[97, 98, 99]
+var text = String.fromCharCode.apply(null, uintArray); //"abc"
+```
+
 ## Useful links
 
 #### General stuff
