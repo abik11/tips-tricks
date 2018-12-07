@@ -182,6 +182,21 @@ var appleExists = fruits.indexOf("apple") != -1;
 fruits.forEach(fruit => console.log("Buy: " + fruit));
 ```
 
+##### Strings
+```javascript
+"Javascript".substring(4); //script
+
+var str = "WELCOME";
+str.replace(/w/i, "#");  //#ELCOME //i - case insensitive
+str.replace(/w/g, "#");  //WELCOME //g - global
+```
+
+##### Numbers
+```javascript
+Math.round(num * 100) / 100;
+Math.floor(Math.random() * 100);
+```
+
 ### DOM
 One of the most important use cases of JS is to work with Document Object Model - DOM.
 
