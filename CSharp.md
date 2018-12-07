@@ -543,6 +543,9 @@ function iterate(numbers) {
 }
 ```
 
+### Sending files from Javascript to controller
+[Go here](https://github.com/abik11/tips-tricks/blob/master/Web.md#formdata)
+
 ### Add some namespace to Razor
 In **Web.config** file in **Views** directory you can add following line:
 ```xml
