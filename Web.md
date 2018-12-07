@@ -321,6 +321,11 @@ $('#user').data('my-custom-key');
 $('#user').data('myCustomKey');
 ```
 
+##### Submit a form from JS
+```javascript
+document.getElementsByTagName('form')[0].submit();
+```
+
 ### Local web storage
 If you have to store some little quantity of date on the client side, you can use local storage instead of cookies. 
 ```javascript
