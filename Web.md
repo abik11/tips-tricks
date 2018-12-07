@@ -372,6 +372,21 @@ await sleep(4000);
 console.log("test");
 ```
 
+### Reload the page
+If you have to reload the web app from JS, you can make it the following way:
+```javascript
+// 1
+window.location.href = window.location.href;
+// 2
+location.reload(false); //reload from cache
+location.reload(true); //reload from server
+```
+
+### Detect if a browser tab is visible
+You can have many different tabs open in browser of course. If you want to check in your JS app if the tab is currently visible you can use: `document.visibilityState`. It can have one of two possible string values, simply:
+* visible
+* hidden
+
 ### Detect a browser or operating system
 ```javascript
 var browser = navigator.userAgent;
