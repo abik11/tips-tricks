@@ -419,12 +419,14 @@ var result = pattern.test(browser);
 To make it work you have to enable ActiveX in Internet Explorer. Got to: ->Options ->Internet options ->Security ->Custom level ->ActiveX controls and plugins ->Initializing and executing ActiveX controls scripts not marked as safe to execute ->Turn on
 
 ### FormData
+FormData can be used to send big amount of data or files to the server. Here you can see how to prepare FormData object: 
 ```javascript
 var data = new FormData();
 data.append("file", document.getElementById("upload-file").files[0])
 data.append("key", "test1")
-//wysłać metodą post
+//send it with POST method
 ```
+Here is an example of a controller method in C# which recieves the data from FormData:
 ```csharp
 [HttpPost]
 public ActionResult AddNewFile()
@@ -432,11 +434,10 @@ public ActionResult AddNewFile()
     string key = Request["key"];
     if(Request.Files.Count > 0)
     {
-         Stream fileStream = Request.Files[0].InputStreaml
+         Stream fileStream = Request.Files[0].InputStream;
          byte[] file = new byte[fileStream.Length];
          fileStream.Read(file, 0, (int)fileStream.Length);
      }
-     //można wykonać różne operacje na zmiennych key oraz file
 }
 ```
 
