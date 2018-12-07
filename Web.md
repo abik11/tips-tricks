@@ -326,6 +326,18 @@ $('#user').data('myCustomKey');
 document.getElementsByTagName('form')[0].submit();
 ```
 
+### Prompt dialog
+`alert()` and `confirm()` are well known JS dialogs. But there is also `prompt()` which allows user to input some value. See how to use it:
+```javascript
+var name = prompt('Put your name:');
+if (name === null)
+    alert('Canceled!');
+else if (name === '')
+    alert('Name was not given!');
+else
+    alert(`Your name is: ${name}.`);
+```
+
 ### Local web storage
 If you have to store some little quantity of date on the client side, you can use local storage instead of cookies. 
 ```javascript
