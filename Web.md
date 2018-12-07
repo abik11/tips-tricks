@@ -222,6 +222,13 @@ Date.prototype.getWeek = function(weekStartsOnMonday) {
 }
 ```
 
+##### Format data
+Here you can see an example of data formatting using *pad* and *getWeek* extension methods:
+```javascript
+var d = new Date();
+`${d.getFullYear()}-${(d.getMonth() + 1).pad(2)}-${d.getDate().pad(2)} W${d.getWeek(false).pad(2)} ${d.getHours().pad(2)}:${d.getMinutes().pad(2)}`
+```
+
 ### DOM
 One of the most important use cases of JS is to work with Document Object Model - DOM.
 
