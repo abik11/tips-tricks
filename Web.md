@@ -187,14 +187,30 @@ fruits.forEach(fruit => console.log("Buy: " + fruit));
 "Javascript".substring(4); //script
 
 var str = "WELCOME";
-str.replace(/w/i, "#");  //#ELCOME //i - case insensitive
-str.replace(/w/g, "#");  //WELCOME //g - global
+str.replace(/w/i, "#");  //#ELCOME - i - case insensitive
+str.replace(/w/g, "#");  //WELCOME - g - global
 ```
 
 ##### Numbers
 ```javascript
-Math.round(num * 100) / 100;
+//Get random number from 0 to 100
 Math.floor(Math.random() * 100);
+
+var num = 4.253452334342;
+Math.round(num * 100) / 100; //4.25
+```
+
+##### Get week number
+```javascript
+Date.prototype.getWeek = function(weekStartOnMonday) {
+	var offset;
+        if(weekStartOnMonday)
+               offset = 0;
+        else
+               offset = 1;
+        var onejan = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + offset) / 7) - 1;
+}
 ```
 
 ### DOM
