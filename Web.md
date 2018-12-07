@@ -229,6 +229,12 @@ var d = new Date();
 `${d.getFullYear()}-${(d.getMonth() + 1).pad(2)}-${d.getDate().pad(2)} W${d.getWeek(false).pad(2)} ${d.getHours().pad(2)}:${d.getMinutes().pad(2)}`
 ```
 
+##### Parse JSON
+```javascript
+var text = '{name:"John", address:"Oak Street 28", phone:"600 521 997"}';
+var obj = JSON.parse(text);
+```
+
 ### DOM
 One of the most important use cases of JS is to work with Document Object Model - DOM.
 
@@ -359,6 +365,13 @@ function sleep(ms){
 
 await sleep(4000);
 console.log("test");
+```
+
+### Detect a browser or operating system
+```javascript
+var browser = navigator.userAgent;
+var pattern = /Tizen/g;
+var result = pattern.test(browser);
 ```
 
 ### Open link in a different browser (IE only)
