@@ -1435,6 +1435,7 @@ $color.ToArgb()
 
 ##### General stuff
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
+[C# blog - Polish](https://www.plukasiewicz.net/)<br />
 
 ##### Online tools
 [.Net error translator 1](http://finderr.net/)<br />
