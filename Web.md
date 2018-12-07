@@ -454,6 +454,7 @@ var text = String.fromCharCode.apply(null, uintArray); //"abc"
 [Tutorials in English](http://tutorialzine.com/)<br />
 [TodoMVC - helping you to choose correct web framework](http://todomvc.com/)<br />
 [Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html)<br />
+[Google Dev Web Fundamentals](https://developers.google.com/web/fundamentals/)<br />
 
 #### Webpack
 [Webpack Tutorial](https://tutorialzine.com/2017/04/learn-webpack-in-15-minutes)<br />
@@ -473,6 +474,15 @@ var text = String.fromCharCode.apply(null, uintArray); //"abc"
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
 http://lorempixel.com/<br />
+
+#### HTML Notations
+http://learnjade.com/ <br />
+http://html2jade.org/ <br />
+
+#### CSS Preprocessors
+[SASS Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)<br />
+[Sassmeister - SASS online editor](https://www.sassmeister.com/)<br />
+[Stylus](http://stylus-lang.com/)<br />
 
 #### Chrome
 DevTools - chrome://inspect/<br />
