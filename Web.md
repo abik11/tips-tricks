@@ -200,16 +200,25 @@ var num = 4.253452334342;
 Math.round(num * 100) / 100; //4.25
 ```
 
-##### Get week number
+##### Leading zero for numbers
+Here is an example of an extension method. The *pad* method is defined for the **Number** prototype, so for each object o this type you will be able to call the *pad* method. This is really nice to remember! 
 ```javascript
-Date.prototype.getWeek = function(weekStartOnMonday) {
-	var offset;
-        if(weekStartOnMonday)
-               offset = 0;
-        else
-               offset = 1;
-        var onejan = new Date(this.getFullYear(), 0, 1);
-        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + offset) / 7) - 1;
+Number.prototype.pad = function (size) {
+	var str = String(this);
+	while (str.length < (size || 2)) { 
+		str = "0" + str; 
+	}
+	return str;
+}
+```
+
+##### Get week number
+Here you can see another example of extension method.
+```javascript
+Date.prototype.getWeek = function(weekStartsOnMonday) {
+	var offset = weekStartsOnMonday ? 0 : 1;
+        var firstJanuary = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - firstJanuary) / 86400000) + firstJanuary.getDay() + offset) / 7) - 1;
 }
 ```
 
