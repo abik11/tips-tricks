@@ -472,6 +472,7 @@ var text = String.fromCharCode.apply(null, uintArray); //"abc"
 Npm is a package manager for JS. It is very common and you can find there thousands of different packages. Probably you will find there whatever you will need so it is really good idea to learn how to apply npm for your projects.
 
 ### Proxy configuration for npm
+This is a very common scenario that you will work behind some kind of a corporate proxy. In such case, downloading packages may be impossible if you won't configure proxy for npm correctly.
 ```
 npm config set proxy http://DOMAIN%5Cuser.name:pass@proxy-address:8080
 npm config set https-proxy http://DOMAIN%5Cuser.name:pass@aproxy-ddress:8080
@@ -484,8 +485,15 @@ git config https.proxy --global https.proxy http://DOMAIN%5Cuser.name:pass@proxy
 ```
 You can type the following URL in your browser to get proxy configuration: http://wpad/wpad.dat
 
-### URIError: URI malformed
+##### URIError: URI malformed
 If you see such error returned from npm, it is possible that you have an incorrect char in the proxy address. You can modify it in the `c:\users\my.user\.npmrc` file.
+
+### Delete files with long names
+There is an amazing package available in npm - **rimraf**. It simply deletes files and directories without taking into consideration how long is its name. It is especially useful while working with npm on Windows to delete `node_modules` directory when needed.
+```
+npm install rimraf -g
+rimraf .\node_modules
+```
 
 ## Useful links
 
