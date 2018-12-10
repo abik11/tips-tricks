@@ -1,6 +1,7 @@
 # Web development
 
 * [Javascript](#javascript)
+* [Npm](#npm)
 * [Useful links](#useful-links)
 
 ## Javascript
@@ -466,6 +467,12 @@ rdr.readAsArrayBuffer(blob);
 var uintArray = new Uint8Array(buffer); //[97, 98, 99]
 var text = String.fromCharCode.apply(null, uintArray); //"abc"
 ```
+
+## Npm
+Npm is a package manager for JS. It is very common and you can find there thousands of different packages. Probably you will find there whatever you will need so it is really good idea to learn how to apply npm for your projects.
+
+### URIError: URI malformed
+If you see such error returned from npm, it is possible that you have an incorrect char in the proxy address. You can modify it in the `c:\users\my.user\.npmrc` file.
 
 ## Useful links
 
