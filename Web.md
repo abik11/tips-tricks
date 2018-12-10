@@ -471,6 +471,19 @@ var text = String.fromCharCode.apply(null, uintArray); //"abc"
 ## Npm
 Npm is a package manager for JS. It is very common and you can find there thousands of different packages. Probably you will find there whatever you will need so it is really good idea to learn how to apply npm for your projects.
 
+### Proxy configuration for npm
+```
+npm config set proxy http://DOMAIN%5Cuser.name:pass@proxy-address:8080
+npm config set https-proxy http://DOMAIN%5Cuser.name:pass@aproxy-ddress:8080
+
+npm config set strict-ssl false #sometimes you may need this
+npm config set registry https://registry.npmjs.org/ #and this
+
+git config http.proxy --global http://DOMAIN%5Cuser.name:pass@proxy-address:8080
+git config https.proxy --global https.proxy http://DOMAIN%5Cuser.name:pass@proxy-address:8080
+```
+You can type the following URL in your browser to get proxy configuration: http://wpad/wpad.dat
+
 ### URIError: URI malformed
 If you see such error returned from npm, it is possible that you have an incorrect char in the proxy address. You can modify it in the `c:\users\my.user\.npmrc` file.
 
