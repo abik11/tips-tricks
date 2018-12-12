@@ -475,6 +475,24 @@ With the constant development of JS as a language and development platform itsel
 ### Lodash
 
 ### Axios
+**Axios** is a very well known AJAX library. It does nothing more than just AJAX based on promises. In many cases it can be replaced with **fetch** API.
+
+##### Simple GET and POST requests
+```javascript
+axios.get('/users?id=10')
+    .then(response => console.log(response))
+    .catch(error => console.error(error));
+    
+axios.post('/users', { id: 10 })
+    .then(response => console.log(response))
+    .catch(error => console.error(error));
+```
+
+##### How to enable cross domain requests
+```html
+<meta http-equiv="Content-Security-Policy" 
+      content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+```
 
 ### Anime.js
 There is a great JS library for animation called **Anime.js**. It has quite easy API, you can read more in the docs. The following example will animate all the divs with *box* class. Each div will be animated one second after other div animation started thanks to **delay** property. Also play and pause functions are attached to buttons.
