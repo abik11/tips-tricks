@@ -1,6 +1,7 @@
 # Web development
 
 * [Javascript](#javascript)
+* [Libraries](#libraries)
 * [Npm](#npm)
 * [Useful links](#useful-links)
 
@@ -468,7 +469,7 @@ var uintArray = new Uint8Array(buffer); //[97, 98, 99]
 var text = String.fromCharCode.apply(null, uintArray); //"abc"
 ```
 
-## External libraries
+## Libraries
 With the constant development of JS as a language and development platform itself, there is also a growing number of JS libraries which are really good. You can use them through CDN's, host locally or (usually preferable way) install with npm.
 
 ### Lodash
@@ -476,6 +477,26 @@ With the constant development of JS as a language and development platform itsel
 ### Axios
 
 ### Anime.js
+There is a great JS library for animation called **Anime.js**. It has quite easy API, you can read more in the docs. The following example will animate all the divs with *box* class. Each div will be animated one second after other div animation started thanks to **delay** property. Also play and pause functions are attached to buttons.
+```javascript
+var animation = anime({
+    targets: 'div.box',
+    translateY: [
+        { value: 200, duration: 500 },
+        { value: 0, duration: 800 },
+    ],
+    rotate: {
+        value: '1turn',
+        easing: 'easeInOutSine'
+    },
+    delay: function(el, i, l){ return i * 1000 },
+    autoplay: false,
+    loop: true
+});
+
+document.querySelector('button.play').onclick = animation.play;
+document.querySelector('button.pause').onclick = animation.pause;
+```
 
 ## Npm
 Npm is a package manager for JS. It is very common and you can find there thousands of different packages. Probably you will find there whatever you will need so it is really good idea to learn how to apply npm for your projects.
@@ -536,6 +557,7 @@ rimraf .\node_modules
 [Dexie - IndexedDB Wrapper](https://dexie.org/)<br />
 [Howler - Web Audio Library](https://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)</br >
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
+[Anime.js -Animation](http://animejs.com/)<br />
 
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
