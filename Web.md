@@ -488,6 +488,18 @@ axios.post('/users', { id: 10 })
     .catch(error => console.error(error));
 ```
 
+##### Waiting for multiple axios promises
+Just like there is **Promise.all** method, there is **axios.all** which works the same way:
+```javascript
+function getUserAccount() { return axios.get('/user/12345'); }
+function getUserPermissions() { return axios.get('/user/12345/permissions'); }
+
+axios.all([getUserAccount(), getUserPermissions()])
+    .then(axios.spread((account, permissions) => { 
+        //...
+    }));
+```
+
 ##### How to enable cross domain requests
 ```html
 <meta http-equiv="Content-Security-Policy" 
