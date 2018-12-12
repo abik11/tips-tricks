@@ -468,6 +468,15 @@ var uintArray = new Uint8Array(buffer); //[97, 98, 99]
 var text = String.fromCharCode.apply(null, uintArray); //"abc"
 ```
 
+## External libraries
+With the constant development of JS as a language and development platform itself, there is also a growing number of JS libraries which are really good. You can use them through CDN's, host locally or (usually preferable way) install with npm.
+
+### Lodash
+
+### Axios
+
+### Anime.js
+
 ## Npm
 Npm is a package manager for JS. It is very common and you can find there thousands of different packages. Probably you will find there whatever you will need so it is really good idea to learn how to apply npm for your projects.
 
