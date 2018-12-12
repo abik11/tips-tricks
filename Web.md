@@ -471,6 +471,12 @@ var text = String.fromCharCode.apply(null, uintArray); //"abc"
 ## Npm
 Npm is a package manager for JS. It is very common and you can find there thousands of different packages. Probably you will find there whatever you will need so it is really good idea to learn how to apply npm for your projects.
 
+### Update node and npm
+```
+npm install -g n
+npm install npm -g
+```
+
 ### Proxy configuration for npm
 This is a very common scenario that you will work behind some kind of a corporate proxy. In such case, downloading packages may be impossible if you won't configure proxy for npm correctly.
 ```
