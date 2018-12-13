@@ -474,6 +474,37 @@ With the constant development of JS as a language and development platform itsel
 
 ### Lodash
 
+##### Delayed function
+```javascript
+var debounced = _.debounce(validateInput, 750);
+debounced.cancel(), debounced.flush()
+```
+
+##### Setting functions intervals
+```javascript
+var throttled = _.throttle(someFunction, 1500);
+```
+
+##### Chaining lodash methods
+```javascript
+_.chain(users)
+  .sortBy('age')
+  .map(function(u){ return u.name + '/' + u.age })
+  .head()
+  .value()
+```
+
+##### Delete an array element of given index
+```javascript
+var numbers = [1, 2, 3, 4, 5];
+_.remove(numbers, function(n, i){ return i == 2; });
+```
+
+##### Current date
+```javascript
+_.now()
+```
+
 ### Axios
 **Axios** is a very well known AJAX library. It does nothing more than just AJAX based on promises. In many cases it can be replaced with **fetch** API.
 
