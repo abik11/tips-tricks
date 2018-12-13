@@ -674,9 +674,10 @@ State property name (content) must be exactly the same as the name in the input 
 [Axios Tutorial](https://alligator.io/vuejs/rest-api-axios/)<br />
 [Lodash](https://lodash.com/)<br />
 [Dexie - IndexedDB Wrapper](https://dexie.org/)<br />
+[Chart.js - Charts based on canvas tag](https://www.chartjs.org/)<br />
+[Anime.js -Animation](http://animejs.com/)<br />
 [Howler - Web Audio Library](https://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)</br >
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
-[Anime.js -Animation](http://animejs.com/)<br />
 
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
