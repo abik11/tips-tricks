@@ -473,6 +473,31 @@ var text = String.fromCharCode.apply(null, uintArray); //"abc"
 With the constant development of JS as a language and development platform itself, there is also a growing number of JS libraries which are really good. You can use them through CDN's, host locally or (usually preferable way) install with npm.
 
 ### Lodash
+Lodash is quite simple but very powerful JS library that brings you many functions to work with collections, arrays and other data types. It has great documentation. If you have ever worked with C# and Linq, it is like a Linq for C# :)
+```javascript
+var users = [
+  { 'user': 'alberto', 'age': 26, 'active': false },
+  { 'user': 'paulina',   'age': 22, 'active': false }
+];
+
+_.every(users, { 'user': 'barney', 'active': false }); // => false
+_.some([null, 0, 'yes', false], Boolean); // => true
+_.some(users, ['age', 36]); // => true
+_.includes([2,5,6], 3); // => false
+_.groupBy(users, 'active'); // => { false: [{ 'user': 'alberto', ... }, { 'user': 'paulina', ... }] }
+_.groupBy([6.1, 4.2, 6.3], Math.floor); // => { 4: [4.2], 6: [6.1, 6.3] }
+_.groupBy(['one', 'two', 'three'], 'length'); // => { '3': ['one', 'two'], '5': ['three'] }
+_.countBy(['one', 'two', 'three'], 'length'); // => { '3': 2, '5': 1 }
+_.size(users); 
+_.sortBy(users, ['age', 'user']);
+_.orderBy(users, ['age', 'user'], ['desc', 'asc']);
+_.shuffle([1,2,3,4]);
+_.sample([1,2,3,4]);
+_.map(users, 'user');
+_.map(users, function(u){ return u.age * u.age });
+_.filter(users, function(u){ return u.age > 25 });
+_.filter(users, ['active', false]);
+```
 
 ##### Delayed function
 ```javascript
@@ -485,6 +510,18 @@ debounced.cancel(), debounced.flush()
 var throttled = _.throttle(someFunction, 1500);
 ```
 
+##### Foreach
+```javascript
+_.forEach([1, 2], function(value){ ... });
+_.forEach({ 'a':1, 'b':2 }, function(value, key){ ... });
+```
+
+##### Delete an array element of given index
+```javascript
+var numbers = [1, 2, 3, 4, 5];
+_.remove(numbers, function(n, i){ return i == 2; });
+```
+
 ##### Chaining lodash methods
 ```javascript
 _.chain(users)
@@ -492,12 +529,6 @@ _.chain(users)
   .map(function(u){ return u.name + '/' + u.age })
   .head()
   .value()
-```
-
-##### Delete an array element of given index
-```javascript
-var numbers = [1, 2, 3, 4, 5];
-_.remove(numbers, function(n, i){ return i == 2; });
 ```
 
 ##### Current date
