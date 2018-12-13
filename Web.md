@@ -3,6 +3,7 @@
 * [Javascript](#javascript)
 * [Libraries](#libraries)
 * [Npm](#npm)
+* [React](#react)
 * [Useful links](#useful-links)
 
 ## Javascript
@@ -622,6 +623,32 @@ There is an amazing package available in npm - **rimraf**. It simply deletes fil
 npm install rimraf -g
 rimraf .\node_modules
 ```
+
+## React
+
+### Nice way to bind onchange event
+```javascript
+class MyComponent extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            content = ""
+        }
+    }
+
+    onChange = e => {
+        this.setState({ [e.target.name]:e.target.value });
+    }
+
+    render(){
+        return (
+            <input type='text' name='content' 
+                       value={this.state.content} onchange={this.onChange}   
+        );
+    }
+}
+```
+State property name (content) must be exactly the same as the name in the input tag to make it work.
 
 ## Useful links
 
