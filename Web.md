@@ -3,6 +3,7 @@
 * [Javascript](#javascript)
 * [Libraries](#libraries)
 * [Npm](#npm)
+* [Webpack](#webpack)
 * [React](#react)
 * [Useful links](#useful-links)
 
@@ -624,7 +625,11 @@ npm install rimraf -g
 rimraf .\node_modules
 ```
 
+## Webpack
+Webpack is a JS bundler, it allows you to divide your whole JS project into many small files that will be then joined toegether into a final JS file. It also bundles CSS and HTML files and with plugins it can work with almost any kind of web technology. It is a really amazing tool.
+
 ## React
+ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build for modern web applications. It is very fast by the way!
 
 ### Nice way to bind onchange event
 ```javascript
