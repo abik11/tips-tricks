@@ -626,7 +626,40 @@ rimraf .\node_modules
 ```
 
 ## Webpack
-Webpack is a JS bundler, it allows you to divide your whole JS project into many small files that will be then joined toegether into a final JS file. It also bundles CSS and HTML files and with plugins it can work with almost any kind of web technology. It is a really amazing tool.
+Webpack is a JS bundler, it allows you to divide your whole JS project into many small files that will be then joined toegether into a final JS file. It also bundles CSS and HTML files and with plugins it can work with almost any kind of web technology. It is a really amazing tool.<br />
+See here an extremely amazing **webpack** configuration file:
+```javascript
+var path = require('path');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+To make it work with **npm** you have to add it into scripts:
+```javascript
+{
+    "scripts": {
+        "build": "webpack -p"
+    }
+}
+```
+and to run it type `npm run build` in the console. Then for example you can use imports to divide your projects and structure it easily.
+```javascript
+// ./src/js/index.js:
+import greet from './greet.js';
+console.log("Here is the entry point!");
+greet();
+
+// ./src/js/greet.js:
+function greet() {
+    console.log('And I am imported from the other file!');
+};
+export default greet;
+```
 
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build for modern web applications. It is very fast by the way!
