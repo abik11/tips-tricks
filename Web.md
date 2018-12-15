@@ -661,6 +661,19 @@ function greet() {
 export default greet;
 ```
 
+### Multiple entry points
+It is possible to configure Webpack to have more than one entry point. Just remember that you will also have as many output JS files as many entry points you have defined. 
+```javascript
+entry: {
+    bundle: "./src/js/index.js",
+    vendor: "./src/js/vendorLib.js"    
+}
+output: {  
+    path: path.join(__dirname, "./dist"),
+    filename: "[name].js"
+}
+```
+
 ### Loading images
 To load images through Webpack you should use **file-loader** plugin. To install it with **npm**, run the following command:
 ```
@@ -709,6 +722,28 @@ module: {
            }
       ]
    }
+```
+
+### Add jQuery
+If you need jQuery in your project you can add it in many different ways. If you don't need jQuery, but some CSS frameworks that you use need it (Bootstrap, Materialize) the best way to add jQuery is to provide it as a plugin. It is quite simple and you can use this method to add other libraries for example lodash or axios - they will be available in all your JS files, you will not have to import them every time.
+```javascript
+var path = require('path');
+var webpack = require('webpack');
+
+module.exports = {
+  entry: './src/js/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  plugins: [
+  	new webpack.ProvidePlugin({
+		jQuery: 'jquery',
+  		$: 'jquery',
+  		jquery: 'jquery'
+  	})
+  ]
+};
 ```
 
 ## React
