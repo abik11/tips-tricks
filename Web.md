@@ -627,7 +627,7 @@ rimraf .\node_modules
 
 ## Webpack
 Webpack is a JS bundler, it allows you to divide your whole JS project into many small files that will be then joined toegether into a final JS file. It also bundles CSS and HTML files and with plugins it can work with almost any kind of web technology. It is a really amazing tool.<br />
-See here an extremely amazing **webpack** configuration file:
+See here an extremely simple **webpack** configuration file:
 ```javascript
 var path = require('path');
 
@@ -659,6 +659,56 @@ function greet() {
     console.log('And I am imported from the other file!');
 };
 export default greet;
+```
+
+### Loading images
+To load images through Webpack you should use **file-loader** plugin. To install it with **npm**, run the following command:
+```
+npm install --save-dev file-loader
+```
+Then you can use it inside of your Webpack configuration file to load images:
+```javascript
+webpack.config.js
+{
+    test: /\.(jpe?g|png|gif|svg)$/i,
+    loader: 'file-loader',
+        options: {
+            name: '[name].[ext]',
+            outputPath: 'img/'
+        }
+}
+```
+Also you should add the following line in your main JS file:
+```javascript
+require.context("../img/", true, /\.(jpe?g|png|gif|svg)$/i);
+```
+You can use this plugin to load other static resources, for example fonts.
+
+##### Loading images and fonts in Cordova
+In Cordova a web application is run in WebView and it tries to find images or fonts in `/android_assets/www/` where as default the files of a Cordova application are stored. To make Webpack replace the path you have to add **publicPath** property with `file:///android_asset/www/` as a value. See here an example:
+```javascript
+module: {
+      rules: [
+           {
+              test: /\.(jpe?g|png|gif|svg)$/i,
+              loader: 'file-loader',
+              options: {
+                 name: '[name].[ext]',
+                 outputPath: 'img/',
+                 publicPath: 'file:///android_asset/www/'
+              }
+           },
+           {
+              test: /\.(woff2?|ttf|eot|svg)$/,
+              loader: 'file-loader',
+              options: {
+                 name: '[name].[ext]',
+                 outputPath: 'fonts/',
+                 publicPath: 'file:///android_asset/www/'
+              }
+           }
+      ]
+   }
 ```
 
 ## React
