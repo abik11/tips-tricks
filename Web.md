@@ -725,7 +725,12 @@ module: {
 ```
 
 ### Add jQuery
-If you need jQuery in your project you can add it in many different ways. If you don't need jQuery, but some CSS frameworks that you use need it (Bootstrap, Materialize) the best way to add jQuery is to provide it as a plugin. It is quite simple and you can use this method to add other libraries for example lodash or axios - they will be available in all your JS files, you will not have to import them every time.
+If you need jQuery in your project you can add it in many different ways. If you don't need jQuery, but some CSS frameworks that you use need it (Bootstrap, Materialize) the best way to add jQuery is to provide it as a plugin. It is quite simple and you can use this method to add other libraries for example lodash or axios - they will be available in all your JS files, you will not have to import them every time.<br />
+First you have to install the library with **npm**:
+```
+npm install jquery
+```
+or other package manger and then you can provide it as a plugin:
 ```javascript
 var path = require('path');
 var webpack = require('webpack');
