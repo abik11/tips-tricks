@@ -5,6 +5,7 @@
 * [Npm](#npm)
 * [Webpack](#webpack)
 * [React](#react)
+* [JQuery](#jquery)
 * [Useful links](#useful-links)
 
 ## Javascript
@@ -778,6 +779,10 @@ class MyComponent extends Component {
 ```
 State property name (content) must be exactly the same as the name in the input tag to make it work.
 
+## JQuery
+
+
+
 ## Useful links
 
 #### General stuff
@@ -806,6 +811,7 @@ State property name (content) must be exactly the same as the name in the input 
 [Anime.js -Animation](http://animejs.com/)<br />
 [Howler - Web Audio Library](https://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)</br >
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
+[Zepto - lighter jQuery](http://zeptojs.com/)<br />
 
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
