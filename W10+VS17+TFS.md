@@ -131,6 +131,9 @@ Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*,
 ##### Turn off apps in the background
 ->Settings ->Privacy ->Background apps
 
+### Add My Computer on the desktop in Windows 10
+->Right click on the desktop ->Personalize ->Themes ->Desktop icon settings ->Check **Computer**
+
 ### Turn off text scaling in Windows 10
 ->Right click on the desktop ->Display settings ->Change the size of text, apps, and other items
 
