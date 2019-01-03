@@ -816,6 +816,7 @@ State property name (content) must be exactly the same as the name in the input 
 #### React
 [React Developer Roadmap](https://github.com/adam-golab/react-developer-roadmap)<br />
 [Classnames](https://github.com/JedWatson/classnames)<br />
+[Egghead Redux Cheat Sheet](https://github.com/linkmesrl/react-journey-2016/blob/master/resources/egghead-redux-cheat-sheet-3-2-1.pdf)<br />
 
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
