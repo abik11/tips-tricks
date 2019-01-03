@@ -813,7 +813,7 @@ State property name (content) must be exactly the same as the name in the input 
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
 [Zepto - lighter jQuery](http://zeptojs.com/)<br />
 
-### React
+#### React
 [React Developer Roadmap](https://github.com/adam-golab/react-developer-roadmap)<br />
 [Classnames](https://github.com/JedWatson/classnames)<br />
 
