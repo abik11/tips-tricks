@@ -781,6 +781,73 @@ State property name (content) must be exactly the same as the name in the input 
 
 ## JQuery
 
+### AJAX
+
+##### File upload
+```html
+<input type="file" id="file" name="file">
+```
+```javascript
+var inputFiles = $('#file').prop('files');
+var fd = new FormData();
+
+fd.append('imagefile', inputFiles[0]);
+$.ajax({
+    url: '/img/upload',
+    type: 'POST',
+    data: fd,
+    //...
+});
+```
+
+##### Call an external API
+```javascript
+$.ajax({
+    url: '...',
+    dataType:  'jsonp',
+    jsonpCallback: function (response) {
+    	$.each(response.data.entries, function (i, item) {
+        	$('.feed').append('<li>' + item.title + '</li>');
+    	}); 
+    }
+});
+```
+
+##### Default values for AJAX
+```javascript
+$.ajaxSetup({
+    url: '/myapp/default',
+    contentType: 'GET',
+    success: function(data){ $(".container").append(data) }
+});
+
+$.ajax({
+    data: { user: 'alberto124' }
+});
+```
+
+##### Cancel AJAX request
+```javascript
+var xhr = $.ajax({
+    error: function(jqXHR, textStatus, errorThrown){
+        if(textStatus == "abort"){}
+    }
+});
+
+xhr.abort();
+```
+
+##### AJAX request timeout
+```javascript
+$,ajax({
+    timeout: 3000,
+    error: function(jqXHR, textStatus, errorThrown){
+        if(textStatus == "error"){}
+        else if(textStatus == "timeout"){}
+    }
+});
+```
+
 ### Animations
 ```javascript
 $('.box')
