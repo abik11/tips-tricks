@@ -781,7 +781,22 @@ State property name (content) must be exactly the same as the name in the input 
 
 ## JQuery
 
+### Animations
+```javascript
+$('.box')
+   .animate({ opacity: 0.8 }, 1500)
+   .animate({ opacity: 0.0 }, 1500);
+```
 
+### Error: a.indexof is not a function, after JQuery update
+The following error can appear usually when you update JQuery to the newest version. For rexample the following expression from version 1.8 is incorrect:
+```javascript
+$(document).ready(function() { ... });
+```
+You should use event listener instead:
+```javascript
+$(document).on('ready', function() { ... });
+```
 
 ## Useful links
 
