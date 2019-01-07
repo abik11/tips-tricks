@@ -781,6 +781,21 @@ State property name (content) must be exactly the same as the name in the input 
 
 ## JQuery
 
+### Send a form when pushing enter
+```javascript
+$('body').keypress(function(event) {
+     if (event.which == 13) {
+          event.preventDefault();
+          $('.send-button').click();
+     }
+});
+```
+
+### 
+```javascript
+
+```
+
 ### AJAX
 
 ##### File upload
@@ -849,11 +864,24 @@ $,ajax({
 ```
 
 ### Animations
+
+##### Built-in
 ```javascript
-$('.box')
-   .animate({ opacity: 0.8 }, 1500)
-   .animate({ opacity: 0.0 }, 1500);
+$('.box').on('click', function(){
+      $(this)
+            .animate({ opacity: 0.8 }, 1500)
+            .animate({ opacity: 0.0 }, 1500);      
+});
 ```
+
+##### Transit - plugin for JQuery
+JQuery's **animate** function uses Javascript animation and not CSS. That means that it is executed in the browser's main thread and without acceleration. **Transit** is a plugin for JQuery that uses CSS transitions instead of Javascript to animate stuff, but not every property can be animated.
+```javascript
+$('.box').on('click', function(){
+      $(this).transition({ x: "+=40px", color:"red", scale: [2, 1.5] }); 
+});
+```
+You can learn more [here](https://ricostacruz.com/jquery.transit) and [here](https://ricostacruz.com/jquery.transit/source/).
 
 ### Error: a.indexof is not a function, after JQuery update
 The following error can appear usually when you update JQuery to the newest version. For rexample the following expression from version 1.8 is incorrect:
