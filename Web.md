@@ -791,11 +791,6 @@ $('body').keypress(function(event) {
 });
 ```
 
-### 
-```javascript
-
-```
-
 ### AJAX
 
 ##### File upload
