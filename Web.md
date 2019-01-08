@@ -1000,6 +1000,15 @@ $(document).on('ready', function() { ... });
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
 [Zepto - lighter jQuery](http://zeptojs.com/)<br />
 
+#### Vue
+[Vue.js docs](https://vuejs.org/v2/guide/)<br />
+[Vue.js tutorial for beginners](https://www.youtube.com/watch?v=z6hQqgvGI4Y)<br />
+[Vuex tutorial for beginners](https://www.youtube.com/watch?v=2CSr2vBApSI&list=PL55RiY5tL51pT0DNJraU93FhMzhXxtDAo)<br />
+[Vue.js feed - tutorials](https://vuejsfeed.com/)<br />
+[How to encapsulate common functionality in Vuejs?](https://laracasts.com/discuss/channels/vue/how-to-encapsulate-common-functionality-in-vuejs)<br />
+[Vue I18n](http://kazupon.github.io/vue-i18n/)<br />
+[Vue components for Bulma](https://buefy.github.io/)<br />
+
 #### React
 [React Developer Roadmap](https://github.com/adam-golab/react-developer-roadmap)<br />
 [Classnames](https://github.com/JedWatson/classnames)<br />
