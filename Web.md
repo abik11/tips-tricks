@@ -781,7 +781,26 @@ State property name (content) must be exactly the same as the name in the input 
 
 ## JQuery
 
-### Send a form when pushing enter
+### Forms
+
+##### Submitting a form
+```javascript
+$(".my-form").submit(function(event){ 
+   event.preventDefault();
+  
+   $.ajax({
+      type: "POST", 
+      contentType: "application/json; charset=utf-8",
+      url: "/users/setuser",
+      data: JSON.stringify({ name: 'alberto' }),
+      dataType: "json",
+      error: function(jqXHR, textStatus, errorThrown){},
+      success: functon(data){}
+   });
+});
+```
+
+##### Submitting a form when pushing enter
 ```javascript
 $('body').keypress(function(event) {
      if (event.which == 13) {
@@ -790,18 +809,6 @@ $('body').keypress(function(event) {
      }
 });
 ```
-
-### Uncheck a checkbox
-```javascript
-$("input").attr("checked", false);
-```
-
-### Get tag's name
-```javascript
-$(".box").prop("tagName");
-```
-
-### AJAX
 
 ##### File upload
 ```html
@@ -819,6 +826,18 @@ $.ajax({
     //...
 });
 ```
+
+##### Uncheck a checkbox
+```javascript
+$("input").is(":checked").attr("checked", false);
+```
+
+### Get tag's name
+```javascript
+$(".box").prop("tagName");
+```
+
+### AJAX
 
 ##### Call an external API
 ```javascript
@@ -865,6 +884,20 @@ $,ajax({
         if(textStatus == "error"){}
         else if(textStatus == "timeout"){}
     }
+});
+```
+
+#### Reload whole page
+```javascript
+$.ajax({
+      /*
+       * AJAX configuration
+       */
+      success: function (response) {
+         document.open();
+         document.write(response);
+         document.close();
+      }
 });
 ```
 
