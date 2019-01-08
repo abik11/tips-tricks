@@ -754,9 +754,10 @@ module.exports = {
 ```
 
 ## Vue
+Vue.js is a modern, practical web front-end framework that allows you to quickly build well-structured modularized applications. It is quite easy to learn and very powerful. Working with Vue.js is a real fun!
 
 ## React
-ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build for modern web applications. It is very fast by the way!
+ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
 
 ### Nice way to bind onchange event
 ```javascript
