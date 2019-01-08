@@ -791,6 +791,16 @@ $('body').keypress(function(event) {
 });
 ```
 
+### Uncheck a checkbox
+```javascript
+$("input").attr("checked", false);
+```
+
+### Get tag's name
+```javascript
+$(".box").prop("tagName");
+```
+
 ### AJAX
 
 ##### File upload
