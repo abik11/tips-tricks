@@ -756,6 +756,22 @@ module.exports = {
 ## Vue
 Vue.js is a modern, practical web front-end framework that allows you to quickly build well-structured modularized applications. It is quite easy to learn and very powerful. Working with Vue.js is a real fun!
 
+### V-model
+To create two-way binding with input tags you have to use **v-model** directive.
+```html
+<input v-model="message">
+```
+
+### Init component's properties with props
+```javascript
+props: ['initialCounter'],
+data: function () {
+  return { 
+    counter: this.initialCounter 
+  }
+}
+```
+
 ### Keep the component's state
 ```html
 <keep-alive>
