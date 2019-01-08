@@ -792,6 +792,33 @@ beforeRouteEnter (to, from, next) {
 }
 ```
 
+### Reset component's data
+Functionality of component's data is encapsulated in mixin here:
+```javascript
+var ResetMixin = {
+   methods: {
+      reset() {
+         Object.assign(this.$data, this.$options.data.call(this));
+      }
+   }
+};
+export default ResetMixin;
+```
+and then imported to the module:
+```
+import ResetMixin from 'resetMixin.js'
+
+export default {
+    name: 'component-1',
+    mixins: [ResetMixin],
+    data(){
+        return {
+            prop1: false
+        }
+    }
+}
+```
+
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
 
