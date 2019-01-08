@@ -878,6 +878,40 @@ $('.box').on('click', function(){
 ```
 You can learn more [here](https://ricostacruz.com/jquery.transit) and [here](https://ricostacruz.com/jquery.transit/source/).
 
+### Blast
+Blast is a plugin for JQuery that allows you to style text in many different ways.
+
+##### Dividing text by words
+```javascript
+$(".text").blast({ delimiter: "word", aria: false }); // turn on
+$(".text").blast(false); // turn off
+```
+HTML before division:
+```html
+<div id="text">Hello world!</div>
+```
+HTML after division:
+```html
+<div id="text"><span class="blast">Hello</span><span class="blast">world!</span></div>
+```
+Advanced options:
+```javascript
+$(".text").blast({
+     delimiter: "word", //all, letter, word, sentence 
+     tag: "div", 	//you can choose other tag than <span> to divide text
+     customClass: "separate-word" //you can specify other css class name
+});
+```
+
+##### Styling the searched phrase
+Instead of **delimeter** use **search** and blast will apply the style only for the given phrase:
+```javascript
+$("#text").blast({ search: "banana", customClass: "search-phrase" });
+```
+```css
+.searchPhrase { background-color: yellow; font-size: 18px; padding: 4px; }
+```
+
 ### Error: a.indexof is not a function, after JQuery update
 The following error can appear usually when you update JQuery to the newest version. For rexample the following expression from version 1.8 is incorrect:
 ```javascript
