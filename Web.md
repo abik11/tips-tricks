@@ -756,6 +756,26 @@ module.exports = {
 ## Vue
 Vue.js is a modern, practical web front-end framework that allows you to quickly build well-structured modularized applications. It is quite easy to learn and very powerful. Working with Vue.js is a real fun!
 
+### Keep the component's state
+```html
+<keep-alive>
+    <router-view></router-view>
+</keep-alive>
+```
+
+### Access URL parameters
+If you route is for example `/user/:id`, than for the url `user/4` the value for **id** will be 4.
+```javascript
+data(){
+   return {
+       id = ''
+   }
+},
+beforeRouteEnter (to, from, next) {
+   next(vm => vm.id = to.params.id);
+}
+```
+
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
 
