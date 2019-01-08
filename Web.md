@@ -805,7 +805,7 @@ var ResetMixin = {
 export default ResetMixin;
 ```
 and then imported to the module:
-```
+```javascript
 import ResetMixin from 'resetMixin.js'
 
 export default {
