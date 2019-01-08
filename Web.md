@@ -4,6 +4,7 @@
 * [Libraries](#libraries)
 * [Npm](#npm)
 * [Webpack](#webpack)
+* [Vue](#vue)
 * [React](#react)
 * [JQuery](#jquery)
 * [Useful links](#useful-links)
@@ -752,6 +753,8 @@ module.exports = {
 };
 ```
 
+## Vue
+
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build for modern web applications. It is very fast by the way!
 
@@ -780,6 +783,7 @@ class MyComponent extends Component {
 State property name (content) must be exactly the same as the name in the input tag to make it work.
 
 ## JQuery
+JQuery is a library that allows you to write less javascript code that will be more portable among different browsers. Nowadays JQuery is not such a fundamental library as it was in the past, loosing the market with modern javascript frameworks like Vue, React or Angular, but it is still in use.
 
 ### Forms
 
