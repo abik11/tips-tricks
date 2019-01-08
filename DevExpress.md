@@ -489,3 +489,4 @@ export: { enabled: true, fileName: "report" }
 #### DevExtreeme
 [DevExtreeme Gallery](https://js.devexpress.com/Demos/WidgetsGallery/)<br />
 [DevExtreeme Documentation](https://js.devexpress.com/Documentation/16_2/)<br />
+[Using Vue.js with DevExtreeme](https://github.com/DevExpress/devextreme-vue/blob/master/README.md)
