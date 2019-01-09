@@ -819,6 +819,24 @@ export default {
 }
 ```
 
+### Event modifiers
+Vue.js brings many different modifiers that allow you to control precisely the way you handle events. For example `.prevent` modifier will add `event.preventDefault()` instruction to the event handler. Here you can see how to aply modifier to an event:
+```javascript
+<button @submit.prevent="sendForm">Send</button>
+```
+There are also many modifiers connected with keys. For example if you want to execute someting when *enter* is pushed you can make it like that: `@keyup.13` or `@keyup.enter`. There are also other predefined buttons `.esc`, `.space`, `.tab` etc. Also you can define your own codes:
+```javascript
+Vue.config.keyCodes.f1 = 112;
+```
+You can also mix keys with other events, for example CTRL + click: `@click.ctrl` or two keys, CTRL + A: `@keyup.alt.65`
+
+Specify mouse button
+@click.left
+.left, .right, .middle
+
+@click.native
+If you want to know the details, look the [docs](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
+
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
 
