@@ -828,14 +828,7 @@ There are also many modifiers connected with keys. For example if you want to ex
 ```javascript
 Vue.config.keyCodes.f1 = 112;
 ```
-You can also mix keys with other events, for example CTRL + click: `@click.ctrl` or two keys, CTRL + A: `@keyup.alt.65`
-
-Specify mouse button
-@click.left
-.left, .right, .middle
-
-@click.native
-If you want to know the details, look the [docs](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
+You can also mix keys with other events, for example CTRL + click: `@click.ctrl` or two keys, CTRL + A: `@keyup.alt.65`. It is also possible to choose witch mouse button do you expect: `@click.left`, `@click.right`, `@click.middle`. There are some other things you can make and achieve with modifiers. If you want to know the details, read the [docs](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
 
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
