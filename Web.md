@@ -756,10 +756,47 @@ module.exports = {
 ## Vue
 Vue.js is a modern, practical web front-end framework that allows you to quickly build well-structured modularized applications. It is quite easy to learn and very powerful. Working with Vue.js is a real fun!
 
-### V-model
+### Handling forms
+
+##### V-model
 To create two-way binding with input tags you have to use **v-model** directive.
 ```html
 <input v-model="message">
+```
+
+##### Multiple checboxes
+```html
+<input type="checkbox" id="name1" value="Albert" v-model="checkedNames">
+<label for="name1">Albert</label>
+
+<input type="checkbox" id="name2" value="Paulina" v-model="checkedNames">
+<label for="name2">Paulina</label>
+
+<br>
+<span>Checked names: {{ checkedNames }}</span>
+```
+```javascript
+data() {
+    return {
+      checkedNames: []
+    }
+}
+```
+
+##### Select
+```html
+<select v-model="selectedItem" @change="$emit('change-item', selectedItem)">
+    <option value="" disabled selected hidden>Please select...</option>
+    <option v-for="item in items" :value="item.Oid">{{item.Name}}</option>    
+</select>
+```
+```javascript
+data(){
+    return {
+        items: [],
+        selectedItem: ''
+    }
+}
 ```
 
 ### Init component's properties with props
