@@ -874,6 +874,22 @@ The **v-for** directive is extremely useful and quite flexible. You can use in 4
 * `v-for="(item, index) in objects"`
 * `v-for="(value, key, index) in objects"`
 
+### Computed property with getter and setter
+```javascript
+data(){
+    return {
+        value: 10;
+	currency: 'zł';
+    };
+},
+computed: {
+    name: {
+        value: function(){ return `${this.value} ${this.currency}`; },
+	set: function(newValue){ this.value = parseInt(newValue); }
+    }
+}
+```
+
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
 
