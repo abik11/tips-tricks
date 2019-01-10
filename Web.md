@@ -1104,6 +1104,9 @@ You should use event listener instead:
 $(document).on('ready', function() { ... });
 ```
 
+### DataTables
+DataTables is a fantastic plugin for JQuery that allow you to create super powerful tables! The only problem with this plugin is that it has so many feautures that sometimes it may be difficult to configure it exactly the way you want it.
+
 ## Useful links
 
 #### General stuff
@@ -1133,6 +1136,7 @@ $(document).on('ready', function() { ... });
 [Howler - Web Audio Library](https://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)</br >
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
 [Zepto - lighter jQuery](http://zeptojs.com/)<br />
+[DataTables - great JQuery plugin for working with tables](https://datatables.net/reference/index)<br /> 
 
 #### Vue
 [Vue.js docs](https://vuejs.org/v2/guide/)<br />
