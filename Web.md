@@ -878,13 +878,13 @@ The **v-for** directive is extremely useful and quite flexible. You can use in 4
 ```javascript
 data(){
     return {
-        value: 10;
-	currency: 'zł';
+        value: 10,
+	currency: 'zł'
     };
 },
 computed: {
-    name: {
-        value: function(){ return `${this.value} ${this.currency}`; },
+    value: {
+        get: function(){ return `${this.value} ${this.currency}`; },
 	set: function(newValue){ this.value = parseInt(newValue); }
     }
 }
@@ -910,7 +910,7 @@ class MyComponent extends Component {
     render(){
         return (
             <input type='text' name='content' 
-                       value={this.state.content} onchange={this.onChange}   
+                value={this.state.content} onchange={this.onChange}   
         );
     }
 }
