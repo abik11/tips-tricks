@@ -7,6 +7,7 @@
 * [Vue](#vue)
 * [React](#react)
 * [JQuery](#jquery)
+* [DataTables](#datatables)
 * [Useful links](#useful-links)
 
 ## Javascript
@@ -1104,7 +1105,7 @@ You should use event listener instead:
 $(document).on('ready', function() { ... });
 ```
 
-### DataTables
+## DataTables
 DataTables is a fantastic plugin for JQuery that allow you to create super powerful tables! The only problem with this plugin is that it has so many feautures that sometimes it may be difficult to configure it exactly the way you want it. The basic usage of the plugin is very easy:
 ```html
 <table class="my-table">
@@ -1128,6 +1129,29 @@ DataTables is a fantastic plugin for JQuery that allow you to create super power
 ```
 ```javascript
 $(document).ready(function(){ $('.my-table').DataTable(); });
+```
+
+### Setting default options
+
+##### Set default table options
+```javascript
+$.extend( $.fn.dataTable.defaults, {
+    searching: false,
+    ordering:  false,
+    paging: false
+} );
+```
+
+##### Set default filtering
+```javascript
+$('.my-table').dataTable( {
+  "searchCols": [
+    null, 			//Col 1 - No filter
+    { "search": "phrase1" },	//Col 2
+    null,                       //Col 3 - No filter
+    { "search": "^[0-9]", "escapeRegex": false } //Col 4
+  ]
+} );
 ```
 
 ## Useful links
