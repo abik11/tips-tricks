@@ -1107,18 +1107,6 @@ $(document).on('ready', function() { ... });
 ### DataTables
 DataTables is a fantastic plugin for JQuery that allow you to create super powerful tables! The only problem with this plugin is that it has so many feautures that sometimes it may be difficult to configure it exactly the way you want it. The basic usage of the plugin is very easy:
 ```html
-table#myTable
-     thead
-          tr
-                th: "Col 1"
-                th: "Col 2"
-     tbody
-          tr 
-               td: "Data 1"
-               td: "Data 2"
-          tr 
-               td: "Data 3"
-               td: "Data 4"
 <table class="my-table">
 	<thead>
 		<tr>
