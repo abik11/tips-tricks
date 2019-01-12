@@ -1165,6 +1165,7 @@ $('.my-table').dataTable( {
 [TodoMVC - helping you to choose correct web framework](http://todomvc.com/)<br />
 [Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html)<br />
 [Google Dev Web Fundamentals](https://developers.google.com/web/fundamentals/)<br />
+[Nice comparison of React and Vue](https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd)<br />
 
 #### Webpack
 [Webpack Tutorial](https://tutorialzine.com/2017/04/learn-webpack-in-15-minutes)<br />
