@@ -884,7 +884,7 @@ data(){
     };
 },
 computed: {
-    value: {
+    valueStr: {
         get: function(){ return `${this.value} ${this.currency}`; },
 	set: function(newValue){ this.value = parseInt(newValue); }
     }
