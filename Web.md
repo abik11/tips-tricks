@@ -1131,9 +1131,7 @@ DataTables is a fantastic plugin for JQuery that allow you to create super power
 $(document).ready(function(){ $('.my-table').DataTable(); });
 ```
 
-### Setting default options
-
-##### Set default table options
+### Set default table options
 ```javascript
 $.extend( $.fn.dataTable.defaults, {
     searching: false,
@@ -1141,6 +1139,8 @@ $.extend( $.fn.dataTable.defaults, {
     paging: false
 } );
 ```
+
+### Filtering
 
 ##### Set default filtering
 ```javascript
@@ -1159,6 +1159,13 @@ $('.my-table').dataTable( {
 ##### Disable changing page length
 ```javascript
 $('.my-table').DataTable({ "lengthChange" : false });
+```
+
+##### Set page length
+```javascript
+$('.my-table').DataTable({ pageLength: 20 });
+$('.my-table').DataTable().page.len();		#get page length
+$('.my-table').DataTable().page.len(15);	#set page length
 ```
 
 ##### Hide the information about the current page
