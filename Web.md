@@ -1148,7 +1148,7 @@ $('.my-table').DataTable({ language: { emptyTable: "Brak danych w tabeli" } });
 ##### Cannot reinitialize datatable
 The warning shown when you try to initialize the table which has already been initialized. Parameters of initialization can be only changed through the API.
 
-### Filtering
+### Filtering and searching
 
 ##### Set default filtering
 ```javascript
@@ -1169,6 +1169,37 @@ $('.my-table').DataTable({
 }); 
 ```
 Here it will be impossible to filter the table by the 6th and 7th column.
+
+##### Change text for search
+```javascript
+$('.my-table').DataTable({ language: { search: "Szukaj:" } });
+```
+
+##### Change style for search field
+```css
+div.my-table_filter input{
+     /* Your CSS */
+}
+```
+DataTables uses the name of your table to create some class names used for styling the components of the table (it uses [BEM](http://getbem.com/)).
+
+##### Change text for no results
+```javascript
+$('.my-table').DataTable({ language: { zeroRecords: "Nie znaleziono wyników" } });
+```
+
+##### Adjust search field to Bootstrap
+```javascript
+$('.my-table').dataTables({
+     initComplete: function () {
+          $("#my-table_filter").addClass("form-group");
+          $("#my-table_filter label").addClass("col-xs-12")
+               .css("padding-left", "0px").css("padding-right", "0px");
+          $("#my-table_filter input[type=search]").addClass("form-control")
+               .attr("placeholder", "Search");
+     }
+});
+```
 
 ### Sorting
 
