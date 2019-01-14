@@ -1131,7 +1131,7 @@ DataTables is a fantastic plugin for JQuery that allow you to create super power
 $(document).ready(function(){ $('.my-table').DataTable(); });
 ```
 
-### Set default table options
+##### Set default table options
 ```javascript
 $.extend( $.fn.dataTable.defaults, {
     searching: false,
@@ -1139,6 +1139,14 @@ $.extend( $.fn.dataTable.defaults, {
     paging: false
 } );
 ```
+
+##### Change text for empty table
+```javascript
+$('.my-table').DataTable({ language: { emptyTable: "Brak danych w tabeli" } });
+```
+
+##### Cannot reinitialize datatable
+The warning shown when you try to initialize the table which has already been initialized. Parameters of initialization can be only changed through the API.
 
 ### Filtering
 
@@ -1171,7 +1179,7 @@ $('.my-table').DataTable({ order: [[0, 'desc'], [3, 'asc'], [1, 'asc']] });
 
 ##### Turn off higlight for sorted column
 ```javascript
-$(''.my-table').DataTable({ orderClasses: false });
+$('.my-table').DataTable({ orderClasses: false });
 ```
 Instead of `false` you can also put a name of any CSS class that will be applied for the sorted column if you want to higlight it somehow.
 
