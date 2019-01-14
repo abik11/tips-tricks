@@ -1373,6 +1373,13 @@ http://html2jade.org/ <br />
 [Metro](https://metroui.org.ua/)<br />
 [Animate.css](https://github.com/daneden/animate.css)<br />
 
+#### HTML and CSS
+[Sara Soueidan's tutorials](https://www.sarasoueidan.com/blog/)<br />
+[CSS Filters](http://html5-demos.appspot.com/static/css/filters/index.html)<br />
+[9 Incredible CodePen Demos](https://davidwalsh.name/incredible-codepen-demos)<br />
+[21 niesamowitych prokektów - Polish](https://devcorner.pl/21-niesamowitych-projektow-wykonanych-css/)<br />
+[Awwwards](https://www.awwwards.com/)<br />
+
 #### Icons
 [Flag icons](http://www.iconarchive.com/show/flag-icons-by-gosquared.1.html)<br />
 [Flag icons 2](http://www.freeflagicons.com/)<br />
@@ -1380,6 +1387,9 @@ http://html2jade.org/ <br />
 [Material icons](https://material.io/tools/icons/?style=baseline)<br />
 [Font Awesome](https://fontawesome.com/icons)<br />
 [RPG-Awesome](http://nagoshiashumari.github.io/Rpg-Awesome/)<br />
+
+#### Images
+[Unsplash](https://unsplash.com/)<br />
 
 #### Chrome
 DevTools - chrome://inspect/<br />
