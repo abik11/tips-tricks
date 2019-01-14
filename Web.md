@@ -1390,6 +1390,7 @@ http://html2jade.org/ <br />
 
 #### Images
 [Unsplash](https://unsplash.com/)<br />
+[Freeimages - former sxc.hu](https://www.freeimages.com/)<br />
 
 #### Chrome
 DevTools - chrome://inspect/<br />
