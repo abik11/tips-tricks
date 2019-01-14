@@ -1364,6 +1364,23 @@ http://html2jade.org/ <br />
 [Sassmeister - SASS online editor](https://www.sassmeister.com/)<br />
 [Stylus](http://stylus-lang.com/)<br />
 
+#### CSS frameworks and libraries
+[Materialize](https://materializecss.com/)<br />
+[Bootstrap](https://getbootstrap.com/)<br />
+[Bootswatch - free themes for Bootstrap](https://bootswatch.com/)<br />
+[Bulma](https://bulma.io/)<br />
+[Tent CSS](https://css.sitetent.com/index.html)<br />
+[Metro](https://metroui.org.ua/)<br />
+[Animate.css](https://github.com/daneden/animate.css)<br />
+
+#### Icons
+[Flag icons](http://www.iconarchive.com/show/flag-icons-by-gosquared.1.html)<br />
+[Flag icons 2](http://www.freeflagicons.com/)<br />
+[Rounded flag icons](https://www.flaticon.com/packs/countrys-flags)<br />
+[Material icons](https://material.io/tools/icons/?style=baseline)<br />
+[Font Awesome](https://fontawesome.com/icons)<br />
+[RPG-Awesome](http://nagoshiashumari.github.io/Rpg-Awesome/)<br />
+
 #### Chrome
 DevTools - chrome://inspect/<br />
 Chrome URLs - chrome://about/<br />
