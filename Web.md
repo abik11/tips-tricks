@@ -1145,6 +1145,11 @@ $.extend( $.fn.dataTable.defaults, {
 $('.my-table').DataTable({ language: { emptyTable: "Brak danych w tabeli" } });
 ```
 
+#### Modify change menu
+```javascript
+$('.my-table').DataTable({ "lengthMenu": [ [10, 25, -1], [10, 25, "All"] ] });
+```
+
 ##### Cannot reinitialize datatable
 The warning shown when you try to initialize the table which has already been initialized. Parameters of initialization can be only changed through the API.
 
@@ -1192,10 +1197,10 @@ $('.my-table').DataTable({ language: { zeroRecords: "Nie znaleziono wyników" } 
 ```javascript
 $('.my-table').dataTables({
      initComplete: function () {
-          $("#my-table_filter").addClass("form-group");
-          $("#my-table_filter label").addClass("col-xs-12")
+          $(".my-table_filter").addClass("form-group");
+          $(".my-table_filter label").addClass("col-xs-12")
                .css("padding-left", "0px").css("padding-right", "0px");
-          $("#my-table_filter input[type=search]").addClass("form-control")
+          $(".my-table_filter input[type=search]").addClass("form-control")
                .attr("placeholder", "Search");
      }
 });
