@@ -1154,6 +1154,46 @@ $('.my-table').dataTable( {
 } );
 ```
 
+##### Disable filtering for given columns
+```javascript
+$('.my-table').DataTable({
+      "columns": [ null, null, null, null, null, { "orderable": false }, { "orderable": false } ]
+}); 
+```
+Here it will be impossible to filter the table by the 6th and 7th column.
+
+### Sorting
+
+#### Set default sorting
+```javascript
+$('.my-table').DataTable({ order: [[0, 'desc'], [3, 'asc'], [1, 'asc']] });
+```
+
+##### Turn off higlight for sorted column
+```javascript
+$(''.my-table').DataTable({ orderClasses: false });
+```
+Instead of `false` you can also put a name of any CSS class that will be applied for the sorted column if you want to higlight it somehow.
+
+##### Set icons for sorted columns
+```css
+.partialList th.sorting_desc:after{
+   content: url("Images/sort_desc.png");
+}
+.partialList th.sorting_asc:after{
+   content: url("Images/sort_asc.png");
+}
+.partialList th.sorting:after{
+   content: url("Images/sortable.png");
+}
+.partialList th.sorting_desc:after,
+.partialList th.sorting_asc:after,
+.partialList th.sorting:after{
+   display: inline;
+   margin-left: 4px;
+}
+```
+
 ### Paging
 
 ##### Disable changing page length
