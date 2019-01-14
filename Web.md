@@ -1377,7 +1377,7 @@ http://html2jade.org/ <br />
 [Sara Soueidan's tutorials](https://www.sarasoueidan.com/blog/)<br />
 [CSS Filters](http://html5-demos.appspot.com/static/css/filters/index.html)<br />
 [9 Incredible CodePen Demos](https://davidwalsh.name/incredible-codepen-demos)<br />
-[21 niesamowitych prokektów - Polish](https://devcorner.pl/21-niesamowitych-projektow-wykonanych-css/)<br />
+[21 niesamowitych projektów - Polish](https://devcorner.pl/21-niesamowitych-projektow-wykonanych-css/)<br />
 [Awwwards](https://www.awwwards.com/)<br />
 
 #### Icons
