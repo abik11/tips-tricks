@@ -1154,6 +1154,66 @@ $('.my-table').dataTable( {
 } );
 ```
 
+### Paging
+
+##### Disable changing page length
+```javascript
+$('.my-table').DataTable({ "lengthChange" : false });
+```
+
+##### Hide the information about the current page
+```javascript
+$('.my-table').DataTable({ "info": false });
+```
+
+##### Get the current page information
+```javascript
+$('.my-table').DataTable().page.info();
+```
+Here you can see an example of the object returned by this function:
+```javascript
+{
+    "page": 1,
+    "pages": 6,
+    "start": 10,
+    "end": 20,
+    "length": 10,
+    "recordsTotal": 57,
+    "recordsDisplay": 57,
+    "serverSide": false
+}
+```
+
+##### Choose buttons for paging
+The possible options for paging buttons are:
+* numbers
+* simple (Prev and Next)
+* simple_numbers (Prev, Next and numbers)
+* full (First, Prev, Next and Last)
+* full_numbers (First, Prev, Next, Last and numbers)
+```javascript
+$('.my-table').DataTable({ "pagingType": "full_numbers" });
+```
+
+##### Change previous and next buttons
+```javascript
+$('.my-table').dataTable({
+     initComplete: function () {
+          configureNextPrevButtons();
+     }
+})
+.on('draw.dt', function () {
+     configureNextPrevButtons();
+});
+
+function configureNextPrevButtons() {
+     $(".paginate_button.next")
+          .html("<span class='glyphicon glyphicon-chevron-right'></span>");
+     $(".paginate_button.previous")
+          .html("<span class='glyphicon glyphicon-chevron-left'></span>");
+}
+```
+
 ## Useful links
 
 #### General stuff
