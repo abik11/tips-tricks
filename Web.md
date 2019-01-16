@@ -1392,6 +1392,12 @@ http://html2jade.org/ <br />
 [Unsplash](https://unsplash.com/)<br />
 [Freeimages - former sxc.hu](https://www.freeimages.com/)<br />
 
+#### Google Maps JS Api
+[Google Maps Tutorial](https://developers.google.com/maps/documentation/javascript/tutorial)<br />
+[Google Maps Style Wizard](https://mapstyle.withgoogle.com/)<br />
+[Stylowanie mapy - Polish](https://www.youtube.com/watch?v=yTnmWXgcFi8)<br />
+[Google Geocode Api - tutorial](https://www.youtube.com/watch?v=pRiQeo17u6c)<br />
+
 #### Chrome
 DevTools - chrome://inspect/<br />
 Chrome URLs - chrome://about/<br />
