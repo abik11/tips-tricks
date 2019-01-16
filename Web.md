@@ -1349,6 +1349,11 @@ marker.setMap(map);
 
 ##### Open information window on click
 ```javascript
+var infowindow = 
+      new google.maps.InfoWindow({
+            content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+      });
+
 google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(map, marker);
 });
