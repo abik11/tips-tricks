@@ -8,6 +8,7 @@
 * [React](#react)
 * [JQuery](#jquery)
 * [DataTables](#datatables)
+* [Google Maps Api](#google-maps-api)
 * [Useful links](#useful-links)
 
 ## Javascript
@@ -1304,6 +1305,13 @@ function configureNextPrevButtons() {
           .html("<span class='glyphicon glyphicon-chevron-left'></span>");
 }
 ```
+
+## Google Maps Api
+If you want to learn and test the API you can add it to your HTML template like this:
+```html
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+```
+where **myMap** is the name of the function that will be responsible for the map configuration.
 
 ## Useful links
 
