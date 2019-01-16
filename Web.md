@@ -1326,6 +1326,45 @@ function myMap(){
 }
 ```
 
+### Markers
+
+##### Animated marker
+```javascript
+var marker = new google.maps.Marker({
+    position: position,
+    animation: google.maps.Animation.BOUNCE	// BOUNCE, DROP
+});
+marker.setMap(map);
+```
+
+##### Icon in place of marker
+```javascript
+var marker = new google.maps.Marker({
+    position: position,
+    icon: 'icon.png',
+    draggable: true	// optional
+});
+marker.setMap(map);
+```
+
+##### Open information window on click
+```javascript
+google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map, marker);
+});
+```
+
+##### Remove events
+```javascript
+var listener = google.maps.event.addListener(marker, 'click', function() {});
+google.maps.event.removeListener(listener);
+```
+
+##### Get current position of marker
+```javascript
+var pos = marker.getPosition();
+```
+
 ## Useful links
 
 #### General stuff
