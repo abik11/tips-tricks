@@ -1327,6 +1327,7 @@ function myMap(){
 ```
 
 ### Markers
+Markers are easy way to mark some place on the map. They are built in the API and you can configure quite many properties.
 
 ##### Animated marker
 ```javascript
@@ -1368,6 +1369,65 @@ google.maps.event.removeListener(listener);
 ##### Get current position of marker
 ```javascript
 var pos = marker.getPosition();
+```
+
+### Drawing shapes
+Sometimes markers are not enough to present some concepts on the map. But it is possible to draw any kind of shape.
+
+##### Line
+Line is the simplest shape you can draw.
+```javascript
+var flightPath = new google.maps.Polyline({
+    path: [rome, amsterdam, london],
+    strokeColor: "#0000FF",
+    strokeOpacity: 0.8,
+    strokeWeight: 2
+});
+flightPath.setMap(map);
+```
+
+##### Polygon
+Polygon has the same properties as line with **fillColor** and **fillOpacity** additionaly.
+```javascript
+var flightPath = new google.maps.Polygon({
+    path: [rome, amsterdam, london],
+    strokeColor: "#0000FF",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#0000FF",
+    fillOpacity: 0.4
+});
+flightPath.setMap(map);
+```
+
+##### Circle
+Circle has the same properties as Polygon but instead of defining the array of points (**path**), you define the center of the circle and radius in meters.
+```javascript
+var circle = new google.maps.Circle({
+    center: new google.maps.LatLng(58.983991,5.734863),
+    radius: 50000,
+    strokeColor: "#0000FF",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#0000FF",
+    fillOpacity: 0.4,
+    editable: true 		// optional
+});
+circle.setMap(map);
+```
+
+##### Rectangle
+```javascript
+var area = new google.maps.Rectangle({
+    bounds: new google.maps.LatLngBounds(
+        new google.maps.LatLng(17.342761, 78.552432),
+        new google.maps.LatLng(16.396553, 80.727725)),
+    strokeColor: "#0000FF",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#0000FF",
+    fillOpacity: 0.4	
+});
 ```
 
 ## Useful links
