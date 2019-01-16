@@ -1,4 +1,5 @@
 # Web development
+Web dev is an extremely vast topic. There are plenty of different things that you can mix and blend toegether to build modern web. Moreover web became so much integreated into our lives that it is a really useful to know web technologies. This is not a tutorial how to becaome a web developer, it is justa a bunch of tips and tricks or some interesting stuff that was more or less useful to me at my work, especially at the beginning.
 
 * [Javascript](#javascript)
 * [Libraries](#libraries)
@@ -1309,9 +1310,21 @@ function configureNextPrevButtons() {
 ## Google Maps Api
 If you want to learn and test the API you can add it to your HTML template like this:
 ```html
+<div id="google-map"></div>
 <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 ```
-where **myMap** is the name of the function that will be responsible for the map configuration.
+where **myMap** is the name of the function that will be responsible for the map configuration. The basic configuration of the map that will allow you display the map might look like here:
+```javascript
+function myMap(){
+     var mapCanvas = document.getElementById("google-map");
+     var mapOptions = {
+          center: new google.maps.LatLng(51.508742, -0.120850),
+          zoom: 5, 					// 0 - the lowest zoom
+          mapTypeId: google.maps.MapTypeId.ROADMAP 	// ROADMAP, SATELLITE, HYBRID, TERRAIN
+     }
+     var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+```
 
 ## Useful links
 
