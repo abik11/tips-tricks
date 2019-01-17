@@ -503,6 +503,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Windows processes description 1](https://www.neuber.com/taskmanager/process/)<br />
 [Windows processes description 2](http://www.processlibrary.com/en/)<br /> 
 [Active Directory Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
+[How to Combine Images into One PDF File](https://www.howtogeek.com/248462/how-to-combine-images-into-one-pdf-file-in-windows/)<br />
 
 #### Tools for Windows
 [SysInternals - Windows tools](https://live.sysinternals.com/)<br />
