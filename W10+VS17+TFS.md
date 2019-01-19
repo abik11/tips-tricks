@@ -548,6 +548,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 
 #### Audio-video tools
 [Convert CDA files to MP3](http://www.freerip.com/)<br />
+[HandBrake - resize video](https://handbrake.fr/)<br />
 [Moo0 Tools - video compression](http://www.moo0.com/?top=http://www.moo0.com/software/VideoMinimizer/)<br />
 [ClipGrab - YouTube downloader and converter](https://clipgrab.org/)<br />
 [YouTube Song Downloader](https://www.abelssoft.de/en/windows/Multimedia/YouTube-Song-Downloader)<br />
