@@ -1458,6 +1458,31 @@ var area = new google.maps.Rectangle({
 });
 ```
 
+### Adjusting the map
+There are many different things that can be adjusted on the map, from zoom and the center point up to colors and general styling.
+
+##### Basic adjustments
+* Zoom
+```javascript
+var zoom = map.getZoom();
+map.setZoom(10);
+```
+* Center
+```javascript
+var center = map.getCenter();
+map.setCenter(new google.maps.LatLng(51.508742, -0.120850));
+```
+* Tilt / angle
+You can set tilt only in **satelite** and **hybrid** mode and only with zoom higher than 18. Setting tilt to 0 will block the perspective:
+```javascript
+map.SetTilt(0);
+```
+
+##### Language
+```html
+<script src="https://maps.googleapis.com/maps/api/js?language=pl">
+```
+
 ## Useful links
 
 #### General stuff
