@@ -1371,6 +1371,34 @@ google.maps.event.removeListener(listener);
 var pos = marker.getPosition();
 ```
 
+##### Add marker on click
+This is a nice example that will add a new marker on the map in the place where you will click and additionally it will open info window associated with the marker that will show the latitude and longitude. Moreover if you will click on the marker, it will be deleted.
+```javascript
+google.maps.event.addListener(map, 'click', function(event) {
+     placeMarker(map, event.latLng);
+});
+	
+function placeMarker(map, location) {
+     var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+     });
+		 
+     var infowindow = new google.maps.InfoWindow({
+          content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+     });
+     infowindow.open(map, marker);
+		 
+     google.maps.event.addListener(marker, 'click', function(event){
+          marker.setMap(null);
+     });
+}
+```
+To delete a marker, the following line is used:
+```javascript
+marker.setMap(null);
+```
+
 ### Drawing shapes
 Sometimes markers are not enough to present some concepts on the map. But it is possible to draw any kind of shape.
 
