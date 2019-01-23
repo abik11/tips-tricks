@@ -9,7 +9,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [React](#react)
 * [JQuery](#jquery)
 * [DataTables](#datatables)
-* [Google Maps Api](#google-maps-api)
+* [Appendix 1 - Google Maps Api](#appendix-1---google-maps-api)
 * [Useful links](#useful-links)
 
 ## Javascript
@@ -1307,7 +1307,7 @@ function configureNextPrevButtons() {
 }
 ```
 
-## Google Maps Api
+## Appendix 1 - Google Maps Api
 If you want to learn and test the API you can add it to your HTML template like this:
 ```html
 <div id="google-map"></div>
@@ -1472,7 +1472,7 @@ map.setZoom(10);
 var center = map.getCenter();
 map.setCenter(new google.maps.LatLng(51.508742, -0.120850));
 ```
-* Tilt / angle
+* Tilt / angle<br />
 You can set tilt only in **satelite** and **hybrid** mode and only with zoom higher than 18. Setting tilt to 0 will block the perspective:
 ```javascript
 map.SetTilt(0);
@@ -1482,6 +1482,31 @@ map.SetTilt(0);
 ```html
 <script src="https://maps.googleapis.com/maps/api/js?language=pl">
 ```
+
+### Controls
+
+##### Turn off useless controls
+You can use the following properties in the map options:
+```javascript
+disableDefaultUI: true // turn off all controls
+
+zoomControl: true,
+scaleControl: true,                
+streetViewControl: false,
+mapTypeControl: false
+```
+
+##### Select map type control
+```javascript
+mapTypeControlOptions: { 
+     style: google.maps.MapTypeControlStyle.DROPDOWN_MENU, 
+     mapTypeIds: [ 
+           google.maps.MapTypeId.ROADMAP,                                            
+           google.maps.MapTypeId.TERRAIN 
+     ] 
+}
+```
+Button styles to choose are **DROPDOWN_MENU** and **HORIZONTAL_BAR**.
 
 ## Useful links
 
