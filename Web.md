@@ -9,7 +9,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [React](#react)
 * [JQuery](#jquery)
 * [DataTables](#datatables)
-* [Appendix 1 - Google Maps Api](#appendix-1---google-maps-api)
+* [Appendix A - Google Maps Api](#appendix-a---google-maps-api)
 * [Useful links](#useful-links)
 
 ## Javascript
@@ -1307,7 +1307,7 @@ function configureNextPrevButtons() {
 }
 ```
 
-## Appendix 1 - Google Maps Api
+## Appendix A - Google Maps Api
 If you want to learn and test the API you can add it to your HTML template like this:
 ```html
 <div id="google-map"></div>
