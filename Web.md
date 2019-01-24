@@ -1333,6 +1333,30 @@ table tr {
 }
 ```
 
+### Placeholder for selection
+```css
+select:invalid { 
+    color: gray; 
+}
+```
+```html
+<select id="week-select">
+    <option value="" disabled selected hidden>Please select...</option>
+</select>
+```
+
+### Adding custom fonts
+```css
+@font-face {
+    font-family: myPrettyFont;
+    src: url('./fonts/font1.ttf');
+}
+
+div {
+    font-family: myPrettyFont;
+}
+```
+
 ## Appendix A - Google Maps Api
 If you want to learn and test the API you can add it to your HTML template like this:
 ```html
