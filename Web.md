@@ -1483,6 +1483,63 @@ map.SetTilt(0);
 <script src="https://maps.googleapis.com/maps/api/js?language=pl">
 ```
 
+##### Changing map style
+You can easily generate your own style [here](https://mapstyle.withgoogle.com/). Here you can see an example of how Google Maps style looks:
+```javascript
+var styles = [
+    { "elementType": "geometry", 
+      "stylers": [{ "color": "#242f3e" }]
+    },
+    { "elementType": "labels.text.fill", 
+      "stylers": [{ "color": "#746855" }]
+    },
+    { "elementType": "labels.text.stroke", 
+      "stylers": [{ "color": "#242f3e" }]
+    },
+    { "featureType": "administrative.locality"
+      "elementType": "labels.text.fill", 
+      "stylers": [{ "color": "#d59563" }]
+    },
+    { "featureType": "poi"
+      "elementType": "labels.text.fill", 
+      "stylers": [{ "color": "#d59563" }]
+    },
+    //...
+];
+```
+There are many other objects that you can style, actually you can change everything. To add a style to the map you have to use **styles** property:
+```javascript
+var map = new google.maps.Map(mapCanvas, {
+    center: { lat: 51.508742, lng: -0.120850 },
+    zoom: 5,
+    styles: styles
+});
+```
+
+##### Adding style as a new map type
+First create a map and specify another map type, for example *night*:
+```javascript
+var map = new google.maps.Map(mapCanvas, {
+    center: { lat: 51.508742, lng: -0.120850 },
+    zoom: 5,
+    mapTypeControlOptions: {
+        mapTypeIds: [ 'roadmap', 'satelite', 'hybrid', 'terrain', 'night' ]
+    }
+});
+```
+And than create a new map type:
+```javascript
+var nightMapType = new google.maps.StyledMapType(
+    styles, 
+    { name: "Night" }
+);
+```
+and finally and the type to the map and set it:
+```javascript
+map.mapTypes.set('night', nightMapType);
+map.setMapTypeId('night');
+```
+
 ### Controls
 
 ##### Turn off useless controls
@@ -1507,6 +1564,32 @@ mapTypeControlOptions: {
 }
 ```
 Button styles to choose are **DROPDOWN_MENU** and **HORIZONTAL_BAR**.
+
+### Advanced
+With Google Maps you can do many different things, shwoing some kind of graphs on the map or presenting the data in other ways. The possibilities are very vast.
+
+##### Heatmap
+To use heatmap functionality you have to use this URL: `https://maps.googleapis.com/maps/api/js?callback=myMap&libraries=visualization`. Then you have to prepare the data:
+```javascript
+var data = [new google.maps.LatLng(51.508742, -0.120850)]
+var pointArray = new google.maps.MVCArray(data);
+```
+And apply the heatmap to the map with the data you have:
+```javascript
+heatmap = new google.maps.visualization.HeatmapLayer({ data: pointArray });
+heatmap.setMap(map);
+```
+You can dynamically change heatmap configuration:
+```javascript
+var radius = heatmap.get('radius');
+heatmap.set('radius', 20);
+
+var opacity = heatmap.get('opacity');
+heatmap.set('opacity', 0.2);
+
+var gradient = heatmap.get('gradient');
+heatmap.set('gradient', ['rgba(0,255,255,0)', 'rgba(0,255,255,1)', 'rgba(0,191,255,1)']);
+```
 
 ## Useful links
 
