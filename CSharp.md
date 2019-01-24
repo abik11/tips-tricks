@@ -16,6 +16,7 @@ Read also:
 * [Excel COM](https://github.com/abik11/tips-tricks/blob/master/VBA.md#c)
 * [Visual Studio](https://github.com/abik11/tips-tricks/blob/master/W10%2BVS17%2BTFS.md#visual-studio)
 * [TFS](https://github.com/abik11/tips-tricks/blob/master/W10%2BVS17%2BTFS.md#tfs-and-other-version-control-systems)
+* [DevExpress](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md)
 
 ### CSC Compiler
 If you want to test some little piece of code and creating a new solution in Visual Studio is defenietely waste of time for you for such a little piece, than you can use CSC compiler directly from command line, see how to do it:
