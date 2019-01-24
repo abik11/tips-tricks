@@ -9,6 +9,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [React](#react)
 * [JQuery](#jquery)
 * [DataTables](#datatables)
+* [HTML and CSS](#html-and-css)
 * [Appendix A - Google Maps Api](#appendix-a---google-maps-api)
 * [Useful links](#useful-links)
 
@@ -1308,6 +1309,27 @@ function configureNextPrevButtons() {
           .html("<span class='glyphicon glyphicon-chevron-right'></span>");
      $(".paginate_button.previous")
           .html("<span class='glyphicon glyphicon-chevron-left'></span>");
+}
+```
+
+## HTML and CSS
+Both HTML and CSS are very easy to learn, but there are some more advanced topics or tricks that are not so obvious.
+
+### Border or background for the whole table row
+```css
+table {
+    border-collapse: collapse;
+}
+
+table tr {
+    border: 1px gray solid;
+}
+```
+
+### Style for the selected text
+```css
+::selected {
+    background-color: yellow;
 }
 ```
 
