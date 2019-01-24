@@ -12,9 +12,8 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [Appendix A - Google Maps Api](#appendix-a---google-maps-api)
 * [Useful links](#useful-links)
 
-<br />
 Read also:
-* [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp.md#aspnet-mvc)<br />
+* [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp.md#aspnet-mvc)
 
 ## Javascript
 
