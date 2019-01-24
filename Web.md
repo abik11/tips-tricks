@@ -1668,6 +1668,7 @@ http://html2jade.org/ <br />
 [Animate.css](https://github.com/daneden/animate.css)<br />
 
 #### HTML and CSS
+[Graphics on the Web](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)<br />
 [Sara Soueidan's tutorials](https://www.sarasoueidan.com/blog/)<br />
 [CSS Filters](http://html5-demos.appspot.com/static/css/filters/index.html)<br />
 [9 Incredible CodePen Demos](https://davidwalsh.name/incredible-codepen-demos)<br />
@@ -1692,6 +1693,14 @@ http://html2jade.org/ <br />
 [Google Maps Style Wizard](https://mapstyle.withgoogle.com/)<br />
 [Stylowanie mapy - Polish](https://www.youtube.com/watch?v=yTnmWXgcFi8)<br />
 [Google Geocode Api - tutorial](https://www.youtube.com/watch?v=pRiQeo17u6c)<br />
+
+#### SVG
+[Snap.svg](http://snapsvg.io/)<br />
+[Raphaël](https://dmitrybaranovskiy.github.io/raphael/)<br />
+[SVG Visual Cheat Sheet](http://www.cheat-sheets.org/own/svg/index.xhtml)<br />
+[A Guide to SVG Animations (SMIL)](https://css-tricks.com/guide-svg-animations-smil/)<br />
+[How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)<br />
+[SVG Tips](https://coderwall.com/t/svg/popular)<br />
 
 #### Chrome
 DevTools - chrome://inspect/<br />
