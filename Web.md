@@ -1566,7 +1566,7 @@ mapTypeControlOptions: {
 Button styles to choose are **DROPDOWN_MENU** and **HORIZONTAL_BAR**.
 
 ### Advanced
-With Google Maps you can do many different things, shwoing some kind of graphs on the map or presenting the data in other ways. The possibilities are very vast.
+You can do much more with Google Maps, especially when it comes to showing the data on the map. Visualizing the information in the geographical context is a really nice use case for Google Maps and there are many different tools available.
 
 ##### Heatmap
 To use heatmap functionality you have to use this URL: `https://maps.googleapis.com/maps/api/js?callback=myMap&libraries=visualization`. Then you have to prepare the data:
@@ -1589,6 +1589,14 @@ heatmap.set('opacity', 0.2);
 
 var gradient = heatmap.get('gradient');
 heatmap.set('gradient', ['rgba(0,255,255,0)', 'rgba(0,255,255,1)', 'rgba(0,191,255,1)']);
+```
+
+##### Clustering markups
+To allow markup clustering you have to include the following JS library: `https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js
+`. Then you have to specify the array of markers that you want to cluster:
+```javascript
+var markerCluster = new MarkerClusterer
+	(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 ```
 
 ## Useful links
