@@ -1357,6 +1357,36 @@ div {
 }
 ```
 
+### Add app to homescreen in Android
+->Open URL in Chrome ->Options ->Add to homescreen<br />
+You can add the following markups in the **head** section:
+```html
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=0.85, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />  
+```
+Also you can attach **manifest.json** to the app to configure how the application and its icon on the homescreen will be displayed.
+```html
+<link rel="manifest" href="~/App_Data/manifest.json">
+```
+```javascript
+{
+   "name": "Web App Mobile",
+   "icons": [
+      {
+         "src": "...",
+         "sizes": "192x192",
+         "type": "image/png",
+      }
+   ],
+   "start_url": "index.html",
+   "display": "standalone",
+   "orientation": "portrait"
+}
+```
+Read more [here](https://developer.chrome.com/multidevice/android/installtohomescreen).
+
 ## Appendix A - Google Maps Api
 If you want to learn and test the API you can add it to your HTML template like this:
 ```html
