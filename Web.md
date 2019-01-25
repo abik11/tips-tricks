@@ -1315,7 +1315,9 @@ function configureNextPrevButtons() {
 ## HTML and CSS
 Both HTML and CSS are very easy to learn, but there are some more advanced topics or tricks that are not so obvious.
 
-### Border, shadow, gradient
+### Basic styling
+
+##### Border
 Adding border is extremely simple:
 ```css
 div {
@@ -1323,6 +1325,8 @@ div {
     border-radius: 3px;
 }
 ```
+
+##### Shadow
 Shadow can be added to text (**text-shadow**) or to the whole element (**box-shadow**):
 ```css
 div {
@@ -1331,6 +1335,8 @@ div {
 }
 ```
 You have to specify x-offset, y-offset, blur and the shadow color. For the box shadow you can set both inner and outer shadow. If you will encounter problems with compatibility, you may also add prefixes: **-webkit-box-** and **-moz-box-**.<br />
+
+##### Gradient
 To add a gradient you may use the following CSS:
 ```css
 div {
@@ -1347,25 +1353,36 @@ div {
 ```
 Also other values are accepted, like **to left**, **to top**, **to bottom**. Also you can set the angle with degrees, for example **-45deg**. Those values are accepted in Chrome, in other browsers you should try **left**(from left to right) or **top**(from top to bottom). 
 
-### Border or background for the whole table row
+### Centering stuff
+
+##### Centered div
 ```css
-table {
-    border-collapse: collapse;
+.outer{ 
+    width:100%;
+    text-align:center;
 }
 
-table tr {
-    border: 1px gray solid;
+.inner{ 
+    display:inline-block;
+}
+```
+```html
+<div class="outer">
+    <div class="inner">Centered div</div>
+</div>
+```
+
+##### Text centered vertically
+```css
+p {
+    display:table-cell;
+    vertical-align:middle;
 }
 ```
 
-### Style for the selected text
-```css
-::selected {
-    background-color: yellow;
-}
-```
+### Styling forms
 
-### Placeholder for selection
+##### Placeholder for selection
 ```css
 select:invalid { 
     color: gray; 
@@ -1375,6 +1392,17 @@ select:invalid {
 <select id="week-select">
     <option value="" disabled selected hidden>Please select...</option>
 </select>
+```
+
+### Border or background for the whole table row
+```css
+table {
+    border-collapse: collapse;
+}
+
+table tr {
+    border: 1px gray solid;
+}
 ```
 
 ### Adding custom fonts
