@@ -1380,9 +1380,18 @@ p {
 }
 ```
 
-### Styling forms
+### Border or background for the whole table row
+```css
+table {
+    border-collapse: collapse;
+}
 
-##### Placeholder for selection
+table tr {
+    border: 1px gray solid;
+}
+```
+
+### Placeholder for selection
 ```css
 select:invalid { 
     color: gray; 
@@ -1394,15 +1403,31 @@ select:invalid {
 </select>
 ```
 
-### Border or background for the whole table row
+### Configuring textarea
+To set placeholder for text area you have to use **placeholder** attribute. A very useful attribute is also **rows** which allows you to set the number of displayed rows.
+```html
+<textarea placeholder="Type your comment..." rows="5"></textarea>
+```
+With CSS you can disable resizing:
 ```css
-table {
-    border-collapse: collapse;
+textarea {
+    resize:none;
+    resize:vertical;
 }
+```
 
-table tr {
-    border: 1px gray solid;
+### Text in columns
+```css
+p {
+    column-count: 3;
+    column-gap: 10px;
+    column-rule: 1px solid black;
 }
+```
+
+### Editable paragraph
+```html
+<p contenteditable="true">Lorem ipsum</p>
 ```
 
 ### Adding custom fonts
@@ -1415,6 +1440,13 @@ table tr {
 div {
     font-family: myPrettyFont;
 }
+```
+
+### Meter and progress
+Since HTML 5 there are many great features added, but some of them are not so well known. A nice new thing are **meter** and **progress** markups:
+```html
+<progress value="70" max="100">70%</progress>
+<meter low="60" high="85" max="100" value="70">70</meter>
 ```
 
 ### Add app to homescreen in Android
