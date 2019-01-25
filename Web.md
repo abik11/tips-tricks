@@ -1338,7 +1338,14 @@ div {
     background: linear-gradient(#000000, #dddddd, #dddddd, #dddddd, #ffffff);
 }
 ```
-**background** is added only for the older browsers. Modern ones will display the gradient.
+**background** is added only for the older browsers. Modern ones will display the gradient. You can also set the direction of the gradient, for example from left to right:
+```css
+div {
+    background: #dddddd;    
+    background: linear-gradient(to right, #000000, #ffffff);
+}
+```
+Also other values are accepted, like **to left**, **to top**, **to bottom**. Also you can set the angle with degrees, for example **-45deg**. Those values are accepted in Chrome, in other browsers you should try **left**(from left to right) or **top**(from top to bottom). 
 
 ### Border or background for the whole table row
 ```css
