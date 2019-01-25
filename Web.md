@@ -1315,6 +1315,31 @@ function configureNextPrevButtons() {
 ## HTML and CSS
 Both HTML and CSS are very easy to learn, but there are some more advanced topics or tricks that are not so obvious.
 
+### Border, shadow, gradient
+Adding border is extremely simple:
+```css
+div {
+    border: 1px solid #C7C7C7;
+    border-radius: 3px;
+}
+```
+Shadow can be added to text (**text-shadow**) or to the whole element (**box-shadow**):
+```css
+div {
+    text-shadow: 0px 0px 8px #FFFFFF;
+    box-shadow: inset 0px 0px 10px #000000, 0px 0px 8px #FFFFFF;
+}
+```
+You have to specify x-offset, y-offset, blur and the shadow color. For the box shadow you can set both inner and outer shadow. If you will encounter problems with compatibility, you may also add prefixes: **-webkit-box-** and **-moz-box-**.<br />
+To add a gradient you may use the following CSS:
+```css
+div {
+    background: #dddddd;    
+    background: linear-gradient(#000000, #dddddd, #dddddd, #dddddd, #ffffff);
+}
+```
+**background** is added only for the older browsers. Modern ones will display the gradient.
+
 ### Border or background for the whole table row
 ```css
 table {
