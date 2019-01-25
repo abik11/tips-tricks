@@ -1442,6 +1442,31 @@ div {
 }
 ```
 
+### Drop down menu
+It is possible to make a simple drop down menu with just HTML and CSS. Here a very simple example:
+```html
+<ol>
+    <li>
+	<span>Menu 1</span>
+        <ul>
+            <li>Sub menu 1</li>
+            <li>Sub menu 2</li>
+        </ul>
+    </li>
+    <li>
+        <span>Menu 2</span>
+        <ul>
+            <li>Sub menu 3</li>
+            <li>Sub menu 4</li>    
+        </ul>
+    </li>
+</ol>
+```
+```css
+ol > li > ul { display:none; }
+ol > li:hover > ul { display:block; }
+```
+
 ### Meter and progress
 Since HTML 5 there are many great features added, but some of them are not so well known. A nice new thing are **meter** and **progress** markups:
 ```html
