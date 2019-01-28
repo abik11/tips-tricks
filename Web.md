@@ -1461,7 +1461,9 @@ select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:
 }
 ```
 
-### Border or background for the whole table row
+### Tables
+
+##### Border or background for the whole table row
 ```css
 table {
     border-collapse: collapse;
@@ -1472,7 +1474,43 @@ table tr {
 }
 ```
 
-### Text in columns
+##### Automatic row numeration
+```html
+<table>
+    <tr><td>Header 1</td><td>Header 2</td></tr>
+    <tr><td>A</td><td>B</td></tr>
+    <tr><td>C</td><td>D</td></tr>
+</table>
+```
+```css
+:root{
+  --row-counter-margin: 14px;
+}
+
+table {    
+    /* Reset CSS row counter */
+    counter-reset: rowNumber;
+}  
+table tr:not(:first-child) {    
+    /* Skip header row from counter */
+    counter-increment: rowNumber;
+}
+table tr:first-child td:first-child::before {
+    margin-left: var(--row-counter-margin);
+    margin-right: var(--row-counter-margin);
+    content: '-';
+}
+table tr:not(:first-child) td:first-child::before {
+    /* Count rows */
+    margin-left: var(--row-counter-margin);
+    margin-right: var(--row-counter-margin);
+    content: counter(rowNumber);
+}
+```
+
+### Paragraphs
+
+##### Text in columns
 ```css
 p {
     column-count: 3;
@@ -1481,7 +1519,7 @@ p {
 }
 ```
 
-### Editable paragraph
+##### Editable paragraph
 ```html
 <p contenteditable="true">Lorem ipsum</p>
 ```
