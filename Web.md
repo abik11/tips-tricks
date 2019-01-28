@@ -1428,6 +1428,7 @@ textarea {
 <br />
 <input type="time" value="23:53:05" />
 ```
+There are also other nice input types: week, month, datetime-local, number, range...
 
 ### Border or background for the whole table row
 ```css
