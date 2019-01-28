@@ -1430,6 +1430,18 @@ textarea {
 ```
 There are also other nice input types: week, month, datetime-local, number, range...
 
+##### Overwrite Google Chrome autofill style
+```css
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, 
+textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus,
+select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus 
+{
+    -webkit-text-fill-color: green;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+```
+
 ### Border or background for the whole table row
 ```css
 table {
@@ -1455,15 +1467,46 @@ p {
 <p contenteditable="true">Lorem ipsum</p>
 ```
 
-### Adding custom fonts
+### CSS directives
+
+##### Adding custom fonts
 ```css
 @font-face {
     font-family: myPrettyFont;
     src: url('./fonts/font1.ttf');
 }
 
+div { font-family: myPrettyFont; }
+```
+
+##### Media queries
+Example:
+```css
+@media screen and (orientation: landscape) and (max-width: 760px){}
+```
+* media types: all, screen, print, speech
+* orientation: landspace, portrait  
+* viewport's width (browser): min-width, max-width
+* screen width: min-device-width, max-device-width
+
+You can also use media queries to specify separate CSS stylesheet for given resolution:
+```html
+<link rel="stylesheet" media="mediatype screen and max-width(100px)" href="small.css">
+```
+
+##### Check if browsers supports given CSS properties
+```css
+@supports(transform:rotate(40deg)) { 
+    div { background-color: green; }
+}
+```
+
+##### Calc function
+Although it is not a directive, it is worth mentioning. It is an extremely handy and useful feature:
+```css
 div {
-    font-family: myPrettyFont;
+    background-color: red;
+     width: calc((100% - 30% + 50px) / 2);  
 }
 ```
 
