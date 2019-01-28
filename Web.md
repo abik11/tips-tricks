@@ -1353,7 +1353,7 @@ div {
 ```
 Also other values are accepted, like **to left**, **to top**, **to bottom**. Also you can set the angle with degrees, for example **-45deg**. Those values are accepted in Chrome, in other browsers you should try **left**(from left to right) or **top**(from top to bottom). 
 
-### Centering stuff
+### Positioning 
 
 ##### Centered div
 ```css
@@ -1379,6 +1379,25 @@ p {
     vertical-align:middle;
 }
 ```
+
+##### Div that doesn't take space
+```html
+<div class="wrapper">
+    <div class="inner">
+        This DIV is displayed, but it doesn't take space.
+    </div>
+</div>
+```
+```css
+.wrapper { position: relative; }
+.inner { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+```
+Also you could manipulatre margins to negative values. Remember that you can use **z-index** only with the elements that have set **position** property.
 
 ### Forms
 
