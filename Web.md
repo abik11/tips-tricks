@@ -1380,18 +1380,9 @@ p {
 }
 ```
 
-### Border or background for the whole table row
-```css
-table {
-    border-collapse: collapse;
-}
+### Forms
 
-table tr {
-    border: 1px gray solid;
-}
-```
-
-### Placeholder for selection
+##### Placeholder for selection
 ```css
 select:invalid { 
     color: gray; 
@@ -1403,7 +1394,7 @@ select:invalid {
 </select>
 ```
 
-### Configuring textarea
+##### Configuring textarea
 To set placeholder for text area you have to use **placeholder** attribute. A very useful attribute is also **rows** which allows you to set the number of displayed rows.
 ```html
 <textarea placeholder="Type your comment..." rows="5"></textarea>
@@ -1413,6 +1404,39 @@ With CSS you can disable resizing:
 textarea {
     resize:none;
     resize:vertical;
+}
+```
+
+##### Autocomplete for input
+```html
+<input list="namelist" />
+<datalist id="namelist">
+   <option value="Albert Kozak">
+   <option value="Alexander the Great">
+   <option value="Jaimie Lannister">
+</datalist>
+```
+
+##### Color input
+```html
+<input type="color" value="#00FF00" />
+```
+
+##### Date and time input
+```html
+<input type="date" min="1950-05-25" max="2050-07-29" value="2016-05-25" />
+<br />
+<input type="time" value="23:53:05" />
+```
+
+### Border or background for the whole table row
+```css
+table {
+    border-collapse: collapse;
+}
+
+table tr {
+    border: 1px gray solid;
 }
 ```
 
