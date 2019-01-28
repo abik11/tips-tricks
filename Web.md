@@ -1510,7 +1510,9 @@ div {
 }
 ```
 
-### Drop down menu
+### Stuff without Javascript
+
+##### Drop down menu
 It is possible to make a simple drop down menu with just HTML and CSS. Here a very simple example:
 ```html
 <ol>
@@ -1533,6 +1535,39 @@ It is possible to make a simple drop down menu with just HTML and CSS. Here a ve
 ```css
 ol > li > ul { display:none; }
 ol > li:hover > ul { display:block; }
+```
+
+##### Tooltip
+```html
+<div class="tooltip">Show tooltip<div class="tooltip-text">Tooltip content</div></div>
+```
+```css
+.tooltip { 
+  position:relative; 
+  display:inline-block; 
+}
+.tooltip .tooltip-text { 
+  visibility:hidden; 
+  position:absolute; 
+  z-index:1; 
+}
+.tooltip:hover .tooltip-text { 
+  visibility:visible; 
+}
+```
+
+##### Tabs
+```html
+<a href="#tab1">Tab 1</a>
+<a href="#tab2">Tab 2</a>
+<a href="#tab3">Tab 3</a><br>
+<span id="tab1" class="tab">Target 1</span>
+<span id="tab2" class="tab">Target 2</span>
+<span id="tab3" class="tab">Target 3</span>
+```
+```css
+.tab { display: none; }
+:target { display: block; }
 ```
 
 ### Meter and progress
