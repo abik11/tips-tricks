@@ -1529,6 +1529,20 @@ div {
 }
 ```
 
+##### Variables
+Variables are also not directives but they are as much (if not more) useful as other instructions of CSS language. To define variables you have to put them in **:root** section:
+```css
+:root {
+    --default-div-width: 400px;
+}
+```
+And later you can use them with **var** function:
+```css
+div {
+    var(--default-div-width);
+}
+```
+
 ### Stuff without Javascript
 
 ##### Drop down menu
