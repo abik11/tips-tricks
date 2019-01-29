@@ -46,11 +46,15 @@ There also exists another option, in Toolbox there is ManyToManyRelationshiop th
 ->Right click in the background ->Update Model from Database ->Choose your stored procedure<br /><br />
 **Code:**
 ```csharp
-SelectedData data = _session.ExecuteSproc("ProcName", new OperandValue(ID));
+SelectedData data = _session.ExecuteSproc("procName", new OperandValue(ID));
 if (data != null && data.ResultSet != null && data.ResultSet[0].Rows != null)
 {
      string employeeName = data.ResultSet[0].Rows[0].Values[4].ToString();
 }
+```
+If your procedure is in different scheme than the default one (**dbo**), you have to specify the schema name with the name of procedure, for example if your schema is called **corp** you should call your procedure like this:
+```csharp
+SelectedData data = _session.ExecuteSproc("corp.procName", new OperandValue(ID));
 ```
 
 ### Database connection XPO v16.2
