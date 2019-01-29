@@ -1648,6 +1648,52 @@ Since HTML 5 there are many great features added, but some of them are not so we
 <meter low="60" high="85" max="100" value="70">70</meter>
 ```
 
+### Clipping
+With clipping functionality you can achieve some interesting effects that was immpossible to achieve or required a lot ugly code to do. For example to add an image to the border is very easy:
+```html
+<div class="border-with-image">This div will have a nice border with an image :)</div>
+```
+```css
+.border-with-image {
+    border: solid 40px black;
+    border-image: url('https://cdn.newsapi.com.au/image/v1/fb10274aebea980a0dfc0c6aaadfe950') 10% round;
+}
+```
+Here is an example of real clipping. You can see how to clip an image or a div:
+```html
+<img class="clip" src="https://cdn.newsapi.com.au/image/v1/fb10274aebea980a0dfc0c6aaadfe950" />
+<div class="clip">This will be a triangle</div>
+```
+```css
+div.clip {
+    background-color: red;
+    width: 400px;
+    height: 400px;
+}
+.clip {
+    clip-path: polygon(50% 50%, 0% 100%, 100% 100%);
+}
+```
+Also other shapes can be used to clip, for example a circle or an elipse: `clip-path: ellipse(90% 70% at 0% 50%)`. You can also set the outer shape of the element with **shape-outside**:
+```css
+div {
+    shape-outside: ellipse(90% 70% at 0% 50%);
+    shape-margin: 2em;
+}
+```
+
+##### Old way of doing triangles
+With clipping you can make triangles very easily, before it was a bit more tricky. Here you can see how to make - it is a nice example to understand in depth how borders work:
+```css
+div {
+   width: 0px; 
+   height: 0px;
+   border-width:  0px 30px 50px 30px;
+   border-color: transparent transparent green transparent;
+   border-style: solid;   
+}
+```
+
 ### Add app to homescreen in Android
 ->Open URL in Chrome ->Options ->Add to homescreen<br />
 You can add the following markups in the **head** section:
