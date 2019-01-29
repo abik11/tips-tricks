@@ -1399,6 +1399,16 @@ p {
 ```
 Also you could manipulatre margins to negative values. Remember that you can use **z-index** only with the elements that have set **position** property.
 
+##### Clear: both
+```html
+<div>
+    <div style="float:left;">Na lewo</div>
+    <div style="float:right;">Na prawo</div>
+    <div style="clear:both;"></div>
+    Other elements
+</div>
+```
+
 ### Forms
 
 ##### Placeholder for selection
