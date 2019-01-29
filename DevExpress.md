@@ -42,6 +42,7 @@ There also exists another option, in Toolbox there is ManyToManyRelationshiop th
 **SQL Server:**<br />
 ->Right click on a procedure ->Properties ->Permissions ->Search ->Browse ->Select the role or user that you want ->Check Grant for Execute in the Permissions table<br /><br />
 **XPO Designer:**<br />
+->Right click in the background ->Properties ->Generate Stored Procedures<br />
 ->Right click in the background ->Update Model from Database ->Choose your stored procedure<br /><br />
 **Code:**
 ```csharp
