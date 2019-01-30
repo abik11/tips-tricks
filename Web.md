@@ -11,6 +11,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [DataTables](#datatables)
 * [HTML and CSS](#html-and-css)
 * [Appendix A - Google Maps Api](#appendix-a---google-maps-api)
+* [Appendix B - CSS Animations](#appendix-b---css-animations)
 * [Useful links](#useful-links)
 
 Read also:
@@ -2024,6 +2025,38 @@ To allow markup clustering you have to include the following JS library: `https:
 ```javascript
 var markerCluster = new MarkerClusterer
 	(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+```
+
+### Appendix B - CSS Animations
+With CSS you can style elements and a lot of quite advanced visual effects, but of the most advanced things that you can do with modern CSS are animations. The general syntax or configuration of the animation is show here in the example:
+```css
+div.animated-element {
+   border: 1px solid black;
+   width: 50px;
+   height: 50px
+   animation-name: animate-size; 
+   animation-duration: 5s; 
+   animation-iteration-count: infinite; 
+   animation-timing-function: ease;
+}
+
+@keyframes animate-size { 
+   0% { width: 200px; } 
+   100% { width: 350px; } 
+}
+```
+There are quite many things that you can set. The most important one is to define key frames with **@keyframes** directive, they will describe which properties will be changed and how. Other animation properties have many different meanings:
+* **animation-iteration-count** - it allows you to set precisely how many iterations you want to play. If you will set it to **infinite**, the animation will never end.
+* **animation-fill-mode** - it allows you to set what will be the end result of the animation. The element can *come back* to the final state if you will set it to **backwards** or it can stay in the final state of the animation if you will set it to **forwards**. 
+* **animation-direction** - can be set to **normal** or **reverse** - to make the animation play from the end to the start.
+* **animation-play-state** - if this property is set to **running** the animation is played, if it is set to **paused** the animation is stopped.
+* **animation-timing-function** - allows you to set the way that animation reaches the final state, there are many different options like **ease**, **linear**, **ease-in**, **ease-out** or **cubic**.
+
+You can write animation properties in a much shorter way:
+```css
+div.animated-element {
+   animation: animate-size 5s infinite ease;
+}
 ```
 
 ## Useful links
