@@ -2093,6 +2093,33 @@ There are some CSS libraries that work with CSS animations, one of them (which i
 <h2 class="animated bounce">Not such a big text animated just once</h2>
 ```
 
+### Transform
+With **transform** property you can do a few operations: translate(x,y), translateX, translateY, scale(x, y), scaleX, scaleY, rotate, skewX, skewY. It is of course possible to mix them:
+```css
+.box {
+    translate: translate(300px, 50px) rotate(45deg) scale(2.5);
+}
+```
+Sometimes it may be useful to change the center of transformation. By default it is the central point of the element (50%, 50%):
+```css
+.box {
+    translate: translate(300px, 50px) rotate(45deg) scale(2.5);
+    transform-origin: 0% 0%; --top left corner
+}
+```
+
+### Transition
+Transitions are special kind of animations. They are allow you to change the CSS property smoothly from one value to another. For example if you define a width of an element and another width on **:hover** with transition, the change of the width will be smoothly animated. It is an extremely useful feature.
+```css
+a { 
+    width: 100px;
+    transition: width 2s; 
+}
+a:hover { 
+    width: 500px; 
+}
+```
+
 ##### Animate.css + JQuery
 You can add a simple JQuery function that will allow you to add animate.css classes easily and dynamically:
 ```javascript
