@@ -2086,13 +2086,6 @@ Also it is good to know that animating some properties is much slower than other
 If a change in some property requires to run the first phase, all other will also be executed. So the cheapest animations are those which animate properties that only require to run the last (Composite) phase of rendering.<br />
 Different browsers treat properties differently but in general **transform** and **opacity** are among those which only require to the Composite phase, so they guarantee the best performance of the animation. If you want to know details about which property requires rendering in which phase go [here](https://csstriggers.com). Moreover, what is worth mentioning, CSS Composite layer-level animations are calculated by separate GPU thread which is additional performance boost (Javascript animations are calculated by main browser thread).
 
-### Animate.css
-There are some CSS libraries that work with CSS animations, one of them (which is really great!) is **animate.css**. It defines quite many classes, which are nice to use to show or hide some elements. It is very easy to use!
-```html
-<h1 class="animated infinite bounce">Big text animated infinitely</h1>
-<h2 class="animated bounce">Not such a big text animated just once</h2>
-```
-
 ### Transform
 With **transform** property you can do a few operations: translate(x,y), translateX, translateY, scale(x, y), scaleX, scaleY, rotate, skewX, skewY. It is of course possible to mix them:
 ```css
@@ -2118,6 +2111,13 @@ a {
 a:hover { 
     width: 500px; 
 }
+```
+
+### Animate.css
+There are some CSS libraries that work with CSS animations, one of them (which is really great!) is **animate.css**. It defines quite many classes, which are nice to use to show or hide some elements. It is very easy to use!
+```html
+<h1 class="animated infinite bounce">Big text animated infinitely</h1>
+<h2 class="animated bounce">Not such a big text animated just once</h2>
 ```
 
 ##### Animate.css + JQuery
