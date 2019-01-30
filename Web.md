@@ -2027,13 +2027,13 @@ var markerCluster = new MarkerClusterer
 	(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 ```
 
-### Appendix B - CSS Animations
+## Appendix B - CSS Animations
 With CSS you can style elements and a lot of quite advanced visual effects, but of the most advanced things that you can do with modern CSS are animations. The general syntax or configuration of the animation is show here in the example:
 ```css
 div.animated-element {
    border: 1px solid black;
    width: 50px;
-   height: 50px
+   height: 50px;
    animation-name: animate-size; 
    animation-duration: 5s; 
    animation-iteration-count: infinite; 
@@ -2055,9 +2055,35 @@ There are quite many things that you can set. The most important one is to defin
 You can write animation properties in a much shorter way:
 ```css
 div.animated-element {
-   animation: animate-size 5s infinite ease;
+    animation: animate-size 5s infinite ease;
 }
 ```
+
+### Performance
+To improve animation performance you can add **will-change** property and put them the names of properties that will be animated. It doesn't guarantee that you animation will run faster but it can help the browser.
+```css
+div {
+    will-change: transform, opacity;
+    animation: rotation-fade 4s infinite ease;
+}
+
+@keyframes rotation-fade {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(300px, 50px) rotate(360deg) scale(3);
+        opacity: 0;
+    }
+}
+```
+Also it is good to know that animating some properties is much slower than others. Website rendering is divided into 3 main phases which are run one after another in the following order:
+* Layout (width, height, margin, padding, top, left, display...)
+* Paint (box-shadow, border-radius, background, color, visibility...)
+* Composite Layers (transform, opacity, filters)
+If a change in some property requires to run the first phase, all other will also be executed. So the cheapest animations are those which animate properties that only require to run the last (Composite) phase of rendering.<br />
+Different browsers treat properties differently but in general **transform** and **opacity** are among those which only require to the Composite phase, so they guarantee the best performance of the animation. If you want to know details about which property requires rendering in which phase go [here](https://csstriggers.com).
 
 ## Useful links
 
