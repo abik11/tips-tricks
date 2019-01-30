@@ -2090,13 +2090,13 @@ Different browsers treat properties differently but in general **transform** and
 With **transform** property you can do a few operations: translate(x,y), translateX, translateY, scale(x, y), scaleX, scaleY, rotate, skewX, skewY. It is of course possible to mix them:
 ```css
 .box {
-    translate: translate(300px, 50px) rotate(45deg) scale(2.5);
+    transform: translate(300px, 50px) rotate(45deg) scale(2.5);
 }
 ```
 Sometimes it may be useful to change the center of transformation. By default it is the central point of the element (50%, 50%):
 ```css
 .box {
-    translate: translate(300px, 50px) rotate(45deg) scale(2.5);
+    transform: translate(300px, 50px) rotate(45deg) scale(2.5);
     transform-origin: 0% 0%; --top left corner
 }
 ```
