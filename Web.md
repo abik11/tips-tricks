@@ -2082,6 +2082,7 @@ Also it is good to know that animating some properties is much slower than other
 * Layout (width, height, margin, padding, top, left, display...)
 * Paint (box-shadow, border-radius, background, color, visibility...)
 * Composite Layers (transform, opacity, filters)
+
 If a change in some property requires to run the first phase, all other will also be executed. So the cheapest animations are those which animate properties that only require to run the last (Composite) phase of rendering.<br />
 Different browsers treat properties differently but in general **transform** and **opacity** are among those which only require to the Composite phase, so they guarantee the best performance of the animation. If you want to know details about which property requires rendering in which phase go [here](https://csstriggers.com).
 
