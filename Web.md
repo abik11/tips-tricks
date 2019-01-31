@@ -2113,6 +2113,39 @@ a:hover {
 }
 ```
 
+### 3D animations
+To be able to animate elements in 3 dimensions you have to add **perspective(0px)** to **transform**. 3D animations are not as easy as 2D, but with some practice you can achieve stunning effects! See here a very simple example of 3D rotation around Y-axis:
+```css
+.box {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  animation: 3d-rotation 3s infinite;
+}
+
+@keyframes 3d-rotation {
+  0% { transform: perspective(0px) rotateY(0); }
+  100% { transform: perspective(0px) rotateY(360deg); }
+}
+```
+
+##### Movement over the circle
+You can simply achieve a movement of the element over the circle with just manipulating the central point of the animation. Here there is added 10px distance from the center of animated element, thanks to that it is rotating on the circle of 10px radius.
+```css
+.box {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  animation: 3d-rotation 3s infinite;
+  transform-origin: 50% 50% 10px;
+}
+
+@keyframes 3d-rotation {
+  0% { transform: perspective(0px) rotateY(0); }
+  100% { transform: perspective(0px) rotateY(360deg); }
+}
+```
+
 ### Animate.css
 There are some CSS libraries that work with CSS animations, one of them (which is really great!) is **animate.css**. It defines quite many classes, which are nice to use to show or hide some elements. It is very easy to use!
 ```html
