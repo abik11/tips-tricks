@@ -2128,6 +2128,7 @@ To be able to animate elements in 3 dimensions you have to add **perspective(0px
   100% { transform: perspective(0px) rotateY(360deg); }
 }
 ```
+You can hide the *back* of the element wit **backface-visibility** property set to **hidden**. Also for animation of transparent elements you may need to use `transform-style: preserve-3d`.
 
 ##### Movement over the circle
 You can simply achieve a movement of the element over the circle with just manipulating the central point of the animation. Here there is added 10px distance from the center of animated element, thanks to that it is rotating on the circle of 10px radius.
@@ -2145,6 +2146,23 @@ You can simply achieve a movement of the element over the circle with just manip
   100% { transform: perspective(0px) rotateY(360deg); }
 }
 ```
+
+##### Movement around the vector
+You can make an animation not only in the X, Y and Z axis. You can also set your preferable vector for the animation with **rotate3d** transformation:
+```css
+.box2 {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  animation: a12 3s infinite;
+}
+
+@keyframes vector-animation {
+  0% { transform: perspective(0px) rotate3d(1,1,0,0deg); }
+  100% { transform: perspective(0px) rotate3d(1,1,0,360deg); }
+}
+```
+CSS animations are really powerful.
 
 ### Animate.css
 There are some CSS libraries that work with CSS animations, one of them (which is really great!) is **animate.css**. It defines quite many classes, which are nice to use to show or hide some elements. It is very easy to use!
