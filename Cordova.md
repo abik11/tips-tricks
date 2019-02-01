@@ -1,6 +1,7 @@
 # Cordova
 
 * [Cordova CLI](#cordova-cli)
+* [Tools](#tools)
 * [Useful links](#useful-links)
 
 ## Cordova CLI
@@ -67,6 +68,14 @@ If you want to run on a device use the following command:
 cordova build android
 cordova run android
 ```
+
+## Tools
+Cordova is a nice platform but sometimes may cause you many different problems. Working with it can be much easier if you will use appropriate tools to build or debug apps.
+
+### Debugging in Chrome
+->Enable debugging mode in the device, plug to the PC and run the app 
+->Go to `chrome://inspect` in Chrome<br />
+->Click **inspect** under your app
 
 ## Useful links
 
