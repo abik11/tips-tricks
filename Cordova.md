@@ -104,7 +104,7 @@ Required by:
 ```
 If you see such error it means that **Android Support Repository** is not installed in the correct version. You have to go to '/android-sdk/SDK Manager.exe' and update it through this tool. Go to ->Extras ->Android Support Repository and update to version 47.
 
-### Development
+## Development
 In general when you develop applications with Cordova it is very similar to web app development, but there are some differences and additional functionalities not available in casual web development. The most important difference is the application structure. You must put your code insinde of the **deviceready** event handler:
 ```html
 <!DOCTYPE html>
