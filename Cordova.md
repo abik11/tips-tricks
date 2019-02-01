@@ -1,5 +1,8 @@
 # Cordova
 
+* [Cordova CLI](#cordova-cli)
+* [Useful links](#useful-links)
+
 ## Cordova CLI
 You can use different tools to work with Cordova, for example **Visual Studio Tools for Apache Cordova** to manage Cordova with Visual Studio. But still it may be useful to know how to handle Cordova through command line in case if other tools will not be able to do the job or something will go wrong.
 
@@ -43,3 +46,19 @@ cordova plugin search camera
 cordova plugin add cordova-plugin-camera
 cordova plugin save
 ```
+
+## Useful links
+
+##### General stuff
+[Cordova docs](https://cordova.apache.org/docs/en/latest/)<br />
+[Cordova templates](https://www.npmjs.com/search?q=cordova%3Atemplate)<br />
+[How do I add "uses-permissions" tags to AndroidManifest.xml for a Cordova project?](https://stackoverflow.com/questions/30042088/how-do-i-add-uses-permissions-tags-to-androidmanifest-xml-for-a-cordova-projec)<br />
+[Tools for Cordova 2017](https://docs.microsoft.com/en-us/visualstudio/cross-platform/tools-for-cordova/?view=toolsforcordova-2017)<br />
+
+##### Plugins
+[Getmac Plugin - above Android 6](https://github.com/navidmalekan/getmac)<br />
+[Background Plugin](https://github.com/katzer/cordova-plugin-background-mode)<br />
+[Local-Notifications Plugin](https://github.com/katzer/cordova-plugin-local-notifications)<br />
+[Badge Plugin](https://github.com/katzer/cordova-plugin-badge)<br />
+[Bluetooth Plugin](https://github.com/tanelih/phonegap-bluetooth-plugin)<br />
+[]()<br />
