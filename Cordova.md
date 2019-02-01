@@ -77,6 +77,18 @@ Cordova is a nice platform but sometimes may cause you many different problems. 
 ->Go to `chrome://inspect` in Chrome<br />
 ->Click **inspect** under your app
 
+### Visual Studio doesn't see Android SDK
+It may happen if you will first install Android SDK before installing Visual Studio. To fix it, go to: ->Tools ->Options ->Tools for Apache Cordova ->Environment Variable Overrides and then set **ANDROID_HOME** as a path to **android-sdk**.
+
+### Pin the app
+Since Android version 5.0 there is a functionality that you can pin and lock the app so the user will not be able to close it and run other apps. Go to: ->Settings ->General ->Security ->Advanced ->Screen pinning, or: ->Settings ->Lock screen and security ->Other security settings ->Screen pinning.<br />
+In polish it is: ->Ustawienia ->Ogólne ->Bezpieczeństwo ->Zaawansowane ->Przypnij okno, or: ->Ustawienia ->Ekran blokady i bezpieczeństwo ->Inne ustawienia bezpieczeństwa ->Przypnij okno.<br />
+In spanish this function is called: *Fijar ventanas*.<br /> 
+To unlock the app you have to press the back button and menu button (both at once) and put the PIN number. To set the PIN go to: ->Device ->Lock Screen ->Lock Screen ->PIN.
+
+### How to check device IMEI
+Type the following code instead of phone number: `*#06#`.
+
 ## Useful links
 
 ##### General stuff
