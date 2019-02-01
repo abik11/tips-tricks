@@ -131,7 +131,8 @@ app.initialize();
 ```
 
 ### MAC Address is equal 02:00:00:00:00:00
-In Android 6.0 and higher, to get MAC address, additional permissions are required so many old plugins don't work correctly. Use [this](https://github.com/navidmalekan/getmac/blob/master/www/getmac.js) plugin to work with modern devices.
+In Android 6.0 and higher, to get MAC address, additional permissions are required so many old plugins don't work correctly. Use [this](https://github.com/navidmalekan/getmac/blob/master/www/getmac.js) plugin to work with modern devices.<br />
+By the way, some older devices may return MAC Address as `error` when the device is offline.
 
 ### Promise doesn't work
 In Android 4.4 and below in WebView control which is used to show Cordova applications **Promise** may not work. To fix it you should use the pollyfil, for example [this](https://github.com/stefanpenner/es6-promise/) one. Installation through npm is very simple:`npm install es6-promise`. To make the pollyfil work you have to add it in the main javascript file of your app:
