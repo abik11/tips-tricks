@@ -24,6 +24,11 @@ Next you should add some platform for which you want to later build the app:
 cd HelloApp
 cordova platform add android --save
 ```
+It is possible to create a new app based on a templete. And this a really nice feature, often saving a lot of time:
+```
+cordova create HelloApp --template cordova-app-hello-world
+```
+[Here](https://www.npmjs.com/search?q=cordova%3Atemplate) you can search for templates.
 
 ### Check platforms and requirements
 To see what platforms are installed in the current project you can use the following command:
@@ -45,6 +50,22 @@ You can search available plugins in the Internet and install them:
 cordova plugin search camera
 cordova plugin add cordova-plugin-camera
 cordova plugin save
+```
+To delete a plugin type this:
+```
+cordova plugin remove cordova-plugin-camera
+```
+
+### Test and run an app
+Often building and runing the app on the device may take a bit long. It is faster to run an app in the browser. You can make it with the following command:
+```
+cordova platform add browser
+cordova run browser
+```
+If you want to run on a device use the following command:
+```
+cordova build android
+cordova run android
 ```
 
 ## Useful links
