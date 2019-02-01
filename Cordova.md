@@ -2,6 +2,7 @@
 
 * [Cordova CLI](#cordova-cli)
 * [Tools](#tools)
+* [Development](#development)
 * [Useful links](#useful-links)
 
 ## Cordova CLI
@@ -88,6 +89,46 @@ To unlock the app you have to press the back button and menu button (both at onc
 
 ### How to check device IMEI
 Type the following code instead of phone number: `*#06#`.
+
+### Could not resolve com.android.support
+```
+FAILURE: Build failed with an exception.
+What went wrong:
+A problem occurred configuring root project 'android'.
+> Could not resolve all dependencies for configuration ':_debugCompile'.
+> Could not resolve com.android.support:support-v4:24.1.1+.
+Required by:
+:android:unspecified
+> Could not resolve com.android.support:support-v4:24.1.1+.
+> Failed to list versions for com.android.support:support-v4.
+```
+If you see such error it means that **Android Support Repository** is not installed in the correct version. You have to go to '/android-sdk/SDK Manager.exe' and update it through this tool. Go to ->Extras ->Android Support Repository and update to version 47.
+
+### Development
+In general when you develop applications with Cordova it is very similar to web app development, but there are some differences and additional functionalities not available in casual web development. The most important difference is the application structure. You must put your code insinde of the **deviceready** event handler:
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8" src="index.js"></script>
+    </head>
+    <body>
+    </body>
+</html>
+```
+```js
+var app = {
+    initialize: function() {	
+        this.bindEvents();	
+    },
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    onDeviceReady: function() {}
+};
+app.initialize();
+```
 
 ## Useful links
 
