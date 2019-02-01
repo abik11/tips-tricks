@@ -130,6 +130,19 @@ var app = {
 app.initialize();
 ```
 
+### Enabling CORS
+Cross-origin resource sharing is a very common mechanism that allows your web app to access resources or APIs that are located in other domain than your app. To enable CORS in Cordova app you have to take few steps. First add Whitelist Plugin: `cordova plugin add cordova-plugin-whitelist`. Then modify **config.xml**, add this:
+```xml
+<access origin="*" />
+<allow-navigation href="*" />
+<plugin name="cordova-plugin-whitelist" version="1.3.2" />
+```
+inside of the **widget** tag. Finally modify **index.html**, add:
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+```
+inside **head** tag.
+
 ### MAC Address is equal 02:00:00:00:00:00
 In Android 6.0 and higher, to get MAC address, additional permissions are required so many old plugins don't work correctly. Use [this](https://github.com/navidmalekan/getmac/blob/master/www/getmac.js) plugin to work with modern devices.<br />
 By the way, some older devices may return MAC Address as `error` when the device is offline.
