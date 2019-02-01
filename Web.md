@@ -15,6 +15,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [Useful links](#useful-links)
 
 Read also:
+* [Cordova](https://github.com/abik11/tips-tricks/blob/master/Cordova.md)
 * [DevExtreeme](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#devextreeme)
 * [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp.md#aspnet-mvc)
 
