@@ -130,6 +130,12 @@ var app = {
 app.initialize();
 ```
 
+### Check platform and version
+```javascript
+if(cordova.platformId == "android" && device.platform == "Android")
+    console.log(device.version);
+```
+
 ### Enabling CORS
 Cross-origin resource sharing is a very common mechanism that allows your web app to access resources or APIs that are located in other domain than your app. To enable CORS in Cordova app you have to take few steps. First add Whitelist Plugin: `cordova plugin add cordova-plugin-whitelist`. Then modify **config.xml**, add this:
 ```xml
@@ -142,6 +148,30 @@ inside of the **widget** tag. Finally modify **index.html**, add:
 <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 ```
 inside **head** tag.
+
+### Device events
+There are some additional events connected with the device as: **backbutton**, **menubutton**, **searchbutton**, **volumedownbutton**, **volumeupbutton** that you can use the same way as other DOM events.
+
+##### Prevent default event handling
+With **preventDefault** method of event object you can block default event handlers or *override* them which may be very useful with device button events:
+```javascript
+document.addEventListener("backbutton", onBackKeyDown, false);
+
+function onBackKeyDown(e) {
+   e.preventDefault();
+}
+```
+
+##### Battery events
+```javascript
+window.addEventListener("batterystatus", onBatteryStatus, false);
+
+function onBatteryStatus(info) {
+   console.log("Level:" + info.level);
+   console.log("IsPlugged:" + info.isPlugged);
+}
+```
+There are also other events like: **batterylow**, **batterycritical**.
 
 ### MAC Address is equal 02:00:00:00:00:00
 In Android 6.0 and higher, to get MAC address, additional permissions are required so many old plugins don't work correctly. Use [this](https://github.com/navidmalekan/getmac/blob/master/www/getmac.js) plugin to work with modern devices.<br />
