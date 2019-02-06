@@ -1453,8 +1453,9 @@ netsh interface set interface name="Local connection" admin=enabled
 A disadvantage of this command is that you have to specify the name of the NIC, you cannot use its index. To overcome it you have to use **wmic**.
 
 ### Wlan
-**Netsh** can be used for WLAN management. For example you can see all the configured WLAN profiles and connect your PC with the given profile:
+**Netsh** can be used for WLAN management. For example you can see all the WLAN interfaces, configured WLAN profiles and connect your PC with the given profile:
 ```
+netsh wlan show interfaces
 netsh wlan show profiles
 netsh wlan connect name="myWifi"
 ```
