@@ -1458,6 +1458,10 @@ A disadvantage of this command is that you have to specify the name of the NIC, 
 netsh wlan show profiles
 netsh wlan connect name="myWifi"
 ```
+Also a very useful functionality is that you can even get the password of a given WiFi network (among other details):
+```
+netsh wlan show profiles name='CORP_wifi' key=clear
+```
 
 ### Much more
 There are many other things you can do with **netsh**. If you will type `netsh /?` in cmd, you will see all the possible contexts in which you can use this command. Here is just one more example which shows all the firewall rules. Of course with **netsh** you can add and modify such rules:
