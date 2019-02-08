@@ -173,6 +173,62 @@ function onBatteryStatus(info) {
 ```
 There are also other events like: **batterylow**, **batterycritical**.
 
+### Sending files to WCF service
+To work with files in general you have to install **cordova-plugin-file** plugin which is one of the default plugins. Here you can see an example of a function that will let you access a file:
+```javascript
+readFile(fileName, onFileLoaded, onFileError){
+    window.resolveLocalFileSystemURL(fileName, function (fileEntry) {
+        fileEntry.file(function (file) {
+            var reader = new FileReader();
+            
+            //Attach onLoadEnd event handler for FileReader
+            reader.onloadend = onFileLoaded;
+            reader.onerror = onFileError;
+            
+            //Execute read action - will cause onLoadEnd event
+            reader.readAsBinaryString(file);
+        }, onFileError);
+    }, defaults.defaultErrorHandler);
+}
+```
+This function can be easily used with a promise:
+```javascript
+var p = new Promise((resolve, reject) => {
+    readFile(fileName, e => resolve(e.target.result), () => reject());
+});
+
+p.then(file => {
+    axios.post(webServiceUrl, JSON.Stringify({ file }))
+        .then(response => console.log(response));
+});
+```
+The WCF method that gets a file should the following contract:
+```csharp
+[OperationContract]
+[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, 
+BodyStyle = WebMessageBodyStyle.Wrapped)][return: MessageParameter(Name = "result")]
+JSONResponse SaveFile(Stream JSONDataStream);
+```
+and the following implementation:
+```sharp
+public JSONResponse SaveFile(Stream JSONDataStream)
+{
+    JSONResponse response = new JSONResponse();
+    try
+    {
+        StreamReader reader = new StreamReader(JSONDataStream);
+        string JSONdata = reader.ReadToEnd();
+        JavaScriptSerializer JS = new JavaScriptSerializer();
+        DataItem data = JS.Deserialize<DataItem>(JSONdata);
+        
+         Logic.SaveFile(data.file);
+         response.Code = 200;
+    }
+    catch(Exception){ response.Code = 500; }
+    return response;
+}
+```
+
 ### MAC Address is equal 02:00:00:00:00:00
 In Android 6.0 and higher, to get MAC address, additional permissions are required so many old plugins don't work correctly. Use [this](https://github.com/navidmalekan/getmac/blob/master/www/getmac.js) plugin to work with modern devices.<br />
 By the way, some older devices may return MAC Address as `error` when the device is offline.
