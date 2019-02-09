@@ -572,16 +572,6 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [SHA256 calculator](http://www.xorbin.com/tools/sha256-hash-calculator)<br />
 [MD5 checksum](http://onlinemd5.com/)<br />
 [UML editor](https://www.draw.io/)<br />
- 
-#### Online web-dev tools
-[LESS editor](http://less2css.org/)<br />
-[SASS editor](http://www.sassmeister.com/)<br />
-[JSON editor](http://jsoneditoronline.org/)<br />
-[Cubic curves generator](http://cubic-bezier.com/)<br />
-[Clip-path generator](http://bennettfeely.com/clippy/)<br />
-[Loader generator](http://loading.io/)<br />
-[Gradient generator](http://www.colorzilla.com/gradient-editor/)<br />
-[Google Fonts](http://localfont.com/)<br />
 
 #### Linux
 [Tails - Linux live distribution for privacy](https://tails.boum.org/)<br />
