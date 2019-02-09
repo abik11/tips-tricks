@@ -2236,6 +2236,7 @@ $('.box').animateCss('flash');
 
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
+[JSON editor](http://jsoneditoronline.org/)<br />
 http://lorempixel.com/<br />
 
 #### HTML Notations
@@ -2244,7 +2245,8 @@ http://html2jade.org/ <br />
 
 #### CSS Preprocessors
 [SASS Documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)<br />
-[Sassmeister - SASS online editor](https://www.sassmeister.com/)<br />
+[SASS online editor](https://www.sassmeister.com/)<br />
+[LESS online editor](http://less2css.org/)<br />
 [Stylus](http://stylus-lang.com/)<br />
 
 #### CSS frameworks and libraries
@@ -2259,11 +2261,15 @@ http://html2jade.org/ <br />
 #### HTML and CSS
 [Graphics on the Web](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)<br />
 [Sara Soueidan's tutorials](https://www.sarasoueidan.com/blog/)<br />
-[CSS Filters](http://html5-demos.appspot.com/static/css/filters/index.html)<br />
 [9 Incredible CodePen Demos](https://davidwalsh.name/incredible-codepen-demos)<br />
 [21 niesamowitych projektów - Polish](https://devcorner.pl/21-niesamowitych-projektow-wykonanych-css/)<br />
 [10 Stunning CSS 3D Effects](https://redstapler.co/10-stunning-css-3d-effect-must-see/?fbclid=IwAR0vbGpNIFxiICIT0c7L3OJQjeHUDMvh-eR8o1GOWLf0E8nMH3SVZzrG2_M)<br />
 [Awwwards](https://www.awwwards.com/)<br />
+[CSS Filters](http://html5-demos.appspot.com/static/css/filters/index.html)<br />
+[Cubic curves generator](http://cubic-bezier.com/)<br />
+[Clip-path generator](http://bennettfeely.com/clippy/)<br />
+[Loader generator](http://loading.io/)<br />
+[Gradient generator](http://www.colorzilla.com/gradient-editor/)<br />
 
 #### Icons
 [Flag icons](http://www.iconarchive.com/show/flag-icons-by-gosquared.1.html)<br />
