@@ -124,6 +124,16 @@ Required by:
 ```
 If you see such error it means that **Android Support Repository** is not installed in the correct version. You have to go to '/android-sdk/SDK Manager.exe' and update it through this tool. Go to ->Extras ->Android Support Repository and update to version 47.
 
+### CordovaError: Current working directory is not a Cordova-based project.
+If you see this error while trying to install new Cordova plugin or building the project - check if your structure has **www** directory, if not, then add this directory or if you use Webpack, configure it to create it for you.
+
+### Cordova-build error : Please install Android target: "android-23"
+You can see something like that if you have omitted some API Level while updating Android SDK to higher API Level, for example from 21 to 25.
+
+### Error : BLD00401 : Could not find module '...\node_modules\vs-tac\app.js'...
+*I have bad feelings about this...*<br />
+If you see the above error, you are lost. Create completely new Cordova solution and copy your source files to this solution. That's the best thing you can do.
+
 ### Pin the app
 Since Android version 5.0 there is a functionality that you can pin and lock the app so the user will not be able to close it and run other apps. Go to: ->Settings ->General ->Security ->Advanced ->Screen pinning, or: ->Settings ->Lock screen and security ->Other security settings ->Screen pinning.<br />
 In polish it is: ->Ustawienia ->Ogólne ->Bezpieczeństwo ->Zaawansowane ->Przypnij okno, or: ->Ustawienia ->Ekran blokady i bezpieczeństwo ->Inne ustawienia bezpieczeństwa ->Przypnij okno.<br />
@@ -266,6 +276,25 @@ By the way, some older devices may return MAC Address as `error` when the device
 In Android 4.4 and below in WebView control which is used to show Cordova applications **Promise** may not work. To fix it you should use the pollyfil, for example [this](https://github.com/stefanpenner/es6-promise/) one. Installation through npm is very simple:`npm install es6-promise`. To make the pollyfil work you have to add it in the main javascript file of your app:
 ```javascript
 require('es6-promise').polyfill();
+```
+
+### Unable to open asset URL: file:///android_asset/www/img/xyz.png 
+If you see this error while trying to reference an image by indirect path, change it to direct path. For example, change this: `/img/xyz.png ` to this: `file:///android_asset/www/img/xyz.png`.<br />
+With Webpack you can still use indirect paths to images if you will define a rule that will translate those paths for you. Here is an example:
+```javascript
+{
+    test: /\.(jpe?g|png|gif|svg)$/i,
+    loader: 'file-loader',
+    options: {
+        name: '[name].[ext]',
+        outputPath: 'img/',
+        publicPath: 'file:///android_asset/www/'
+    }
+}
+```
+You have to add this in your **main.js** to include images:
+```javascript
+require.context("../img/", true, /\.(jpe?g|png|gif|svg)$/i);
 ```
 
 ### Phonegap-plugin-barcodescanner version
