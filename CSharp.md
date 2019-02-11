@@ -336,6 +336,87 @@ finally
 }
 ```
 
+##### Spin lock
+Typically locks are changing thread context if some resource cannot be accessed. If the locked operation is very fast, changing thread context may cause higher cost for processor than simply waiting for the resource to be available for the thread. **SpinLock**, when cannot access given resource, it occupies processor with useless job to wait for the resource and it doesn't allow other threads to be executed by the processor. It is just taking time and *actively* waiting.
+```csharp
+int i = 0;
+SpinLock lock = new SpinLock();
+var lockTaken = false;
+try 
+{
+     lock.Enter(ref lockTaken);
+     i++; // this operation is thread safe
+}
+finally 
+{
+     if(lockTaken) lock.Exit();
+}
+```
+
+### Mutex 
+Mutex is a very powerfull class. A very useful application of it can be allowing only one instance of an application to run. Here is one example:
+```csharp
+public void Main(string[] args)
+{
+    const string appName = "MyApp";
+    Mutex mutex;
+    try
+    {
+        mutex = Mutex.OpenExisting(appName);
+        Console.WriteLine("App is already running!");
+        return;
+    }
+    catch(WaitHandleCannotBeOpenedException)
+    {
+        Console.WriteLine("Program can be run...");
+        mutex = new Mutex(false, appName);
+    }
+
+    bool hasLock = mutex.WaitOne();
+    try
+    {
+        //...
+    }
+    finally
+    {
+        if(hasLock) mutex.ReleaseMutex();
+    }
+}
+```
+Or there is another way:
+```csharp
+public void Main(string[] args)
+{
+    Mutex mutex = new Mutex(true, "MyApp");
+    if(!mutex.WaitOne(1, false))
+    {
+        Console.WriteLine("App is already running!");
+        return;
+    }
+    
+    //...
+}
+```
+You can also implement data synchronization just like with **lock** or **SpinLock**, but what's great about **Mutex**, you can lock two Mutexes as one when more than one resource must be synchronized in thread-safe way. Look at the example:
+```csharp
+Mutex mutex = new Mutex();
+Mutex mutex2 = new Mutex();
+
+bool hasLock = WaitHandle.WaitAll(new[] { mutex, mutex2 });
+try
+{
+    bankAccount.Transfer(bankAccount2, 100);
+}
+finally
+{
+    if(hasLock)
+    {
+        mutex.ReleaseMutex();
+        mutex2.ReleaseMutex(); 
+    }
+}
+```
+
 ## WinForms
 WinForms is a .Net wrapper for WinApi, it allows you to build GUI for Windows applications through a really big group of classes, methods and properties. It is easy to use, lately quite criticized for not being well suitable for bigger projects - it is hard to separate logic from the code that handles th GUI. WPF is another .Net way of doing desktop apps.
 
