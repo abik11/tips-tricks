@@ -74,12 +74,16 @@ cordova run android
 ```
 
 ## Tools
-Cordova is a nice platform but sometimes may cause you many different problems. Working with it can be much easier if you will use appropriate tools to build or debug apps.
+Cordova is a nice platform but sometimes may cause you many different problems. Working with it can be much easier if you will use appropriate tools to build or debug apps, for example if you will build Cordova apps with Visual Studio.
 
 ### Debugging in Chrome
 ->Enable debugging mode in the device, plug to the PC and run the app 
 ->Go to `chrome://inspect` in Chrome<br />
 ->Click **inspect** under your app
+
+### Webpack Task Runner Explorer
+If you use Webpack in your project, it is recommended to install **Webpack Task Runner Explorer**. It allows you to easily manage webpack configuration files through Visual Studio. You can even bind webpack files before build.<br />
+If you use **node-sass** you can encounter the following error: `Missing binding (...) Node Sass could not find a binding for your current environment`. In such case go [here](https://github.com/sass/node-sass/releases), find the appropriate binding file, download and paste it in the path that is shown in the error message.
 
 ### List connected devices
 If you cannot debug your app on the device, first make sure that it is seen by adb. In the command line go to the directory where adb is installed and run `adb devices`, for example:
@@ -106,15 +110,6 @@ It may be caused because you work in a network with proxy. To configure proxy in
 * Proxy Port: 8080
 * Force https:// source: TRUE
 
-### Pin the app
-Since Android version 5.0 there is a functionality that you can pin and lock the app so the user will not be able to close it and run other apps. Go to: ->Settings ->General ->Security ->Advanced ->Screen pinning, or: ->Settings ->Lock screen and security ->Other security settings ->Screen pinning.<br />
-In polish it is: ->Ustawienia ->Ogólne ->Bezpieczeństwo ->Zaawansowane ->Przypnij okno, or: ->Ustawienia ->Ekran blokady i bezpieczeństwo ->Inne ustawienia bezpieczeństwa ->Przypnij okno.<br />
-In spanish this function is called: *Fijar ventanas*.<br /> 
-To unlock the app you have to press the back button and menu button (both at once) and put the PIN number. To set the PIN go to: ->Device ->Lock Screen ->Lock Screen ->PIN.
-
-### How to check device IMEI
-Type the following code instead of phone number: `*#06#`.
-
 ### Could not resolve com.android.support
 ```
 FAILURE: Build failed with an exception.
@@ -128,6 +123,15 @@ Required by:
 > Failed to list versions for com.android.support:support-v4.
 ```
 If you see such error it means that **Android Support Repository** is not installed in the correct version. You have to go to '/android-sdk/SDK Manager.exe' and update it through this tool. Go to ->Extras ->Android Support Repository and update to version 47.
+
+### Pin the app
+Since Android version 5.0 there is a functionality that you can pin and lock the app so the user will not be able to close it and run other apps. Go to: ->Settings ->General ->Security ->Advanced ->Screen pinning, or: ->Settings ->Lock screen and security ->Other security settings ->Screen pinning.<br />
+In polish it is: ->Ustawienia ->Ogólne ->Bezpieczeństwo ->Zaawansowane ->Przypnij okno, or: ->Ustawienia ->Ekran blokady i bezpieczeństwo ->Inne ustawienia bezpieczeństwa ->Przypnij okno.<br />
+In spanish this function is called: *Fijar ventanas*.<br /> 
+To unlock the app you have to press the back button and menu button (both at once) and put the PIN number. To set the PIN go to: ->Device ->Lock Screen ->Lock Screen ->PIN.
+
+### How to check device IMEI
+Type the following code instead of phone number: `*#06#`.
 
 ## Development
 In general when you develop applications with Cordova it is very similar to web app development, but there are some differences and additional functionalities not available in casual web development. The most important difference is the application structure. You must put your code insinde of the **deviceready** event handler:
@@ -263,6 +267,13 @@ In Android 4.4 and below in WebView control which is used to show Cordova applic
 ```javascript
 require('es6-promise').polyfill();
 ```
+
+### Phonegap-plugin-barcodescanner version
+Be careful with the above plugin. If you want to use it with Cordova 6 (6.3.1 for example), add the following line in your `config.xml`:
+```xml
+<plugin name="phonegap-plugin-barcodescanner" source="npm" spec="6.0.8" />
+```
+Since version 7 and aboce the plugin is not compatibile with Cordova 6.
 
 ## Useful links
 
