@@ -282,6 +282,7 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 ```
 
 ## Threading
+Modern processors usually are build with few cores that allows us to run many threads. There are also few ways in C# to work with threads. The most common ways are to work with plain old **Thread** class and **TPL** (Task Programming Library) which is based on **Task** class that is easy to use and allows to use asynchronous programming.
 
 ### Locking
 With **lock** keyword you can create a **critical section**. This is a section of code that will be executed only by one thread at a time so it is thread safe. An important thing to use lock is a lock object - here it is stored in `syncObj` variable. By the way, critical sections can be nested one in another.
@@ -444,6 +445,66 @@ Console.WriteLine(t1.Status); //RanToCompletion - task finished before timeout
 Console.WriteLine(t2.Status); //Running - task didn't finish before timeout
 ```
 There is also another option - **Thread.SpinWait**, which is not allowing to change thread context.
+
+##### Long tasks
+```csharp
+var task = Task.Factory.StartNew(() => {
+    Console.WriteLine("Text from a task!");
+    throw new InvalidOperationException();
+}, TaskCreationOptions.LongRunning);
+```
+As default tasks are instantiated from **Default Thread Pool** and that's cool for small tasks, but for long running tasks it may cause performance loss, so we have to mark a task as long running to force it to be created out of **Default Thread Pool**. 
+
+##### Error handling
+In general you can wrap a task simply in **try ... catch** block:
+```csharp
+try
+{
+    task.Wait();
+}
+catch(){}
+```
+But if you wait for more than one task, you may get more than one exception. To handle this, you have to catch **AggregateException**:
+```csharp
+try 
+{
+    Task.WaitAll(t1, t2);
+}
+catch(AggregateException ae)
+{
+    foreach(var e in ae.InnerExceptions)
+        Console.WriteLine(e.GetType());
+
+    ae.Handle(e => 
+    {
+        if(e is InvalidOperationException) return true;
+        else return false;         
+    });
+}
+```
+AggregateException is a nice thing that allows you to catch all the execptions of different tasks into one exception. You can use **Handle** method to manually handle some of aggregated exceptions and do not handle others, this gives a lot of control over the exceptions.
+
+##### Task initialization and name
+```csharp
+string message = "A message from out of the task";
+var task = Task.Factory.StartNew(state => {
+    Console.WriteLine(message);
+}, "TaskName1");
+```
+A lambda expression can access the variables declared before the task starts. A nice trick is to add state parameter for lambda and to put there a string value that will be a task name which is good for debugging.
+
+##### Task cancellation
+```csharp
+var tokenSource = new CancellationTokenSource();
+var token = tokenSource.Token;
+
+var task = Task.Factory.StartNew(() => {
+    Thread.Sleep(4000);
+    Console.WriteLine(message);
+}, token);
+
+tokenSource.Cancel();
+```
 
 ## WinForms
 WinForms is a .Net wrapper for WinApi, it allows you to build GUI for Windows applications through a really big group of classes, methods and properties. It is easy to use, lately quite criticized for not being well suitable for bigger projects - it is hard to separate logic from the code that handles th GUI. WPF is another .Net way of doing desktop apps.
