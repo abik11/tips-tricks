@@ -85,6 +85,10 @@ Cordova is a nice platform but sometimes may cause you many different problems. 
 If you use Webpack in your project, it is recommended to install **Webpack Task Runner Explorer**. It allows you to easily manage webpack configuration files through Visual Studio. You can even bind webpack files before build.<br />
 If you use **node-sass** you can encounter the following error: `Missing binding (...) Node Sass could not find a binding for your current environment`. In such case go [here](https://github.com/sass/node-sass/releases), find the appropriate binding file, download and paste it in the path that is shown in the error message.
 
+### Installing newer API Levels
+When you install new Android API Levels, in most cases all you need is **SDK Platform**, you don't need System Image (if you don't debug on the emulator) and many other components.<br />
+If you will encounter the following error: `skipping existing file: gradle-wrapper.jar`, go to Task Manager and kill all Visual Studio, Node and Java processes and try again.
+
 ### List connected devices
 If you cannot debug your app on the device, first make sure that it is seen by adb. In the command line go to the directory where adb is installed and run `adb devices`, for example:
 ```
@@ -110,6 +114,18 @@ It may be caused because you work in a network with proxy. To configure proxy in
 * Proxy Port: 8080
 * Force https:// source: TRUE
 
+### Failed to fetch platform android + Error: tunneling socket
+If you will encounter any proxy errors, they may come from few different sources: npm, gradle and git. To know how to set proxy configuration for npm and git go [here](https://github.com/abik11/tips-tricks/blob/master/Web.md#proxy-configuration-for-npm).<br />
+Then, change this file: `.\MySolution\MobileProject\platforms\android\gradle.properties` to this:
+```text
+systemProp.proxySet="true"
+systemProp.http.keepAlive="true"
+systemProp.http.proxyHost=104.114.81.88
+systemProp.http.proxyPort=8080
+systemProp.http.proxyUser=DOMAIN/user.name
+systemProp.http.proxyPassword=pass
+```
+
 ### Could not resolve com.android.support
 ```
 FAILURE: Build failed with an exception.
@@ -133,6 +149,10 @@ You can see something like that if you have omitted some API Level while updatin
 ### Error : BLD00401 : Could not find module '...\node_modules\vs-tac\app.js'...
 *I have bad feelings about this...*<br />
 If you see the above error, you are lost. Create completely new Cordova solution and copy your source files to this solution. That's the best thing you can do.
+
+### Install Graddle
+If you have no Graddle installed or have some problems with it (which may happen quite often......) download it from [here](http://services.gradle.org/distributions/gradle-2.2.1-all.zip). Unzip and copy gradle to some directory. Add this directory to `PATH` variable, for example: `C:\Program Files (x86)\Android\gradle-2.2.1\bin`.<br />
+To see if everything is allright, use following command: `cordova requirements`.
 
 ### Pin the app
 Since Android version 5.0 there is a functionality that you can pin and lock the app so the user will not be able to close it and run other apps. Go to: ->Settings ->General ->Security ->Advanced ->Screen pinning, or: ->Settings ->Lock screen and security ->Other security settings ->Screen pinning.<br />
