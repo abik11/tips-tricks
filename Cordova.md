@@ -290,3 +290,7 @@ Since version 7 and aboce the plugin is not compatibile with Cordova 6.
 [Local-Notifications Plugin](https://github.com/katzer/cordova-plugin-local-notifications)<br />
 [Badge Plugin](https://github.com/katzer/cordova-plugin-badge)<br />
 [Bluetooth Plugin](https://github.com/tanelih/phonegap-bluetooth-plugin)<br />
+
+##### Webpack for Visua Studio
+<https://developer.telerik.com/featured/webpack-for-visual-studio-developers/><br />
+<https://sochix.ru/how-to-integrate-webpack-into-visual-studio-2015/><br />
