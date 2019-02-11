@@ -2280,6 +2280,7 @@ http://html2jade.org/ <br />
 [Clip-path generator](http://bennettfeely.com/clippy/)<br />
 [Loader generator](http://loading.io/)<br />
 [Gradient generator](http://www.colorzilla.com/gradient-editor/)<br />
+[uiGradients](https://uigradients.com)<br />
 
 #### Icons
 [Flag icons](http://www.iconarchive.com/show/flag-icons-by-gosquared.1.html)<br />
