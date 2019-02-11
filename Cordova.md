@@ -5,6 +5,9 @@
 * [Development](#development)
 * [Useful links](#useful-links)
 
+Read also:
+* [Web](https://github.com/abik11/tips-tricks/blob/master/Web.md)
+
 ## Cordova CLI
 You can use different tools to work with Cordova, for example **Visual Studio Tools for Apache Cordova** to manage Cordova with Visual Studio. But still it may be useful to know how to handle Cordova through command line in case if other tools will not be able to do the job or something will go wrong.
 
@@ -78,8 +81,30 @@ Cordova is a nice platform but sometimes may cause you many different problems. 
 ->Go to `chrome://inspect` in Chrome<br />
 ->Click **inspect** under your app
 
+### List connected devices
+If you cannot debug your app on the device, first make sure that it is seen by adb. In the command line go to the directory where adb is installed and run `adb devices`, for example:
+```
+cd 'C:\Program Files (x86)\Android\android-sdk\platform-tools'
+adb devices
+```
+If you have turned on debugging mode on your device and it is plugged by USB and still not seen on the list, you probably have to install USB drivers for your mobile device. [Here](https://developer.samsung.com/galaxy/others/android-usb-driver-for-windows) you can find drivers for Samsung devices.
+
 ### Visual Studio doesn't see Android SDK
 It may happen if you will first install Android SDK before installing Visual Studio. To fix it, go to: ->Tools ->Options ->Tools for Apache Cordova ->Environment Variable Overrides and then set **ANDROID_HOME** as a path to **android-sdk**.
+
+### Visual Studio cannot run adb.exe
+Delete `.vs` directory in your solution that contains your mobile app. Then it should work though you may lose some settings.
+
+### Set proxy in SDK Manager
+If you see the following errors in SDK manager:
+```
+* Failed to fetch URL connection to refused
+* Failed to fetch URL peer not authenticated
+```
+It may be caused because you work in a network with proxy. To configure proxy in SDK Manager go to: ->Tools ->Options:
+* Proxy Server: 106.116.81.88
+* Proxy Port: 8080
+* Force https:// source: TRUE
 
 ### Pin the app
 Since Android version 5.0 there is a functionality that you can pin and lock the app so the user will not be able to close it and run other apps. Go to: ->Settings ->General ->Security ->Advanced ->Screen pinning, or: ->Settings ->Lock screen and security ->Other security settings ->Screen pinning.<br />
@@ -242,6 +267,7 @@ require('es6-promise').polyfill();
 ## Useful links
 
 ##### General stuff
+[ADK for Windows](https://android-sdk.uptodown.com/windows)<br />
 [Cordova docs](https://cordova.apache.org/docs/en/latest/)<br />
 [Cordova templates](https://www.npmjs.com/search?q=cordova%3Atemplate)<br />
 [How do I add "uses-permissions" tags to AndroidManifest.xml for a Cordova project?](https://stackoverflow.com/questions/30042088/how-do-i-add-uses-permissions-tags-to-androidmanifest-xml-for-a-cordova-projec)<br />
@@ -253,4 +279,3 @@ require('es6-promise').polyfill();
 [Local-Notifications Plugin](https://github.com/katzer/cordova-plugin-local-notifications)<br />
 [Badge Plugin](https://github.com/katzer/cordova-plugin-badge)<br />
 [Bluetooth Plugin](https://github.com/tanelih/phonegap-bluetooth-plugin)<br />
-[]()<br />
