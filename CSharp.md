@@ -417,6 +417,34 @@ finally
 }
 ```
 
+### Task
+```csharp
+var task = Task<string>.Factory.StartNew(() => {
+    Thread.Sleep(2000);
+    return "This is a result from the task";
+});
+
+Console.WriteLine(task.Result);
+```
+Task are cool, they do all the communication between threads in the background for us. When you try to access the task's result, the main thread will wait for the task to finish. An important thing to note is that as default tasks are background thread so they will finish immediately toegether with main thread, so the main thread will not wait for the tasks to finish. It can be checked if a thread is background or foreground thread.<br />
+If a task doesn't return any value you still have to wait for it in a main thread if you don't want it to be stopped when main thread finishes - you have to call the Wait() method of task object.
+
+##### Waiting for tasks
+```csharp
+Task t1 = Task.Factory.StartNew(() => Thread.Sleep(3000));
+Task t2 = Task.Factory.StartNew(() => Thread.Sleep(5000));
+
+Task.WaitAll(t1, t2);
+Task.WaitOne(t1, t2);
+```
+You can of course wait for the task to finish when you are trying to access its **Result** property, but if your tasks are void and you have to wait for them you can use **WaitAll** to wait for all your tasks or **WaitOne** to wait for any of your tasks to finish. There is also more advanced option to wait for task with specified timeout:
+```csharp
+Task.WaitAny(new[] {t1, t2}, 4000);
+Console.WriteLine(t1.Status); //RanToCompletion - task finished before timeout
+Console.WriteLine(t2.Status); //Running - task didn't finish before timeout
+```
+There is also another option - **Thread.SpinWait**, which is not allowing to change thread context.
+
 ## WinForms
 WinForms is a .Net wrapper for WinApi, it allows you to build GUI for Windows applications through a really big group of classes, methods and properties. It is easy to use, lately quite criticized for not being well suitable for bigger projects - it is hard to separate logic from the code that handles th GUI. WPF is another .Net way of doing desktop apps.
 
