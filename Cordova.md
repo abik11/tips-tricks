@@ -177,16 +177,19 @@ In general when you develop applications with Cordova it is very similar to web 
 </html>
 ```
 ```js
-var app = {
-    initialize: function() {	
-        this.bindEvents();	
-    },
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    onDeviceReady: function() {}
-};
-app.initialize();
+(function(){
+    document.addEventListener('deviceready', onDeviceReady.bind(this), false);
+    
+    function onDeviceReady() {
+        document.addEventListener('pause', onPause.bind(this), false);
+        document.addEventListener('resume', onResume.bind(this), false);
+        
+        console.log("App started...");
+    }
+    
+   function onPause() { }
+   function onResume() { }    
+})();
 ```
 
 ### Check platform and version
