@@ -2198,6 +2198,7 @@ $('.box').animateCss('flash');
 [TodoMVC - helping you to choose correct web framework](http://todomvc.com/)<br />
 [Responsive Patterns](http://bradfrost.github.io/this-is-responsive/patterns.html)<br />
 [Google Dev Web Fundamentals](https://developers.google.com/web/fundamentals/)<br />
+[Callback Hell](http://callbackhell.com/)<br />
 [Nice comparison of React and Vue](https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd)<br />
 
 #### Webpack
@@ -2258,6 +2259,7 @@ http://html2jade.org/ <br />
 [Tent CSS](https://css.sitetent.com/index.html)<br />
 [Metro](https://metroui.org.ua/)<br />
 [Animate.css](https://github.com/daneden/animate.css)<br />
+[Importing animate.css in Vue.js](https://gist.github.com/chris-schmitz/f6dd6aa471113ad07ae83cced3e71d69)
 
 #### HTML and CSS
 [Graphics on the Web](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)<br />
