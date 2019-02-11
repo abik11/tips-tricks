@@ -2,7 +2,7 @@
 Oh C#... the language of love! :D The one to rule them all, the best of the bests :D This document will be constantly in progress, at least I hope so. It is not a from zero to hero guide to teach C# language. It is rather some gathering of things that was useful or interesting for me while working as a programmer, especially at the beginning.
 
 * [Language tips](#language-tips)
-* [Threading (In progress)](#threading)
+* [Threading](#threading)
 * [WinForms](#winforms)
 * [WPF](#wpf)
 * [ASP.NET MVC](#aspnet-mvc)
@@ -282,6 +282,59 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
 ```
 
 ## Threading
+
+### Locking
+With **lock** keyword you can create a **critical section**. This is a section of code that will be executed only by one thread at a time so it is thread safe. An important thing to use lock is a lock object - here it is stored in `syncObj` variable. By the way, critical sections can be nested one in another.
+```csharp
+int i = 0;
+
+private static object syncObj = new object();
+
+public static void Do()
+{
+    //critical section
+    lock(syncObj)
+    {
+        i++;
+    }
+}
+
+static void Main(string[] args)
+{
+    Thread t1 = new Thread(Do);
+    Thread t2 = new Thread(Do);
+    t1.Name = "Thread 1";
+    t2.Name = "Thread 2";
+    t1.Start();
+    t2.Start();
+}
+```
+There is also a nice class called Interlocked which allows you to do some operations which will be locked. It allows to do only simple operations but it is extremely neat and nice. Here is a simple example:
+```csharp
+int balance = 5;
+int amount = 1;
+Interlocked.Add(ref balance, amount); //now balance should equal 6
+```
+
+##### What a lock really is
+The lock notation from the previous example is only a syntactic sugar for the following code:
+```csharp
+bool lockTaken = false;
+try 
+{
+    //enter critical section
+    Monitor.TryEnter(syncObj, TimeSpan.FromMiliseconds(50), ref lockTaken);
+    i++;
+}
+finally
+{
+    if(lockTaken)
+    {
+        //exit critical section
+        Monitor.Exit(syncObj);
+    }
+}
+```
 
 ## WinForms
 WinForms is a .Net wrapper for WinApi, it allows you to build GUI for Windows applications through a really big group of classes, methods and properties. It is easy to use, lately quite criticized for not being well suitable for bigger projects - it is hard to separate logic from the code that handles th GUI. WPF is another .Net way of doing desktop apps.
