@@ -2227,6 +2227,7 @@ $('.box').animateCss('flash');
 [7 Secret Patterns in Vue](https://www.youtube.com/watch?v=7YZ5DwlLSt8)<br />
 [How to encapsulate common functionality in Vuejs?](https://laracasts.com/discuss/channels/vue/how-to-encapsulate-common-functionality-in-vuejs)<br />
 [Vue I18n](http://kazupon.github.io/vue-i18n/)<br />
+[Vuetify](https://vuetifyjs.com/)<br />
 [Vue components for Bulma](https://buefy.github.io/)<br />
 
 #### React
@@ -2283,11 +2284,12 @@ http://html2jade.org/ <br />
 [Unsplash](https://unsplash.com/)<br />
 [Freeimages - former sxc.hu](https://www.freeimages.com/)<br />
 
-#### Google Maps JS Api
+#### Maps
 [Google Maps Tutorial](https://developers.google.com/maps/documentation/javascript/tutorial)<br />
 [Google Maps Style Wizard](https://mapstyle.withgoogle.com/)<br />
 [Stylowanie mapy - Polish](https://www.youtube.com/watch?v=yTnmWXgcFi8)<br />
 [Google Geocode Api - tutorial](https://www.youtube.com/watch?v=pRiQeo17u6c)<br />
+[Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/api/)<br />
 
 #### SVG
 [Snap.svg](http://snapsvg.io/)<br />
