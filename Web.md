@@ -630,6 +630,13 @@ You can type the following URL in your browser to get proxy configuration: http:
 ##### URIError: URI malformed
 If you see such error returned from npm, it is possible that you have an incorrect char in the proxy address. You can modify it in the `c:\users\my.user\.npmrc` file.
 
+##### UNABLE_TO_VERIFY_LEAF_SIGNATURE
+If you see the above error while executing npm install and you are behind the corporate proxy, run the following commands:
+```
+npm config set registry http://registry.npmjs.org/
+npm config set strict-ssl false
+```
+
 ### Delete files with long names
 There is an amazing package available in npm - **rimraf**. It simply deletes files and directories without taking into consideration how long is its name. It is especially useful while working with npm on Windows to delete `node_modules` directory when needed.
 ```
