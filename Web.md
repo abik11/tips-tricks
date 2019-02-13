@@ -891,7 +891,29 @@ The **v-for** directive is extremely useful and quite flexible. You can use in 4
 * `v-for="(item, index) in objects"`
 * `v-for="(value, key, index) in objects"`
 
-### Computed property with getter and setter
+### Computed properties
+
+#### Binding CSS classes with computed property
+Binding CSS through computed properties is very powerful and easy to use, see here an example:
+```html
+<div :class="componentClasses"><span>Text</span></div>
+```
+```javascript
+data(){
+    error: false,
+    empty: true
+},
+computed: {
+    componentClasses(){
+        return {
+	    error: this.error,
+	    empty-data: this.empty
+	}
+    }
+}
+```
+
+##### Computed property with getter and setter
 ```javascript
 data(){
     return {
@@ -903,6 +925,26 @@ computed: {
     valueStr: {
         get: function(){ return `${this.value} ${this.currency}`; },
 	set: function(newValue){ this.value = parseInt(newValue); }
+    }
+}
+```
+
+### Refs
+Usually you will not have to access the DOM in Vue.js, but if you will ever have to you can use **refs**.
+```html
+<div ref="readText">Innet text</div>
+<input type="text" ref="input" @change="onChange" />
+```
+```javascript
+data() {
+    return {
+    	output: ''
+    }
+},
+methods: {
+    onChange: function(){
+    	console.log(this.$refs.readText.innerText);
+    	this.output = this.$refs.input.value;
     }
 }
 ```
