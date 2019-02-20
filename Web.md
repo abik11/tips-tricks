@@ -2280,6 +2280,7 @@ $('.box').animateCss('flash');
 [Vuex tutorial for beginners](https://www.youtube.com/watch?v=2CSr2vBApSI&list=PL55RiY5tL51pT0DNJraU93FhMzhXxtDAo)<br />
 [Vue.js feed - tutorials](https://vuejsfeed.com/)<br />
 [7 Secret Patterns in Vue](https://www.youtube.com/watch?v=7YZ5DwlLSt8)<br />
+[Animating Vue](https://www.youtube.com/watch?v=Vp37fWKOlV4)<br />
 [How to encapsulate common functionality in Vuejs?](https://laracasts.com/discuss/channels/vue/how-to-encapsulate-common-functionality-in-vuejs)<br />
 [Vue I18n](http://kazupon.github.io/vue-i18n/)<br />
 [Vuetify](https://vuetifyjs.com/)<br />
