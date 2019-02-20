@@ -2251,6 +2251,10 @@ $('.box').animateCss('flash');
 [Nice comparison of React and Vue](https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd)<br />
 [Javascript Orientado a Objetos, ES6+, Webpack y LocalStorage - español](https://www.youtube.com/watch?v=yxT6ylPM7uM)<br />
 
+#### Online editors
+<https://codesandbox.io/s/><br />
+<https://jsbin.com/><br />
+
 #### Webpack
 [Webpack Tutorial](https://tutorialzine.com/2017/04/learn-webpack-in-15-minutes)<br />
 [Wepback Video Tutorial - Ihatetomatoes](https://www.youtube.com/watch?v=JdGnYNtuEtE&list=PLkEZWD8wbltnRp6nRR8kv97RbpcUdNawY&index=1)<br />
