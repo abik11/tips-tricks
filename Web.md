@@ -2268,6 +2268,7 @@ $('.box').animateCss('flash');
 [Lodash](https://lodash.com/)<br />
 [Dexie - IndexedDB Wrapper](https://dexie.org/)<br />
 [Chart.js - Charts based on canvas tag](https://www.chartjs.org/)<br />
+[CamanJS - Image Manipulation Library](http://camanjs.com/)<br />
 [Anime.js -Animation](http://animejs.com/)<br />
 [Howler - Web Audio Library](https://goldfirestudios.com/blog/104/howler.js-Modern-Web-Audio-Javascript-Library)</br >
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
