@@ -103,6 +103,7 @@ There is a shortcut `SHIFT + DEL` that allows you to delete a file without putti
 You can also delete all the files inside of these directories:
 * `C:\Windows\Logs\CBS`
 * `C:\Windows\Temp`
+
 You can also use **BleachBit** to remove some unnecessary files like history files or logs.
 
 ### Remove useless stuff in Windows 10
