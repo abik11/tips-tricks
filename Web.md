@@ -2320,6 +2320,7 @@ http://html2jade.org/ <br />
 #### HTML and CSS
 [Graphics on the Web](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)<br />
 [Sara Soueidan's tutorials](https://www.sarasoueidan.com/blog/)<br />
+[CSS Transforms](https://css-tricks.com/almanac/properties/t/transform/)<br />
 [9 Incredible CodePen Demos](https://davidwalsh.name/incredible-codepen-demos)<br />
 [21 niesamowitych projektów - Polish](https://devcorner.pl/21-niesamowitych-projektow-wykonanych-css/)<br />
 [10 Stunning CSS 3D Effects](https://redstapler.co/10-stunning-css-3d-effect-must-see/?fbclid=IwAR0vbGpNIFxiICIT0c7L3OJQjeHUDMvh-eR8o1GOWLf0E8nMH3SVZzrG2_M)<br />
