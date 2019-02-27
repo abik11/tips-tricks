@@ -29,7 +29,7 @@ If you need to add some DLL's you have to use `/r` switch:
 ```powershell
 & "$cscFullPath" /r:System.DirectoryServices.dll, System.DirectoryServices.AccountManagement.dll /out:program.exe /target:exe program.cs
 ```
-It is a very good idea to use CSC while learning and trying new things. You just have to create one .cs file, compile it and run!
+It is a very good idea to use CSC while learning and trying new things. You just have to create one .cs file, compile it and run! Also you can try things online with [C# Online Compiler](https://dotnetfiddle.net/), but not all the features are availabe there.
 
 ## Language tips
 
@@ -1665,6 +1665,7 @@ $color.ToArgb()
 [C# blog - Polish](https://www.plukasiewicz.net/)<br />
 
 ##### Online tools
+[C# Online Compiler](https://dotnetfiddle.net/)<br />
 [.Net error translator 1](http://finderr.net/)<br />
 [.Net error translator 2](http://www.errortoenglish.com/)<br />
 [Regex editor](http://regexr.com/)<br />
