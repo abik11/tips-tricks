@@ -816,24 +816,17 @@ data(){
 }
 ```
 
-### Init component's properties with props
-```javascript
-props: ['initialCounter'],
-data: function () {
-  return { 
-    counter: this.initialCounter 
-  }
-}
-```
+### Routing
 
-### Keep the component's state
+##### Keep the component's state
+If you will wrap **router-view** with **keep-alive** tags, it will keep the state of components between different routes, otherwise every time you will leave a route, its data will be lost.
 ```html
 <keep-alive>
     <router-view></router-view>
 </keep-alive>
 ```
 
-### Access URL parameters
+##### Access URL parameters
 If you route is for example `/user/:id`, than for the url `user/4` the value for **id** will be 4.
 ```javascript
 data(){
@@ -843,6 +836,28 @@ data(){
 },
 beforeRouteEnter (to, from, next) {
    next(vm => vm.id = to.params.id);
+}
+```
+
+##### Pass route parameters as component's props
+All you have to do to automatically pass route parameters as component's props is to add `props: true`:
+```javascript
+const router = new VueRouter({
+    mode: 'history',
+    base: __dirname,
+    routes: [
+        { path: '/item/:id', component: Item, props: true }
+    ]
+});
+```
+
+### Init component's properties with props
+```javascript
+props: ['initialCounter'],
+data: function () {
+  return { 
+    counter: this.initialCounter 
+  }
 }
 ```
 
