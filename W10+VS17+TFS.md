@@ -495,6 +495,8 @@ In HTML files you can use some built-in snippets. You have to type the snippet n
 * `lorem100` - expands 100 first words of the lorem ipsum text, you can actually put some other numbers, not only 10 and 100
 * `!` - expands a simple blank HTML template
 
+Of course you can also define your own snippets, not only for HTML. There is even an online tool to make it easier, [here](https://snippet-generator.app/).
+
 ### Open git repository in VS Code
 Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste the repository URL and push `Enter`. Quite simple, isn't it?
 
@@ -572,6 +574,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Barcode generator](http://barcode.tec-it.com/en)<br />
 [SHA256 calculator](http://www.xorbin.com/tools/sha256-hash-calculator)<br />
 [MD5 checksum](http://onlinemd5.com/)<br />
+[VS Code Snippet Generator](https://snippet-generator.app/)<br />
 [UML editor](https://www.draw.io/)<br />
 
 #### Linux
