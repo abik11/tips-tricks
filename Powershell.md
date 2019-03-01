@@ -1411,10 +1411,10 @@ $port.ReadExisting() # ☻MAP0♥
 ```
 When the job is done it is good to clear the read buffer, close the stream and dispose the **SerialPort** object. If serial port will become blocked we can make the same operation - close it and open again:
 ```powershell
-$port.DiscardReadBuffer()	# Clear read buffer
+$port.DiscardInBuffer()		# Clear read buffer
 
 $port.BaseStream.Close()	# When serial port gets blocked
-$port.Dispose() 			# When serial port gets blocked
+$port.Dispose()			# When serial port gets blocked
 ```
 If you are familiar with C# and you are interested in serious operations with serial ports you may need to handle an event - **DataRecieved**.
 ```csharp
