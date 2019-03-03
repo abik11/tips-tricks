@@ -693,6 +693,32 @@ output: {
 }
 ```
 
+### Use Babel with Webpack
+Babel is a tool that translate modern Javascript (ES2015 for example) into older versions to allow your code to be compatible with older browsers. It is a super nice feature which can be easily integrated with Webpack build process. Run the following command to install required Babel packages as dev dependencies:
+```
+npm i -D babel-core babel-loader babel-preset-es2015 babel-preset-stage-2 babel-plugin-transform-object-rest-spread
+```
+You can now configure Webpack to load Javascript files through **babel-loader**:
+```javascript
+{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader',
+    options: {
+        presets: ['es2015'],
+	plugins: ['transform-object-rest-spread']
+    }
+}
+```
+which can be also written a bit differently if you prefer:
+```javascript
+{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader?presets[]=es2015&plugins[]=transform-object-rest-spread'
+}
+```
+
 ### Loading images
 To load images through Webpack you should use **file-loader** plugin. To install it with **npm**, run the following command:
 ```
