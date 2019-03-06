@@ -213,7 +213,7 @@ someIEnumerableOfString.Concat(new[]{ "new element" });
 ```
 
 ##### Tuple
-There is a nice generic collection class called Tuple (`System.Collections.Generic` namespace), which can hold 8 objects of totally different types. If you want to hold there more objects you have to set the last item of Tuple to Tuple also. See here examples:
+There is a nice generic collection class called Tuple (**System.Collections.Generic** namespace), which can hold 8 objects of totally different types. If you want to hold there more objects you have to set the last item of Tuple to Tuple also. See here examples:
 ```csharp
 var simpleTuple = Tuple.Create(1, "Albert", "M", new DateTime(1991, 7, 29));
 var largeTuple = Tuple.Create(1, 2, 3, 4, 5, 6, 7, Tuple.Create(8, 9, 10));
@@ -223,6 +223,42 @@ A nice feature of tuples is that they are converted to string in a very nice way
 ```csharp
 var t = Tuple.Create(1, "Albert", "M", new DateTime(1991, 7, 29));
 string tupleAsString = t.ToString(); //(1, Albert, M, 1991-07-29 00:00:00)
+```
+
+##### Lazy
+There is a class called **Lazy** in **System.Collections.Generic** namespace that allows you to easily add simple implementation of lazy loading for your collections. For example let's assume that we have the following class
+```csharp
+public class Obj 
+{
+    public string Name { get; set; }
+    
+    public Obj(string name)
+    {
+        this.Name = name;
+    }
+    
+    static public List<Obj> GetObjs()
+    {
+        var result = new List<Obj>();
+        result.Add(new Obj("Paulina"));
+        result.Add(new Obj("Albert"));
+        return result;
+    }
+}
+```
+Then we can create a lazy list like this:
+```csharp
+List<Obj> eagerList = Obj.GetObjs(); //data is loaded here for eagerList
+Lazy<List<Obj>> lazyList = new Lazy<List<Obj>>(() => Obj.GetObjs());
+
+forach(Obj obj in eagerList)
+{
+    Console.WriteLine(obj.Name);
+}
+forach(Obj obj in lazyList.Value) //data is loaded here for lazyList
+{
+    Console.WriteLine(obj.Name);
+}
 ```
 
 ### Current week number
