@@ -212,6 +212,19 @@ dictionary.TryGetValue("Key", out value);
 someIEnumerableOfString.Concat(new[]{ "new element" });
 ```
 
+##### Tuple
+There is a nice generic collection class called Tuple (`System.Collections.Generic` namespace), which can hold 8 objects of totally different types. If you want to hold there more objects you have to set the last item of Tuple to Tuple also. See here examples:
+```csharp
+var simpleTuple = Tuple.Create(1, "Albert", "M", new DateTime(1991, 7, 29));
+var largeTuple = Tuple.Create(1, 2, 3, 4, 5, 6, 7, Tuple.Create(8, 9, 10));
+var tuple = new Tuple<int, string, bool>(5, "Albert", true);
+```
+A nice feature of tuples is that they are converted to string in a very nice way!
+```csharp
+var t = Tuple.Create(1, "Albert", "M", new DateTime(1991, 7, 29));
+string tupleAsString = t.ToString(); //(1, Albert, M, 1991-07-29 00:00:00)
+```
+
 ### Current week number
 ```csharp
 DateTimeFormatInfo dtFormatInfo = DateTimeFormatInfo.CurrentInfo;
