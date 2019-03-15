@@ -69,6 +69,21 @@ public class MyClass : IDisposable
 ### Syntax
 There are many nice syntax construction that may help you a lot while working with C#. With every new version of the language there is also some nice new syntactic sugar added. Here you will find few examples from basic to some less known language constructions.
 
+##### Differences between casting and as operator
+When you cast a type if it cannot be cast an exception will be thrown. If you will use **as** operator it will return **null** if it won't be possible to cast. See here an example:
+```csharp
+Class1 obj1 = new Class1();
+
+Class2 obj2;
+obj2 = obj1 as Class2; //return null
+obj2 = (Class2)obj1; //throws an exception
+```
+It is also good know by the way that if an object is **null** if you will check its type with **is** operator, it will always return **false** and calling **GetType** method will throw the **NullReference** exception.
+```csharp
+Console.WriteLine(obj2 is Class2); //False
+Console.WriteLine(obj2.GetType()); //throws NullReferenceException
+```
+
 ##### Extension methods
 ```csharp
 static bool Contains(this string keyString, char c)
