@@ -84,6 +84,16 @@ Console.WriteLine(obj2 is Class2); //False
 Console.WriteLine(obj2.GetType()); //throws NullReferenceException
 ```
 
+##### Differences between abstract classes and interfaces
+The difference between the both concepts may not be so clear. In some programming languages there is actually no difference between them two. But in C# there are differences and it is very good to know about them. Here is a little list with a bunch of differences:
+* a class can implement many interfaces but it can inherit from only one abstract class
+* interface cannot contain method implementation, only definition, while abstract class can contain both
+* interface methods and members can only be public
+* interface cannot contain fields
+* interface can only contain methods definition, properies, events and delgates
+* abstract class can contain constructor declaration while interface cannot
+In general an abstract class should be use as a base for other more specific classes. For example *SqlDatabaseConnection* could be an abstract class while *SQLServerConnection* or *MySqlConnection* could be concrete classes thar extend *DatabaseConnection*. And interface is rather used to describe external abilities of a class which may be common between many different classes.
+
 ##### Extension methods
 ```csharp
 static bool Contains(this string keyString, char c)
