@@ -594,7 +594,7 @@ EXEC EmployeeReport
 ```
 
 ### TVF
-TVF (Table Valued Function) or UDF (User Defined Function) are SQL functions that return tables and their results may be used to query similarily to a typical table or view. Their definition may look like stored procedures but functionality is rather closer to views.
+TVF (Table Valued Function) or UDF (User Defined Function) are SQL functions that return tables and their results may be used in a query in **SELECT**, **WHERE** or **HAVING** statement. Their definition may look like stored procedures but functionality is rather closer to views.
 ```sql
 CREATE FUNCTION EmployeeReport
 (
@@ -610,6 +610,7 @@ RETURN
 --Usage:
 SELECT EmployeeNumber FROM dbo.EmployeeReport('2017-06-01 00:00:00.000')
 ```
+It is good to know that there are quite many other differences bettween UDFs and procedures. You cannot use **INSERT**, **UPDATE** or **DELETE** inside of a function. Also you cannot change the function's parameters as you can do in procedures (with **out** keyword). It is impossible to use transactions inside of a function which make sense if you cannot change anything. A function must take at least one parameter and must return a value (procedure mustn't). You cannot call stored procedure inside of a function and you cannot use **try-catch** block.
 
 ### Case
 Case statement allows to select some specified value depending on some column. It is like switch statement in C# or C++. It is very easy to use and sometimes life-saving!
