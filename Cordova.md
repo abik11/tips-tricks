@@ -163,6 +163,9 @@ To unlock the app you have to press the back button and menu button (both at onc
 ### How to check device IMEI
 Type the following code instead of phone number: `*#06#`.
 
+### How to errase permamently all the data from the phone?
+Delete all the data and then start recording a movie. Record it as long as there will be no more free memory. You can repeat this few times to be sure the previous data is overwriten.
+
 ## Development
 In general when you develop applications with Cordova it is very similar to web app development, but there are some differences and additional functionalities not available in casual web development. The most important difference is the application structure. You must put your code insinde of the **deviceready** event handler:
 ```html
