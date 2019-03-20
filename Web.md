@@ -2291,6 +2291,7 @@ $('.box').animateCss('flash');
 [Callback Hell](http://callbackhell.com/)<br />
 [Nice comparison of React and Vue](https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd)<br />
 [Javascript Orientado a Objetos, ES6+, Webpack y LocalStorage - español](https://www.youtube.com/watch?v=yxT6ylPM7uM)<br />
+[Web APIs You Probably Didn't Know Existed](https://youtu.be/EZpdEljk5dY?t=407)<br />
 
 #### Online editors
 <https://codesandbox.io/s/><br />
