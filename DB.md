@@ -1672,6 +1672,17 @@ db.users.update({ name: 'Ada', {$set: { height: 170 }} })
 db.users.deleteOne({ name: 'Albert' })
 ```
 
+### Conect to MongoDb through JavaScript
+To work with MongoDB in Node.js you have to install **mongodb** package, you can make it with npm: `npm i mongodb`.
+```
+const mongodb = require('mongodb');
+const client = await mongodb.MongoClient.connect
+	('mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
+const usersCollection = client.db('db-name').collection('users');
+const allUsers = usersCollection.find({}).toArray();
+```
+In general, on the collection object you can use the same methods as in the Mongo Shell, so you can easily add, modify and delete records too.
+
 ## XML
 
 ### Linq to XML 
