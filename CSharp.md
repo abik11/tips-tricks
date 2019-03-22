@@ -1154,7 +1154,7 @@ If you want to create a service method that will return JSON, so the data can be
 [OperationContract]
 [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped")]
 [return: MessageParameter(Name = "result")]
-ResultDto GetData();
+DataDto GetData();
 ```
 Then in **Web.config** you have to add endopoint with **webHttpBinging**.
 ```xml
@@ -1187,6 +1187,35 @@ It is also a good idea to enable CORS requests, also in **Web.config**:
     </httpProtocol>
 </system.webServer>
 ```
+
+### Service method taking JSON
+If you want a method to get JSON object, you can take a **Stream** argument and deserialize it with **JavaScriptSerializer**, here you can see an example of method's contract:
+```csharp
+[OperationContract]
+[WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+[return: MessageParameter(Name = "result")]
+DataDto AddNewData(Stream JSONDataStream);
+```
+And here is an example of the implementation:
+```csharp
+public DataDto AddNewData(Stream JSONDataStream)
+{
+   DataItem data = DeserializeJSONStream<DataItem>(JSONDataStream);
+   Logic logic = new Logic();
+   var newData = logic.AddNewData(data);
+   return Mapper.Map<DataItemDto>(newData);
+}
+
+public static T DeserializeJSONStream<T>(Stream JSONDataStream)
+{
+   StreamReader reader = new StreamReader(JSONDataStream);
+   string JSONdata = reader.ReadToEnd();
+   JavaScriptSerializer JS = new JavaScriptSerializer();
+   T data = JS.Deserialize<T>(JSONdata);
+   return data;
+}
+```
+You have to create a class to which your JSON will be deserialized.
 
 ### Returning big amounts of data
 Sometimes you may want to return a lot of data through service method, but the default maximum size may not allow you. To change it, in Web.config add this:
