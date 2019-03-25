@@ -12,7 +12,8 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 * [Useful links](#useful-links)
 
 Read also:
-* [Databases](https://github.com/abik11/tips-tricks/blob/master/DB.md#linq)
+* [Databases](https://github.com/abik11/tips-tricks/blob/master/DB.md)
+* [Linq](https://github.com/abik11/tips-tricks/blob/master/DB.md#linq)
 * [Excel COM](https://github.com/abik11/tips-tricks/blob/master/VBA.md#c)
 * [Visual Studio](https://github.com/abik11/tips-tricks/blob/master/W10%2BVS17%2BTFS.md#visual-studio)
 * [TFS](https://github.com/abik11/tips-tricks/blob/master/W10%2BVS17%2BTFS.md#tfs-and-other-version-control-systems)
