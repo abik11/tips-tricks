@@ -16,6 +16,6 @@ Read also:
 
 ## Useful links
 
-https://github.com/FortechRomania/express-mongo-example-project
-https://github.com/sequelize/express-example
-https://github.com/sequelize/sequelize/issues/10556
+https://github.com/FortechRomania/express-mongo-example-project <br />
+https://github.com/sequelize/express-example <br />
+https://github.com/sequelize/sequelize/issues/10556 <br />
