@@ -798,7 +798,7 @@ module.exports = {
 ```
 
 ## Vue
-Vue.js is a modern, practical web front-end framework that allows you to quickly build well-structured modularized applications. It is quite easy to learn and very powerful. Working with Vue.js is a real fun!
+Vue.js is a modern, practical web front-end framework that allows you to quickly build well-structured modularized applications. It is quite easy to learn and very powerful when mixed with Webpack and Vuex (its state management library). Working with Vue.js is a real fun! 
 
 ### Handling forms
 
@@ -990,6 +990,11 @@ methods: {
     }
 }
 ```
+
+### Vuex2.default is not a function
+If you encounter the following error: `TypeError: (0 , _vuex2.default) is not a function` while working with Vue and Vuex, the possible reason is that your imports from Vuex are incorrect, for example:
+* error: `import mapGetters from 'vuex';`
+* correct: `import { mapGetters } from 'vuex';`
 
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
