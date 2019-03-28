@@ -1668,7 +1668,11 @@ db.users.find({ 'address.street': 'Agrestowa' })
 There are of course many other different possibilites to query the data, if you want to know more details, go [here](https://docs.mongodb.com/manual/tutorial/query-documents/).<br />
 You can also easily update and delete the data with **update** and **delete** methods:
 ```
-db.users.update({ name: 'Ada', {$set: { height: 170 }} })
+db.users.update(
+    { name: 'Ada' }, 
+    { $set: { height: 170 } }
+)
+
 db.users.deleteOne({ name: 'Albert' })
 ```
 
