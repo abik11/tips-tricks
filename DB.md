@@ -1644,7 +1644,7 @@ mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/test
 ### Basic queries
 Mongo Shell allows you to query the database almost the same way as you would do from JavaScript, which is really useful for testing and development. To connect to DB you should the following command:
 ```
-.\mongo "mongodb+srv://<cluster-name>.net/test" --authenticationDatabase admin --username <user> --password <password>
+.\mongo "mongodb+srv://<server>" --authenticationDatabase admin --username <user> --password <password>
 ```
 Then you can use the MongoDB commands:
 ```
