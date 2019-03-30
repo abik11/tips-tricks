@@ -1675,6 +1675,10 @@ db.users.update(
 
 db.users.deleteOne({ name: 'Albert' })
 ```
+You can delete all documents with **remove** method:
+```
+db.users.remove({})
+```
 
 ### Conect to MongoDB through JavaScript
 To work with MongoDB in Node.js you have to install **mongodb** package, you can make it with npm: `npm i mongodb`.
@@ -1686,6 +1690,9 @@ const usersCollection = client.db('db-name').collection('users');
 const allUsers = usersCollection.find({}).toArray();
 ```
 In general, on the collection object you can use the same methods as in the Mongo Shell, so you can easily add, modify and delete records too.
+
+##### Mongoose
+A very popular way of working with MongoDB through JavaScript is to use **Mongoose** ORM or actually ODM (Object-Document Mapper). Go [here](https://mongoosejs.com/) to learn more.
 
 ## XML
 
