@@ -1685,7 +1685,7 @@ To work with MongoDB in Node.js you have to install **mongodb** package, you can
 ```javascript
 const mongodb = require('mongodb');
 const client = await mongodb.MongoClient.connect
-	('mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
+	('mongodb+srv://<username>:<password>@<server-name>/<db-name>?retryWrites=true', { useNewUrlParser: true });
 const usersCollection = client.db('db-name').collection('users');
 const allUsers = usersCollection.find({}).toArray();
 ```
