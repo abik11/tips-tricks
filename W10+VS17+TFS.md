@@ -512,6 +512,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [SysInternals - Windows tools](https://live.sysinternals.com/)<br />
 [SysInternals Suite](https://docs.microsoft.com/pl-pl/sysinternals/downloads/sysinternals-suite)<br />
 [Process Hacker](https://processhacker.sourceforge.io/downloads.php)<br />
+[Yaprocmon](http://yaprocmon.sourceforge.net/)<br />
 [All in One - System Rescue Toolkit](https://paul.is-a-geek.org/aio-srt/)<br />
 [SeaTools - Disk diagnostics](https://www.seagate.com/gb/en/support/downloads/seatools/#)<br />
 [FixWin 10](https://www.thewindowsclub.com/fixwin-for-windows-10)<br />
