@@ -2331,6 +2331,7 @@ $('.box').animateCss('flash');
 [7 Secret Patterns in Vue](https://www.youtube.com/watch?v=7YZ5DwlLSt8)<br />
 [Animating Vue](https://www.youtube.com/watch?v=Vp37fWKOlV4)<br />
 [How to encapsulate common functionality in Vuejs?](https://laracasts.com/discuss/channels/vue/how-to-encapsulate-common-functionality-in-vuejs)<br />
+[Watch for Vuex State changes!](https://dev.to/viniciuskneves/watch-for-vuex-state-changes-2mgj)<br />
 [Vue I18n](http://kazupon.github.io/vue-i18n/)<br />
 [Vuetify](https://vuetifyjs.com/)<br />
 [Vue components for Bulma](https://buefy.github.io/)<br />
