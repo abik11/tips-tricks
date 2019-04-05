@@ -227,6 +227,20 @@ function onBackKeyDown(e) {
 }
 ```
 
+##### Handle backbutton event in Vue
+Here is a little example of a component that goes to the default route when the back button is clicked:
+```javascript
+export default {
+   name: 'component1',
+   created() {
+      document.addEventListener('backbutton', () => this.$router.push('/'), false);
+   },
+   beforeDestroy() {
+      document.removeEventListener('backbutton', () => this.$router.push('/'));
+   }
+};
+```
+
 ##### Battery events
 ```javascript
 window.addEventListener("batterystatus", onBatteryStatus, false);
@@ -345,6 +359,7 @@ Since version 7 and aboce the plugin is not compatibile with Cordova 6.
 [Local-Notifications Plugin](https://github.com/katzer/cordova-plugin-local-notifications)<br />
 [Badge Plugin](https://github.com/katzer/cordova-plugin-badge)<br />
 [Bluetooth Plugin](https://github.com/tanelih/phonegap-bluetooth-plugin)<br />
+[Screen Orientation Plugin](https://github.com/apache/cordova-plugin-screen-orientation)<br />
 
 ##### Webpack for Visua Studio
 <https://developer.telerik.com/featured/webpack-for-visual-studio-developers/><br />
