@@ -2411,3 +2411,4 @@ http://html2jade.org/ <br />
 #### Chrome
 DevTools - chrome://inspect/<br />
 Chrome URLs - chrome://about/<br />
+Turn off saving passwords in Chrome - chrome://settings/passwords<br />
