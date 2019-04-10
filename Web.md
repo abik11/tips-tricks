@@ -991,7 +991,9 @@ methods: {
 }
 ```
 
-### Access property from another module in Vuex
+### Vuex
+
+##### Access property from another module in Vuex
 Imagine that you have a Vuex store with two modules: *tasks* and *users*, and you want to access a state property form *users* module inside of a getter in *tasks* module. You can make it easily through **rootState** parameter that can be passed to a getter as a thrid argument. See here an example:
 ```javascript
 export default {
@@ -1012,7 +1014,7 @@ export default {
 }
 ```
 
-### Vuex2.default is not a function
+##### Vuex2.default is not a function
 If you encounter the following error: `TypeError: (0 , _vuex2.default) is not a function` while working with Vue and Vuex, the possible reason is that your imports from Vuex are incorrect, for example:
 * error: `import mapGetters from 'vuex';`
 * correct: `import { mapGetters } from 'vuex';`
