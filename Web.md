@@ -991,6 +991,27 @@ methods: {
 }
 ```
 
+### Access property from another module in Vuex
+Imagine that you have a Vuex store with two modules: *tasks* and *users*, and you want to access a state property form *users* module inside of a getter in *tasks* module. You can make it easily through **rootState** parameter that can be passed to a getter as a thrid argument. See here an example:
+```javascript
+export default {
+   namespaced: true,
+   state: {
+      dailyTasks: [
+         { name: 'Task 1', time: '18:00', id: 1, status: 'undone', user: '' },
+         { name: 'Task 2', time: '18:05', id: 2, status: 'undone', user: '' },
+         { name: 'Task 3', time: '18:15', id: 3, status: 'undone', user: 'Albert' },
+         { name: 'Task 3', time: '18:20', id: 4, status: 'undone', user: 'Paulina' }
+      ]
+   },
+   getters: {
+      currentUserTasks: (state, getters, rootState) => {
+         return state.dailyTasks.filter(task => task.user == rootState.users.currentUser);
+      }
+   }
+}
+```
+
 ### Vuex2.default is not a function
 If you encounter the following error: `TypeError: (0 , _vuex2.default) is not a function` while working with Vue and Vuex, the possible reason is that your imports from Vuex are incorrect, for example:
 * error: `import mapGetters from 'vuex';`
