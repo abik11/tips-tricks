@@ -1767,6 +1767,9 @@ $color.ToArgb()
 ##### General stuff
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
 [C# blog - Polish](https://www.plukasiewicz.net/)<br />
+[Unit testing made easy Part 1: Repository Testing](https://www.codeproject.com/Articles/488264/Unit-testing-made-easy-Part-Repository-Testing)<br />
+[Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
+[Office Development in Visual Studio](https://www.red-gate.com/simple-talk/dotnet/c-programming/office-development-in-visual-studio/)<br />
 
 ##### Online tools
 [C# Online Compiler](https://dotnetfiddle.net/)<br />
@@ -1783,9 +1786,6 @@ $color.ToArgb()
 [HTTP File Upload](https://www.hanselman.com/blog/ABackToBasicsCaseStudyImplementingHTTPFileUploadWithASPNETMVCIncludingTestsAndMocks.aspx)<br />
 [Dynamic image generation](https://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)<br />
 [Global authentication and Allow Anonymous](https://weblogs.asp.net/jongalloway/asp-net-mvc-authentication-global-authentication-and-allow-anonymous)<br />
-
-##### Nancy
-[Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
 
 ##### WCF
 [WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)<br />
