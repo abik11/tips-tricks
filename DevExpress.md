@@ -136,6 +136,118 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 }
 ```
 
+### Unit Testing XPO with NUnit
+A really nice way to test logic that works closely with XPO is to use InMemoryDataStore which allows you to create a temporary data store in memory. Here you can see an example of test's base class that creates and deletes the data store:
+```csharp
+using NUnit.Framework;
+////////////////////////////////////////
+using DevExpress.Xpo;
+using DevExpress.Xpo.DB;
+using DevExpress.Xpo.DB.Helpers;
+using System;
+ 
+namespace Corp.Project.Tests.Core
+{
+   [TestFixture]
+   public class BaseTests
+   {
+      protected IDisposable[] disposablesOnDisconect;
+      protected IDataLayer dataLayer;
+      protected virtual IDataStore CreateProvider()
+      {
+         return new InMemoryDataStore(AutoCreateOption.DatabaseAndSchema);
+      }
+ 
+      [SetUp]
+      public virtual void SetUp()
+      {
+         IDataStore ds = CreateProvider();
+         ((IDataStoreForTests)ds).ClearDatabase();
+         dataLayer = new SimpleDataLayer(ds);
+      }
+ 
+      [TearDown]
+      public virtual void TearDown()
+      {
+         dataLayer.Dispose();
+         if (disposablesOnDisconect != null)
+         {
+            foreach (IDisposable disp in disposablesOnDisconect)
+            {
+               disp.Dispose();
+            }
+         }
+      }
+   }
+}
+```
+And here you can see an example of logic test's base class that is responsible for filling the data store with some test data:
+```csharp
+using NUnit.Framework;
+////////////////////////////////////////
+using DevExpress.Xpo;
+using Corp.Project.Tests.Core;
+using Corp.Project.Domain.ModelCode;
+using Corp.Project.Domain.Enum;
+using System;
+ 
+namespace Corp.Project.Tests.Logic
+{
+   [TestFixture]
+   public class LogicBaseTests : BaseTests
+   {
+      protected virtual void PrepareTestDataBase()
+      {
+         using (UnitOfWork uow = new UnitOfWork(dataLayer))
+         {
+            User u1 = new User(uow){ Name = "Albert", Gender = "M" };
+            User u2 = new User(uow){ Name = "Paulina", Gender = "F" };
+            uow.CommitTransaction();
+         }
+      }
+   }
+}
+```
+And here is a class with unit tests:
+```csharp
+using NUnit.Framework;
+using Moq;
+using Moq.Protected;
+////////////////////////////////////////
+using DevExpress.Xpo;
+using Corp.Project.Logic;
+using System;
+using System.Collections.Generic;
+ 
+namespace Corp.Project.Tests.Logic
+{
+   [TestFixture]
+   public class UserLogicTests : LogicBaseTests
+   {
+      protected Mock<UserLogic> logicMock;
+ 
+      protected virtual void PrepareMock(UnitOfWork uow)
+      {
+         logicMock = new Mock<UserLogic>(uow);
+         logicMock.Protected().Setup<UnitOfWork>("_uow").Returns(uow);
+      }
+ 
+      [Test]
+      public void TestGetAllUsers()
+      {
+         PrepareTestDataBase();
+ 
+         using (UnitOfWork uow = new UnitOfWork(dataLayer))
+         {
+            PrepareMock(uow);
+            var users = logicMock.Object.GetAllUsers();
+            Assert.AreEqual(2, users.Count);
+         }
+      }
+   }
+}
+```
+
 ## WinForms Controls
 DevExpress developed a really big number of high quality WinForms controls. The only problem with them is that if you will use them once, you will never want to use WinForms without DevExpress again.
 
