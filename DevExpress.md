@@ -490,6 +490,8 @@ export: { enabled: true, fileName: "report" }
 
 #### XPO
 [XPO Documentation](https://documentation.devexpress.com/CoreLibraries/1998/DevExpress-ORM-Tool) <br />
+[How to use NUnit tests with XPO](https://www.devexpress.com/Support/Center/Question/Details/Q279205/how-to-use-nunit-tests-with-xpo)<br />
+[Unit testing how-to?](https://www.devexpress.com/Support/Center/Question/Details/Q389721/unit-testing-how-to)<br />
 
 #### DevExtreeme
 [DevExtreeme Gallery](https://js.devexpress.com/Demos/WidgetsGallery/)<br />
