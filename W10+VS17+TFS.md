@@ -528,6 +528,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [AdwCleaner](https://www.bleepingcomputer.com/download/adwcleaner/)<br />
 [AdwCleaner](https://pl.malwarebytes.com/adwcleaner/)<br />
 [HitmanPro](https://www.hitmanpro.com/en-us/downloads.aspx)<br />
+[ESET SysRescue](https://www.eset.com/uk/support/sysrescue/)<br />
 -<br />
 [Farbar Recovery Smart Tool x86](http://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/81/)<br /> 
 [Farbar Recovery Smart Tool x64](https://www.bleepingcomputer.com/download/farbar-recovery-scan-tool/dl/82/)<br /> 
