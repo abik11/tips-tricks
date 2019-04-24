@@ -515,6 +515,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Yaprocmon](http://yaprocmon.sourceforge.net/)<br />
 [All in One - System Rescue Toolkit](https://paul.is-a-geek.org/aio-srt/)<br />
 [SeaTools - Disk diagnostics](https://www.seagate.com/gb/en/support/downloads/seatools/#)<br />
+[Lazesoft Recovery Suite](https://www.lazesoft.com/lazesoft-recovery-suite-free.html)<br />
 [FixWin 10](https://www.thewindowsclub.com/fixwin-for-windows-10)<br />
 [VeraCrypt](https://www.veracrypt.fr/en/Downloads.html)<br />
 [Driver Store Explorer](https://github.com/lostindark/DriverStoreExplorer)<br />
