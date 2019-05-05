@@ -2321,6 +2321,7 @@ $('.box').animateCss('flash');
 [Nice comparison of React and Vue](https://medium.com/javascript-in-plain-english/i-created-the-exact-same-app-in-react-and-vue-here-are-the-differences-e9a1ae8077fd)<br />
 [Javascript Orientado a Objetos, ES6+, Webpack y LocalStorage - español](https://www.youtube.com/watch?v=yxT6ylPM7uM)<br />
 [Web APIs You Probably Didn't Know Existed](https://youtu.be/EZpdEljk5dY?t=407)<br />
+[Thanos Snap Effect](https://www.youtube.com/watch?v=fM791m4A_Pk)<br />
 
 #### Online editors
 <https://codesandbox.io/s/><br />
@@ -2345,6 +2346,7 @@ $('.box').animateCss('flash');
 [Brain.js - Machine Learning for JS](https://harthur.github.io/brain/)<br />
 [Zepto - lighter jQuery](http://zeptojs.com/)<br />
 [DataTables - great JQuery plugin for working with tables](https://datatables.net/reference/index)<br /> 
+[html2canvas](https://html2canvas.hertzen.com/)<br />
 
 #### Vue
 [Vue.js docs](https://vuejs.org/v2/guide/)<br />
@@ -2388,6 +2390,7 @@ http://html2jade.org/ <br />
 [Metro](https://metroui.org.ua/)<br />
 [Animate.css](https://github.com/daneden/animate.css)<br />
 [Importing animate.css in Vue.js](https://gist.github.com/chris-schmitz/f6dd6aa471113ad07ae83cced3e71d69)
+[Pure CSS Image Hover Effect Library](http://imagehover.io/)<br />
 
 #### HTML and CSS
 [Graphics on the Web](https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics)<br />
