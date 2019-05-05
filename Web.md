@@ -2389,7 +2389,7 @@ http://html2jade.org/ <br />
 [Tent CSS](https://css.sitetent.com/index.html)<br />
 [Metro](https://metroui.org.ua/)<br />
 [Animate.css](https://github.com/daneden/animate.css)<br />
-[Importing animate.css in Vue.js](https://gist.github.com/chris-schmitz/f6dd6aa471113ad07ae83cced3e71d69)
+[Importing animate.css in Vue.js](https://gist.github.com/chris-schmitz/f6dd6aa471113ad07ae83cced3e71d69)<br />
 [Pure CSS Image Hover Effect Library](http://imagehover.io/)<br />
 
 #### HTML and CSS
