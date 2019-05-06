@@ -1794,3 +1794,8 @@ $color.ToArgb()
 [WCF project's structure](https://www.codemag.com/article/0809101)<br />
 [AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)<br />
 [Referencja Cykliczna - PL](https://cezarywalenciuk.pl/blog/programing/post/wcf-i-circular-reference-referencja-cykliczna)<br />
+
+#### ASP.NET Core Authorization
+[How to set up two factor authentication in ASP.NET Core using Google Authenticator](https://medium.freecodecamp.org/how-to-set-up-two-factor-authentication-on-asp-net-core-using-google-authenticator-4b15d0698ec9)<br />
+[Authentication Using Google](https://ankitsharmablogs.com/authentication-using-google-asp-net-core-2-0/)<br />
+[Authentication Using Facebook](https://ankitsharmablogs.com/authentication-using-facebook-in-asp-net-core-2-0/)<br />
