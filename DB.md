@@ -1793,6 +1793,11 @@ doc.Save("file.xml");
 #### Entity Framework
 [EF Tutorial](http://www.entityframeworktutorial.net/) <br />
 
+#### EF Core Testing
+[Database Integration Testing with Entity Framework Code First in .NET Framework](https://medium.com/@reyronald/database-integration-testing-with-entity-framework-code-first-in-net-framework-2c669153cf03)<br />
+[Testing with SQLite](https://docs.microsoft.com/pl-pl/ef/core/miscellaneous/testing/sqlite)<br />
+[Testing with InMemory](https://docs.microsoft.com/pl-pl/ef/core/miscellaneous/testing/in-memory)<br />
+
 #### SQL Server
 [SQL Server Agent](https://stackoverflow.com/questions/6712811/how-do-i-create-a-step-in-my-sql-server-agent-job-which-will-run-my-ssis-package/6713464#6713464) <br />
 [SQL Documentation](https://docs.microsoft.com/pl-pl/sql/#pivot=sdkstools&panel=sdkstools-all) <br />
