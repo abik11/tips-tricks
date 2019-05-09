@@ -252,6 +252,7 @@ Visual Studio has a lot of nice keyboard shortcuts that can speed up your work, 
 * Go deeply to next line<br />`F11`
 * Exception Settings<br />`CTRL + ALT + E`
 * Breakpoint Window<br />`CTRL + ALT + B`
+* Stop debugging<br />`SHIFT + F5`
 
 ##### Bookmarks
 * Add bookmark<br />`CTRL + K, CTRL + K`
@@ -269,11 +270,14 @@ Visual Studio has a lot of nice keyboard shortcuts that can speed up your work, 
 ##### Show definition
 * Go to definition<br />`F12`
 * Show definition - **peek view** (this is really cool!)<br />`ALT + F12`
+* Navigate backward<br />`CTRL + -`
+* Navigate forward<br />`CTRL + SHIFT + -`
 
 ##### Quick actions and search
 * Quick Search<br />`CTRL + Q`
 * Quick Action (suggests solutions for problems in code)<br />`CTRL + .`
 * Search in Solution Explorer<br />`CTRL + ;`
+* Quick Info<br />`CTRL + K, CTRL + I`
 
 ##### Other
 * Repair code indention (this is amazing!)<br />`CTRL + K, CTRL + D`
