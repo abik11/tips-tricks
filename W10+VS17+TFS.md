@@ -1,6 +1,7 @@
 # Tips for beginners
 
 * [Windows](#windows)
+* [Devices and networks](#devices-and-networks)
 * [IIS](#iis)
 * [Visual Studio](#visual-studio)
 * [TFS and other version control systems](#tfs-and-other-version-control-systems)
@@ -90,9 +91,6 @@ By the way, **powercfg** has few other nice options. For example you can list al
 ```
 powercfg -devicequery wake_armed
 ```
-
-### Wireshark filters
-To be able to quickly find what you need in Wireshark it is crucial to use filter, here is a nice example: ` (tcp.dstport == 8080 || tcp.srcport == 8080) && (http.request.method == "CONNECT" || http.response.code == 407 || http.response.code == 200)`
 
 ### Permamently delete a file
 There is a shortcut `SHIFT + DEL` that allows you to delete a file without putting it to Recycle Bin. But even tough you can recover files from disk. If you want to delete a file and be sure that it won't be able to recover this file you can use **BleachBit**. After installation it adds a new option in context menu - **Shred with BleachBit** which deletes a file or a directory and overwrites the disk space where it was stored.
@@ -193,6 +191,15 @@ There are plenty of applications that allow to write and save quickly some notes
 ### Create a RAM disk
 If your PC has a lot of RAM memory which is not used, you can use this memory to create an extremely fast **RAM disk**. RAM disk is a part of RAM memory which simulates a traditional drive (thanks to some kind of software). Such disk is a lot faster than both HDD and SSD drives, its speed is totally uncomparable with any kind of disk because of the RAM memory is very fast. The only drawback of RAM disk is that all its contest will be deleted with every restart of your PC. But it is possible to save RAM disk to .img file and mount it after reboot. All in all, it is an interesting solution.<br />
 There is a very easy to use application called **SoftPerfect RAM Disk** that allows to create and manage RAM disks. You just have to click the plus icon, select RAM disk size (2048 Mb for example), drive letter (R: for example) and NTFS as file system and that's it. You can see in Task Manager (in Performance tab) that RAM usage changed after you have created a RAM disk. You can for example copy some files that you currently edit to the RAM disk, it should speed up your work a lot.
+
+## Devices and network
+
+### Wireshark filters
+To be able to quickly find what you need in Wireshark it is crucial to use filter, here is a nice example: ` (tcp.dstport == 8080 || tcp.srcport == 8080) && (http.request.method == "CONNECT" || http.response.code == 407 || http.response.code == 200)`
+
+### 5Ghz WiFi adapter can't detect 5GHz networks
+If you have a WiFi adapter which should be able to connect to 5GHz networks but it cannot even detect them, the first solution you should try is to:
+-> Go to **Device Manager** (you can make it through CTRL + R and type: `compmgmt.msc`) ->**Network Adapters** ->Choose your adapter from the list ->Right click it and choose **Properties** ->Go to **Advanced** tab ->Select **Wireless Mode** ->Set it to **IEEE 802.11a/n/ac**
 
 ### Turn off and on Elan touchpad when mouse is plugged or not
 Elan touchpads have a nice feature that they can automatically turn off when a USB mouse is plugged in and automatically turn on when a mouse is removed. By default this feature is turned off. You must find the following key in the Windows Registry: `HKEY_CURRENT_USER/Software/Elantech/Othersetting` and set the following value: `DisableWhenDetectUSBMouse` to `1`.<br />
