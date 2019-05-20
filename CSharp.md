@@ -1768,12 +1768,13 @@ $color.ToArgb()
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
 [C# blog - Polish](https://www.plukasiewicz.net/)<br />
 [Unit testing made easy Part 1: Repository Testing](https://www.codeproject.com/Articles/488264/Unit-testing-made-easy-Part-Repository-Testing)<br />
-[Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
 [Office Development in Visual Studio](https://www.red-gate.com/simple-talk/dotnet/c-programming/office-development-in-visual-studio/)<br />
 
-##### .Net libraries
+##### .Net libraries and frameworks
+[Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
 [MailKit - .NET library for IMAP, POP3, and SMTP](https://github.com/jstedfast/MailKit)<br />
 [RestSharp - Simple REST and HTTP API Client for .NET](https://github.com/restsharp/RestSharp)<br />
+[AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)<br />
 
 ##### Online tools
 [C# Online Compiler](https://dotnetfiddle.net/)<br />
@@ -1796,7 +1797,6 @@ $color.ToArgb()
 [Hosting WCF Services](https://docs.microsoft.com/en-us/dotnet/framework/wcf/hosting-services)<br />
 [Hosting and consuming WCF Services](https://msdn.microsoft.com/en-us/library/bb332338.aspx)<br />
 [WCF project's structure](https://www.codemag.com/article/0809101)<br />
-[AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)<br />
 [Referencja Cykliczna - PL](https://cezarywalenciuk.pl/blog/programing/post/wcf-i-circular-reference-referencja-cykliczna)<br />
 
 #### ASP.NET Core Authorization
