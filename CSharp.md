@@ -1771,6 +1771,10 @@ $color.ToArgb()
 [Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
 [Office Development in Visual Studio](https://www.red-gate.com/simple-talk/dotnet/c-programming/office-development-in-visual-studio/)<br />
 
+##### .Net libraries
+[MailKit - .NET library for IMAP, POP3, and SMTP](https://github.com/jstedfast/MailKit)<br />
+[RestSharp - Simple REST and HTTP API Client for .NET](https://github.com/restsharp/RestSharp)<br />
+
 ##### Online tools
 [C# Online Compiler](https://dotnetfiddle.net/)<br />
 [.Net error translator 1](http://finderr.net/)<br />
