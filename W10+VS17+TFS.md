@@ -464,6 +464,7 @@ This will generate a `.tfignore` file where you can put things that you want to 
 \MobileApp\www
 \MobileApp\package-lock.json
 ```
+Be careful because it won't have any effect on files that are already added to source control. So if there is a file that you want to ignore but it is added to source control, you have to delete it firstly and check-in/commit changes.
 
 ### Authorization error after changing account password
 If you will encounter the following error code: `TF30063` that probably means that you cannot be authorized to connect TFS server. It can happen if you changed your current Windows account password. Go to:<br />
