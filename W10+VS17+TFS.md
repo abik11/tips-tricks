@@ -579,6 +579,10 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Cut and convert video files](http://online-video-cutter.com/)<br />
 [Download YouTube songs](https://listentoyoutube.online/)<br />
 
+#### Image tools
+[Png2jpg Converter](http://www.easy2convert.com/png2jpg/)<br />
+[Png2jpg Command-Line Converter](https://sourceforge.net/projects/png2jpeg/)<br />
+
 #### Online image tools
 [Color picker](http://www.colorpicker.com/)<br />
 [Convert PNG to ICO](http://convertico.com/)<br />
