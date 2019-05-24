@@ -364,9 +364,29 @@ ActiveSheet.ShowAllData
 
 ### Loop through all controls and shapes in sheet
 ```vba
+Dim s As Shape
 For Each s In ActiveSheet.Shapes
   'do something
-Next
+Next s
+```
+
+### Make all shape names unique
+If you want to attach the same VBA macro to multiple shapes and do some operations on the shape that was clicked for example, it may not work the way you expect if the names of shapes are not unique. Here you can see a little macro that renames each shape to make all their names unique:
+```vba
+Private Sub Workbook_Open()
+    Dim image As Shape
+    Dim suffix As String
+    Dim counter As Long
+    counter = 1
+   
+    For Each image In Sheets(1).Shapes
+        suffix = "r!" + Format(counter, "00000")
+        If Not InStr(image.Name, "r!") Then
+            image.Name = image.Name + suffix
+        End If
+        counter = counter + 1
+    Next image
+End Sub
 ```
 
 ## Word
