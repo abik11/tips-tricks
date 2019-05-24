@@ -389,6 +389,34 @@ Private Sub Workbook_Open()
 End Sub
 ```
 
+### Enlarge a picture when clicked
+The following code if attached to an image will make it 3 times larger and then when clicked again will turn if back to its original size. A nice thing to note here is the way that clicked image is retrived. Its name is stored in **Application.Caller** variable.
+```vba
+Sub ImageClick()
+    Dim image As Shape
+    Dim largeScale As Single, smallScale As Single
+    Dim currentHeight As Double, originalHeight As Double
+    large = 3
+    small = 1
+   
+    Set image = ActiveSheet.Shapes(Application.Caller)
+    
+    currentHeight = image.Height
+    image.ScaleHeight 1, msoTrue, msoScaleFromTopLeft
+    originalHeight = image.Height
+     
+    If Round(currentHeight / originalHeight, 2) = big Then
+        image.ScaleHeight smallScale, msoTrue, msoScaleFromTopLeft
+        image.ScaleWidth smallScale, msoTrue, msoScaleFromTopLeft
+        image.ZOrder msoSendToBack
+    Else
+        image.ScaleHeight largeScale, msoTrue, msoScaleFromTopLeft
+        image.ScaleWidth largeScale, msoTrue, msoScaleFromTopLeft
+        image.ZOrder msoBringToFront
+    End If
+End Sub
+```
+
 ## Word
 
 ### Access currently selected text
