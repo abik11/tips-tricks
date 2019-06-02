@@ -154,6 +154,22 @@ If you see the above error, you are lost. Create completely new Cordova solution
 If you have no Graddle installed or have some problems with it (which may happen quite often......) download it from [here](http://services.gradle.org/distributions/gradle-2.2.1-all.zip). Unzip and copy gradle to some directory. Add this directory to `PATH` variable, for example: `C:\Program Files (x86)\Android\gradle-2.2.1\bin`.<br />
 To see if everything is allright, use following command: `cordova requirements`.
 
+### TLS version errors
+You may see some of the following in the output:
+```
+> Could not GET 'https://repo1.maven.org/maven2/org/slf4j/slf4j-api/maven-metadata.xml'.
+> Received fatal alert: protocol_version
+```
+if you use Java 1.7 or older toegether with Gralde 4.8 or older. If so, the easiest way to solve the issue is to install Java 1.8. Go [here](https://stackoverflow.com/questions/51090914/received-fatal-alert-protocol-version-build-failure-gradle-maven) to see more details.<br />
+You can also encounter problems with TLS version while installing Cordova plugins (through git). To check what version of TLS uses git on your machine use the following command:
+```
+git config --global http.sslVersion
+```
+If it is `1.1` then setting it to `1.2` should solve the problem:
+```
+git config --global http.sslVersion tlsv1.2
+```
+
 ### Pin the app
 Since Android version 5.0 there is a functionality that you can pin and lock the app so the user will not be able to close it and run other apps. Go to: ->Settings ->General ->Security ->Advanced ->Screen pinning, or: ->Settings ->Lock screen and security ->Other security settings ->Screen pinning.<br />
 In polish it is: ->Ustawienia ->Ogólne ->Bezpieczeństwo ->Zaawansowane ->Przypnij okno, or: ->Ustawienia ->Ekran blokady i bezpieczeństwo ->Inne ustawienia bezpieczeństwa ->Przypnij okno.<br />
