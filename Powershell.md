@@ -5,7 +5,6 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Everyday struggles](#everyday-struggles)
 * [Processes, services and tasks](#processes-services-and-tasks)
 * [Files and directories](#files-and-directories)
-* [Databases](#databases)
 * [Mastering the syntax](#mastering-the-syntax)
 * [Users and groups](#users-and-groups)
 * [Remote control](#remote-control)
@@ -15,6 +14,10 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Appendix A - Serial port](#appendix-a---serial-port)
 * [Appendix B - Wmic and netsh](#appendix-b---wmic-and-netsh)
 * [Useful links](#useful-links)
+
+Read also:
+* [Databases](https://github.com/abik11/tips-tricks/blob/master/DB.md)
+* [Excel COM](https://github.com/abik11/tips-tricks/blob/master/VBA.md#powershell)
 
 ## Everyday struggles
 
@@ -422,9 +425,6 @@ And to change the current directory in .Net use this:
 ```powershell
 [System.IO.Directory]::SetCurrentDirectory("D:\data\scripts")
 ```
-
-## Databases
-Powershell is great tool to work with databases. It may easily serve as a glue tool between different kind of systems, importing some data from one to another or enabling integration. You can use ADO .NET in Powershell, SMO (SQL Server Management Objects) or some third party libraries. If you are interested in this topic, read more [here](https://github.com/abik11/tips-tricks/blob/master/DB.md).
 
 ## Mastering the syntax
 Powershell syntax may not be easy to understand at a first glance, so it is good to spend some time seeing what Powershell offers. Such knowledge may help you to finish many tasks much faster. 
