@@ -193,6 +193,18 @@ But this approach is not always a good idea. It is much better to silent only th
 get-process VisualStudio -errorAction 'silentlyContinue'
 ```
 
+### Debugging
+Powershell allows you to set a breakpoint on given command or variable, for example:
+```powershell
+set-psbreakpoint -command get-process
+set-psbreakpoint -variable processData
+```
+The two following breakpoints will cause script's execution to stop every time when `get-process` command will be call or `$processData` variable will be set or read. When the execution is stopped, you can use a bunch of commands to control the debugging process, like: `stepInto` (**s**), `stepOver` (**v**), `stepOut` (**o**) and `list` (**l**) - to list the source code of current script. Type **h** to get help.<br />
+You can use `Get-PSBreakpoint` to list all breakpoints and `Remove-PSBreakpoint` to remove them. Here you can see an example that removes the first breakpoint on the list:
+```powershell
+get-psbreakpoint 0 | remove-psbreakpoint
+```
+
 ## Processes, services and tasks
 This is a very important feature of any scripting language to be able to spawn, kill and generally manage processes or services. Powershell does it perfectly well.
 
