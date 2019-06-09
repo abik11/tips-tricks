@@ -19,6 +19,7 @@ Read also:
 * [DevExtreeme](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#devextreeme)
 * [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp.md#aspnet-mvc)
 * [MongoDB](https://github.com/abik11/tips-tricks/blob/master/DB.md#mongodb)
+* [VS Code](https://github.com/abik11/tips-tricks/blob/master/W10+VS17+TFS.md#vs-code)
 
 ## Javascript
 
