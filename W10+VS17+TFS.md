@@ -201,6 +201,11 @@ To be able to quickly find what you need in Wireshark it is crucial to use filte
 If you have a WiFi adapter which should be able to connect to 5GHz networks but it cannot even detect them, the first solution you should try is to:
 -> Go to **Device Manager** (you can make it through CTRL + R and type: `compmgmt.msc`) ->**Network Adapters** ->Choose your adapter from the list ->Right click it and choose **Properties** ->Go to **Advanced** tab ->Select **Wireless Mode** ->Set it to **IEEE 802.11a/n/ac**
 
+### Installed Wi-Fi printer stopped working
+First check the printer's IP adress and try to ping it from your PC. If you cannot ping it, then make sure that printer is in the correct network and that your firewall allows you to ping other devices.<br />
+If you can ping the printer and it still doesn't work, go to: ->Control Panel ->Printers and Devices ->Right click your printer ->Properties ->Ports ->Standard TCP/IP port ->Configure port ->Make sure that correct IP address is set
+If the printer works but scanner does not, go to: ->Control Panel ->Type `scanner` in search box ->Show scanners and photo cameras ->Select your printer/scanner ->Properties ->Network Settings ->Make sure that correct IP address is set
+
 ### Turn off and on Elan touchpad when mouse is plugged or not
 Elan touchpads have a nice feature that they can automatically turn off when a USB mouse is plugged in and automatically turn on when a mouse is removed. By default this feature is turned off. You must find the following key in the Windows Registry: `HKEY_CURRENT_USER/Software/Elantech/Othersetting` and set the following value: `DisableWhenDetectUSBMouse` to `1`.<br />
 If there is no such key or value, try to update the touchpad's drivers.
