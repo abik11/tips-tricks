@@ -203,7 +203,7 @@ If you have a WiFi adapter which should be able to connect to 5GHz networks but 
 
 ### Installed Wi-Fi printer stopped working
 First check the printer's IP adress and try to ping it from your PC. If you cannot ping it, then make sure that printer is in the correct network and that your firewall allows you to ping other devices.<br />
-If you can ping the printer and it still doesn't work, go to: ->Control Panel ->Printers and Devices ->Right click your printer ->Properties ->Ports ->Standard TCP/IP port ->Configure port ->Make sure that correct IP address is set
+If you can ping the printer and it still doesn't work, go to: ->Control Panel ->Printers and Devices ->Right click your printer ->Properties ->Ports ->Standard TCP/IP port ->Configure port ->Make sure that correct IP address is set<br />
 If the printer works but scanner does not, go to: ->Control Panel ->Type `scanner` in search box ->Show scanners and photo cameras ->Select your printer/scanner ->Properties ->Network Settings ->Make sure that correct IP address is set
 
 ### Turn off and on Elan touchpad when mouse is plugged or not
