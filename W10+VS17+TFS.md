@@ -35,6 +35,10 @@
 * `regedit` - registry editor 
 * `gpedit.msc`  - local group policy
 * `cmd`  - command line
+* `shell:startup` - startup directory of currently logged user
+* `shell:common startup` - startup directory for all users
+* `shell:start menu` - start menu directory of currently logged user
+* `shell:common start menu` - start menu directory for all users
 
 ### Minimize all windows despite the current one
 You can click on window and hold it and try to shake it with mouse. All other open windows should be minimized and only the one that you shaked should remain open. Cooool.
@@ -180,7 +184,7 @@ The nice feature of AHK is that if you will copy the **AutoHotkey.exe** into the
 You can use `#` for Windows key, `^` for CTRL, `!` for ALT, `+` for SHIFT and other keys like `Numpad0`, `Numpad1` etc. You can also join keys with `&`, for example `LCtrl & Numpad1`. AHK allows you to automize a lot of things, go to the [documentation](https://autohotkey.com/docs/AutoHotkey.htm) to learn more.
 
 ### Run application or script on startup
-Go to `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup` or something similar and copy into that directory anything you want to run on startup. If you want to run some application you must create a shortcut to that application rather than copying an exe file.<br />
+Press `Win + R` and type `shell:startup` or go to `%appdata%\Microsoft\Windows\Start Menu\Programs\Startup` and copy into that directory anything you want to run on system's startup. If you want to run some application you must create a shortcut to that application rather than copying an exe file.<br />
 Of course, the same thing can be also achieved with **Task Scheduler**.
 
 ### Notes on the desktop
