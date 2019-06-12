@@ -1766,10 +1766,13 @@ $color.ToArgb()
 ## Useful links
 
 ##### General stuff
-[Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
 [C# blog - Polish](https://www.plukasiewicz.net/)<br />
+[C# blogs - Polish](https://dotnetomaniak.pl/)<br />
+[C# blog - English](https://medium.com/@mdfarragher)<br />
+[Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
 [Unit testing made easy Part 1: Repository Testing](https://www.codeproject.com/Articles/488264/Unit-testing-made-easy-Part-Repository-Testing)<br />
 [Office Development in Visual Studio](https://www.red-gate.com/simple-talk/dotnet/c-programming/office-development-in-visual-studio/)<br />
+[Distributed .NET Core](https://devmentors.io/distributed-net-core/)<br />
 
 ##### .Net libraries and frameworks
 [Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
