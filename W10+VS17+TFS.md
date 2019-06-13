@@ -551,6 +551,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Lazesoft Recovery Suite](https://www.lazesoft.com/lazesoft-recovery-suite-free.html)<br />
 [FixWin 10](https://www.thewindowsclub.com/fixwin-for-windows-10)<br />
 [VeraCrypt](https://www.veracrypt.fr/en/Downloads.html)<br />
+[Ninite - Install apps for Windows](https://ninite.com/)<br />
 [Driver Store Explorer](https://github.com/lostindark/DriverStoreExplorer)<br />
 
 #### Malware scanners
