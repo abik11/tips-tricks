@@ -381,7 +381,7 @@ Private Sub Workbook_Open()
    
     For Each image In Sheets(1).Shapes
         suffix = "r!" + Format(counter, "00000")
-        If Not InStr(image.Name, "r!") Then
+        If InStr(image.Name, "r!") < 1 Then
             image.Name = image.Name + suffix
         End If
         counter = counter + 1
