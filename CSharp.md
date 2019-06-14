@@ -1346,6 +1346,24 @@ catch(Exception)
 ```
 You can read more about this [here](https://docs.microsoft.com/en-us/dotnet/framework/wcf/samples/avoiding-problems-with-the-using-statement).
 
+#### The connection was closed unexpectedly
+If you see an exception of the following content: `The underlying connection was closed: The connection was closed unexpectedly` it is probably not very descriptive and may mean quite many things. In my experiance 90% (more or less) of cases with this exception were caused by incorrect data that was going to be send by a service method. For example, returned DTO type had a property of enum type and in the returned object the value was "out of range" of this enum. See example:
+```csharp
+public enum MyEnum 
+{
+    A = 0;
+    B = 1;
+}
+
+[DataContract]
+public class DataDto 
+{
+    [DataMember]
+    public MyEnum EnumProp;
+}
+```
+And in case like this if somehow you try to serialize in WCF service to send it to the client the **DataDto** object with **EnumProp** being equal to *2*, you may see the exception.
+
 ### AutoMapper
 AutoMapper is an extremely useful library that allows you to map objects in C# from one class to another. It is very useful in the context of WCF, for example when you get some objects through your ORM and you have to convert them to DTO (Data Contracts) objects to be able to return them from a service method. With AutoMapper such operations are quite easy to do.
 
