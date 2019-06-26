@@ -416,6 +416,11 @@ Sub ImageClick()
     End If
 End Sub
 ```
+It is also possible to do it a bit simpler way and set image height or width to given value. It is important to make sure that **LockAspectRatio** is set to **msoTrue**, otherwise image will scale only in one direction:
+```vba
+Picture.LockAspectRatio = msoTrue
+Picture.Height = 400
+```
 
 ## Word
 
@@ -489,7 +494,7 @@ Do Until IE.ReadyState = 4
      DoEvents
 Loop
     
-resultData = IE.Document.querySelector("#result_box span").innerHTML
+resultData = IE.Document.querySelector(".tlid-translation span").textContent
     
 IE.Quit
 MsgBox resultData, vbOKOnl, "Hello!"
