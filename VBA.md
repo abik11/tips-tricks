@@ -499,6 +499,57 @@ resultData = IE.Document.querySelector(".tlid-translation span").textContent
 IE.Quit
 MsgBox resultData, vbOKOnl, "Hello!"
 ```
+Here is the full VBA macro that could work nice, it adds a translation of a selected word in parentheses, bold and colored red. *AddBinding* should be called in **Open** method of the document. It also is a nice idea to add a *WaitForm* that will be displayed while the translation is being loaded - that improves a little bit user-friendliness.
+```vba
+Sub AddBinding()
+    MsgBox "Key shortcut added", vbOKOnl, "OK!"
+    With Application
+        .CustomizationContext = NormalTemplate
+        'ALT + \
+        .KeyBindings.Add KeyCode:=BuildKeyCode(wdKeyAlt, wdKeyBackSlash), _
+              KeyCategory:=wdKeyCategoryCommand, _
+              Command:="Translate"
+    End With
+End Sub
+ 
+Sub Translate()
+    Dim IE As Object, i As Long
+    Dim inputString As String, outputString As String
+    Dim textToConvert As String, resultData As String
+    Dim cleanData
+    Dim retryCount As Integer
+       
+    Set IE = CreateObject("InternetExplorer.application")
+    inputString = "auto"
+    outputString = "pl"
+    textToConvert = Selection
+   
+    'WaitForm.Show
+    'Form should have ShowModal as False
+   
+    IE.Visible = False
+    IE.navigate "http://translate.google.com/#" & inputString & "/" _
+                & outputString & "/" & textToConvert
+    Do Until IE.ReadyState = 4
+         DoEvents
+    Loop
+       
+    resultData = IE.Document.querySelector(".tlid-translation span").textContent
+   
+    'Unload WaitForm
+   
+    Selection.Move Unit:=wdCharacter, Count:=1
+    Selection.Range.Text = "(" & resultData & ")" & " "
+    Selection.MoveRight Unit:=wdCharacter, Count:=Len(resultData)
+    Selection.Font.Bold = True
+    Selection.Font.Underline = True
+    Selection.Font.ColorIndex = wdRed
+    Selection.Font.Name = "Arial"
+   
+    IE.Quit
+End Sub
+```
+
 ## Powershell
 Although this document is intended to talk about VBA, it is possible, and sometimes desireable, to work with Excel or Word in other programming languages through COM objects. Few examples will be presented here to show how to make it in Powershell, a great tool for scripting and automation. If you want to learn more about Powershell in particular, look [here](https://github.com/abik11/tips-tricks/blob/master/Powershell.md).<br />
 Here you can see some very basic example of how to open the file, get the data of the given cell and how to close Excel after the data is retriven:
