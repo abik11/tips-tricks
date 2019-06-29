@@ -1029,7 +1029,7 @@ class MyComponent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            content = ""
+            content: ""
         }
     }
 
@@ -1040,8 +1040,8 @@ class MyComponent extends Component {
     render(){
         return (
             <input type='text' name='content' 
-                value={this.state.content} onchange={this.onChange}   
-        );
+                value={this.state.content} onChange={this.onChange} />
+	);
     }
 }
 ```
