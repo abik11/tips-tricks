@@ -994,6 +994,9 @@ A very useful thing about this query is that you can get the execution plan hand
 dbcc FREEPROCCACHE(0x0600050037E01805B8A00757000000000000000000000000);
 ```
 
+### Open Activity Monitor
+To open Activity Monitor just press **CTRL + ALT + A**
+
 ## SMO
 SQL Sever Management Objects is a set of classes that allow to manage SQL Server programmatically with the same functionality as is provided in SQL Server Management Studio. Extremely interesting and useful technology! The examples are written with Powershell, in all of them variable *$class* is used, it is initalized like this:
 ```powershell
@@ -1431,6 +1434,16 @@ foreach (DataRow row in dt.Rows)
 A very common use case for SSIS is to keep some data table synchronized with some data source. For example there is some external database that gathers data all the time and you want to import that data once a day into your own database to be able to transform it or show some statistics. You have to insert all the new rows or update those which are modified. These kinds of operations are often called incremental data loading, incremental load or incremental data synchronization.<br />
 There are quite many ways to make it with SSIS. For example you have to get the source data and the target data, so you need two **Data Sources** which then have to be sorted (by **Sort**) and then put as input for a **Merge Join**. If you want to have the new data, you have to use **Left Outer Join** to join the target to the source (which should contain the new rows). Then you should put the merged data into **Conditional Split** and add a condition to check if some field is null, an ID from target data is a good candidate for such check, for example `ISNULL(Target_ID)`. Also if you want to synchronize modifications in existing data you can add another condition, for example `Target_Name != Source_Name || Target_Value != Source_Value`. Then you can directly put the new data into target (one output from Conditional Split) and using **OLE DB Command** update the modified data (second output of Conditional Split) or put it into some temporary table and then use **Execute SQL Task** update it with single SQL update command.
 
+### Stop running SSIS packages
+In general if you run **SSIS packages** through **SQL Server Agent** all you need to do to stop the package is to stop the job that runs this package. But if something goes wrong and tha package does not stop or you have started it manually then you need another way:<br />
+->Right click on a package ->Reports ->All Executions ->Get the operation ID from the ID column for the package that you want to stop ->Run the following SQL command:
+```sql
+USE SSISDB
+GO
+ 
+EXEC [catalog].[stop_operation] 3033717 --here put your ID of course
+```
+
 ## Oracle DB
 The Oracle DB is very well known and commonly used RDBMS. It uses **PL/SQL** programming language. If you are familiar with **T-SQL** be careful with the semicolons at the end of the statement. :) To be able to run and test queries against Oracle DB you can download **SQL Developer** from [Oracle website](https://www.oracle.com/database/technologies/appdev/sql-developer.html). If you are used to work with **SQL Server**, selecting some lines of T-SQL code and pressing **F5** to run the selected query, in SQL Developer you will have to press **CTRL + ENTER** instead. The F5 key runs the whole script. You can also download **Oracle Db XE** (Express Edition) which you can use for free - great for learning.
 
@@ -1786,6 +1799,7 @@ doc.Save("file.xml");
 #### Database programming - general stuff
 [SQLPedia - po polsku](http://www.sqlpedia.pl/) <br />
 [SQL Server Central - Stairway](http://www.sqlservercentral.com/stairway/) <br />
+[SQL Shack - SQL Server articles](https://www.sqlshack.com/)<br />
 [Many free e-books about DB programming](https://www.syncfusion.com/resources/techportal/ebooks) <br/>
 [Connection strings](https://www.connectionstrings.com/) <br />
 [Advanced free-books](https://www.red-gate.com/simple-talk/books/sql-books/) <br />
