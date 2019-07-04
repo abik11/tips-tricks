@@ -296,6 +296,46 @@ public byte[] RowVersion { get; set; }
 ```
 for automatic concurency check.
 
+### Unit Testing EF Core with NUnit
+```csharp
+using NUnit.Framework;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
+using System;
+ 
+namespace Corp.Project..Tests.Core
+{
+   [TestFixture]
+   public class InMemoryBaseTests<T> where T : DbContext, new()
+   {
+      //Microsoft.EntityFrameworkCore.Sqlite
+      protected DbContextOptions<T> options;
+      protected T context;
+      protected SqliteConnection connection;
+ 
+      [SetUp]
+      public virtual void SetUp()
+      {
+         connection = new SqliteConnection("DataSource=:memory:");
+         connection.Open();
+ 
+         options = new DbContextOptionsBuilder<T>()
+            .UseSqlite(connection)
+            .Options;
+ 
+         context = Activator.CreateInstance(typeof(T), new object[] { options }) as T;
+         context.Database.EnsureCreated();
+      }
+ 
+      [TearDown]
+      public virtual void TearDown()
+      {
+         connection.Close();
+      }
+   }
+}
+```
+
 ## Linq
 
 ### Linq statements and functions
