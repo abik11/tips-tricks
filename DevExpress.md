@@ -149,7 +149,7 @@ using System;
 namespace Corp.Project.Tests.Core
 {
    [TestFixture]
-   public class BaseTests
+   public class InMemoryBaseTests
    {
       protected IDisposable[] disposablesOnDisconect;
       protected IDataLayer dataLayer;
@@ -181,33 +181,6 @@ namespace Corp.Project.Tests.Core
    }
 }
 ```
-And here you can see an example of logic test's base class that is responsible for filling the data store with some test data:
-```csharp
-using NUnit.Framework;
-////////////////////////////////////////
-using DevExpress.Xpo;
-using Corp.Project.Tests.Core;
-using Corp.Project.Domain.ModelCode;
-using Corp.Project.Domain.Enum;
-using System;
- 
-namespace Corp.Project.Tests.Logic
-{
-   [TestFixture]
-   public class LogicBaseTests : BaseTests
-   {
-      protected virtual void PrepareTestDataBase()
-      {
-         using (UnitOfWork uow = new UnitOfWork(dataLayer))
-         {
-            User u1 = new User(uow){ Name = "Albert", Gender = "M" };
-            User u2 = new User(uow){ Name = "Paulina", Gender = "F" };
-            uow.CommitTransaction();
-         }
-      }
-   }
-}
-```
 And here is a class with unit tests:
 ```csharp
 using NUnit.Framework;
@@ -222,7 +195,7 @@ using System.Collections.Generic;
 namespace Corp.Project.Tests.Logic
 {
    [TestFixture]
-   public class UserLogicTests : LogicBaseTests
+   public class UserLogicTests : InMemoryBaseTests
    {
       protected Mock<UserLogic> logicMock;
  
@@ -235,7 +208,12 @@ namespace Corp.Project.Tests.Logic
       [Test]
       public void TestGetAllUsers()
       {
-         PrepareTestDataBase();
+         using(UnitOfWork uow = new UnitOfWork(dataLayer))
+         {
+            User u1 = new User(uow){ Name = "Albert", Gender = "M" };
+            User u2 = new User(uow){ Name = "Paulina", Gender = "F" };
+            uow.CommitTransaction();
+         }
  
          using (UnitOfWork uow = new UnitOfWork(dataLayer))
          {
