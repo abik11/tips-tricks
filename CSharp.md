@@ -1790,15 +1790,14 @@ $color.ToArgb()
 [Ventajas de yield return - ESP](https://bmegias.wordpress.com/2010/11/10/que-es-yield-y-por-que-hay-que-usarlo/)<br/>
 [Unit testing made easy Part 1: Repository Testing](https://www.codeproject.com/Articles/488264/Unit-testing-made-easy-Part-Repository-Testing)<br />
 [Office Development in Visual Studio](https://www.red-gate.com/simple-talk/dotnet/c-programming/office-development-in-visual-studio/)<br />
-[REST APIs with ASP.NET Core](https://www.freecodecamp.org/news/an-awesome-guide-on-how-to-build-restful-apis-with-asp-net-core-87b818123e28/)<br />
 [Distributed .NET Core](https://devmentors.io/distributed-net-core/)<br />
-[Akka.NET](https://hryniewski.net/2017/03/22/akka-net-1-creating-actor-system-and-making-first-contact/)<br />
 
 ##### .Net libraries and frameworks
 [Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
 [MailKit - .NET library for IMAP, POP3, and SMTP](https://github.com/jstedfast/MailKit)<br />
 [RestSharp - Simple REST and HTTP API Client for .NET](https://github.com/restsharp/RestSharp)<br />
 [AutoMapper](https://github.com/AutoMapper/AutoMapper/wiki)<br />
+[Akka.NET](https://hryniewski.net/2017/03/22/akka-net-1-creating-actor-system-and-making-first-contact/)<br />
 
 ##### Online tools
 [C# Online Compiler](https://dotnetfiddle.net/)<br />
@@ -1810,18 +1809,22 @@ $color.ToArgb()
 ##### WPF
 [WPF Snoop](https://github.com/cplotts/snoopwpf)<br />
 
-##### ASP.NET MVC
-[ASP.NET MVC 5 Internationalization](http://afana.me/archive/2011/01/14/aspnet-mvc-internationalization.aspx/)<br />
-[HTTP File Upload](https://www.hanselman.com/blog/ABackToBasicsCaseStudyImplementingHTTPFileUploadWithASPNETMVCIncludingTestsAndMocks.aspx)<br />
-[Dynamic image generation](https://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)<br />
-[Global authentication and Allow Anonymous](https://weblogs.asp.net/jongalloway/asp-net-mvc-authentication-global-authentication-and-allow-anonymous)<br />
-
 ##### WCF
 [WCF Web Services Tutorial](http://mikesknowledgebase.azurewebsites.net/pages/Services/WebServices.htm)<br />
 [Hosting WCF Services](https://docs.microsoft.com/en-us/dotnet/framework/wcf/hosting-services)<br />
 [Hosting and consuming WCF Services](https://msdn.microsoft.com/en-us/library/bb332338.aspx)<br />
 [WCF project's structure](https://www.codemag.com/article/0809101)<br />
 [Referencja Cykliczna - PL](https://cezarywalenciuk.pl/blog/programing/post/wcf-i-circular-reference-referencja-cykliczna)<br />
+
+##### ASP.NET MVC
+[ASP.NET MVC 5 Internationalization](http://afana.me/archive/2011/01/14/aspnet-mvc-internationalization.aspx/)<br />
+[HTTP File Upload](https://www.hanselman.com/blog/ABackToBasicsCaseStudyImplementingHTTPFileUploadWithASPNETMVCIncludingTestsAndMocks.aspx)<br />
+[Dynamic image generation](https://www.hanselman.com/blog/BackToBasicsDynamicImageGenerationASPNETControllersRoutingIHttpHandlersAndRunAllManagedModulesForAllRequests.aspx)<br />
+[Global authentication and Allow Anonymous](https://weblogs.asp.net/jongalloway/asp-net-mvc-authentication-global-authentication-and-allow-anonymous)<br />
+
+#### ASP.NET Core
+[REST APIs with ASP.NET Core](https://www.freecodecamp.org/news/an-awesome-guide-on-how-to-build-restful-apis-with-asp-net-core-87b818123e28/)<br />
+[ASP.NET Core Web API Best Practices](https://code-maze.com/aspnetcore-webapi-best-practices/)<br />
 
 #### ASP.NET Core Authorization
 [How to set up two factor authentication in ASP.NET Core using Google Authenticator](https://medium.freecodecamp.org/how-to-set-up-two-factor-authentication-on-asp-net-core-using-google-authenticator-4b15d0698ec9)<br />
