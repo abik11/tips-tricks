@@ -374,52 +374,57 @@ Next s
 If you want to attach the same VBA macro to multiple shapes and do some operations on the shape that was clicked for example, it may not work the way you expect if the names of shapes are not unique. Here you can see a little macro that renames each shape to make all their names unique:
 ```vba
 Private Sub Workbook_Open()
+
     Dim image As Shape
-    Dim suffix As String
+    Dim newName As String
+    Dim worksheetCount As Integer
     Dim counter As Long
+    worksheetCount = ActiveWorkbook.Worksheets.Count
     counter = 1
    
-    For Each image In Sheets(1).Shapes
-        suffix = "r!" + Format(counter, "00000")
-        If InStr(image.Name, "r!") < 1 Then
-            image.Name = image.Name + suffix
-        End If
-        counter = counter + 1
-    Next image
+    For i = 1 To worksheetCount
+       
+        For Each image In ActiveWorkbook.Sheets(i).Shapes
+            newName = "img!" + Format(counter, "00000")
+            image.Name = newName
+            counter = counter + 1
+        Next image
+       
+    Next i
+   
 End Sub
 ```
 
 ### Enlarge a picture when clicked
-The following code if attached to an image will make it 3 times larger and then when clicked again will turn if back to its original size. A nice thing to note here is the way that clicked image is retrived. Its name is stored in **Application.Caller** variable.
+The following code if attached to an image will set its height to 420 and then when clicked again it will set the image height to be 10 units smaller than the height of the cell in which the image is stored. A nice thing to note here is the way that clicked image is retrived. Its name is stored in **Application.Caller** variable. It is important to make sure that **LockAspectRatio** is set to **msoTrue**, otherwise image will scale only in one direction:
 ```vba
-Sub ImageClick()
+Sub Image_Click()
+ 
     Dim image As Shape
-    Dim largeScale As Single, smallScale As Single
-    Dim currentHeight As Double, originalHeight As Double
-    large = 3
-    small = 1
-   
     Set image = ActiveSheet.Shapes(Application.Caller)
-    
-    currentHeight = image.Height
-    image.ScaleHeight 1, msoTrue, msoScaleFromTopLeft
-    originalHeight = image.Height
+   
+    Dim cellHeight As Integer
+    cellHeight = image.TopLeftCell.Height
      
-    If Round(currentHeight / originalHeight, 2) = big Then
-        image.ScaleHeight smallScale, msoTrue, msoScaleFromTopLeft
-        image.ScaleWidth smallScale, msoTrue, msoScaleFromTopLeft
-        image.ZOrder msoSendToBack
-    Else
-        image.ScaleHeight largeScale, msoTrue, msoScaleFromTopLeft
-        image.ScaleWidth largeScale, msoTrue, msoScaleFromTopLeft
+    If image.Height <= cellHeight Then
+        image.LockAspectRatio = msoTrue
+        image.Height = 420
         image.ZOrder msoBringToFront
+    Else
+        image.LockAspectRatio = msoTrue
+        image.Height = cellHeight - 10
+        image.ZOrder msoSendToBack
     End If
+   
 End Sub
 ```
-It is also possible to do it a bit simpler way and set image height or width to given value. It is important to make sure that **LockAspectRatio** is set to **msoTrue**, otherwise image will scale only in one direction:
+It is also possible to do it a bit different way. An image can be scaled and made bigger, here it is made 4 times bigger:
 ```vba
-Picture.LockAspectRatio = msoTrue
-Picture.Height = 400
+image.ScaleHeight 4, msoTrue, msoScaleFromTopLeft
+```
+and here it is back to its original size:
+```vba
+image.ScaleHeight 1, msoTrue, msoScaleFromTopLeft
 ```
 
 ## Word
