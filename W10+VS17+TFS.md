@@ -601,6 +601,7 @@ Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste
 [Make MP3 files louder](http://www.mp3louder.com/)<br />
 [Cut and convert video files](http://online-video-cutter.com/)<br />
 [Download YouTube songs](https://listentoyoutube.online/)<br />
+[Download YouTube videos](https://keepvid.pro/)<br />
 
 #### Image tools
 [Png2jpg Converter](http://www.easy2convert.com/png2jpg/)<br />
