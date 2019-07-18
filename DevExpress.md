@@ -140,19 +140,19 @@ foreach (Employee emp in department.EmployeeCollection.ToList())
 A really nice way to test logic that works closely with XPO is to use InMemoryDataStore which allows you to create a temporary data store in memory. Here you can see an example of test's base class that creates and deletes the data store:
 ```csharp
 using NUnit.Framework;
-////////////////////////////////////////
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.DB.Helpers;
 using System;
  
-namespace Corp.Project.Tests.Core
+namespace Project.Tests.Core
 {
    [TestFixture]
    public class InMemoryBaseTests
    {
       protected IDisposable[] disposablesOnDisconect;
       protected IDataLayer dataLayer;
+      
       protected virtual IDataStore CreateProvider()
       {
          return new InMemoryDataStore(AutoCreateOption.DatabaseAndSchema);
@@ -181,30 +181,39 @@ namespace Corp.Project.Tests.Core
    }
 }
 ```
-And here is a class with unit tests:
+Here is a class that derives from the one above:
 ```csharp
-using NUnit.Framework;
 using Moq;
 using Moq.Protected;
-////////////////////////////////////////
 using DevExpress.Xpo;
-using Corp.Project.Logic;
-using System;
-using System.Collections.Generic;
+using Project.Logic.Infrastructure;
  
-namespace Corp.Project.Tests.Logic
+namespace Project.Tests.Core
 {
-   [TestFixture]
-   public class UserLogicTests : InMemoryBaseTests
+   public class InMemoryBaseLogicTests<T> : InMemoryBaseTests where T : BaseLogic
    {
-      protected Mock<UserLogic> logicMock;
+      protected Mock<T> logicMock;
  
       protected virtual void PrepareMock(UnitOfWork uow)
       {
-         logicMock = new Mock<UserLogic>(uow);
+         logicMock = new Mock<T>(uow);
          logicMock.Protected().Setup<UnitOfWork>("_uow").Returns(uow);
       }
+   }
+}
+```
+It extends the class to mock the logic class of given type. And here is a class with unit tests:
+```csharp
+using NUnit.Framework;
+using DevExpress.Xpo;
+using Project.Logic;
+using System;
+using System.Collections.Generic;
  
+namespace Project.Tests.Logic
+{
+   public class UserLogicTests : InMemoryBaseLogicTests<UserLogic>
+   {
       [Test]
       public void TestGetAllUsers()
       {
