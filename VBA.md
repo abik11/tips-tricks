@@ -482,25 +482,24 @@ If you want to know more key options to choose (for example instead of **wdKeyBa
 ### Internet Explorer as COM Object - Google Translate
 Add this reference: ->Tools ->Refrence ->Microsoft Internet Control
 ```vba
-Dim IE As Object, i As Long
+Dim IE As Object
 Dim inputString As String, outputString As String
 Dim textToConvert As String, resultData As String
-Dim cleanData
-    
+   
 Set IE = CreateObject("InternetExplorer.application")
 inputString = "auto"
 outputString = "pl"
 textToConvert = Selection
-
+ 
 IE.Visible = False
-IE.navigate "http://translate.google.com/#" & inputString & "/" _ 
-			& outputString & "/" & textToConvert
+IE.navigate "http://translate.google.com/#" & inputString & "/" _
+            & outputString & "/" & textToConvert
 Do Until IE.ReadyState = 4
      DoEvents
 Loop
-    
+   
 resultData = IE.Document.querySelector(".tlid-translation span").textContent
-    
+   
 IE.Quit
 MsgBox resultData, vbOKOnl, "Hello!"
 ```
