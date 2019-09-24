@@ -438,6 +438,26 @@ And to change the current directory in .Net use this:
 [System.IO.Directory]::SetCurrentDirectory("D:\data\scripts")
 ```
 
+### Watch for new files
+With a mix of **FileSystemWatcher** object and **Register-ObjectEvent** cmdlet it is really easy to watch a directory for newly created files (also modifed or deleted or actually anything else that can emit an event).<br />
+A nice thing to remember is how to pass data to event action. You can make it through **-MessageData** argument and access it inside of the action through **$event** variable.
+```powershell
+$watcher = New-Object System.IO.FileSystemWatcher 'D:\files', '*.txt' -Property `
+	@{ IncludeSubdirectories = $false; NotifyFilter = [System.IO.NotifyFilters]'FileName, LastWrite' }
+	
+$data = New-Object PSObject -Property @{ LogFilePath = 'D:\logs\watcher_log.txt' }
+
+Register-ObjectEvent $watcher Created -SourceIdentifier FileCreated `
+-MessageData $data `
+-Action {
+	$fileName = $event.SourceEventArgs.Name
+	$eventTime = $event.TimeGenerated
+	$msg = "[$eventTime]: Importing new file: $fileName"
+	Write-Host $msg -ForegroundColor Green
+      	Out-File -FilePath $event.MessageData.LogFilePath -Append -InputObject $msg
+}
+```
+
 ## Mastering the syntax
 Powershell syntax may not be easy to understand at a first glance, so it is good to spend some time seeing what Powershell offers. Such knowledge may help you to finish many tasks much faster. 
 
