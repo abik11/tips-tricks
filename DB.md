@@ -364,6 +364,9 @@ Enumerable.Range(5, 8);
 Enumerable.Repeat("a", 10);
 ```
 
+##### FirstOrDefault vs. SingleOrDefault
+**FirstOrDefault** returns the first element of given collection no matter how many items it contains while **SingleOrDefault** will throw an exception if given collection will contain more than one item, otherwise it will return this single item.
+
 ### Best practices and common mistakes
 * Check if any item exists in a collection
 ```csharp
@@ -1033,6 +1036,10 @@ A very useful thing about this query is that you can get the execution plan hand
 ```sql
 dbcc FREEPROCCACHE(0x0600050037E01805B8A00757000000000000000000000000);
 ```
+
+### Clustered vs. Non-clustered indexes
+* Rows indexed by **clustered index** are physically stored on the disk in the same order as the index. Because of that each table can have only one clustered index. It is very fast to read but a bit slow to delete or add new rows because index may need to be rearranged. While creating a new table in SQL Server, if you will set a column as a PRIMARY KEY it will add automatically new clustered index for this table (if one doesn't exist yet).
+* **Non-clustered index** is a list of pointers to physical rows. So there may be many non-clustered indexes in a table.
 
 ### Open Activity Monitor
 To open Activity Monitor just press **CTRL + ALT + A**
