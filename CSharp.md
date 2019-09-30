@@ -1791,6 +1791,7 @@ $color.ToArgb()
 [Unit testing made easy Part 1: Repository Testing](https://www.codeproject.com/Articles/488264/Unit-testing-made-easy-Part-Repository-Testing)<br />
 [Office Development in Visual Studio](https://www.red-gate.com/simple-talk/dotnet/c-programming/office-development-in-visual-studio/)<br />
 [Distributed .NET Core](https://devmentors.io/distributed-net-core/)<br />
+[Selenium testing page - good for learning](http://testing.todvachev.com/)<br />
 
 ##### .Net libraries and frameworks
 [Nancy - Lightweight Web Framework for .Net](http://nancyfx.org/)<br />
