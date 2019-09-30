@@ -251,6 +251,10 @@ Also you can access the whole range, for example here we access the range from *
 Dim data As Variant
 data = Range(Cells(1, 1), Cells(10000, 15)) '[1;1] -> [10000;15]
 ```
+We can also *physically* select given worksheet:
+```
+Sheets("Sheet1").Select
+```
 
 ### Working with ranges
 There are some useful methods that you can use while working with ranges. You can select a range with **Select**, activate a cell, clear its content and formating or content only with **Activate**, **Clear** and **ClearContents** respectively.
@@ -271,6 +275,18 @@ findResult = Range("A1:D10").Find("PLN", LookAt:=xlWhole)
 ```
 The **xlWhole** value will make this function to match whole words, we change it **xlPart** and it will try to match also parts of the words.
 
+### Clear all cells in a column
+Here for example you can see a very simple way of clearing all cells in column *A*:
+```vba
+Range("A1").Select
+Selection.End(xlDown).Select
+Selection.ClearContents
+```
+But it can be done in just one line:
+```vba
+Range("A:A").ClearContents
+```
+
 ### Take whole data from column
 If you want to get all the data from a column, starting from selected cell up to the end of the data in given column (or row) you can make it easily. See an example, here we take the range from D2 down up to the last filled column (D3, D4 and so on):
 ```vba 
@@ -278,6 +294,19 @@ Set LastFilledCell = Range("D2").End(xlDown)
 ColumnValues = Range("D2", LastFilledCell).Value
 ```
 You can "go up" with `xlUp` or go left and right with `xlToLeft` and `xlToRight`.
+
+### Set date format for a range
+You can set any valid date format for a given range. For example here a format is set for current selection or some range:
+```vba
+Selection.NumberFormat = "m/d/yyyy"
+Range("H:H").NumberFormat = "m/d/yyyy"
+```
+
+### Apply a formula for a range
+```vba
+Selection.FormulaR1C1 = "=ROW()"
+Range("H:H").FormulaR1C1 = "=ROW()"
+```
 
 ### Worksheet and workbook events
 1. Go to: ->Developer ->Visual Basic ->Project Explorer ->**Microsoft Excel Objects**
