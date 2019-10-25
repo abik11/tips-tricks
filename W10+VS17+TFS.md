@@ -169,11 +169,15 @@ If you cannot get into Boot Menu, you can get into BIOS (press F2 or other key d
 [See the list](https://www.desertcrystal.com/bootkeys) to know what are the bootkeys for your pc.
 
 ##### Error: The selected disk is of the GPT partition style
-While trying to install Windows on a PC where Windows were previously installed (simply you want to format your PC) you may encounter an error:
+While formatting a PC you may encounter the following error:
 ```
 Windows cannot be installed to this disk. The selected disk is of the GPT partition style.
 ```
+**GPT** is modern partition format that works with UEFI. It is superseeding older **MBR** format which works with BIOS. You may see such error, when you try to install Windows from a pendrive which has MBR format on a disk with GPT format. What you need to do in such case is to convert disk format to MBR. And there are two options:
+* convert partition to MBR with **EaseUS Partition Master**
+* delete all existing partitions (in the install wizard) - **be careful** you will lose all your data
 
+Read more [here (polish)](https://www.download.net.pl/jak-rozwiazac-blad-o-stylu-partycji-gpt-przy-instalacji-windowsa/n/6765/?fbclid=IwAR0xKHDO9MRnFFoWaJ2v3IO_YdWsl1y1Bgih5ECAwYfDa_96YJs8oKIZqfM). 
 
 ### AutoHotkey - define your own key shortcuts
 There is a really nice and easy scripting language called **AutoHotkey** also known as **AHK** which allows you to easily create new key shortcus (hotkeys) and automize your work. Here is a little example:
