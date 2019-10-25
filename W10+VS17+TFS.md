@@ -134,6 +134,9 @@ Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*,
 ##### Turn off apps in the background
 ->Settings ->Privacy ->Background apps
 
+### Configure default applications
+->Settings ->Applications ->Default Applications
+
 ### Add My Computer on the desktop in Windows 10
 ->Right click on the desktop ->Personalize ->Themes ->Desktop icon settings ->Check **Computer**
 
@@ -164,6 +167,13 @@ It is a very good idea to keep a bootable pendrive with Windows system image, re
 * After the pendrive is ready you can turn off your PC (hold SHIFT and click Turn Off on Windows 10) and press F12 ([or other key depending on your PC model](http://boot-keys.org/)) while it is rebooting to get into the **Boot Menu**. In the Boot Menu you will be able to choose the PC to boot from your bootable pendrive and this way the process of installation of the system will begin.<br />
 If you cannot get into Boot Menu, you can get into BIOS (press F2 or other key depending on your PC model) and change the precedence of bootable devices, putting your pendrive at the first place.<br />
 [See the list](https://www.desertcrystal.com/bootkeys) to know what are the bootkeys for your pc.
+
+##### Error: The selected disk is of the GPT partition style
+While trying to install Windows on a PC where Windows were previously installed (simply you want to format your PC) you may encounter an error:
+```
+Windows cannot be installed to this disk. The selected disk is of the GPT partition style.
+```
+
 
 ### AutoHotkey - define your own key shortcuts
 There is a really nice and easy scripting language called **AutoHotkey** also known as **AHK** which allows you to easily create new key shortcus (hotkeys) and automize your work. Here is a little example:
