@@ -839,9 +839,24 @@ IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ImportantData' AND xtype='U'
 CREATE TABLE [Corpo].[dbo].[ImportantData]([Text] [varchar](256) NULL);
 ```
 
+### Transaction with Try/Catch
+It might be a good idea to put a transaction in try-catch block, here is how to do it correctly:
+```sql
+BEGIN TRY
+BEGIN TRANSACTION TRX1;
+--sql code
+COMMIT TRANSACTION TRX1;
+END TRY
+
+BEGIN CATCH
+    ROLLBACK TRANSACTION TRX1;
+    THROW;
+END CATCH
+``
+
 ### Strings with diacritical marks
 To be able to store strings with diacritical marks or even more - different alpabets, you should use **nvarchar** type (which uses UTF) and mark the string as unicode with **N** prefix:
-```
+```sql
 SELECT 'ęóąśłżźć' --eoaslzzc
 SELECT N'ęóąśłżźć' --ęóąśłżźć
 ```
