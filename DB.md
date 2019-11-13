@@ -852,7 +852,7 @@ BEGIN CATCH
     ROLLBACK TRANSACTION TRX1;
     THROW;
 END CATCH
-``
+```
 
 ### Strings with diacritical marks
 To be able to store strings with diacritical marks or even more - different alpabets, you should use **nvarchar** type (which uses UTF) and mark the string as unicode with **N** prefix:
