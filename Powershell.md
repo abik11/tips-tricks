@@ -912,6 +912,11 @@ $env:USERDOMAIN
 [System.Net.Dns]::GetHostEntry([System.Net.Dns]::GetHostName())
 ```
 
+### Full name of currentlu logged user - one liner
+```powershell
+([ADSI]"WinNT://$env:userdomain/$env:username,user").FullName
+```
+
 ## Remote control
 Powershell has really nice remote capabilities which allows you to do your job from one machine, remotely executing scripts and commands on other machines.
 
