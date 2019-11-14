@@ -1690,6 +1690,14 @@ You can also use media queries to specify separate CSS stylesheet for given reso
 }
 ```
 
+##### CSS styles for IE10+
+If you want to target some CSS styles for IE10 and IE11, with `@media` you can check if the browser supports `-ms-high-contrast` property because it is only implemented in IE10+.
+```css
+@media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ only here */
+}
+```
+
 ##### Calc function
 Although it is not a directive, it is worth mentioning. It is an extremely handy and useful feature:
 ```css
