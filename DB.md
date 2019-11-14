@@ -832,27 +832,39 @@ ORDER BY Sex,
 ```
 Remember that all of the columns you put in **case** statement to order by must be of the same type, otherwise you will have to cast them.
 
+### Find a table by name or phrase
+```sql
+SELECT * FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_NAME LIKE '%Impo%Data'
+```
+
 ### Create table if not exists
 In many SQL scripts it may be useful to create a table only if it doesn't exist yet. To make it you just have to use the **if not exists** expression that will check the result of a little query trying to find a table with the given name. If the result set will be empty the **create table** command will be executed: 
 ```sql
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ImportantData' AND xtype='U')
-CREATE TABLE [Corpo].[dbo].[ImportantData]([Text] [varchar](256) NULL);
+    CREATE TABLE [Corpo].[dbo].[ImportantData]([Text] [varchar](256) NULL);
+```
+Also you can make it like this (which is really great way):
+```sql
+IF OBJECT_ID('[dbo].[ImportantData]') IS NULL
+    CREATE TABLE [dbo].[ImportantData]([Text] [varchar](256) NULL);
 ```
 
 ### Transaction with Try/Catch
-It might be a good idea to put a transaction in try-catch block, here is how to do it correctly:
+It might be a very good idea to put a transaction in try-catch block, here is how to do it correctly:
 ```sql
 BEGIN TRY
-BEGIN TRANSACTION TRX1;
+BEGIN TRANSACTION
 --sql code
-COMMIT TRANSACTION TRX1;
+COMMIT TRANSACTION
 END TRY
-
 BEGIN CATCH
-    ROLLBACK TRANSACTION TRX1;
-    THROW;
+    IF @@trancount > 0
+        ROLLBACK TRANSACTION
+    ;THROW
 END CATCH
 ```
+Read more, much more, [here](http://www.sommarskog.se/error_handling/Part1.html).
 
 ### Strings with diacritical marks
 To be able to store strings with diacritical marks or even more - different alpabets, you should use **nvarchar** type (which uses UTF) and mark the string as unicode with **N** prefix:
@@ -1865,6 +1877,7 @@ doc.Save("file.xml");
 [Many free e-books about DB programming](https://www.syncfusion.com/resources/techportal/ebooks) <br/>
 [Connection strings](https://www.connectionstrings.com/) <br />
 [Advanced free-books](https://www.red-gate.com/simple-talk/books/sql-books/) <br />
+[SQL Server articles](http://www.sommarskog.se/)<br />
 
 #### Entity Framework
 [EF Tutorial](http://www.entityframeworktutorial.net/) <br />
