@@ -1064,6 +1064,20 @@ A very useful thing about this query is that you can get the execution plan hand
 dbcc FREEPROCCACHE(0x0600050037E01805B8A00757000000000000000000000000);
 ```
 
+### Currently running queries
+```sql
+SELECT r.session_id, s.TEXT, r.[status], r.blocking_session_id, r.cpu_time, r.total_elapsed_time
+FROM sys.dm_exec_requests r
+CROSS APPLY sys.dm_exec_sql_text(sql_handle) AS s
+```
+
+### Currently running cursors
+```sql
+SELECT ec.session_id, ec.name,ec.properties, ec.creation_time, ec.is_open, ec.writes,ec.reads,t.text
+FROM sys.dm_exec_cursors (0) ec
+CROSS APPLY sys.dm_exec_sql_text (ec.sql_handle) t
+```
+
 ### Clustered vs. Non-clustered indexes
 * Rows indexed by **clustered index** are physically stored on the disk in the same order as the index. Because of that each table can have only one clustered index. It is very fast to read but a bit slow to delete or add new rows because index may need to be rearranged. While creating a new table in SQL Server, if you will set a column as a PRIMARY KEY it will add automatically new clustered index for this table (if one doesn't exist yet).
 * **Non-clustered index** is a list of pointers to physical rows. So there may be many non-clustered indexes in a table.
@@ -1892,6 +1906,7 @@ doc.Save("file.xml");
 [SQL Documentation](https://docs.microsoft.com/pl-pl/sql/#pivot=sdkstools&panel=sdkstools-all) <br />
 [Optymalizacja](http://www.sqlpedia.pl/tag/optymalizacja/) <br />
 [Execution Plan E-Book](https://www.red-gate.com/library/sql-server-execution-plans-2nd-edition)<br />
+[Cursors options performance](https://sqlperformance.com/2012/09/t-sql-queries/cursor-options)<br />
 
 #### BCP, SQLCMD and other tools
 [BCP](https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server) <br />
