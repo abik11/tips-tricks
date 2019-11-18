@@ -107,7 +107,12 @@ You can use existing providers to create a new **PSDrive** which can optimize yo
 New-PSDrive -name Desktop -PSProvider FileSystem -root C:\users\j.smith\Desktop
 cd desktop:
 ```
-PSDrive created like this will exist only in the current Powershell session.
+PSDrive created like this will exist only in the current Powershell session.<br />
+If you *got lost* in the provider you are using or simply you need to know the exact path of some item of the provider, you can check provider's path easily:
+```powershell
+(Get-Location).ProviderPath
+(Get-Location -PSProvider FileSystem).ProviderPath #you can specify provider type explicitly
+```
 
 ### System variables
 It may be very often useful to work with system variables. And it is very easy to do that in Powershell. Here you can see two ways how to get the value of a system variable, like always in Powershel - ***there is more than one way to do it*** (this is actually [Perl's motto](https://en.wikipedia.org/wiki/There%27s_more_than_one_way_to_do_it) but quite applicable for Powershell too):
@@ -896,9 +901,23 @@ $winPrincipal.Identity.Name
 
 ### Check if current user is Administrator
 ```powershell
-$winPrincipal = [Security.Principal.WindowsPrincipal]([Security.Principal.WindowsIdentity]::GetCurrent())
-$isAdmin = $winPrincipal.IsInRole("Administrator")
+function Test-Admin {
+   $winPrincipal = [Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()
+   $isAdmin = $winPrincipal.IsInRole("Administrator")
+   return $isAdmin
+}
 ```
+It is possible to start a process as Administrator from Powershell, for example running `iisreset.exe` requires admin rights:
+```powershell
+if(Test-Admin){
+   iisreset.exe
+}
+else {
+   $script = { iisreset.exe; exit }
+   Start-Process powershell -Verb runas -ArgumentList "-NoProfile -Command $script"
+}
+```
+The most important thing here is the parameter **-Verb** with **RunAs** value.
 
 ### Currently logged in users
 ```powershell
