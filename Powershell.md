@@ -92,7 +92,7 @@ set-executionPolicy bypass -scope CurrentUser
 ```
 
 ### Powershell providers
-There is something called **Powershell providers**, which is a program that encapsulates some data with access logic, like read, write, list and allows Powershell to use as it was a file system drive. For example **FileSystem** provider brings you the **C:**, **D:** and other drives that are mounted on your machine. **Registry** provider brings you **HKCU** and **HKLM** drives so you can explore Windows Registry with commands like ls, cd, pwd and so on! You can list all the Powershell providers and Powershell drives with **Get-PSProvider** and **Get-PSDrive** commands. Here you can see some little examples:
+There is something called **Powershell providers**, which is a program that encapsulates some data with access logic, like read, write, list and allows Powershell to use it as it was a file system drive. For example **FileSystem** provider brings you the **C:**, **D:** and other drives that are mounted on your machine. **Registry** provider brings you **HKCU** and **HKLM** drives so you can explore Windows Registry with commands like ls, cd, pwd and so on! You can list all the Powershell providers and Powershell drives with **Get-PSProvider** and **Get-PSDrive** commands. Here you can see some little examples:
 ```powershell
 get-PSProvider
 get-PSDrive
@@ -119,7 +119,7 @@ new-item -itemType env -value "C:\Android\android-sdk" ANDROID_HOME
 #method 2
 $env:ANDROID_HOME = "C:\Android\android-sdk" 
 ```
-In method one we use PSProvider and **new-item** cmdlet to add new variable. With the same method we can add files, directories, registry keys and many more, depending on your PSProviders!
+In method 1 we use PSProvider (`Env:`) and **new-item** cmdlet to add new variable. With the same method we can add files, directories, registry keys and many more, depending on your PSProviders!
 
 ### Powershell profile
 You can personalize Powershell console and variables. There is something called Powershell profile, it is a Powershell script that will be run before the console will start. You can put there some variable initialization, some customization, anything you want Powershell do for you everytime when you work in the console. One of the most useful things is to put there module or library imports so you will have all the necesary functions and cmdlets after starting Powershell console. The path to Powershell profile is stored in **$profile** variable.
