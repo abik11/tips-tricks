@@ -91,6 +91,12 @@ set-executionPolicy unrestricted -scope localMachine
 set-executionPolicy bypass -scope CurrentUser
 ```
 
+### Unblock scripts
+When you download PowerShell files from the Internet in Windows 10 they are *blocked* by default and everytime you will try to import them or run them you will see a *Security warning*. If you don't want to see this warning, you have to unblock them. You can: ->right click on a file ->Properties ->Unblock, or let's assume that you have a lot of scripts in your *Downloads* directory and you want to unblock them:
+```powershell
+ls "$env:userprofile\Downloads\" | unblock-file
+```
+
 ### Powershell providers
 There is something called **Powershell providers**, which is a program that encapsulates some data with access logic, like read, write, list and allows Powershell to use it as it was a file system drive. For example **FileSystem** provider brings you the **C:**, **D:** and other drives that are mounted on your machine. **Registry** provider brings you **HKCU** and **HKLM** drives so you can explore Windows Registry with commands like ls, cd, pwd and so on! You can list all the Powershell providers and Powershell drives with **Get-PSProvider** and **Get-PSDrive** commands. Here you can see some little examples:
 ```powershell
