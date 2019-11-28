@@ -1641,7 +1641,7 @@ watch.Start();
 // some code to test
 
 watch.Stop();
-int measuredTime = watch.Elapsed.TotalMilliseconds;
+int measuredTime = (int)watch.Elapsed.TotalMilliseconds;
 ```
 This method has a very good accuracy and is quite common. Two methods can be very useful while working with **Stopwatch** class: 
 * **Reset** - stops and sets the result to 0
