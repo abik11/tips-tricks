@@ -1,11 +1,6 @@
 # Web development
 Web dev is an extremely vast topic. There are plenty of different things that you can mix and blend toegether to build modern web. Moreover web became so much integreated into our lives that it is a really useful to know web technologies. This is not a tutorial how to becaome a web developer, it is justa a bunch of tips and tricks or some interesting stuff that was more or less useful to me at my work, especially at the beginning.
 
-#### Chrome shortcuts
-* `F12` - debug tools
-* `F11` - full screen
-* `CTRL + N` - new window
-
 * [Javascript](#javascript)
 * [Libraries](#libraries)
 * [Npm](#npm)
@@ -25,6 +20,11 @@ Read also:
 * [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp.md#aspnet-mvc)
 * [MongoDB](https://github.com/abik11/tips-tricks/blob/master/DB.md#mongodb)
 * [VS Code](https://github.com/abik11/tips-tricks/blob/master/W10+VS17+TFS.md#vs-code)
+
+#### Chrome shortcuts
+* `F12` - debug tools
+* `F11` - full screen
+* `CTRL + N` - new window
 
 ## Javascript
 
