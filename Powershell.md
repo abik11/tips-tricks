@@ -1211,14 +1211,40 @@ If the network from which you send messages is under proxy, to make this work, y
 ### IIS 
 There is a nice command line tool available for IIS managment in `C:\Windows\System32\inetsrv`. You can get the list of IIS object, actions that you can make with site (or any other) object, the list of all sites:
 ```powershell
-.\appcmd.exe 
-.\appcmd.exe site /?
-.\appcmd.exe list site
+$iis = & "$env:windir\System32\inetsrv\appcmd.exe"
+& $iis site /?
+& $iis list site
 ```
 You can restart the given site
 ```powershell
-.\appcmd.exe stop site /site.name:MyWeb
-.\appcmd.exe start site /site.name:MyWeb
+& $iis stop site /site.name:MyWeb
+& $iis start site /site.name:MyWeb
+```
+
+### Add a certificate for IIS HTTPS connections
+If you've installed WebAdministration module you can easily check what certificates are applied:
+```powershell
+ipmo webadministration
+ls iis:\sslbindings | ? { $_.sites.value -eq "Your Site" }
+```
+Also you can check it with `netsh` command:
+```powershell
+netsh http show sslcert ipport=0.0.0.0:443
+```
+To add a certificate you have to know its hash and id of the application to which the certificate will be assigned:
+```powershell
+$IISAppId = "{4dc3e181-e14b-4a21-b022-59fc669b0914}"
+$certhash = Get-ChildItem Cert:\LocalMachine\My\ `
+    | Where-Object { $_.Subject -eq 'CN=localhost' } `
+    | Select-Object -ExpandProperty Thumbprint
+```
+Finally you can add the certificate:
+```powershell
+netsh http add sslcert ipport=0.0.0.0:443 certhash=$certhash appid=$IISAppId
+```
+or delete it if necessary:
+```powershell
+netsh http delete sslcert ipport=0.0.0.0:443
 ```
 
 ### Work with Windows
