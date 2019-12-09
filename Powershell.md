@@ -1211,7 +1211,7 @@ If the network from which you send messages is under proxy, to make this work, y
 ### IIS 
 There is a nice command line tool available for IIS managment in `C:\Windows\System32\inetsrv`. You can get the list of IIS object, actions that you can make with site (or any other) object, the list of all sites:
 ```powershell
-$iis = & "$env:windir\System32\inetsrv\appcmd.exe"
+$iis = "$env:windir\System32\inetsrv\appcmd.exe"
 & $iis site /?
 & $iis list site
 ```
