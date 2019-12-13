@@ -1366,7 +1366,7 @@ get-sqlAgentJobHistory -serverInstance sepmsrv124 -Jobname 'Full backup' -since 
 ```csharp
 using Microsoft.SqlServer.Management.Smo;
 
-Server srv = new Server("srv114);
+Server srv = new Server("srv114");
 Console.WriteLine(srv.ToString());
 foreach(Database db in srv.Databases)
 {
@@ -1457,7 +1457,7 @@ There of course many other useful and important cmdlets provided by SQLPSX. The 
 `invoke-query` that allows to execute select queries and returns the results of the query.<br />
 It is a nice tool but it is worth thinking if using SMO with Powershell is not a better solution?
 
-### SQL Complete
+### dbForge SQL Complete
 It is a great plugin for **SQL Server Management Studio** which adds autocompletion features. The express version is free and you can download it [here](https://marketplace.visualstudio.com/items?itemName=DevartSoftware.dbForgeSQLCompleteExpress).
 
 ## SSIS
