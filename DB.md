@@ -1457,6 +1457,9 @@ There of course many other useful and important cmdlets provided by SQLPSX. The 
 `invoke-query` that allows to execute select queries and returns the results of the query.<br />
 It is a nice tool but it is worth thinking if using SMO with Powershell is not a better solution?
 
+### SQL Complete
+It is a great plugin for **SQL Server Management Studio** which adds autocompletion features. The express version is free and you can download it [here](https://marketplace.visualstudio.com/items?itemName=DevartSoftware.dbForgeSQLCompleteExpress).
+
 ## SSIS
 SQL Server Integration Services is a Microsoft ETL tool (Extract Transform Load). It allows to import, export, combine, filter, sort data from any different sources like SQL Server, MySQL, Oracle, Excel, CSV and many more. It is very powerful and even allows to write C# scripts.
 
