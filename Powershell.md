@@ -1366,6 +1366,13 @@ In Windows 10 there is something as Appx Package. As default some stuff is insta
 Get-AppxPackage *spotify* | remove-AppxPackage
 ```
 
+### How to automatically answer Y/N questions when prompted?
+A lot of command line applications ask *questions* to make sure that a user really wants to execute given operation or other things and it may be difficult to automate such application and give them answer from Powershell. You can try to handle it in the following way:
+```powershell
+echo 'n' | git clean -xfd
+```
+which will automatically send `n` (no) as answer for every question that will be raised.
+
 ## Pester and modules
 Pester is the most popular Powershell unit test and mock framework. It is so popular that it became the part of Powershell 5 by default. It is similar to Javascript Mocha and Chai frameworks. Tests written with Pester have rather Behaviour-Driven Development style and tend to be more human-readable.<br />
 Unit testing is a great mix with powershell modules which allows to group functions, variables into packages that can be imported by a script or into Powershell console. Modules are easily testable and encourage a better approach for writing Powershell code.
