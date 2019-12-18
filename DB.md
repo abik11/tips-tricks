@@ -884,7 +884,7 @@ SELECT DATALENGTH('A'), DATALENGTH(N'A') --returns 1 and 2
 ```
 
 ### Join/Concat strings from query
-If you use **SQL Server 2017** or newer you can use new aggregate function called *STRING_AGG*:
+If you use **SQL Server 2017** or newer you can use new aggregate function called **STRING_AGG**:
 ```sql
 SELECT s.Name, STRING_AGG(a.Name, ', ')
 FROM System_Application sa
