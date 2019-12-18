@@ -883,6 +883,24 @@ Be careful with **nvarchar** type because **DATALENGTH** actually returns the nu
 SELECT DATALENGTH('A'), DATALENGTH(N'A') --returns 1 and 2
 ```
 
+### Join/Concat strings from query
+If you use **SQL Server 2017** or newer you can use new aggregate function called *STRING_AGG*:
+```sql
+SELECT s.Name, STRING_AGG(a.Name, ', ')
+FROM System_Application sa
+JOIN System s ON sa.SystemId = s.Id
+JOIN Application a ON sa.ApplicationId = a.Id
+GROUP BY s.Name
+```
+For older versions you can use **FOR XML PATH** syntax:
+```sql
+SELECT CAST(a.Name + ';' AS VARCHAR(MAX))
+FROM System_Application sa
+JOIN System s ON sa.SystemId = s.Id
+JOIN Application a ON sa.ApplicationId = a.Id
+FOR XML PATH ('')
+```
+
 ## SQL Server
 Microsoft SQL Server is complex Database Management System (DBMS), shiped by Microsoft, implementing T-SQL.
 
