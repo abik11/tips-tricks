@@ -1028,6 +1028,20 @@ If you encounter the following error: `TypeError: (0 , _vuex2.default) is not a 
 ## React
 ReactJS is a UI library to allow you to build better views and SPA (Single Page Applications), it is developed by Facebook and became an extremely popular library/framework used to build modern web applications. It is very fast by the way!
 
+### Magic behind JSX
+All the magic behind **JSX** is done by `React.createElement` method, for example, the following code:
+```javascript
+const element = (
+    <h1 className="greeting">Hello</h1>
+);
+```
+is equivalent to simple execution of `createElement` method:
+```javascript
+const element = React.createElement(
+    'h1', {className:'greeting'}, 'Hello'
+);
+```
+
 ### Nice way to bind onchange event
 ```javascript
 class MyComponent extends Component {
