@@ -15,9 +15,9 @@ Read also:
 * [Databases](https://github.com/abik11/tips-tricks/blob/master/DB.md)
 * [Linq](https://github.com/abik11/tips-tricks/blob/master/DB.md#linq)
 * [Excel COM](https://github.com/abik11/tips-tricks/blob/master/VBA.md#c)
-* [Visual Studio](https://github.com/abik11/tips-tricks/blob/master/W10%2BVS17%2BTFS.md#visual-studio)
-* [TFS](https://github.com/abik11/tips-tricks/blob/master/W10%2BVS17%2BTFS.md#tfs-and-other-version-control-systems)
-* [IIS](https://github.com/abik11/tips-tricks/blob/master/W10+VS17+TFS.md#iis)
+* [Visual Studio](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#visual-studio)
+* [TFS](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#tfs)
+* [IIS](https://https://github.com/abik11/tips-tricks/blob/master/OS+Net.md#iis)
 * [DevExpress](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md)
 
 ### CSC Compiler
