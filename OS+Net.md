@@ -21,6 +21,7 @@
 * `win + ArrowLeft/Right` - move window left or right
 * `ALT + TAB` - change window
 * `win + P` - projector pane
+* `win + V` - clipboard (list of lately coppied stuff)
 
 ### Run commands
 * `msconfig` - autorun settings and tools
