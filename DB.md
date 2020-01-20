@@ -783,6 +783,19 @@ WHEN MATCHED THEN
 		T.GCRecord = S.GCRecord;
 ```
 
+### Get first row of a group
+Imagine that you have a *GROUP BY* query, but you really want to get is the first row of each group. It is very easy to achieve with **ROW_NUMBER** function:
+```sql
+WITH firstPOItem AS (
+    SELECT PONumber,
+           ROW_NUMBER() OVER(PARTITION BY Product_id ORDER BY PODate) AS row_number
+)
+SELECT *
+FROM firstPOItem
+WHERE row_number = 1
+```
+This way for example you can list first *PO Numbers* for every product.
+
 ### Date-time functions
 Handling dates is very often used and crucial skill while programming in SQL. Thankfully there are few extremely useful and easy to use functions that makes programmers lifes easier. 
 ```sql
