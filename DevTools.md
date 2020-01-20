@@ -356,8 +356,8 @@ With aliases you can create some short commands so you can work faster with git.
     a =add .
     c =commit
     undo =checkout -- .
-    untrack =clean -f
-    cp =cherry-pick
+    untrack =clean -fd
+    chp =cherry-pick
     st =stash
     stp =stash pop
     stl =stash list    
