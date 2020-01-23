@@ -417,6 +417,16 @@ Of course you can also define your own snippets, not only for HTML. There is eve
 ### Open git repository in VS Code
 Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste the repository URL and push `Enter`. Quite simple, isn't it?
 
+### unins000.exe error
+While working with **VS Code** you may encounter annoying errors like this:
+```
+C:\Program Files\VS Code\Microsoft VS Code\unins000.exe
+An error occured while trying to create a file in the destination directory:
+Access is denied.
+(...)
+```
+It may happen if you have installed *User Setup* of VS Code in `C:\Program Files` instead of `%appdata%`. On the **Programs and Features** list in **Control Panel**, if you will notice `(User Setup)` toegether with VC Code, then you should rather install *System Setup* - [System Installer](https://code.visualstudio.com/#alt-downloads) - or install *User Setup* in `%appdata%` (as it suggests by default). 
+
 ## Other
 
 ### Test code in Postman
