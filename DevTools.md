@@ -350,23 +350,32 @@ With aliases you can create some short commands so you can work faster with git.
 [alias]
     f =fetch
     s =status
+    fs =! git fetch && git status
     p =pull -r
+    
     b =branch
     cho =checkout
+    
     a =add .
     c =commit
+    cm =commit -m
+    
+    unstage =restore --staged .
     undo =checkout -- .
     untrack =clean -fd
+    undoall =! git restore --staged . && git checkout -- . && git clean -fd
+    
     chp =cherry-pick
     st =stash
     stp =stash pop
-    stl =stash list    
+    stl =stash list  
 ```
 Such aliases can be used in the following manner:
 ```
 git s
 git p
 ```
+With `!` operator you can run commands from the context of command line (shell), in case of Windows it would be **cmd.exe**, so it allows to combine many git commands into one alias - really useful technic!
 
 ### Ignore files
 To ignore files which are already added to git repository, you can use `git update-index --skip-worktree file/path`. A nice trick is to add an alias with all the files that you want to ignore so you can easily ignore them anytime needed. You should add the following code in git config file:
