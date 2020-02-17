@@ -20,7 +20,7 @@ Read also:
 * [Visual Studio](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#visual-studio)
 * [TFS](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#tfs)
 * [IIS](https://https://github.com/abik11/tips-tricks/blob/master/OS+Net.md#iis)
-* [DevExpress](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md)
+* [DevExpress](https://github.com/abik11/tips-tricks/blob/master/DevExpress)
 
 ### CSC Compiler
 If you want to test some little piece of code and creating a new solution in Visual Studio is defenietely waste of time for you for such a little piece, than you can use CSC compiler directly from command line, see how to do it:

@@ -1,9 +1,7 @@
 # DB Progamming - Tips for beginners
 Most useful (but basic) tips and tricks that will make DB programming much easier task. It is not a complex guide from zero to hero, just a set of advices and things that might be usefulf, life- and time-saving. All that you will encounter here is written from the perspective of a .Net developer.
 
-* [XPO](#xpo)
-* [Entity Framework](#entity-framework)
-* [Code First in EF](#code-first-in-ef)
+* [Entity Framework](https://github.com/abik11/tips-tricks/blob/master/DB/EntityFramework.md)
 * [ADO .Net](https://github.com/abik11/tips-tricks/blob/master/DB/ADONET.md)
 * [T-SQL](https://github.com/abik11/tips-tricks/blob/master/DB/T-SQL.md)
 * [SQL Server](https://github.com/abik11/tips-tricks/blob/master/DB/SQLServer.md)
@@ -16,7 +14,7 @@ Most useful (but basic) tips and tricks that will make DB programming much easie
 * [Useful links](#useful-links)
 
 Read also:
-* [XPO](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#xpo)
+* [XPO](https://github.com/abik11/tips-tricks/blob/master/DevExpress/XPO.md)
 * [Linq](https://github.com/abik11/tips-tricks/blob/master/CSharp/Linq.md)
 * [XML](https://github.com/abik11/tips-tricks/blob/master/CSharp/XML.md)
 

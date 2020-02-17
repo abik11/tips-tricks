@@ -15,7 +15,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [Useful links](#useful-links)
 
 Read also:
-* [DevExtreeme](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#devextreeme)
+* [DevExtreeme](https://github.com/abik11/tips-tricks/blob/master/DevExpress/DevExtreeme.md)
 * [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp/ASPNET_MVC.md)
 * [MongoDB](https://github.com/abik11/tips-tricks/blob/master/DB/MongoDB.md)
 * [VS Code](https://github.com/abik11/tips-tricks/blob/master/DevTools.md#vs-code)
