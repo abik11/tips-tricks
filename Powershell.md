@@ -16,7 +16,7 @@ This is not a complete guide how to learn Powershell. This is just a set of some
 * [Useful links](#useful-links)
 
 Read also:
-* [Databases](https://github.com/abik11/tips-tricks/blob/master/DB.md)
+* [Databases](https://github.com/abik11/tips-tricks/blob/master/DB)
 * [Excel COM](https://github.com/abik11/tips-tricks/blob/master/VBA.md#powershell)
 
 ## Everyday struggles

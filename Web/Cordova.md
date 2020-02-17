@@ -6,7 +6,7 @@
 * [Useful links](#useful-links)
 
 Read also:
-* [Publish .apk file in IIS](https://github.com/abik11/tips-tricks/blob/master/OS+Net.md#publish-android-apk)
+* [Publish .apk file in IIS](https://github.com/abik11/tips-tricks/blob/master/CSharp/IIS.md#publish-android-apk)
 
 ## Cordova CLI
 You can use different tools to work with Cordova, for example **Visual Studio Tools for Apache Cordova** to manage Cordova with Visual Studio. But still it may be useful to know how to handle Cordova through command line in case if other tools will not be able to do the job or something will go wrong.

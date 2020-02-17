@@ -8,6 +8,7 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 * [WPF](https://github.com/abik11/tips-tricks/blob/master/CSharp/GUI.md#wpf)
 * [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp/ASPNET_MVC.md)
 * [WCF](https://github.com/abik11/tips-tricks/blob/master/CSharp/WCF.md)
+* [IIS](https://github.com/abik11/tips-tricks/blob/master/CSharp/IIS.md)
 * [XML](https://github.com/abik11/tips-tricks/blob/master/CSharp/XML.md)
 * [Performance tips](https://github.com/abik11/tips-tricks/blob/master/CSharp/Performance.md)
 * [NUnit](https://github.com/abik11/tips-tricks/blob/master/CSharp/NUnit.md)
@@ -19,7 +20,6 @@ Read also:
 * [Excel COM](https://github.com/abik11/tips-tricks/blob/master/VBA.md#c)
 * [Visual Studio](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#visual-studio)
 * [TFS](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#tfs)
-* [IIS](https://https://github.com/abik11/tips-tricks/blob/master/OS+Net.md#iis)
 * [DevExpress](https://github.com/abik11/tips-tricks/blob/master/DevExpress)
 
 ### CSC Compiler
