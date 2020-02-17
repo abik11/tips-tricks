@@ -18,8 +18,9 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 Read also:
 * [Databases](https://github.com/abik11/tips-tricks/blob/master/DB)
 * [Excel COM](https://github.com/abik11/tips-tricks/blob/master/VBA.md#c)
-* [Visual Studio](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#visual-studio)
-* [TFS](https://https://github.com/abik11/tips-tricks/blob/master/DevTools.md#tfs)
+* [Visual Studio](https://https://github.com/abik11/tips-tricks/blob/master/DevTools/VisualStudio.md)
+* [TFS](https://https://github.com/abik11/tips-tricks/blob/master/DevTools/TFS.md)
+* [Git](https://https://github.com/abik11/tips-tricks/blob/master/DevTools/Git.md)
 * [DevExpress](https://github.com/abik11/tips-tricks/blob/master/DevExpress)
 
 ### CSC Compiler

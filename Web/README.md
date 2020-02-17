@@ -18,7 +18,7 @@ Read also:
 * [DevExtreeme](https://github.com/abik11/tips-tricks/blob/master/DevExpress/DevExtreeme.md)
 * [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp/ASPNET_MVC.md)
 * [MongoDB](https://github.com/abik11/tips-tricks/blob/master/DB/MongoDB.md)
-* [VS Code](https://github.com/abik11/tips-tricks/blob/master/DevTools.md#vs-code)
+* [VS Code](https://github.com/abik11/tips-tricks/blob/master/DevTools/VSCode.md)
 
 ### Chrome shortcuts
 * `F12` - debug tools
