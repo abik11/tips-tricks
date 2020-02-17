@@ -6,7 +6,6 @@
 * [Useful links](#useful-links)
 
 Read also:
-* [Web](https://github.com/abik11/tips-tricks/blob/master/Web.md)
 * [Publish .apk file in IIS](https://github.com/abik11/tips-tricks/blob/master/OS+Net.md#publish-android-apk)
 
 ## Cordova CLI
@@ -116,7 +115,7 @@ It may be caused because you work in a network with proxy. To configure proxy in
 * Force https:// source: TRUE
 
 ### Failed to fetch platform android + Error: tunneling socket
-If you will encounter any proxy errors, they may come from few different sources: npm, gradle and git. To know how to set proxy configuration for npm and git go [here](https://github.com/abik11/tips-tricks/blob/master/Web.md#proxy-configuration-for-npm).<br />
+If you will encounter any proxy errors, they may come from few different sources: npm, gradle and git. To know how to set proxy configuration for npm and git go [here](https://github.com/abik11/tips-tricks/blob/master/Web/Npm.md#proxy-configuration-for-npm).<br />
 Then, change this file: `.\MySolution\MobileProject\platforms\android\gradle.properties` to this:
 ```text
 systemProp.proxySet="true"

@@ -2,20 +2,19 @@
 Web dev is an extremely vast topic. There are plenty of different things that you can mix and blend toegether to build modern web. Moreover web became so much integreated into our lives that it is a really useful to know web technologies. This is not a tutorial how to becaome a web developer, it is justa a bunch of tips and tricks or some interesting stuff that was more or less useful to me at my work, especially at the beginning.
 
 * [Javascript](https://github.com/abik11/tips-tricks/blob/master/Web/Javascript.md)
-* [Libraries]()
-* [Npm]()
-* [Webpack]()
+* [Npm](https://github.com/abik11/tips-tricks/blob/master/Web/Npm.md)
+* [Webpack](https://github.com/abik11/tips-tricks/blob/master/Web/Webpack.md)
 * [Vue](https://github.com/abik11/tips-tricks/blob/master/Web/Vue.md)
 * [React](https://github.com/abik11/tips-tricks/blob/master/Web/React.md)
 * [JQuery](https://github.com/abik11/tips-tricks/blob/master/Web/JQuery.md)
-* [DataTables ( ??? )]()
-* [HTML and CSS]()
-* [CSS Animations ( ??? )](https://github.com/abik11/tips-tricks/blob/master/Web/CSSAnimations.md)
+* [DataTables](https://github.com/abik11/tips-tricks/blob/master/Web/DataTables.md)
+* [HTML and CSS](https://github.com/abik11/tips-tricks/blob/master/Web/HTML_CSS.md)
+* [CSS Animations](https://github.com/abik11/tips-tricks/blob/master/Web/CSSAnimations.md)
 * [Google Maps Api](https://github.com/abik11/tips-tricks/blob/master/Web/GoogleMaps.md)
+* [Cordova](https://github.com/abik11/tips-tricks/blob/master/Web/Cordova.md)
 * [Useful links](#useful-links)
 
 Read also:
-* [Cordova](https://github.com/abik11/tips-tricks/blob/master/Cordova.md)
 * [DevExtreeme](https://github.com/abik11/tips-tricks/blob/master/DevExpress.md#devextreeme)
 * [ASP.NET MVC](https://github.com/abik11/tips-tricks/blob/master/CSharp/ASPNET_MVC.md)
 * [MongoDB](https://github.com/abik11/tips-tricks/blob/master/DB/MongoDB.md)
