@@ -1,5 +1,5 @@
 ## IIS
-**Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server. [Here](https://github.com/abik11/tips-tricks/blob/master/Powershell/TaskAutomation#iis) you can learn a little bit about how to work with IIS thorugh the command line which might be useful for task automation.
+**Internet Information Services** is a web server developed by Microsoft. It is very popular, especially for hosting .Net applications and can be easily installed on Windows Server. [Here](https://github.com/abik11/tips-tricks/blob/master/Powershell/TaskAutomation.md#iis) you can learn a little bit about how to work with IIS thorugh the command line which might be useful for task automation.
 
 ### Install IIS in Windows Server
 ->Server Manager ->Dashboard ->Add roles and features ->Features ->.Net Framework, IIS Hostable Web Core, Windows Process Activation Service
