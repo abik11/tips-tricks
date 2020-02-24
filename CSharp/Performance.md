@@ -71,11 +71,43 @@ In case of reference types it is important to remember that their values are not
 List<int> tmp1;
 List<int> tmp2 = tmp1; 
 ```
+Read much more [here](https://adamsitnik.com/Value-Types-vs-Reference-Types/#summary).
 
 #### Ref vs. out
 The value of the reference of the object is passed to the function when object is passed as an argument. And in case of value types the value itself is passed. But with **ref** and **out** it is possible to also pass value type variables by reference. But those modifiers also have their meaning for reference types.
 * ref - means that the given argument may be modified within the function and is passed by reference (in case of both - reference and value type)
 * out - means that the given argument will be initialized (so it doesn't have to be initialized before passing it to the method - which is quite unusual for value types) or a value will be assigned to it
+
+See here an example:
+```csharp
+namespace Test 
+{
+    struct Product 
+    {
+        public int Code { get; set; }
+    }
+    
+    class Program
+    {
+        static void SetProduct(out Product p)
+        {
+            //out forces you to initialize or assign a value to the parameter that is marked as out
+            p = new Product();
+        }
+
+        static void SetProduct(ref Product p)
+        {
+                //you cannot have overloaded methods that differ only with ref and out            
+        }
+        
+        static void Main(string[] args)
+        {
+            Product p;
+            SetProduct(out p);
+        }
+    }
+}
+```
 
 ### Performance tips
 * Avoid boixng and uboxing (casting variables to **object**) - use `int[]` and `List<int>` instead of **List** and **ArrayList**
