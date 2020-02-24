@@ -57,7 +57,7 @@ String.Equals("test", "TEST", StringComparison.OrdinalIgnoreCase);
 **Double** and **float** store numbers in the base of 2, while **Decimal** stores numbers in the base of 10. Double and float are much faster because the processor can work on them directly. On the other hand Decimal is much more accurate in calculations.
 
 ### Reference and value types
-Objects are given as reference by default. Value types and structs are given by value, **ref** and **out** keywords have any meaning only when they are used with them.<br />
+Reference type variables store a reference to the object stored on the heap. Value type variables (and structs among them) store the real value that is stored on the stack.<br />
 Value types cannot be modified. Every time when some kind of modification is tried to be done, a new new value is created instead. That's why for example if you want to modify some string many times, it is recomended to use **StringBuilder** class. See an example:
 ```csharp
 //in such little example it is ok, but for much more modifications it is not a good way   
