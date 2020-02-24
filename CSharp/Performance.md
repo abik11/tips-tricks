@@ -72,6 +72,11 @@ List<int> tmp1;
 List<int> tmp2 = tmp1; 
 ```
 
+#### Ref vs. out
+The value of the reference of the object is passed to the function when object is passed as an argument. And in case of value types the value itself is passed. But with **ref** and **out** it is possible to also pass value type variables by reference. But those modifiers also have their meaning for reference types.
+* ref - means that the given argument may be modified within the function and is passed by reference (in case of both - reference and value type)
+* out - means that the given argument will be initialized (so it doesn't have to be initialized before passing it to the method - which is quite unusual for value types) or a value will be assigned to it
+
 ### Performance tips
 * Avoid boixng and uboxing (casting variables to **object**) - use `int[]` and `List<int>` instead of **List** and **ArrayList**
 * Use **StringBuilder** - it uses the pointer to the string internally and does not create new string every time you try to modify it.
