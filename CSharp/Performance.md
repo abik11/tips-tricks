@@ -53,28 +53,29 @@ Large objects, over 85000 bytes are stored in Large Object Heap (LOH), which is 
 String.Equals("test", "TEST", StringComparison.OrdinalIgnoreCase);
 ```
 
-### Decimal vs. double
-**Double** and **float** store numbers in the base of 2, while **Decimal** stores numbers in the base of 10. Double and float are much faster because the processor can work on them directly. On the other hand Decimal is much more accurate in calculations.
-
-### Reference and value types
-Reference type variables store a reference to the object stored on the heap. Value type variables (and structs among them) store the real value that is stored on the stack.<br />
-Value types cannot be modified. Every time when some kind of modification is tried to be done, a new new value is created instead. That's why for example if you want to modify some string many times, it is recomended to use **StringBuilder** class. See an example:
+### Immutable strings
+Strings cannot be modified. Every time when some kind of modification is tried to be done, a new new value is created instead. That's why it is recomended to use StringBuilder class. See an example:
 ```csharp
-//in such little example it is ok, but for much more modifications it is not a good way   
-string tmp1 = "a" + "b" + "c"; 
+//in such little example it is ok, but for much more modifications it is not a good way
+string tmp1 = "a" + "b" + "c";
 
 StringBuilder tmp2 = new StringBuilder();
 tmp2.append("a").append("b").append("c");
 ```
-In case of reference types it is important to remember that their values are not copied, but they reference are. In the following example both `tmp1` and `tmp2` are references to **the same object**:
+
+### Decimal vs. double
+**Double** and **float** store numbers in the base of 2, while **Decimal** stores numbers in the base of 10. Double and float are much faster because the processor can work on them directly. On the other hand Decimal is much more accurate in calculations.
+
+### Reference and value types
+Reference type variables store a reference to the object stored on the heap. Value type variables (and structs among them) store the real value that is stored on the stack. It is important to remember that their value is not copied, but their reference is. In the following example both `tmp1` and `tmp2` are references to **the same object**:
 ```csharp
 List<int> tmp1;
-List<int> tmp2 = tmp1; 
+List<int> tmp2 = tmp1;
 ```
-Read much more [here](https://adamsitnik.com/Value-Types-vs-Reference-Types/#summary).
+Read much more [here](https://adamsitnik.com/Value-Types-vs-Reference-Types/#summary) and also a little bit [here](https://devblogs.microsoft.com/premier-developer/box-or-not-to-box-that-is-the-question/).
 
 #### Ref vs. out
-The value of the reference of the object is passed to the function when object is passed as an argument. And in case of value types the value itself is passed. But with **ref** and **out** it is possible to also pass value type variables by reference. But those modifiers also have their meaning for reference types.
+The value of the reference of the object is passed to the function when object is passed as an argument (what might be an overkill if the value is big). And in case of value types the value itself is passed. But with **ref** and **out** it is possible to also pass value type variables by reference. But those modifiers also have their meaning for reference types.
 * ref - means that the given argument may be modified within the function and is passed by reference (in case of both - reference and value type)
 * out - means that the given argument will be initialized (so it doesn't have to be initialized before passing it to the method - which is quite unusual for value types) or a value will be assigned to it
 
