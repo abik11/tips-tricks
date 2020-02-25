@@ -72,7 +72,9 @@ Reference type variables store a reference to the object stored on the heap. Val
 List<int> tmp1;
 List<int> tmp2 = tmp1;
 ```
-Read much more [here](https://adamsitnik.com/Value-Types-vs-Reference-Types/#summary) and also a little bit [here](https://devblogs.microsoft.com/premier-developer/box-or-not-to-box-that-is-the-question/).
+Read much more [here](https://adamsitnik.com/Value-Types-vs-Reference-Types/#summary) and also a little bit [here](https://devblogs.microsoft.com/premier-developer/box-or-not-to-box-that-is-the-question/).<br />
+When a **value type** is defined as a field **inside of a reference type**, the complete data of the value type instance is stored inline within the instance of the reference type inside **GC Heap**.<br />
+On the other hand, when a **reference type** is defined as a field **inside of a value type**, **only the object reference** to the reference type instance is stored on **stack** inline within the instance of the value type. In such case the **reference type instance** is still and **ALWAYS** stored in **GC Heap**.
 
 #### Ref vs. out
 The value of the reference of the object is passed to the function when object is passed as an argument (what might be an overkill if the value is big). And in case of value types the value itself is passed. But with **ref** and **out** it is possible to also pass value type variables by reference. But those modifiers also have their meaning for reference types.
