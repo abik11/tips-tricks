@@ -17,6 +17,7 @@
 #### Git
 [Git Book](https://git-scm.com/book/en/v2)<br />
 [Visualizing Git](https://git-school.github.io/visualizing-git/)<br />
+[Learn git with bitbucket](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)<br />
 [Poznaj Gita - Polish](https://poznajgita.pl/)<br />
 [Configuración de un repositorio Git en Visual Studio - Español](https://www.kabel.es/configuracion-git-visual-studio/)<br />
 [Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
