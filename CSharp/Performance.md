@@ -77,9 +77,9 @@ When a **value type** is defined as a field **inside of a reference type**, the 
 On the other hand, when a **reference type** is defined as a field **inside of a value type**, **only the object reference** to the reference type instance is stored on **stack** inline within the instance of the value type. In such case the **reference type instance** is still and **ALWAYS** stored in **GC Heap**.
 
 #### Ref vs. out
-The value of the reference of the object is passed to the function when object is passed as an argument (what might be an overkill if the value is big). And in case of value types the value itself is passed. But with **ref** and **out** it is possible to also pass value type variables by reference. But those modifiers also have their meaning for reference types.
-* ref - means that the given argument may be modified within the function and is passed by reference (in case of both - reference and value type)
-* out - means that the given argument will be initialized (so it doesn't have to be initialized before passing it to the method - which is quite unusual for value types) or a value will be assigned to it
+The value of the reference of the object is passed to the function when object is passed as an argument. And in case of value types the value itself is passed (what might be an overkill if the value is big). But with **ref** and **out** it is possible to also pass value type variables by reference.
+* ref - means that the given argument will be passed by reference and may be modified within the function (changes made to the argument will be preserved)
+* out - means that the given argument will be passed by reference and it will be initialized or a value will be assigned to it (so it doesn't have to be initialized before passing it to the method - which is quite unusual for value types)
 
 See here an example:
 ```csharp
@@ -111,6 +111,28 @@ namespace Test
     }
 }
 ```
+
+#### Why to use ref or out with reference types?
+It is said that reference types instances are passed by reference, but it is a mental shortcut. What is really passed to a function when you specify an instance (object) of a reference type (class) as a parameter is the **VALUE** of the reference. What does it mean in practice? That you cannot change the object you pass to the function - see an example:
+```csharp
+class Product
+{
+    public int Code { get; set; };
+    public Product(int code) => Code = code;
+}
+
+static void CreateProduct(Product p, int code) => p = new Product(code);
+
+static void Main()
+{
+    Product p = new Product(10);
+
+    Console.WriteLine(p.Code); //prints 10
+    CreateProduct(p, 20);
+    Console.WriteLine(p.Code); //prints 10
+}
+```
+In the `CreateProduct` function a new object was created and its reference was assigned to local variable (parameter) `p` which cannot be accessed out of the function. The reference value that was passed to the function did not changed, neither did the object.<br />To allow modification of the object **ref** should have been used.
 
 ### Performance tips
 * Avoid boixng and uboxing (casting variables to **object**) - use `int[]` and `List<int>` instead of **List** and **ArrayList**
