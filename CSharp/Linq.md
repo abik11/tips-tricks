@@ -52,6 +52,18 @@ dataCollection.CountLong; // + GOOD
 dataCollection.Count; // - BAD
 ```
 
+#### Value cannot be null - parameter name: source
+If you have a piece of code like this - any Linq method called on `IQueryable` instance:
+```csharp
+session.Query<Product>().Where(p => p.Price > 10);
+```
+and it throws the exception:
+```
+System.ArgumentNullException : Value cannot be null.
+Parameter name: source
+```
+it might mean that the expressions before Linq methods returned `null` and you cannot call Linq method on a null object.
+
 ### Group by multiple columns
 ```csharp
 var result =
