@@ -295,3 +295,9 @@ JOIN System s ON sa.SystemId = s.Id
 JOIN Application a ON sa.ApplicationId = a.Id
 FOR XML PATH ('')
 ```
+
+### Sleep
+You can make T-SQL script or procedure to wait for a given time with **WAITFOR** command, for example here it will sleep for 10 seconds:
+```sql
+WAITFOR DELAY '00:00:10'
+```
