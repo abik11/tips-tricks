@@ -206,6 +206,11 @@ CROSS APPLY sys.dm_exec_sql_text (ec.sql_handle) t
 * Rows indexed by **clustered index** are physically stored on the disk in the same order as the index. Because of that each table can have only one clustered index. It is very fast to read but a bit slow to delete or add new rows because index may need to be rearranged. While creating a new table in SQL Server, if you will set a column as a PRIMARY KEY it will add automatically new clustered index for this table (if one doesn't exist yet).
 * **Non-clustered index** is a list of pointers to physical rows. So there may be many non-clustered indexes in a table.
 
+### Currently open transctions
+```sql
+SELECT * FROM sys.sysprocesses WHERE open_tran = 1
+```
+
 ### Open Activity Monitor
 To open Activity Monitor just press **CTRL + ALT + A**
 
