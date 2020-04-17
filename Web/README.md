@@ -21,9 +21,10 @@ Read also:
 * [VS Code](https://github.com/abik11/tips-tricks/blob/master/DevTools/VSCode.md)
 
 ### Chrome shortcuts
-* `F12` - debug tools
-* `F11` - full screen
 * `CTRL + N` - new window
+* `F11` - full screen
+* `F12` - debug tools
+* `CTRL + P` - (in debug tools, in **Sources** tab) find a file by name
 
 ### Chrome
 DevTools - chrome://inspect/<br />
