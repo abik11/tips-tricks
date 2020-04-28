@@ -33,6 +33,7 @@ Push the new branch to remote (if you want to check your remote connection name 
 ```
 git push -u origin release11
 ```
+`-u` is a shorthand for `--set-upstream` which makes the branch trackable (`git pull` and `git push` should automatically work)
 
 ##### Deleting branches
 To delete a local branch you can just use the following command:
@@ -42,6 +43,11 @@ git branch -D branch-name
 And to delete remote branch you can use:
 ```
 git push origin --delete branch-name
+```
+
+##### Rename local branch
+```
+git branch -m new_name_of_current_branch
 ```
 
 ### HEAD detached from < hash >
