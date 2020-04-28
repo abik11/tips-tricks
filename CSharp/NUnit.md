@@ -27,3 +27,27 @@ private static readonly Expression<Func<Invoice, object>>[] NegativeCases =
     po => po
 };
 ```
+
+## NSubstitute
+
+### Check if a method with ref parameter was called
+With NSubsitute it is possible to check (make an assertion actually) if some method was called. We can specify many details of the call like what should be the arguments, how many a method should be called etc.<br />
+It is a little tricky though, if we have to specify some conditions to **ref** parameters. To make it work with NSubstitute we have to first define the condition and save it as a variable and pass this variable to the function instead of passing the condition directly. Here is a very simple example:
+```csharp
+class ProductRepository
+{
+    protected IRepository Repository { get; set; }
+
+    public ProductRepository(IRepository repository)
+        => Repository = repository;
+
+    public UpdateProductStatus(ref Product product, ProductStatus status)
+    {
+        product.Status = status;
+        Repository.Save(ref product);
+    }
+}
+
+var product = Arg.Is<Product>(x => x.Code == "P0525");
+Repository.Received().Save(ref product);
+```
