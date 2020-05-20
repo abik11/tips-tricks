@@ -123,3 +123,13 @@ It will save your local changes on a stash list as a *temporary* commit and clea
 git stash pop
 ```
 You can use `git stash apply` to apply the stash without removing from the list.
+
+### error: cannot lock ref
+If you encounter an error message like this:
+```
+error: cannot lock ref 'refs/remotes/origin/some-branch': is at <some-hash> but expected <some-other-hash>
+```
+You can use the following command:
+```
+git gc --prune=now
+```
