@@ -51,3 +51,19 @@ class ProductRepository
 var product = Arg.Is<Product>(x => x.Code == "P0525");
 Repository.Received().Save(ref product);
 ```
+
+### Rhino Mocks WhenCalled to NSubstitute
+Rhino Mocks:
+```csharp
+var MockRepository.GenerateMock<IRepository>();
+repository
+    .Stub(r => r.ExecuteWithLogger(Arg<Action<ILogger>>.Is.Anything))
+    .WhenCalled(invocation => ((Action<ILogger>)invocation.Arguments[0]).Invoke(logger));
+```
+NSubstitute
+```csharp
+var repository = Substitute.For<IRepository>();
+repository
+    .WhenForAnyArgs(r => r.ExecuteWithLogger(Arg.Any<Action<ILogger>>()))
+    .Do(invocation => ((Action<ILogger>)invocation.Args()[0]).Invoke(logger));
+```
