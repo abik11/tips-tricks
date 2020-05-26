@@ -23,7 +23,8 @@
 [Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)<br />
 [Git Version Control in VS Code (Video)](https://code.visualstudio.com/docs/introvideos/versioncontrol)<br />
 [Why are my commits linked to the wrong user?](https://help.github.com/articles/why-are-my-commits-linked-to-the-wrong-user/)<br />
-[How to change your commit messages in Git?](https://gist.github.com/nepsilon/156387acf9e1e72d48fa35c4fabef0b4)<br />
+[How to change your commit messages in Git? 1](https://gist.github.com/nepsilon/156387acf9e1e72d48fa35c4fabef0b4)<br />
+[How to change your commit messages in Git? 2](https://stackoverflow.com/questions/179123/how-to-modify-existing-unpushed-commit-messages)<br />
 
 #### Online dev tools
 [Regex editor](http://regexr.com/)<br />
