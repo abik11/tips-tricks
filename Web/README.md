@@ -25,10 +25,12 @@ Read also:
 * `F11` - full screen
 * `F12` - debug tools
 * `CTRL + P` - (in debug tools, in **Sources** tab) find a file by name
+* `CTRL + F` - (in debug tools, in **Elements** tab) find elements by **XPath** query
 
 ### Chrome
 DevTools - chrome://inspect/<br />
 Chrome URLs - chrome://about/<br />
+Chrome version - chrome://version/<br />
 Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 
 ## Useful links
