@@ -60,7 +60,7 @@ repository
     .Stub(r => r.ExecuteWithLogger(Arg<Action<ILogger>>.Is.Anything))
     .WhenCalled(invocation => ((Action<ILogger>)invocation.Arguments[0]).Invoke(logger));
 ```
-NSubstitute
+NSubstitute:
 ```csharp
 var repository = Substitute.For<IRepository>();
 repository
