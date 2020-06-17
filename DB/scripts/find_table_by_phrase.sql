@@ -1,0 +1,3 @@
+USE [dbName]
+SELECT * FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_NAME LIKE '%put_your_phrase_here%'
