@@ -7,9 +7,9 @@ GO
 ALTER DATABASE dbName SET OFFLINE
 
 -- Change db files names
-ALTER DATABASE dbName MODIFY FILE (Name='dbName', FILENAME='C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\dbName_new_name.mdf')
+ALTER DATABASE dbName MODIFY FILE (Name='logicalFileName', FILENAME='C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\dbName_new_name.mdf')
 GO
-ALTER DATABASE dbName MODIFY FILE (Name='dbName_log', FILENAME='C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\dbName_new_name_log.ldf')
+ALTER DATABASE dbName MODIFY FILE (Name='logicalFileName_log', FILENAME='C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\dbName_new_name_log.ldf')
 GO
 
 -- Change file name on the disk now (before it would be impossible)
