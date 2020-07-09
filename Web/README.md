@@ -89,6 +89,12 @@ Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 [Vue components for Bulma](https://buefy.github.io/)<br />
 
 #### React
+[React Function Components - Hooks](https://www.robinwieruch.de/react-function-component)<br />
+[When do I use functions in a Hooks Dependency Array?](https://reacttraining.com/blog/when-to-use-functions-in-hooks-dependency-array/)<br />
+[Hooks FAQ](https://reactjs.org/docs/hooks-faq.html)<br />
+[How to fetch data with React Hooks?](https://www.robinwieruch.de/react-hooks-fetch-data)<br />
+[How to test React Components](https://www.robinwieruch.de/react-testing-tutorial)<br />
+[React+TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)<br />
 [React Developer Roadmap](https://github.com/adam-golab/react-developer-roadmap)<br />
 [Classnames](https://github.com/JedWatson/classnames)<br />
 [Egghead Redux Cheat Sheet](https://github.com/linkmesrl/react-journey-2016/blob/master/resources/egghead-redux-cheat-sheet-3-2-1.pdf)<br />
