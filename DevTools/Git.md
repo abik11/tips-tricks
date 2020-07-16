@@ -71,6 +71,11 @@ With `git checkout` if you will specify commit hash (from which you want to get 
 git chekout commit-hash path/to/file
 ```
 
+### How to revert last NOT pushed commit
+```
+git reset HEAD~1
+```
+
 ### Aliases
 With aliases you can create some short commands so you can work faster with git. You can add them in global `.gitconfig` file which you can find in `%userprofile%`. Here are little examples, but of course they can be more complex:
 ```
