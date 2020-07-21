@@ -94,6 +94,8 @@ Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 [Hooks FAQ](https://reactjs.org/docs/hooks-faq.html)<br />
 [How to fetch data with React Hooks?](https://www.robinwieruch.de/react-hooks-fetch-data)<br />
 [How to test React Components](https://www.robinwieruch.de/react-testing-tutorial)<br />
+[Using throttle and debounce in a React function component](https://medium.com/@rajeshnaroth/using-throttle-and-debounce-in-a-react-function-component-5489fc3461b3)<br />
+[lodash debounce in React functional component](https://stackoverflow.com/questions/55616536/lodash-debounce-in-react-functional-component-not-working/55616626#55616626)<br />
 [React+TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)<br />
 [React Developer Roadmap](https://github.com/adam-golab/react-developer-roadmap)<br />
 [Classnames](https://github.com/JedWatson/classnames)<br />
