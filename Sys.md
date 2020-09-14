@@ -180,6 +180,10 @@ Windows cannot be installed to this disk. The selected disk is of the GPT partit
 
 Read more [here (polish)](https://www.download.net.pl/jak-rozwiazac-blad-o-stylu-partycji-gpt-przy-instalacji-windowsa/n/6765/?fbclid=IwAR0xKHDO9MRnFFoWaJ2v3IO_YdWsl1y1Bgih5ECAwYfDa_96YJs8oKIZqfM). 
 
+### Capture image or GIF from screen
+* Capture image from screen - [Snipping Tool](https://support.microsoft.com/en-us/help/13776/windows-10-use-snipping-tool-to-capture-screenshots)
+* Capture GIF from screen - [Screen to GIF](https://www.screentogif.com/)
+
 ### AutoHotkey - define your own key shortcuts
 There is a really nice and easy scripting language called **AutoHotkey** also known as **AHK** which allows you to easily create new key shortcus (hotkeys) and automize your work. Here is a little example:
 ```ahk
