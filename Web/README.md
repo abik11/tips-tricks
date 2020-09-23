@@ -6,6 +6,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [Webpack](https://github.com/abik11/tips-tricks/blob/master/Web/Webpack.md)
 * [Vue](https://github.com/abik11/tips-tricks/blob/master/Web/Vue.md)
 * [React](https://github.com/abik11/tips-tricks/blob/master/Web/React.md)
+* [Knockout](https://github.com/abik11/tips-tricks/blob/master/Web/Knockout.md)
 * [JQuery](https://github.com/abik11/tips-tricks/blob/master/Web/JQuery.md)
 * [DataTables](https://github.com/abik11/tips-tricks/blob/master/Web/DataTables.md)
 * [HTML and CSS](https://github.com/abik11/tips-tricks/blob/master/Web/HTML_CSS.md)
