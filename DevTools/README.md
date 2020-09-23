@@ -5,6 +5,7 @@
 * [Git](https://github.com/abik11/tips-tricks/blob/master/DevTools/Git.md)
 * [VS Code](https://github.com/abik11/tips-tricks/blob/master/DevTools/VSCode.md)
 * [Postman](https://github.com/abik11/tips-tricks/blob/master/DevTools/Postman.md)
+* [Papertrail](https://github.com/abik11/tips-tricks/blob/master/DevTools/Papertrail.md)
 * [Useful links](#useful-links)
 
 ## Useful links
