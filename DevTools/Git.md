@@ -129,6 +129,17 @@ git stash pop
 ```
 You can use `git stash apply` to apply the stash without removing from the list.
 
+##### Save stash with description
+To save a stash with a nice description you can use the following command:
+```
+git stash push -m "some description for the stashed changes"
+```
+And then you can use it with `git stash pop` or `git stash apply`. You can select it by index:
+```
+git stash apply --index 4
+git stash drop 4
+```
+
 ### error: cannot lock ref
 If you encounter an error message like this:
 ```
