@@ -27,6 +27,12 @@ Of course you can also define your own snippets, not only for HTML. There is eve
 ### Open git repository in VS Code
 Push `CTRL + SHIFT + P` to open **Command Palette**, type `Git: Clone` and paste the repository URL and push `Enter`. Quite simple, isn't it?
 
+### Run powershell in Terminal Window with -NoProfile argument
+Push `CTRL + SHIFT + P`  to open **Command Palette**, type `settings.json` and add the following line in settings file:
+```
+"terminal.integrated.shellArgs.windows": ["-noprofile"]
+```
+
 ### unins000.exe error
 While working with **VS Code** you may encounter annoying errors like this:
 ```
