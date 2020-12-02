@@ -256,7 +256,7 @@ reload
 [Active Directory Documentation](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754661(v%3dws.10))<br />
 [How to Combine Images into One PDF File](https://www.howtogeek.com/248462/how-to-combine-images-into-one-pdf-file-in-windows/)<br />
 [Boot keys](http://boot-keys.org/)<br />
-[FixIt](https://www.ifixit.com/)
+[IFixIt](https://www.ifixit.com/)
 
 #### Tools for Windows
 [SysInternals - Windows tools](https://live.sysinternals.com/)<br />
