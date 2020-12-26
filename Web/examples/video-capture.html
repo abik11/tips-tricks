@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video</title>
+    <!--
+        Capturing video and taking a picture from it
+    -->
+</head>
+<body>
+    <video width="640" height="480" id="vid">Streaming unavailable...</video>
+    <br />
+    <button id="bt">Take picture</button>
+    <br />
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        const vid = document.getElementById('vid');
+        const bt = document.getElementById('bt');
+        const canvas = document.getElementById('canvas');
+
+        navigator.mediaDevices.getUserMedia({video: true, audio: false})
+            .then(stream => {
+                vid.srcObject = stream;
+                vid.play();
+            })
+            .catch(err => console.log(err));
+
+        bt.addEventListener('click', e => {
+            const ctx = canvas.getContext('2d');
+            canvas.width = vid.width;
+            canvas.height = vid.height;
+            ctx.drawImage(vid, 0, 0, vid.width, vid.height)
+            console.log(canvas.toDataURL('image/png'));
+            e.preventDefault();         
+        }, false);
+    </script>
+</body>
+</html>
