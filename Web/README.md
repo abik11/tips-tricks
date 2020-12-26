@@ -35,6 +35,8 @@ Chrome version - chrome://version/<br />
 Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 
 ## Useful links
+[Flexbox guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)<br />
+[CSS Grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/)<br />
 
 #### General stuff
 [MDN - Mozilla Developer's Network](https://developer.mozilla.org/en-US/docs/Web/API)<br />
