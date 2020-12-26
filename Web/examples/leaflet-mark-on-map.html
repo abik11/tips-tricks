@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mapa Rzeszowa</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <style>
+        html,
+        body,
+        #map {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        const mapboxUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
+        const accessToken = 'some-access-token';
+        const attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+
+        const getLayer = id => {
+            return L.tileLayer(mapboxUrl, {
+                attribution,
+                maxZoom: 18,
+                id,
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken
+            });
+        };
+
+        const streets = getLayer('mapbox/streets-v11');
+        const satelite = getLayer('mapbox/satellite-v9');
+        const layers = [streets, satelite]
+
+        const map = L.map('map', {
+            center: [50.037, 22.002],
+            zoom: 13,
+            layers
+        });
+
+        L.control.layers({
+            'Satelita': satelite,
+            'Mapa': streets
+        }).addTo(map);
+
+        map.on('click', e => {
+            const { lat, lng } = e.latlng;
+            const id = `rmap_${randomInt(1, 100000000)}`;
+            const title = window.prompt('Podaj nazwę inwestycji: ');
+            const description = window.prompt('Podaj opis: ');
+
+            if (title == null || description == null)
+                return;
+
+            const persistance = {
+                id,
+                lat,
+                lng,
+                title,
+                description
+            };
+
+            addMarker(persistance);
+            localStorage.setItem(id, JSON.stringify(persistance));
+        });
+
+        const addMarker = ({ id, lat, lng, title, description }) => {
+            const marker = L.marker([lat, lng], { draggable: true }).addTo(map);
+            marker.bindPopup(`<strong>${title}</strong><br />${description}`, { autoClose: false, closeOnClick: false }).openPopup();
+            marker.on('dragend', () => {
+                marker.remove();
+                localStorage.removeItem(id);
+            });
+        };
+
+        const randomInt = (min, max) => {
+            return min + Math.floor((max - min) * Math.random());
+        };
+
+        for (let [key, value] of Object.entries(localStorage)) {
+            addMarker(JSON.parse(value));
+        }
+    </script>
+</body>
+</html>
