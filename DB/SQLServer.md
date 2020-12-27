@@ -102,7 +102,7 @@ set statistics io on;
 set statistics time on;
 set nocount off;
 ```
-This method of measuring query effciency is not very good since it is not  very accurate. <br >
+
 You can use the following query right after your own command to count how many rows were modified:
 ```sql
 SELECT @@rowcount
@@ -212,6 +212,12 @@ SELECT * FROM sys.sysprocesses WHERE open_tran = 1
 
 ### Open Activity Monitor
 To open Activity Monitor just press **CTRL + ALT + A**
+
+### Performance tips for large data sets
+* Use temporary table instead of table variables. Table variables do not contain any statistics so SQL Server does not know if a date set is large or not and it can mistakenly use an inefficient algorithm to perform joins, for example Nested Loops (good for small sets) over Hash Match (good for large sets)
+* Be very careful while using UDFs
+* Try to avoid type conversion. If you use a temporary table in a query to store some large data set, choose exact column data types 
+* Some function used on columns with index do not allow the index to be used. For example `WHERE YEAR(table.CreationDate) = 1995` might scan the whole table instead of using the column's index.
 
 ## Tools for SQL Server
 There are many great tools allowing DB design, development and automating DB tasks. Of course almost everything can be achieved through SQL Server or T-SQL but sometimes it is simply easier and faster to do things from external tools.
