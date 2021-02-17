@@ -87,6 +87,7 @@ In case of serious problems with performance it is a good idea to use profiler a
 * **Indent Guides** - it shows line for each code indention level, since VS2017 such feature is already implemented in Visual Studio
 * **ResXManager** - described in the next tip
 * [**Add New File**](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.AddNewFile) - easier and faster way to create a new file with `SHIFT + F2`
+* [**Git Web Links**](https://marketplace.visualstudio.com/items?itemName=reduckted.GitWebLinks) - get links to bitbucket or github repository straight from Visual Studio
 
 ### ResXManager
 This is a very popular extension that allows to easily manage string resources in the application. It is especially useful when you want to support many different languages in your application.<br />
