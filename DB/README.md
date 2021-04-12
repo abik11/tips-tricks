@@ -51,7 +51,6 @@ Read also:
 [Sort Warnings](https://www.red-gate.com/simple-talk/sql/performance/never-ignore-a-sort-warning-in-sql-server/
 )<br />
 [SQL Server Execution Plans](https://www.sqlshack.com/sql-server-execution-plans-overview/)<br />
-[Estimated vs Actual Execution Plans](https://www.sqlshack.com/sql-server-estimated-vs-actual-execution-plans/)<br />
 
 #### BCP, SQLCMD and other tools
 [BCP](https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server) <br />
