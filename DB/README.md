@@ -41,8 +41,17 @@ Read also:
 [SQL Server Agent](https://stackoverflow.com/questions/6712811/how-do-i-create-a-step-in-my-sql-server-agent-job-which-will-run-my-ssis-package/6713464#6713464) <br />
 [SQL Documentation](https://docs.microsoft.com/pl-pl/sql/#pivot=sdkstools&panel=sdkstools-all) <br />
 [Optymalizacja](http://www.sqlpedia.pl/tag/optymalizacja/) <br />
-[Execution Plan E-Book](https://www.red-gate.com/library/sql-server-execution-plans-2nd-edition)<br />
 [Cursors options performance](https://sqlperformance.com/2012/09/t-sql-queries/cursor-options)<br />
+
+### SQL Server Execution Plans
+[Execution Plan E-Book](https://www.red-gate.com/library/sql-server-execution-plans-2nd-edition)<br />
+[Parameter Sniffing](https://bertwagner.com/posts/why-parameter-sniffing-isnt-always-a-bad-thing-but-usually-is/)<br />
+[Troublesome Execution Plan Operators](https://bertwagner.com/posts/sql-server-execution-plan-operators/)<br />
+[Arrow Sizes in Exectuion Plans](https://www.brentozar.com/archive/2019/06/what-the-arrow-sizes-in-query-plans-really-mean/)<br />
+[Sort Warnings](https://www.red-gate.com/simple-talk/sql/performance/never-ignore-a-sort-warning-in-sql-server/
+)<br />
+[SQL Server Execution Plans](https://www.sqlshack.com/sql-server-execution-plans-overview/)<br />
+[Estimated vs Actual Execution Plans](https://www.sqlshack.com/sql-server-estimated-vs-actual-execution-plans/)<br />
 
 #### BCP, SQLCMD and other tools
 [BCP](https://docs.microsoft.com/en-us/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server) <br />
