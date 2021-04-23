@@ -11,6 +11,7 @@ Most useful (but basic) tips and tricks that will make DB programming much easie
 * [SQLite](https://github.com/abik11/tips-tricks/blob/master/DB/SQLite.md)
 * [Firebird](https://github.com/abik11/tips-tricks/blob/master/DB/Firebird.md)
 * [MongoDB](https://github.com/abik11/tips-tricks/blob/master/DB/MongoDB.md)
+* [Redis](https://github.com/abik11/tips-tricks/blob/master/DB/Redis.md)
 * [Useful links](#useful-links)
 
 Read also:
