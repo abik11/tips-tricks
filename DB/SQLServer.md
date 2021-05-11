@@ -94,8 +94,8 @@ EXEC xp_cmdshell 'dir *.exe'
 ->Right click on database ->Tasks ->Generate Scripts ->Choose Objects (for example choose some tables) ->Set Scripting Options ->Advanced ->**Type of data to script = Schema and data**<br />
 
 ### Filter objects in Object Explorer
-If you search for a table or database there is a handy feature in SQL Server Management Studio:
-->Object Explorer ->Right click on any catalog (with tables, views, DBs etc.) ->Filter ->Filter Settings
+If you search for a table or database there is a handy feature in SQL Server Management Studio:<br />
+->Object Explorer ->Right click on any catalog (with tables, views, DBs etc.) ->**Filter** ->**Filter Settings**
 
 ## Performance
 
