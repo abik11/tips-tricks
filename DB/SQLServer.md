@@ -2,7 +2,7 @@
 Microsoft SQL Server is complex Database Management System (DBMS), shiped by Microsoft, implementing T-SQL.
 
 ## Table of contents
-* [Configuration](#configuration)
+* [Administration](#administration)
 * [Performance](#performance)
 * [Tools for SQL Server](#tools-for-sql-server)
 
@@ -92,6 +92,10 @@ EXEC xp_cmdshell 'dir *.exe'
 
 ### Export table data as inserts
 ->Right click on database ->Tasks ->Generate Scripts ->Choose Objects (for example choose some tables) ->Set Scripting Options ->Advanced ->**Type of data to script = Schema and data**<br />
+
+### Filter objects in Object Explorer
+If you search for a table or database there is a handy feature in SQL Server Management Studio:
+->Object Explorer ->Right click on any catalog (with tables, views, DBs etc.) ->Filter ->Filter Settings
 
 ## Performance
 
