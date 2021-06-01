@@ -36,6 +36,12 @@ The difference between the both concepts may not be so clear. In some programmin
 * abstract class can contain constructor declaration while interface cannot
 In general an abstract class should be use as a base for other more specific classes. For example *SqlDatabaseConnection* could be an abstract class while *SQLServerConnection* or *MySqlConnection* could be concrete classes thar extend *DatabaseConnection*. And interface is rather used to describe external abilities of a class which may be common between many different classes.
 
+### Create an instance of a generic type
+```csharp
+var instanceOfGeneric = Activator.CreateInstance(
+    typeof(TType), arg1, arg2, arg3) as TType;
+```
+
 ### Extension methods
 ```csharp
 static bool Contains(this string keyString, char c)
