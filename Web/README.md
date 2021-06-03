@@ -137,6 +137,7 @@ http://html2jade.org/ <br />
 [9 Incredible CodePen Demos](https://davidwalsh.name/incredible-codepen-demos)<br />
 [21 niesamowitych projektów - Polish](https://devcorner.pl/21-niesamowitych-projektow-wykonanych-css/)<br />
 [10 Stunning CSS 3D Effects](https://redstapler.co/10-stunning-css-3d-effect-must-see/?fbclid=IwAR0vbGpNIFxiICIT0c7L3OJQjeHUDMvh-eR8o1GOWLf0E8nMH3SVZzrG2_M)<br />
+[Underline text effects](https://speckyboy.com/underline-text-effects-css/)<br />
 [Awwwards](https://www.awwwards.com/)<br />
 [CSS Filters](http://html5-demos.appspot.com/static/css/filters/index.html)<br />
 [Cubic curves generator](http://cubic-bezier.com/)<br />
