@@ -4,9 +4,14 @@
 ```
 git status
 git add full/file/path
-git commit -m "MFD-xxx desc"
+git commit -m "desc"
 git pull -r
 git push
+```
+
+#### Change git editor
+```
+git config --global core.editor notepad
 ```
 
 ### Branching
@@ -16,22 +21,22 @@ Branches are the core of Git. Branching in Git is very cheap, so you can (and ev
 You can easily list all local branches and create new ones with the following command:
 ```
 git branch
-git branch release10
+git branch old-code
 ```
 To switch to an existing branch (to check out) use the command:
 ```
-git checkout release10
+git checkout old-code
 ```
 You can also check out to given commit (put commit hash instead of branch name), but take care cause it will cause **HEAD detached**.<br />
 You can also switch to non-existing branch and automatically create it:
 ```
-git checkout -b release11
+git checkout -b new-feautre
 ```
 
 ##### Adding new branch to remote
 Push the new branch to remote (if you want to check your remote connection name use: `git remote`)
 ```
-git push -u origin release11
+git push -u origin new-feautre
 ```
 `-u` is a shorthand for `--set-upstream` which makes the branch trackable (`git pull` and `git push` should automatically work)
 
@@ -55,9 +60,9 @@ If you see such information when you run `git status` command, it means that you
 ```
 git log -n 1 #copy commit hash
 git checkout master
-git branch tmp-branch commit-hash
+git branch tmp-branch <commit-hash>
 git pull -r
-git cherry-pick commit-hash
+git cherry-pick <commit-hash>
 git push
 ```
 If you don't care about your changes, just checkout the branch:
@@ -68,10 +73,10 @@ git checkout master
 ### How to revert single file to given commit
 With `git checkout` if you will specify commit hash (from which you want to get the file) and the file path, in your working area you will have the file modified to the version from specified commit:
 ```
-git chekout commit-hash path/to/file
+git chekout <commit-hash> path/to/file
 ```
 
-### How to revert last NOT pushed commit
+### How to revert the last NOT pushed commit
 ```
 git reset --hard HEAD~1
 ```
@@ -79,6 +84,11 @@ git reset --hard HEAD~1
 ### How to change the message of last NOT pushed commit
 ```
 git commit --amend -m "new message"
+```
+
+### How to change the message of cherry-picked commit
+```
+git cherry-pick -e <commit-hash>
 ```
 
 ### Aliases
@@ -118,8 +128,8 @@ With `!` operator you can run commands from the context of command line (shell),
 To ignore files which are already added to git repository, you can use `git update-index --skip-worktree file/path`. A nice trick is to add an alias with all the files that you want to ignore so you can easily ignore them anytime needed. You should add the following code in git config file:
 ```
 [alias]
-    ignore-cfg =update-index --skip-worktree MyProject/App.Debug.config MyProject/Config.Debug.config 
-    unignore-cfg =!git update-index --no-skip-worktree MyProject/App.Debug.config MyProject/Config.Debug.config && git stash save ConfigIgnoredByDefatult
+    ignore-cfg =update-index --skip-worktree MyProject/App.Debug.config MyProject/OtherConfig.Debug.config 
+    unignore-cfg =!git update-index --no-skip-worktree MyProject/App.Debug.config MyProject/OtherConfig.Debug.config && git stash save config-changes
 ```
 You can find local git config (used only for given project) in `.git\config` file or global git config file in `%userprofile%\.gitconfig`.
 
