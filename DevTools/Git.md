@@ -73,7 +73,12 @@ git chekout commit-hash path/to/file
 
 ### How to revert last NOT pushed commit
 ```
-git reset HEAD~1
+git reset --hard HEAD~1
+```
+
+### How to change the message of last NOT pushed commit
+```
+git commit --amend -m "new message"
 ```
 
 ### Aliases
