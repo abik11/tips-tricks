@@ -28,6 +28,9 @@ private static readonly Expression<Func<Invoice, object>>[] NegativeCases =
 };
 ```
 
+### Combinatorial test cases
+[Combinatorial](https://docs.nunit.org/articles/nunit/writing-tests/attributes/combinatorial.html), [Values](https://docs.nunit.org/articles/nunit/writing-tests/attributes/values.html), [ValueSource](https://docs.nunit.org/articles/nunit/writing-tests/attributes/valuesource.html)
+
 ## NSubstitute
 
 ### Check if a method with ref parameter was called
