@@ -58,6 +58,7 @@ Repository.Received().Save(ref product);
 ### Rhino Mocks WhenCalled to NSubstitute
 Rhino Mocks:
 ```csharp
+var logger = MockRepository.GenerateMock<ILogger>();
 var repository = MockRepository.GenerateMock<IRepository>();
 repository
     .Stub(r => r.ExecuteWithLogger(Arg<Action<ILogger>>.Is.Anything))
@@ -65,6 +66,7 @@ repository
 ```
 NSubstitute:
 ```csharp
+var logger = Substitute.For<ILogger>();
 var repository = Substitute.For<IRepository>();
 repository
     .WhenForAnyArgs(r => r.ExecuteWithLogger(Arg.Any<Action<ILogger>>()))
