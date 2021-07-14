@@ -72,3 +72,15 @@ repository
     .WhenForAnyArgs(r => r.ExecuteWithLogger(Arg.Any<Action<ILogger>>()))
     .Do(invocation => ((Action<ILogger>)invocation.Args()[0]).Invoke(logger));
 ```
+
+### AmbiguousArgumentsException
+The following error:
+```
+NSubstitute.Exceptions.AmbiguousArgumentsException : Cannot determine argument specifications to use.
+Please use specifications for all arguments of the same type.
+```
+may appear if you forget to call `Returns` on your stub, something like this:
+```csharp
+mock1.Method(Arg.Any<int>()); // no Returns here!!!
+mock2.Method(Arg.Any<int>()).Returns(1);
+```
