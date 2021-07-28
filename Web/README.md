@@ -10,7 +10,7 @@ Web dev is an extremely vast topic. There are plenty of different things that yo
 * [JQuery](https://github.com/abik11/tips-tricks/blob/master/Web/JQuery.md)
 * [DataTables](https://github.com/abik11/tips-tricks/blob/master/Web/DataTables.md)
 * [HTML and CSS](https://github.com/abik11/tips-tricks/blob/master/Web/HTML_CSS.md)
-* [CSS Animations](https://github.com/abik11/tips-tricks/blob/master/Web/CSSAnimations.md)
+* [Animations](https://github.com/abik11/tips-tricks/blob/master/Web/Animations.md)
 * [Google Maps Api](https://github.com/abik11/tips-tricks/blob/master/Web/GoogleMaps.md)
 * [Cordova](https://github.com/abik11/tips-tricks/blob/master/Web/Cordova.md)
 * [Useful links](#useful-links)
