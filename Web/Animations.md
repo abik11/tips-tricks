@@ -156,3 +156,20 @@ $.fn.extend({
 
 $('.box').animateCss('flash');
 ```
+
+## Web Animations API
+
+### How to check if a property can be animated with Web Animation API?
+```javascript
+const svgPath = document.getElementById("svg-path-1");
+const svgPathAnimation = svgPath.animate([
+  { test1: 0, opacity: 1, offset: 0 },
+  { test1: 1, opacity: 0, offset: 1 }
+], {
+  duration: 1000,
+  fill: 'forwards'
+});
+
+console.log(svgPathAnimation.effect.getKeyframes());
+```
+If the property you specified in key frames is not present on the list, then it cannot be animated with WAAPI.
