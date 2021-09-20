@@ -56,11 +56,12 @@
         map.on('click', e => {
             const { lat, lng } = e.latlng;
             const id = `rmap_${randomInt(1, 100000000)}`;
+            
             const title = window.prompt('Podaj nazwę inwestycji: ');
-            const description = window.prompt('Podaj opis: ');
+            if(title == null) return;
 
-            if (title == null || description == null)
-                return;
+            let description = window.prompt('Podaj opis: ');
+            if(description == null) description = '';
 
             const persistance = {
                 id,
