@@ -172,3 +172,7 @@ http://html2jade.org/ <br />
 [A Guide to SVG Animations (SMIL)](https://css-tricks.com/guide-svg-animations-smil/)<br />
 [How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)<br />
 [SVG Tips](https://coderwall.com/t/svg/popular)<br />
+
+
+#### Color blindness
+[Colblindor - Color Blindness Simulator](http://www.color-blindness.com/coblis-color-blindness-simulator/)<br />
