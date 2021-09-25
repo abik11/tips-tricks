@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Mapa Rzeszowa</title>
@@ -18,11 +19,137 @@
             margin: 0px;
             padding: 0px
         }
+
+        #map {
+            z-index: 100;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .menu {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+
+        .menu-content {
+            display: inline-block;
+        }
+
+        .export-import-window {
+            position: fixed;
+            bottom: 40px;
+            left: 10px;
+        }
+
+        .export-import-window>textarea {
+            resize: none;
+        }
+
+        .import-toolbar {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
+
 <body>
+    <div class="menu">
+        <button class="toggle-menu-btn">=</button>
+        <div class="menu-content hidden">
+            <button class="import-btn">Importuj</button>
+            <button class="export-btn">Eksportuj</button>
+            <div class="export-import-window hidden">
+                <div class="import-toolbar hidden">
+                    <button class="override-btn">Nadpisz</button>
+                    <button class="add-btn">Dodaj</button>
+                </div>
+                <textarea cols="40" rows="25"></textarea>
+            </div>
+        </div>
+    </div>
+
     <div id="map"></div>
+
     <script>
+        const toggleMenuBtn = document.querySelector(".toggle-menu-btn");
+        const menuContent = document.querySelector(".menu-content");
+        const importBtn = document.querySelector(".import-btn");
+        const exportBtn = document.querySelector(".export-btn");
+        const exportImportWindow = document.querySelector(".export-import-window");
+        const exportImportTextarea = exportImportWindow.querySelector("textarea");
+        const importToolbar = exportImportWindow.querySelector(".import-toolbar");
+        const overrideBtn = exportImportWindow.querySelector(".override-btn");
+        const addBtn = exportImportWindow.querySelector(".add-btn");
+
+        const setExportImportTextarea = (value, placeholder) => {
+            exportImportTextarea.value = value;
+            exportImportTextarea.placeholder = placeholder;
+        };
+
+        const importMarkers = () => {
+            const importedObject = JSON.parse(exportImportTextarea.value);
+
+            for (let [key, value] of Object.entries(importedObject)) {
+                if (key.startsWith(keyPrefix)) {
+                    addMarker(JSON.parse(value));
+                    localStorage.setItem(key, value);
+                }
+            }
+        };
+
+        toggleMenuBtn.addEventListener("click", () => {
+            menuContent.classList.toggle("hidden");
+        });
+
+        importBtn.addEventListener("click", () => {
+            if (importToolbar.classList.contains("hidden"))
+                importToolbar.classList.remove("hidden");
+
+            exportImportWindow.classList.toggle("hidden");
+            setExportImportTextarea("", "Wklej tutaj wyeksportowaną zawartość...");
+        });
+
+        exportBtn.addEventListener("click", () => {
+            if (!importToolbar.classList.contains("hidden"))
+                importToolbar.classList.add("hidden");
+
+            let exportObject;
+
+            for (let [key, value] of Object.entries(localStorage)) {
+                if (key.startsWith(keyPrefix))
+                    exportObject = { ...exportObject, [key]: value };
+            }
+
+            exportImportWindow.classList.toggle("hidden");
+            setExportImportTextarea(JSON.stringify(exportObject), "");
+        });
+
+        addBtn.addEventListener("click", () => {
+            importMarkers();
+        });
+
+        overrideBtn.addEventListener("click", () => {
+            map.eachLayer(layer => {
+                // here we only (despite map) use markers as layers
+                // and they have no URL, but in more complex cases
+                // it might be not enough to only check the URL
+                if(layer._url == undefined)
+                    layer.remove();
+            });
+
+            for (let [key, _] of Object.entries(localStorage)) {
+                if (key.startsWith(keyPrefix))
+                    localStorage.removeItem(key);
+            }
+
+            importMarkers();
+        });
+    </script>
+    <script>
+        const keyPrefix = 'rmap_';
         const mapboxUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';
         const accessToken = 'some-access-token';
         const attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
@@ -55,13 +182,13 @@
 
         map.on('click', e => {
             const { lat, lng } = e.latlng;
-            const id = `rmap_${randomInt(1, 100000000)}`;
-            
+            const id = `${keyPrefix}${randomInt(1, 100000000)}`;
+
             const title = window.prompt('Podaj nazwę inwestycji: ');
-            if(title == null) return;
+            if (title == null) return;
 
             let description = window.prompt('Podaj opis: ');
-            if(description == null) description = '';
+            if (description == null) description = '';
 
             const persistance = {
                 id,
@@ -89,8 +216,10 @@
         };
 
         for (let [key, value] of Object.entries(localStorage)) {
-            addMarker(JSON.parse(value));
+            if (key.startsWith(keyPrefix))
+                addMarker(JSON.parse(value));
         }
     </script>
 </body>
+
 </html>
