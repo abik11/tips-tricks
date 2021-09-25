@@ -70,10 +70,10 @@
             </div>
         </div>
     </div>
-
     <div id="map"></div>
 
     <script>
+        let currentMenu = null;
         const toggleMenuBtn = document.querySelector(".toggle-menu-btn");
         const menuContent = document.querySelector(".menu-content");
         const importBtn = document.querySelector(".import-btn");
@@ -84,9 +84,25 @@
         const overrideBtn = exportImportWindow.querySelector(".override-btn");
         const addBtn = exportImportWindow.querySelector(".add-btn");
 
-        const setExportImportTextarea = (value, placeholder) => {
+        const setExportImportTextarea = (value, placeholder, showImportToolbar) => {
             exportImportTextarea.value = value;
             exportImportTextarea.placeholder = placeholder;
+
+            if (showImportToolbar)
+                show(importToolbar);
+            else
+                hide(importToolbar);
+        };
+
+        const setExportImportWindow = (menu, value, placeholder, showImportToolbar) => {
+            if (currentMenu == menu)
+                toggle(exportImportWindow);
+            else {
+                setExportImportTextarea(value, placeholder, showImportToolbar);
+                show(exportImportWindow);
+            }
+
+            currentMenu = menu; 
         };
 
         const importMarkers = () => {
@@ -100,22 +116,31 @@
             }
         };
 
+        const hide = element => {
+            if (!element.classList.contains("hidden"))
+                element.classList.add("hidden");
+        };
+
+        const show = element => {
+            if (element.classList.contains("hidden"))
+                element.classList.remove("hidden");
+        };
+
+        const toggle = element => {
+            element.classList.toggle("hidden");
+        };
+
         toggleMenuBtn.addEventListener("click", () => {
-            menuContent.classList.toggle("hidden");
+            toggle(menuContent);
+            hide(exportImportWindow);
+            currentMenu = null;
         });
 
         importBtn.addEventListener("click", () => {
-            if (importToolbar.classList.contains("hidden"))
-                importToolbar.classList.remove("hidden");
-
-            exportImportWindow.classList.toggle("hidden");
-            setExportImportTextarea("", "Wklej tutaj wyeksportowaną zawartość...");
+            setExportImportWindow("import", "", "Wklej tutaj wyeksportowaną zawartość...", true);
         });
 
         exportBtn.addEventListener("click", () => {
-            if (!importToolbar.classList.contains("hidden"))
-                importToolbar.classList.add("hidden");
-
             let exportObject;
 
             for (let [key, value] of Object.entries(localStorage)) {
@@ -123,8 +148,7 @@
                     exportObject = { ...exportObject, [key]: value };
             }
 
-            exportImportWindow.classList.toggle("hidden");
-            setExportImportTextarea(JSON.stringify(exportObject), "");
+            setExportImportWindow("export", JSON.stringify(exportObject), "", false);
         });
 
         addBtn.addEventListener("click", () => {
@@ -136,7 +160,7 @@
                 // here we only (despite map) use markers as layers
                 // and they have no URL, but in more complex cases
                 // it might be not enough to only check the URL
-                if(layer._url == undefined)
+                if (layer._url == undefined)
                     layer.remove();
             });
 
