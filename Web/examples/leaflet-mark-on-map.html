@@ -3,14 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>Mapa Rzeszowa</title>
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-
     <style>
         html,
         body,
@@ -61,6 +59,7 @@
         <div class="menu-content hidden">
             <button class="import-btn">Importuj</button>
             <button class="export-btn">Eksportuj</button>
+            <button class="clear-btn">Wyczyść</button>
             <div class="export-import-window hidden">
                 <div class="import-toolbar hidden">
                     <button class="override-btn">Nadpisz</button>
@@ -78,6 +77,7 @@
         const menuContent = document.querySelector(".menu-content");
         const importBtn = document.querySelector(".import-btn");
         const exportBtn = document.querySelector(".export-btn");
+        const clearBtn = document.querySelector(".clear-btn");
         const exportImportWindow = document.querySelector(".export-import-window");
         const exportImportTextarea = exportImportWindow.querySelector("textarea");
         const importToolbar = exportImportWindow.querySelector(".import-toolbar");
@@ -102,17 +102,58 @@
                 show(exportImportWindow);
             }
 
-            currentMenu = menu; 
+            currentMenu = menu;
         };
 
-        const importMarkers = () => {
-            const importedObject = JSON.parse(exportImportTextarea.value);
+        const isNullOrEmpty = string =>
+            string == null || string == ''
+
+        const parseImportData = () => {
+            if (isNullOrEmpty(exportImportTextarea.value))
+                return null;
+
+            let result = {};
+
+            try {
+                const importedObject = JSON.parse(exportImportTextarea.value);
+
+                for (let [key, value] of Object.entries(importedObject)) {
+                    if (key.startsWith(keyPrefix))
+                        result = { ...result, [key]: JSON.parse(value) };
+                }
+            }
+            catch (e) {
+                alert("Dane do importu są niepoprawne");
+                return null;
+            }
+
+            return result;
+        }
+
+        const importMarkers = importedObject => {
+            if (importedObject == null)
+                return;
 
             for (let [key, value] of Object.entries(importedObject)) {
                 if (key.startsWith(keyPrefix)) {
-                    addMarker(JSON.parse(value));
-                    localStorage.setItem(key, value);
+                    addMarker(value);
+                    localStorage.setItem(key, JSON.stringify(value));
                 }
+            }
+        };
+
+        const clearMarkers = () => {
+            map.eachLayer(layer => {
+                // here we only (despite map) use markers as layers
+                // and they have no URL, but in more complex cases
+                // it might be not enough to only check the URL
+                if (layer._url == undefined)
+                    layer.remove();
+            });
+
+            for (let [key, _] of Object.entries(localStorage)) {
+                if (key.startsWith(keyPrefix))
+                    localStorage.removeItem(key);
             }
         };
 
@@ -130,46 +171,53 @@
             element.classList.toggle("hidden");
         };
 
+        const confirmOperation = confirmMessage => confirm(confirmMessage);
+
+
         toggleMenuBtn.addEventListener("click", () => {
             toggle(menuContent);
             hide(exportImportWindow);
             currentMenu = null;
         });
 
-        importBtn.addEventListener("click", () => {
-            setExportImportWindow("import", "", "Wklej tutaj wyeksportowaną zawartość...", true);
-        });
+        importBtn.addEventListener("click", () =>
+            setExportImportWindow("import", "", "Wklej tutaj wyeksportowaną zawartość...", true));
 
         exportBtn.addEventListener("click", () => {
-            let exportObject;
+            let exportObject = null;
 
             for (let [key, value] of Object.entries(localStorage)) {
                 if (key.startsWith(keyPrefix))
                     exportObject = { ...exportObject, [key]: value };
             }
 
-            setExportImportWindow("export", JSON.stringify(exportObject), "", false);
+            setExportImportWindow(
+                "export",
+                exportObject == null
+                    ? ""
+                    : JSON.stringify(exportObject),
+                "",
+                false);
         });
 
-        addBtn.addEventListener("click", () => {
-            importMarkers();
+        clearBtn.addEventListener("click", () => {
+            if(confirmOperation("Czy na pewno chcesz wyczyścić wszystkie dane?"))
+                clearMarkers();
         });
+
+        addBtn.addEventListener("click", () => importMarkers(parseImportData()));
 
         overrideBtn.addEventListener("click", () => {
-            map.eachLayer(layer => {
-                // here we only (despite map) use markers as layers
-                // and they have no URL, but in more complex cases
-                // it might be not enough to only check the URL
-                if (layer._url == undefined)
-                    layer.remove();
-            });
+            if(!confirmOperation("Czy na pewno chcesz nadpisać istniejące dane?"))
+                return;
 
-            for (let [key, _] of Object.entries(localStorage)) {
-                if (key.startsWith(keyPrefix))
-                    localStorage.removeItem(key);
-            }
+            const importedObject = parseImportData();
 
-            importMarkers();
+            if (importedObject == null)
+                return;
+
+            clearMarkers();
+            importMarkers(importedObject);
         });
     </script>
     <script>
@@ -178,8 +226,8 @@
         const accessToken = 'some-access-token';
         const attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 
-        const getLayer = id => {
-            return L.tileLayer(mapboxUrl, {
+        const getLayer = id =>
+            L.tileLayer(mapboxUrl, {
                 attribution,
                 maxZoom: 18,
                 id,
@@ -187,7 +235,6 @@
                 zoomOffset: -1,
                 accessToken
             });
-        };
 
         const streets = getLayer('mapbox/streets-v11');
         const satelite = getLayer('mapbox/satellite-v9');
@@ -235,9 +282,8 @@
             });
         };
 
-        const randomInt = (min, max) => {
-            return min + Math.floor((max - min) * Math.random());
-        };
+        const randomInt = (min, max) =>
+            min + Math.floor((max - min) * Math.random());
 
         for (let [key, value] of Object.entries(localStorage)) {
             if (key.startsWith(keyPrefix))
