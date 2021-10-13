@@ -34,9 +34,10 @@ Chrome URLs - chrome://about/<br />
 Chrome version - chrome://version/<br />
 Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 
-## Useful links
+## Flexbox and CSS Grid
 [Flexbox guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)<br />
 [CSS Grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/)<br />
+[A Deep Dive Into CSS Grid minmax()](https://ishadeed.com/article/css-grid-minmax/)<br />
 
 #### General stuff
 [MDN - Mozilla Developer's Network](https://developer.mozilla.org/en-US/docs/Web/API)<br />
