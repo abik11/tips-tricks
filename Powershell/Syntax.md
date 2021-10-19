@@ -197,7 +197,10 @@ This is real tricky :D You can define your own expressions in **Select-Object** 
 ```powershell
 ls | select name, @{name="kbSize";expression={$_.length/1KB}} | sort kbSize
 ```
-Those hash arrays seem to by extremely flexible constructions!
+Those hash arrays seem to by extremely flexible constructions! Also it is possible to do it in a bit simpler way:
+```powershell
+ls | sort @{expression={$_.length/1KB}}
+```
 
 ### Sort, aggregate and filter
 ```powershell
