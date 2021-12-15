@@ -43,6 +43,7 @@ State property name (content) must be exactly the same as the name in the input 
 ### useDebounce hook
 https://github.com/xnimorz/use-debounce
 * useDebounce - debounces just the value
+
 So the following notation:
 ```javascript
 const [debouncedValue] = useDebounce(useSomeHook(param1), 300);
