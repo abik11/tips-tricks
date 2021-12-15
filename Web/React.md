@@ -42,3 +42,17 @@ State property name (content) must be exactly the same as the name in the input 
 
 ### useDebounce hook
 https://github.com/xnimorz/use-debounce
+* useDebounce - debounces just the value
+```javascript
+const [debouncedValue] = useDebounce(useSomeHook(value), 300);
+```
+* useDebouncedCallback - debounces the function
+```javascript
+const [value, setValue] = useState(0);
+const debouncedSetValue = useDebouncedCallback(setValue, 300);
+
+useEffect(() => {
+    get(dependency1)
+        .then(debouncedSetValue);
+}, [dependency1]);
+```
