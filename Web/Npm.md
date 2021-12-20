@@ -37,3 +37,6 @@ There is an amazing package available in npm - **rimraf**. It simply deletes fil
 npm install rimraf -g
 rimraf .\node_modules
 ```
+
+### ERR Code E401: Unable to authenticate, need: Bearer authorization
+Remove `%USERPROFILE%\.npmrc`(if exists) and run: `npx vsts-npm-auth -config .npmrc`.
