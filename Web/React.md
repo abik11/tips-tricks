@@ -63,3 +63,14 @@ useEffect(() => {
         .then(debouncedSetValue);
 }, [dependency1]);
 ```
+
+### Passing an array as an argument to a hook
+If you will pass an array to a hook like this:
+```javascript
+const [isValid] = useValidations([objectForValidation]);
+```
+it may cause endless rerendering loop, because it creates new array on every render. It might be better to do this like that:
+```javascript
+const objectForValidationArray = useMemo(() => [objectForValidation], [objectForValidation]);
+const [isValid] = useValidations(objectForValidationArray);
+```
