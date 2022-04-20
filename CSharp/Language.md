@@ -350,3 +350,9 @@ object GetAnyPropertyValue<T>(object obj, string propertyName)
    return null;
 }
 ```
+
+### Launch debugger from code
+```csharp
+Debugger.Launch();
+```
+[See more](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.debugger.launch)
