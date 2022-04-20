@@ -95,6 +95,7 @@ Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 #### React
 [React Function Components - Hooks](https://www.robinwieruch.de/react-function-component)<br />
 [When do I use functions in a Hooks Dependency Array?](https://reacttraining.com/blog/when-to-use-functions-in-hooks-dependency-array/)<br />
+[How to stop re-rendering lists in React?](https://alexsidorenko.com/blog/react-list-rerender/)<br />
 [Hooks FAQ](https://reactjs.org/docs/hooks-faq.html)<br />
 [How to fetch data with React Hooks?](https://www.robinwieruch.de/react-hooks-fetch-data)<br />
 [How to test React Components](https://www.robinwieruch.de/react-testing-tutorial)<br />
