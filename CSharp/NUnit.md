@@ -62,7 +62,8 @@ var logger = MockRepository.GenerateMock<ILogger>();
 var repository = MockRepository.GenerateMock<IRepository>();
 repository
     .Stub(r => r.ExecuteWithLogger(Arg<Action<ILogger>>.Is.Anything))
-    .WhenCalled(invocation => ((Action<ILogger>)invocation.Arguments[0]).Invoke(logger));
+    .WhenCalled(invocation => ((Action<ILogger>)invocation.Arguments[0])
+    .Invoke(logger));
 ```
 NSubstitute:
 ```csharp
@@ -70,7 +71,8 @@ var logger = Substitute.For<ILogger>();
 var repository = Substitute.For<IRepository>();
 repository
     .WhenForAnyArgs(r => r.ExecuteWithLogger(Arg.Any<Action<ILogger>>()))
-    .Do(invocation => ((Action<ILogger>)invocation.Args()[0]).Invoke(logger));
+    .Do(invocation => ((Action<ILogger>)invocation.Args()[0])
+    .Invoke(logger));
 ```
 
 ### AmbiguousArgumentsException
@@ -83,4 +85,15 @@ may appear if you forget to call `Returns` on your stub, something like this:
 ```csharp
 mock1.Method(Arg.Any<int>()); // no Returns here!!!
 mock2.Method(Arg.Any<int>()).Returns(1);
+```
+It might get even more annoying. When `Arg.Any<T>()` is used for substitute creation and then to stub a method, there is no way to finish substitute creation with `Returns`. For example:
+```csharp
+Substitute.For<IInvoiceReposistory>(Arg.Any<int>());
+
+var companyRepository = Substitute.For<ICompanyRepository>();
+companyRepository.Get(Arg.Any<int>()).Returns(null);
+```
+In such case some workaround might be to use C# keyword `default` for substitute creation:
+```csharp
+Substitute.For<IInvoiceReposistory>(default);
 ```
