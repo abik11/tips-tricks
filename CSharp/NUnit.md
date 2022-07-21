@@ -88,7 +88,7 @@ mock2.Method(Arg.Any<int>()).Returns(1);
 ```
 It might get even more annoying. When `Arg.Any<T>()` is used for substitute creation and then to stub a method, there is no way to finish substitute creation with `Returns`. For example:
 ```csharp
-Substitute.For<IInvoiceReposistory>(Arg.Any<int>());
+Substitute.For<IInvoiceReposistory>(Arg.Any<int>()); // no Returns here, and there is no way to add it here...
 
 var companyRepository = Substitute.For<ICompanyRepository>();
 companyRepository.Get(Arg.Any<int>()).Returns(null);
