@@ -136,7 +136,7 @@ Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*,
 ->Settings ->Privacy ->Background apps
 
 ### Configure default applications
-->Settings ->Applications ->Default Applications
+->Settings ->Applications ->Default Applications<br />
 It might be also useful to run the `assoc` command in CMD. With this command it is also possible to change file association like this for example:
 ```
 assoc .mp4=VLC.vlc
