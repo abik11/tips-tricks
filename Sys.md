@@ -155,7 +155,7 @@ dism.exe /Online /Cleanup-image /CheckHealth
 dism.exe /Online /Cleanup-image /ScanHealth
 dism.exe /Online /Cleanup-image /Restorehealth
 ```
-Windows Update service is used to repair system image file. If this service is corrupted, then you will have to download new image file manualy. You can use **Windows 10 Media Creation Tool** (official Microsoft tool) or **Windows ISO Downloader** (not official) - remember to choose the correct version and language. After the image is downloaded you have to unzip or mount the iso file and get **install.wim** file from **sources** directory. Then you can use the following command:
+Windows Update service is used to repair system image file. If this service is corrupted, then you will have to download new image file manualy. You can use **Windows 10 Media Creation Tool** (official Microsoft tool) or **Windows ISO Downloader** (not official) - remember to choose the correct version and language (run `winver` for more information about your system's version). After the image is downloaded you have to unzip or mount the iso file and get **install.wim** file from **sources** directory. Then you can use the following command:
 ```
 dism.exe /Online /Cleanup-image /Restorehealth /Source:c:\download\install.wim
 ```
