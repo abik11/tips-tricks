@@ -137,6 +137,10 @@ Other packages you might want to delete: `*camera*, *zune*, *communi*, *people*,
 
 ### Configure default applications
 ->Settings ->Applications ->Default Applications
+It might be also useful to run the `assoc` command in CMD. With this command it is also possible to change file association like this for example:
+```
+assoc .mp4=VLC.vlc
+```
 
 ### Add My Computer on the desktop in Windows 10
 ->Right click on the desktop ->Personalize ->Themes ->Desktop icon settings ->Check **Computer**
