@@ -49,6 +49,7 @@ Visual Studio has a lot of nice keyboard shortcuts that can speed up your work, 
 
 ##### Other
 * Repair code indention (this is amazing!)<br />`CTRL + K, CTRL + D`
+* Sort usings (->Edit ->IntelliSense-> Sort Usings)<br />`CTRL + R, CTRL + G`
 * Create a method<br />`CTRL + K, CTRL + M`
 * Roll and expand regions<br />`CTRL + M + M`
 * Go to opening/closing bracket<br />`CTRL + }`
