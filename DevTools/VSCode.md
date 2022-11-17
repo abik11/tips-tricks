@@ -11,6 +11,7 @@ There are many extensions available for VS Code that can convert in a complex ID
 * **Vetur** - syntax highlighting for Vue components
 * **AutoHotkey** - syntax highlighting for AHK files
 * **Better Line Select** - adds a new shortcut `CTRL + L` that selects the current line and puts the cursor under the selected line and `CTRL + SHIFT + L` that also selects the current line and puts the cursor above the selected line (it may not work if you will install Visual Studio Keymap)
+* **Polyglot Notebooks** - allows to create jupyter-like notebooks for C#, F#, Javascript and Powershell, use `#!share -from csharp someVariable` to export variables to cells in other languages
 
 ### Manually installing extenstions
 If you cannot install extensions from VS Code, you can install them manually. Go to [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). Find your extensions and in **Resources** menu (on the right) click **Download Extension**.<br />
