@@ -98,13 +98,17 @@ Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 [How to stop re-rendering lists in React?](https://alexsidorenko.com/blog/react-list-rerender/)<br />
 [Hooks FAQ](https://reactjs.org/docs/hooks-faq.html)<br />
 [How to fetch data with React Hooks?](https://www.robinwieruch.de/react-hooks-fetch-data)<br />
-[How to test React Components](https://www.robinwieruch.de/react-testing-tutorial)<br />
 [Using throttle and debounce in a React function component](https://medium.com/@rajeshnaroth/using-throttle-and-debounce-in-a-react-function-component-5489fc3461b3)<br />
 [lodash debounce in React functional component](https://stackoverflow.com/questions/55616536/lodash-debounce-in-react-functional-component-not-working/55616626#55616626)<br />
 [React+TypeScript Cheatsheets](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)<br />
 [React Developer Roadmap](https://github.com/adam-golab/react-developer-roadmap)<br />
 [Classnames](https://github.com/JedWatson/classnames)<br />
 [Egghead Redux Cheat Sheet](https://github.com/linkmesrl/react-journey-2016/blob/master/resources/egghead-redux-cheat-sheet-3-2-1.pdf)<br />
+
+#### Testing React components
+[How to test React Components](https://www.robinwieruch.de/react-testing-tutorial)<br />
+[Types of Queries](https://testing-library.com/docs/queries/about#types-of-queries)<br />
+[Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)<br />
 
 #### Test data
 [JSON test data](https://jsonplaceholder.typicode.com/)<br />
