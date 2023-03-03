@@ -107,7 +107,7 @@ Turn off saving passwords in Chrome - chrome://settings/passwords<br />
 
 #### Testing React components
 [How to test React Components](https://www.robinwieruch.de/react-testing-tutorial)<br />
-[Types of Queries](https://testing-library.com/docs/queries/about#types-of-queries)<br />
+[Query priority](https://testing-library.com/docs/queries/about/#priority)<br />
 [Common mistakes with React Testing Library](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library)<br />
 
 #### Test data
