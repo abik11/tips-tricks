@@ -2,5 +2,5 @@
 
 ### Filter logs
 ```
-("machine1" OR "machine15") severity:(error warn) SEARCHED PHRASE -("SKIP THIS" OR "THIS TOO") OR OTHER SEARCHED PHRASE -("OTHER THINGS")
+("machine1" OR "machine15") severity:(error warn) (searched phrase OR other searched phrase) -("skip this" OR "this too")
 ```
