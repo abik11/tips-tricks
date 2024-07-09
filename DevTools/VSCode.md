@@ -34,6 +34,9 @@ Push `CTRL + SHIFT + P`  to open **Command Palette**, type `settings.json` and a
 "terminal.integrated.shellArgs.windows": ["-noprofile"]
 ```
 
+### Wrap open tabsl
+Go to ->File ->Preferences ->Settings ->Search for: `wrapTabs` 
+
 ### unins000.exe error
 While working with **VS Code** you may encounter annoying errors like this:
 ```
