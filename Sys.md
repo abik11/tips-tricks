@@ -252,6 +252,9 @@ sh interfaces status
 reload
 ```
 
+### Share chrome tab on chrome cast
+->Three dots (in the top right corner) ->Save and share (Zapisz i udostępnij) ->Cast... (Przesyłaj) ->Select device
+
 ## Useful links
 
 #### Learn more
