@@ -219,6 +219,18 @@ There are plenty of applications that allow to write and save quickly some notes
 If your PC has a lot of RAM memory which is not used, you can use this memory to create an extremely fast **RAM disk**. RAM disk is a part of RAM memory which simulates a traditional drive (thanks to some kind of software). Such disk is a lot faster than both HDD and SSD drives, its speed is totally uncomparable with any kind of disk because of the RAM memory is very fast. The only drawback of RAM disk is that all its contest will be deleted with every restart of your PC. But it is possible to save RAM disk to .img file and mount it after reboot. All in all, it is an interesting solution.<br />
 There is a very easy to use application called **SoftPerfect RAM Disk** that allows to create and manage RAM disks. You just have to click the plus icon, select RAM disk size (2048 Mb for example), drive letter (R: for example) and NTFS as file system and that's it. You can see in Task Manager (in Performance tab) that RAM usage changed after you have created a RAM disk. You can for example copy some files that you currently edit to the RAM disk, it should speed up your work a lot.
 
+### Reset password for a given WSL user
+In the terminal (can be Powershell) type:
+```
+wsl -l
+```
+To see the list of available distros, then:
+```
+wsl -d <YOUR_DISTRO_NAME> -u root
+
+passwd <YOUR_USER_NAME>
+```
+
 ## Devices and networks
 
 ### Wireshark filters
