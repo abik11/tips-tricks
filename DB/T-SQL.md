@@ -126,6 +126,23 @@ WHERE e.Status != 'Terminated' AND ll.Line IS NOT NULL
 In the given example, *Comment* can be joined with *Leader* by *EmployeeOid* to count how many comments has each leader. To achieve this goal, first we've got CTE with comments and then we've got CTE with leaders. Then we left outer join those two CTE. It must be this kind of join because we want to see also leaders that have no comments at all and for **null** values in *CommentCount* using **coalesce** we put there 0 in results.<br />
 This is a great example of how CTE can keep complex queries very tidy and a good example how to count some rows with left outer join, allowing us to see where there are no associated rows.
 
+### Cross apply
+Logically CROSS APPLY is like running a function or a join for every row separately. It sounds really woryfing when it comes to query performance, but the good news is that it's just how it looks from the logical point of view. Under the hood the left side and right side are executed just once if possible (it might not work like that in case of multi-statement TVF) and combined with a nested loop. So CROSS APPLY is a really nice tool, let's see an example of how to use it - it is great option if you for example need to "join" one table with another, but you don't want all the rows from the other table. For example, let's take AdventureWorks database and let's see a query that gets top 2 most expensive products for each sales order:
+```sql
+SELECT oh.SalesOrderID, MostExpensiveProducts.*
+FROM SalesLT.SalesOrderHeader oh
+CROSS APPLY (
+	SELECT TOP 2 p.Name, p.ListPrice
+	FROM SalesLT.SalesOrderDetail od
+	JOIN SalesLT.Product p ON p.ProductID = od.ProductID
+	WHERE od.SalesOrderID = oh.SalesOrderID
+	ORDER BY p.ListPrice DESC
+) MostExpensiveProducts
+```
+For each row in `SalesLT.SalesOrderHeader` we just have at most 2 coresponding rows from `SalesLT.SalesOrderDetail` and `SalesLT.Product`. If there is no match on the right side than the row from left side is discarded - if we would like this row to be included in the result we could use OUTER APPLY instead of CROSS APPLY (similarily like with INNER JOIN and LEFT OUTER JOIN).
+
+With CROSS APPLY it is possible to write queries in an elegent way that would result to be very cumbersome with just classical JOINs.
+
 ### Merge
 **Merge** statement allows to *compare* two tables and decide what to do with the differences between, to do some inerts, update or deletes. It can express quite a lot with just a few lines of code. The following query is a great example. It compares *Employee* and *NewEmplImport* tables basing on *Oid* field (it looks similar to **join**) and then when two rows match in both tables, the first one is updated according to the second. All not matching rows are added to the first table. This way *Employee* will have its old content but also all the new data from *NewEmplImport*. This operation is sometimes called **upsert** as it is a mix of **up**date and in**sert**.
 ```sql
@@ -295,23 +312,6 @@ JOIN System s ON sa.SystemId = s.Id
 JOIN Application a ON sa.ApplicationId = a.Id
 FOR XML PATH ('')
 ```
-
-### Cross apply
-Logically CROSS APPLY is like running a function or a join for every row separately. It sounds really woryfing when it comes to query performance, but the good news is that it's just how it looks from the logical point of view. Under the hood the left side and right side are executed just once if possible (it might not work like that in case of multi-statement TVF) and combined with a nested loop. So CROSS APPLY is a really nice tool, let's see an example of how to use it - it is great option if you for example need to "join" one table with another, but you don't want all the rows from the other table. For example, let's take AdventureWorks database and let's see a query that gets top 2 most expensive products for each sales order:
-```sql
-SELECT oh.SalesOrderID, MostExpensiveProducts.*
-FROM SalesLT.SalesOrderHeader oh
-CROSS APPLY (
-	SELECT TOP 2 p.Name, p.ListPrice
-	FROM SalesLT.SalesOrderDetail od
-	JOIN SalesLT.Product p ON p.ProductID = od.ProductID
-	WHERE od.SalesOrderID = oh.SalesOrderID
-	ORDER BY p.ListPrice DESC
-) MostExpensiveProducts
-```
-For each row in `SalesLT.SalesOrderHeader` we just have at most 2 coresponding rows from `SalesLT.SalesOrderDetail` and `SalesLT.Product`. If there is no match on the right side than the row from left side is discarded - if we would like this row to be included in the result we could use OUTER APPLY instead of CROSS APPLY (similarily like with INNER JOIN and LEFT OUTER JOIN).
-
-With CROSS APPLY it is possible to write queries in an elegent way that would result to be very cumbersome with just classical JOINs.
 
 ### Sleep
 You can make T-SQL script or procedure to wait for a given time with **WAITFOR** command, for example here it will sleep for 10 seconds:
