@@ -76,7 +76,7 @@ ON d.CostCenter = du.CostCenter AND d.Name = du.Name
 ```
 
 ### Rollup 
-**Rollup** is another way to group date. It groups the result by specified hierarchy. In the following example *MovementHistoryReport* will be grouped first by *Week* and then each group will be internally grouped also by *Location*.
+**Rollup** is another way to group data. It groups the result by specified hierarchy. In the following example *MovementHistoryReport* will be grouped first by *Week* and then each group will be internally grouped also by *Location*.
 ```sql
 SELECT  COALESCE([Week], 'TOTAL'), 
 		[Location], 
