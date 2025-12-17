@@ -182,7 +182,27 @@ WHEN MATCHED THEN
 		T.GCRecord = S.GCRecord;
 ```
 
-### Get first row of a group
+### Window functions basics
+
+Window functions allow to run some operations on specified partitions of the result data and not just on the whole set. `OVER` keyword is used to define a window for window functions to work on, it may use `PARTITION BY` to define which column will be used to specify partitions and `ORDER BY` to sort the data inside of each partition (there are also other operators like `ROWS` and `RANGE`). Window functions available are for example classic aggregate functions like `SUM`, `AVG`, `COUNT`, but also ranking functions like `RANK`, `DENSE_RANK`, `ROW_NUMBER` and `NTILE`.
+
+See here an example of a `AVG` window function (query works on AdventureWorks database):
+```sql
+SELECT * FROM
+(
+	SELECT
+		pc.Name AS Category,
+		p.Name AS Product,
+		p.ListPrice,
+		AVG(p.ListPrice) OVER(PARTITION BY pc.Name) AS AverageCategoryPrice
+	FROM SalesLT.Product p
+	JOIN SalesLT.ProductCategory pc ON pc.ProductCategoryID = p.ProductCategoryID
+) PriceByCategory
+WHERE ListPrice > PriceByCategory.AverageCategoryPrice
+```
+The result are all products which price is higher than the average price to which the product belong. Average price for the product category is calculated with `AVG ... OVER`.
+
+#### Get first row of a group
 Imagine that you have a *GROUP BY* query, but you really want to get is the first row of each group. It is very easy to achieve with **ROW_NUMBER** function:
 ```sql
 WITH firstPOItem AS (
