@@ -309,7 +309,7 @@ CROSS APPLY (
 	ORDER BY p.ListPrice DESC
 ) MostExpensiveProducts
 ```
-For each row in `SalesLT.SalesOrderHeader` we just have at most 2 coresponding from rows from `SalesLT.SalesOrderDetail` and `SalesLT.Product`. If there is no match on the right side than the row from left side is discarded - if we would like this row to be included in the result we could use OUTER APPLY instead of CROSS APPLY (similarily like with INNER JOIN and LEFT OUTER JOIN).
+For each row in `SalesLT.SalesOrderHeader` we just have at most 2 coresponding rows from `SalesLT.SalesOrderDetail` and `SalesLT.Product`. If there is no match on the right side than the row from left side is discarded - if we would like this row to be included in the result we could use OUTER APPLY instead of CROSS APPLY (similarily like with INNER JOIN and LEFT OUTER JOIN).
 
 With CROSS APPLY it is possible to write queries in an elegent way that would result to be very cumbersome with just classical JOINs.
 
