@@ -12,7 +12,6 @@ Oh C#... the language of love! :D The one to rule them all, the best of the best
 * [XML](https://github.com/abik11/tips-tricks/blob/master/CSharp/XML.md)
 * [Performance tips](https://github.com/abik11/tips-tricks/blob/master/CSharp/Performance.md)
 * [NUnit](https://github.com/abik11/tips-tricks/blob/master/CSharp/NUnit.md)
-* [Rhino Mocks to NSubstitute](https://github.com/abik11/tips-tricks/blob/master/CSharp/RhinoMocks2NSubstitute.md)
 * [Selenium](https://github.com/abik11/tips-tricks/blob/master/CSharp/Selenium.md)
 * [NLog](https://github.com/abik11/tips-tricks/blob/master/CSharp/NLog.md)
 * [Useful links](#useful-links)
