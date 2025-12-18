@@ -76,7 +76,7 @@ ON d.CostCenter = du.CostCenter AND d.Name = du.Name
 ```
 
 ### Rollup 
-**Rollup** is another way to group data. It groups the result by specified hierarchy. In the following example *MovementHistoryReport* will be grouped first by *Week* and then each group will be internally grouped also by *Location*.
+**Rollup** is a more advanced way to group data. It groups the result by specified hierarchy. In the following example *MovementHistoryReport* will be grouped first by *Week* and then each group will be internally grouped also by *Location*.
 ```sql
 SELECT  COALESCE([Week], 'TOTAL'), 
 		[Location], 
@@ -84,6 +84,7 @@ SELECT  COALESCE([Week], 'TOTAL'),
 FROM MovementHistoryReport
 GROUP BY ROLLUP([Week], [Location])
 ```
+Additionally subtotals for each subgroup are included and one grand total for the whole result set. Subtotals and grand totals are displayed as `NULL`, this is why in the query `COALESCE` has been used to display there `TOTAL` instead of just `NULL`.
 
 ### CTE
 **Common Table Expression** allows to extract some parts of a query, especially subqueries, into a structure that is similar to a temporary table or a view and can be used in your query to make it much more readable and cleaner. This is by far the most useful syntax structure to build advanced and complex SQL queries that will still be very clean and easy to understand. Moreover what is worth knowing, CTE has better efficiency for large data sets than most other methods (but worse for small). Here is a very simple example presenting the syntax:
