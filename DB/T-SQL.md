@@ -68,19 +68,21 @@ SELECT
 	COALESCE(CASE du.NewName
 		WHEN '' THEN NULL
 		WHEN '-' THEN NULL
-		ELSE du.NeweName 
+		ELSE du.NewName 
 		END, d.Name) AS Name
 FROM Department d
 LEFT OUTER JOIN [DeptUpdate] du 
 ON d.CostCenter = du.CostCenter AND d.Name = du.Name
 ```
+Btw. under the hood COALESCE usually generates the same execution plan as CASE statement. COALESCE is part of SQL standard so it can be used in other SQL dialects.
 
 #### Isnull
-COALESCE can take multiple arguments and returns the first one that is not null. ISNULL is a simplified version of COALESCE that takes only two arguments (a COALESCE with two arguments is basically same as ISNULL). So one of the above queries could look like this:
+COALESCE can take multiple arguments and returns the first one that is not null. ISNULL takes only two argument, so one of the above queries could look like this:
 ```sql
 SELECT [Name], ISNULL([Work], 'Unemployeed')
 FROM Employee
 ```
+What's important to know is that there is also a difference in nullability of COALESCE and ISNULL. The result of COALESCE is treated as nullable and the result of ISNULL is non-nullable, thus the result of COALESCE cannot be set as a primary key for example. ISNULL is not part of SQL standard, it is available in T-SQL.
 
 ### Grouping subclauses
 
