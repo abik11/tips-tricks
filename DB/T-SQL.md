@@ -75,7 +75,9 @@ LEFT OUTER JOIN [DeptUpdate] du
 ON d.CostCenter = du.CostCenter AND d.Name = du.Name
 ```
 
-### Rollup 
+### Grouping subclauses
+
+#### Rollup - grouping hierarchy
 **Rollup** is a more advanced way to group data. It groups the result by specified hierarchy. In the following example *MovementHistoryReport* will be grouped first by *Week* and then each group will be internally grouped also by *Location*.
 ```sql
 SELECT  COALESCE([Week], 'TOTAL'), 
@@ -84,7 +86,17 @@ SELECT  COALESCE([Week], 'TOTAL'),
 FROM MovementHistoryReport
 GROUP BY ROLLUP([Week], [Location])
 ```
-Additionally subtotals for each subgroup are included and one grand total for the whole result set. Subtotals and grand totals are displayed as `NULL`, this is why in the query `COALESCE` has been used to display there `TOTAL` instead of just `NULL`.
+Additionally subtotals for each subgroup are included and one grand total for the whole result set. Subtotals and grand totals are displayed as `NULL`, this is why in the query `COALESCE` has been used to display there `TOTAL` instead of just `NULL`. 
+
+#### Cube - gropuing by all possible combinations
+**Cube** is similar to **Rollup** in syntax, but there is an important difference in the result. With CUBE you get all possible combinations of the columns in GROUP BY clause, with subtotals for both - in our case *Week* and *Location* - and a grand total for the whole set. The query itself looks very similar (this time COALESCE was not used):
+```sql
+SELECT  [Week], 
+		[Location], 
+        COUNT(*) AS WrongCount
+FROM MovementHistoryReport
+GROUP BY CUBE([Week], [Location])
+```
 
 ### CTE
 **Common Table Expression** allows to extract some parts of a query, especially subqueries, into a structure that is similar to a temporary table or a view and can be used in your query to make it much more readable and cleaner. This is by far the most useful syntax structure to build advanced and complex SQL queries that will still be very clean and easy to understand. Moreover what is worth knowing, CTE has better efficiency for large data sets than most other methods (but worse for small). Here is a very simple example presenting the syntax:
@@ -184,7 +196,6 @@ WHEN MATCHED THEN
 ```
 
 ### Window functions basics
-
 Window functions allow to run some operations on specified partitions of the result data and not just on the whole set. `OVER` keyword is used to define a window for window functions to work on, it may use `PARTITION BY` to define which column will be used to specify partitions and `ORDER BY` to sort the data inside of each partition (there are also other operators like `ROWS` and `RANGE`). Window functions available are for example classic aggregate functions like `SUM`, `AVG`, `COUNT`, but also ranking functions like `RANK`, `DENSE_RANK`, `ROW_NUMBER` and `NTILE`.
 
 See here an example of a `AVG` window function (query works on AdventureWorks database):
@@ -215,41 +226,6 @@ FROM firstPOItem
 WHERE row_number = 1
 ```
 This way for example you can list first *PO Numbers* for every product.
-
-### Date-time functions
-Handling dates is very often used and crucial skill while programming in SQL. Thankfully there are few extremely useful and easy to use functions that makes programmers lifes easier. 
-```sql
-SELECT GETDATE() --returns current datetime
-SELECT DATEPART(DAY, GETDATE())
-SELECT DATEPART(WEEK, GETDATE())
-SELECT DATEPART(MONTH, GETDATE())
-SELECT DAY(GETDATE())
-SELECT MONTH(GETDATE())
-SELECT YEAR(GETDATE())
-SELECT DATEDIFF(WEEK, GETDATE(), '1995-05-25 00:00:00.000')
-SELECT DATEDIFF_BIG(WEEK, GETDATE(), '1995-05-25 00:00:00.000')
-SELECT EOMONTH('1995-05-25 00:00:00.000') --returns the last day of the month of given date
-SELECT DATEADD(YEAR, 10, GETDATE())
-```
-
-### Convert string of yyyyMMddhhmmss format to datetime
-It is very common that a string has to be converted to datetime, but the format of `yyyyMMddhhmmss` may cause some more problems. You can use the **STUFF** function to change the format of the string, put some chars into the string and prepare it to be converted, see the example:
-```sql
-SELECT CAST(STUFF(STUFF(STUFF('20180525222200', 13, 0, ':'), 11, 0, ':'), 9, 0, ' ') AS DATETIME)
---it will create the string: '20180525 22:22:00', and such string can be easily converted
-```
-
-### Find rows from last 20 minutes
-A nice use case for **DATEDIFF** function is to find all the rows from last 20 minutes by some date. Here is an example:
-```sql
-SELECT ScanDate, Code FROM Material
-WHERE DATEDIFF(MINUTE, ScanDate, GETDATE()) < 20
-```
-Be careful with **DATEDIFF** because it can be very slow in comparison with simple datetime comparison. The above query can be also written like this - being quite faster:
-```sql
-SELECT ScanDate, Code FROM Material
-WHERE ScanDate > DATEADD(MINUTE, -20, GETDATE())
-```
 
 ### Complex order by
 It is possible to switch the column that you want to use for **order by** using **case** statements, so that some data will be ordered by different column than other. Nice trick!
@@ -299,14 +275,53 @@ END CATCH
 ```
 Read more, much more, [here](http://www.sommarskog.se/error_handling/Part1.html).
 
-### Strings with diacritical marks
+### Working with dates
+
+#### Date-time functions
+Handling dates is very often used and crucial skill while programming in SQL. Thankfully there are few extremely useful and easy to use functions that makes programmers lifes easier. 
+```sql
+SELECT GETDATE() --returns current datetime
+SELECT DATEPART(DAY, GETDATE())
+SELECT DATEPART(WEEK, GETDATE())
+SELECT DATEPART(MONTH, GETDATE())
+SELECT DAY(GETDATE())
+SELECT MONTH(GETDATE())
+SELECT YEAR(GETDATE())
+SELECT DATEDIFF(WEEK, GETDATE(), '1995-05-25 00:00:00.000')
+SELECT DATEDIFF_BIG(WEEK, GETDATE(), '1995-05-25 00:00:00.000')
+SELECT EOMONTH('1995-05-25 00:00:00.000') --returns the last day of the month of given date
+SELECT DATEADD(YEAR, 10, GETDATE())
+```
+
+#### Convert string of yyyyMMddhhmmss format to datetime
+It is very common that a string has to be converted to datetime, but the format of `yyyyMMddhhmmss` may cause some more problems. You can use the **STUFF** function to change the format of the string, put some chars into the string and prepare it to be converted, see the example:
+```sql
+SELECT CAST(STUFF(STUFF(STUFF('20180525222200', 13, 0, ':'), 11, 0, ':'), 9, 0, ' ') AS DATETIME)
+--it will create the string: '20180525 22:22:00', and such string can be easily converted
+```
+
+#### Find rows from last 20 minutes
+A nice use case for **DATEDIFF** function is to find all the rows from last 20 minutes by some date. Here is an example:
+```sql
+SELECT ScanDate, Code FROM Material
+WHERE DATEDIFF(MINUTE, ScanDate, GETDATE()) < 20
+```
+Be careful with **DATEDIFF** because it can be very slow in comparison with simple datetime comparison. The above query can be also written like this - being quite faster:
+```sql
+SELECT ScanDate, Code FROM Material
+WHERE ScanDate > DATEADD(MINUTE, -20, GETDATE())
+```
+
+### Wroking with strings
+
+#### Strings with diacritical marks
 To be able to store strings with diacritical marks or even more - different alpabets, you should use **nvarchar** type (which uses UTF) and mark the string as unicode with **N** prefix:
 ```sql
 SELECT 'ęóąśłżźć' --eoaslzzc
 SELECT N'ęóąśłżźć' --ęóąśłżźć
 ```
 
-### How to get string length with spaces
+#### How to get string length with spaces
 There is a very popular function in T-SQL called **LEN**, it is often used to get the length of some string value. It has one disadvantage that it is not counting spaces, so if you want to know the total length of the raw string you have to use another function called **DATALENGTH**. It is very simple to use. Here you can see an example showing the difference between both functions:
 ```sql
 SELECT LEN(' '), DATALENGTH(' ') --returns 0 and 1
@@ -316,7 +331,7 @@ Be careful with **nvarchar** type because **DATALENGTH** actually returns the nu
 SELECT DATALENGTH('A'), DATALENGTH(N'A') --returns 1 and 2
 ```
 
-### Join/Concat strings from query
+#### Join/Concat strings from query
 If you use **SQL Server 2017** or newer you can use new aggregate function called **STRING_AGG**:
 ```sql
 SELECT s.Name, STRING_AGG(a.Name, ', ')
