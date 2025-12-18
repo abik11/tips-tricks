@@ -363,3 +363,46 @@ You can make T-SQL script or procedure to wait for a given time with **WAITFOR**
 ```sql
 WAITFOR DELAY '00:00:10'
 ```
+
+### Pivot
+T-SQL can do this freaking magic thing with the data - yes, you can do data pivoting with SQL! Let's see an example on AdventureWorks databse. Let's assume we have a query like this:
+```sql
+SELECT p.Name AS Product, ISNULL(p.Color, 'Uncolored') AS Color, pc.Name AS Category
+FROM SalesLT.Product p
+JOIN SalesLT.ProductCategory pc ON pc.ProductCategoryID = p.ProductCategoryID
+```
+The result of the query is basically a list of products with its color and category, example:
+```
+Product				| Color		| Category
+----------------------------------------------
+Mountain-100 Silver | Silver	| Mountain Bikes
+Mountain-100 Blue   | Blue		| Mountain Bikes
+Mountain-100 Black  | Black		| Mountain Bikes
+Mountain-200 Black  | Black		| Mountain Bikes
+Road-250 Red        | Red		| Road Bikes
+Road-750 Red        | Red		| Road Bikes
+Road-750 Black      | Black		| Road Bikes
+```
+With PIVOT we can easily transform the data to take colors as columns names to see for example how many products of given color there are in given category.
+```sql
+SELECT *
+FROM (
+	SELECT p.Name AS Product, ISNULL(p.Color, 'Uncolored') AS Color, pc.Name AS Category
+	FROM SalesLT.Product p
+	JOIN SalesLT.ProductCategory pc ON pc.ProductCategoryID = p.ProductCategoryID
+) AS Products
+PIVOT (
+	COUNT(Products.Product) FOR Products.Color IN (
+		[Silver], [Black], [Silver/Black], [Blue], [Grey],
+		[Red], [White], [Yellow], [Multi], [Uncolored]
+	)
+) AS AvailableProductsByColor
+```
+Now the result would like this (simplified version):
+```
+Category		| Black	| Silver	| Red	| Blue
+----------------------------------------------------
+Mountain Bikes	| 2		| 1			| 0		| 1
+Road Bikes		| 1		| 0			| 2		| 0
+```
+Really cool stuff!
