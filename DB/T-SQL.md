@@ -75,6 +75,13 @@ LEFT OUTER JOIN [DeptUpdate] du
 ON d.CostCenter = du.CostCenter AND d.Name = du.Name
 ```
 
+#### Isnull
+COALESCE can take multiple arguments and returns the first one that is not null. ISNULL is a simplified version of COALESCE that takes only two arguments (a COALESCE with two arguments is basically same as ISNULL). So one of the above queries could look like this:
+```sql
+SELECT [Name], ISNULL([Work], 'Unemployeed')
+FROM Employee
+```
+
 ### Grouping subclauses
 
 #### Rollup - grouping hierarchy
